@@ -1,27 +1,31 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class RoomSpawner : MonoBehaviour
+public class AddRoomTop : MonoBehaviour
 {
     public int openingDirection;
-
+    
     private RoomTemplates templates;
     private int rand;
     public bool spawned = false;
-    
+
+    // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 1f);
     }
 
     // Update is called once per frame
-    void Spawn()
+    void Update()
     {
+        
+    }
+    
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        
         if (spawned == false)
         {
             if (openingDirection == 1)
@@ -32,7 +36,7 @@ public class RoomSpawner : MonoBehaviour
             else if (openingDirection == 2)
             {
                 rand = Random.Range(0, templates.bottomRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                Instantiate(templates.bottomRooms[rand], new Vector3(transform.position.x, transform.position.y +5, transform.position.z), templates.bottomRooms[rand].transform.rotation);
             }
             else if (openingDirection == 3)
             {
@@ -45,23 +49,6 @@ public class RoomSpawner : MonoBehaviour
                 Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
             }
             spawned = true;
-        }
-        
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("SpawnPoint"))
-        {
-            Destroy(gameObject);
-            spawned = true;
-            
-            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
-            {
-                Instantiate(templates.closedRooms, transform.position, quaternion.identity);
-                Destroy(gameObject);
-            }
-            
         }
     }
 }
