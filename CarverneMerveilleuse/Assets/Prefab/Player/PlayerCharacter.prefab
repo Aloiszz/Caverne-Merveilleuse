@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5199127943103591038}
   m_Layer: 0
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,14 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb876b5ac425bd4ba16155c998659db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSO: {fileID: 0}
-  speedMovement: 70
-  linearDragMultiplier: 5
-  linearDragDeceleration: 2
-  dashForce: 0
-  dashTimer: 0
-  life: 3
-  invinsibleTimer: 0
+  playerSO: {fileID: 11400000, guid: 18cb5be2f6329444bb02c3a7e183a6ea, type: 2}
 --- !u!50 &2305777225139207135
 Rigidbody2D:
   serializedVersion: 4
@@ -122,12 +115,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &5199127943103591038
 BoxCollider2D:
   m_ObjectHideFlags: 0

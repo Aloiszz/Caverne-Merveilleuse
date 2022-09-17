@@ -36,7 +36,7 @@ public class AddRoomTop : MonoBehaviour
             else if (openingDirection == 2)
             {
                 rand = Random.Range(0, templates.bottomRooms.Length);
-                Instantiate(templates.bottomRooms[rand], new Vector3(transform.position.x, transform.position.y +5, transform.position.z), templates.bottomRooms[rand].transform.rotation);
+                Instantiate(templates.bottomRooms[rand], new Vector3(transform.position.x, transform.position.y +5.5f, transform.position.z), templates.bottomRooms[rand].transform.rotation);
             }
             else if (openingDirection == 3)
             {
