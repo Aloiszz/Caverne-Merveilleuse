@@ -10,6 +10,8 @@ public class Mechant : MonoBehaviour
     public float speed;
 
     public bool see = false;
+
+    public float distanceToPlayer = 5f;
     
     // Start is called before the first frame update
     void Start()
@@ -29,17 +31,22 @@ public class Mechant : MonoBehaviour
         see = true;
     }
     
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        //PlayerController.instance.LoseLife();   
-        see = false;
-    }
 
     private void Attack()
     {
         if (see)
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            if ((player.transform.position - transform.position).magnitude < distanceToPlayer && !CompareTag("CAC"))
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position,
+                        -speed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position =
+                        Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+                }
         }
     }
     
