@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        playerSO.life = 3;
         playerSO.isDash = true;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
@@ -53,11 +54,6 @@ public class PlayerController : MonoBehaviour
         if (playerSO.life == 0)
         {
             Destroy(gameObject);
-        }
-
-        foreach (var str in lastMovement)
-        {
-            Debug.Log(str);
         }
     }
 
@@ -130,17 +126,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            playerSO.isStriking = true;
             StartCoroutine(AttackTime());
         }
-        playerSO.isStriking = false;
+        if (playerSO.isStriking)
+        {
+            Mechant.instance.ReceiveCloseLightDamage();
+            playerSO.isStriking = false;
+        }
     }
 
     IEnumerator AttackTime()
     {
         PlayerAttackCollision.instance.sprite.enabled = true;
         PlayerAttackCollision.instance.coll.enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         PlayerAttackCollision.instance.sprite.enabled = false;
         PlayerAttackCollision.instance.coll.enabled = false;
     }

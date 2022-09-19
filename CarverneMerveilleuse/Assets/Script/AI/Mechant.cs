@@ -8,29 +8,46 @@ using Random = UnityEngine.Random;
 public class Mechant : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public GameObject player;
+    public PlayerController player;
     public float speed;
+    public float life;
 
     public bool see = false;
-
     public float distanceToPlayer = 5f;
 
+    
     public GameObject projo;
-
     public float TimeBeforeShoot = 3f;
-
     private bool canShoot = true;
-
+    
     private bool canRandomMove = true;
-
     private Vector2 playerDir;
 
     public float shootForce = 3f;
+
+    public static Mechant instance;
     
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this; 
+        } 
+    }
+    
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+    
+    void FixedUpdate()
+    {
+        rb.drag = 5 * 2; // linearDragDeceleration * linearDragMultiplier;
     }
 
     // Update is called once per frame
@@ -38,6 +55,9 @@ public class Mechant : MonoBehaviour
     {
         playerDir =(player.transform.position - transform.position);
         OnSeePlayer();
+        Death();
+        
+        Debug.Log(life);
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -47,6 +67,19 @@ public class Mechant : MonoBehaviour
         {
             see = true;
         }
+    }
+    void Death()
+    {
+        if (life <= 0)
+        { 
+            Destroy(gameObject);
+        }
+    }
+
+    public void ReceiveCloseLightDamage()
+    { 
+        life -= PlayerController.instance.playerSO.lightCloseDamage;
+        rb.AddForce(gameObject.transform.position * 50);
     }
     
 
@@ -59,8 +92,6 @@ public class Mechant : MonoBehaviour
                 {
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position,
                         -speed * Time.deltaTime);
-                    
-                    
                 }
                 else
                 {
@@ -99,11 +130,12 @@ public class Mechant : MonoBehaviour
         canRandomMove = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
+            PlayerController.instance.LoseLife();
         }
     }
 }

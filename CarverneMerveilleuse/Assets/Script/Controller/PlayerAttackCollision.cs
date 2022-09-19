@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttackCollision : MonoBehaviour
 {
     public SpriteRenderer sprite;
     public Collider2D coll;
-    public GameObject pivot;
+    public Transform pivot;
     
     [Header("Singleton")]
     public static PlayerAttackCollision instance;
@@ -28,8 +29,10 @@ public class PlayerAttackCollision : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
         
-        sprite.enabled = true;
+        sprite.enabled = false;
         coll.enabled = false;
+        
+        pivot = GameObject.FindGameObjectWithTag("PivotAttackPoint").GetComponent<Transform>();;
     }
 
     private void FixedUpdate()
@@ -52,12 +55,12 @@ public class PlayerAttackCollision : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (PlayerController.instance.playerSO.isStriking)
+        if (col.CompareTag("CAC"))
         {
-            
+            PlayerController.instance.playerSO.isStriking = true;
         }
     }
 }

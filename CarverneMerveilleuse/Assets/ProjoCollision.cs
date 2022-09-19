@@ -11,6 +11,7 @@ public class ProjoCollision : MonoBehaviour
         {
             col.gameObject.GetComponent<Rigidbody2D>().AddForce((col.transform.position - transform.position) * 500);
             Destroy(gameObject);
+            PlayerController.instance.LoseLife();
         }
 
     }
