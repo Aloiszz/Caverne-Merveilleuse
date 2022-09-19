@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Mechant : MonoBehaviour
 {
+    public Rigidbody2D rb;
     public GameObject player;
     public float speed;
 
@@ -18,6 +20,8 @@ public class Mechant : MonoBehaviour
     public float TimeBeforeShoot = 3f;
 
     private bool canShoot = true;
+
+    private bool canRandomMove = true;
 
     private Vector2 playerDir;
 
@@ -38,8 +42,11 @@ public class Mechant : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        //PlayerController.instance.LoseLife();   
-        see = true;
+        //PlayerController.instance.LoseLife(); 
+        if (col.gameObject.CompareTag("Player"))
+        {
+            see = true;
+        }
     }
     
 
@@ -47,6 +54,7 @@ public class Mechant : MonoBehaviour
     {
         if (see)
         {
+            StopCoroutine(RandomMove());
             if (playerDir.magnitude < distanceToPlayer && !CompareTag("CAC"))
                 {
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position,
@@ -65,6 +73,10 @@ public class Mechant : MonoBehaviour
                 StartCoroutine(Shoot());
             }
         }
+        else if (canRandomMove)
+        {
+            StartCoroutine(RandomMove());
+        }
     }
 
     IEnumerator Shoot()
@@ -75,6 +87,16 @@ public class Mechant : MonoBehaviour
         yield return new WaitForSeconds(TimeBeforeShoot);
         canShoot = true;
         
+    }
+
+    IEnumerator RandomMove()
+    {
+        canRandomMove = false;
+        rb.AddForce(new Vector2(Random.Range(-9f, 10f),Random.Range(-9f,10f)) * 25);
+        yield return new WaitForSeconds(0.5f);
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(3f);
+        canRandomMove = true;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
