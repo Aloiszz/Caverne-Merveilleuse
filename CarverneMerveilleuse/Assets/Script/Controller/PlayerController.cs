@@ -55,10 +55,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (var str in lastMovement)
-        {
-            Debug.Log(str);
-        }
+        
     }
 
     private void GameMove()
