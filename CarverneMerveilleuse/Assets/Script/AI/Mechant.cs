@@ -7,23 +7,36 @@ using Random = UnityEngine.Random;
 
 public class Mechant : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public PlayerController player;
+    private PlayerController player;
+    
+    [Header("AI Config")]
     public float speed;
     public float life;
+    
+    public GameObject projo;
+    public float shootForce = 3f;
+    public float TimeBeforeShoot = 3f;
+    
+    [Header("AI Physics")]
+    public Rigidbody2D rb;
+    public float linearDragDeceleration;
+    public float linearDragMultiplier;
+    public float forcelightDamage;
 
+    [Header("AI perception")]
     public bool see = false;
     public float distanceToPlayer = 5f;
 
+    [Header("AI Cinemachine Shake")] 
+    public float intensity;
+    public float frequency;
+    public float timer;
     
-    public GameObject projo;
-    public float TimeBeforeShoot = 3f;
+    
     private bool canShoot = true;
     
     private bool canRandomMove = true;
     private Vector2 playerDir;
-
-    public float shootForce = 3f;
 
     public static Mechant instance;
     
@@ -47,7 +60,7 @@ public class Mechant : MonoBehaviour
     
     void FixedUpdate()
     {
-        rb.drag = 5 * 2; // linearDragDeceleration * linearDragMultiplier;
+        rb.drag = linearDragDeceleration * linearDragMultiplier; 
     }
 
     // Update is called once per frame
@@ -79,7 +92,7 @@ public class Mechant : MonoBehaviour
     public void ReceiveCloseLightDamage()
     { 
         life -= PlayerController.instance.playerSO.lightCloseDamage;
-        rb.AddForce(gameObject.transform.position * 50);
+        rb.AddForce(gameObject.transform.position * forcelightDamage);
     }
     
 
@@ -136,6 +149,7 @@ public class Mechant : MonoBehaviour
         {
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
+            CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
         }
     }
 }

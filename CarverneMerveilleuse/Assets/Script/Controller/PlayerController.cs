@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        playerSO.life = 3;
+        playerSO.life = 4;
         playerSO.isDash = true;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
@@ -127,11 +127,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(AttackTime());
+            
         }
         if (playerSO.isStriking)
         {
             Mechant.instance.ReceiveCloseLightDamage();
             playerSO.isStriking = false;
+            CinemachineShake.instance.ShakeCamera(playerSO.intensityLightCloseDamage, playerSO.frequencyLightCloseDamage ,playerSO.timerLightCloseDamage); 
         }
     }
 
