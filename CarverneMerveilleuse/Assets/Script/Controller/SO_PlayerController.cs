@@ -8,9 +8,11 @@ public class SO_PlayerController : ScriptableObject
     [Header("Movement")]
     public float speedMovement;
 
-    [Header("Dash")]
+    [Header("Dash")] 
+    public bool isDash = true;
     public float dashForce;
-    public float dashTimer;
+    public float dashReload;
+    public float dashInvinsibleTime;
 
     [Header("Life")]
     public int life;
@@ -19,5 +21,13 @@ public class SO_PlayerController : ScriptableObject
     [Header("Drag")]
     public float linearDragDeceleration;
     public float linearDragMultiplier;
+
+    [Header("Damage")] 
+    public bool isStriking;
+    public float heavyCloseDamage;
+    public float heavyRangeDamage;
+    public float lightCloseDamage;
+    public float lightRangeDamage;
+
 
 }
