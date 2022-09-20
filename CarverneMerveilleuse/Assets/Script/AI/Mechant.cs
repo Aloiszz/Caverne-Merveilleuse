@@ -92,7 +92,7 @@ public class Mechant : MonoBehaviour
     public void ReceiveCloseLightDamage()
     { 
         life -= PlayerController.instance.playerSO.lightCloseDamage;
-        rb.AddForce(gameObject.transform.position * forcelightDamage);
+        rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
     }
     
 

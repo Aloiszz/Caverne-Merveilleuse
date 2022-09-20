@@ -24,9 +24,11 @@ public class SO_PlayerController : ScriptableObject
 
     [Header("Damage")] 
     public bool isStriking;
+    public bool isCoolDown;
     public float heavyCloseDamage;
     [Header(" ")] //Just space between variable
     public float lightCloseDamage;
+    public float lightCloseDamageCoolDown;
     public float lightRangeDamage;
 
     [Header("Cinemachine Schake")] 
@@ -37,5 +39,4 @@ public class SO_PlayerController : ScriptableObject
     public float intensityHeavyCloseDamage;
     public float frequencyHeavyCloseDamage;
     public float timerHeavyCloseDamage;
-
 }

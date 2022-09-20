@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +20,9 @@ public class PlayerController : MonoBehaviour
     
     [Header("Singleton")]
     public static PlayerController instance;
+
+    public GameObject deathBloodPS;
+    public GameObject bloodPS;
     
     
     // Start is called before the first frame update
@@ -54,6 +60,7 @@ public class PlayerController : MonoBehaviour
         if (playerSO.life == 0)
         {
             Destroy(gameObject);
+            Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity);
         }
     }
 
@@ -92,10 +99,10 @@ public class PlayerController : MonoBehaviour
     {
         
     }
-
     public void LoseLife()
     {
         playerSO.life -= 1;
+        Instantiate(bloodPS, gameObject.transform.position, quaternion.identity);
     }
 
     private void Dash()
@@ -124,10 +131,12 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!playerSO.isCoolDown)
         {
-            StartCoroutine(AttackTime());
-            
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartCoroutine(LightCloseDamageCoolDown());
+            }
         }
         if (playerSO.isStriking)
         {
@@ -137,11 +146,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator AttackTime()
+    IEnumerator LightCloseDamageCoolDown()
     {
         PlayerAttackCollision.instance.sprite.enabled = true;
         PlayerAttackCollision.instance.coll.enabled = true;
-        yield return new WaitForSeconds(0.1f);
+        playerSO.isCoolDown = true;
+        yield return new WaitForSeconds(playerSO.lightCloseDamageCoolDown);
+        playerSO.isCoolDown = false;
         PlayerAttackCollision.instance.sprite.enabled = false;
         PlayerAttackCollision.instance.coll.enabled = false;
     }
