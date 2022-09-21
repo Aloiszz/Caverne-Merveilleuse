@@ -8,6 +8,13 @@ public class BossScript : MonoBehaviour
     [Header("Boss Stats")] 
     public float BossPVStart = 10;
     public float BossPV;
+
+    [Header("Phase 1")] 
+    public GameObject spawner1;
+    public GameObject spawner2;
+    public GameObject spawner3;
+    public GameObject spawner4;
+    
     
     [Header("Attaques Phase 2")] 
     public GameObject vague1;
