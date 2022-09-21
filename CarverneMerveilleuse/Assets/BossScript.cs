@@ -8,10 +8,19 @@ public class BossScript : MonoBehaviour
     [Header("Boss Stats")] 
     public float BossPVStart = 10;
     public float BossPV;
+
+    [Header("Phase 1")] 
+    public GameObject spawner1;
+    public GameObject spawner2;
+    public GameObject spawner3;
+    public GameObject spawner4;
+    
     
     [Header("Attaques Phase 2")] 
     public GameObject vague1;
     public GameObject vague2;
+    public GameObject attaqueAvant1;
+    public GameObject attaqueAvant2;
     public GameObject zone;
     public GameObject chute;
     public float vaguesSpeed;
@@ -23,6 +32,7 @@ public class BossScript : MonoBehaviour
     private Vector2 vague2Pos;
     private bool canAttack = true;
     private bool isCAC = false;
+    private bool startCAC = false;
 
     private void Start()
     {
@@ -36,6 +46,20 @@ public class BossScript : MonoBehaviour
         if (BossPV <= BossPVStart / 2 && canAttack && !isCAC)
         {
             StartCoroutine(Vague());
+        }
+
+        if ((player.transform.position - transform.position).magnitude <= 10 && BossPV <= BossPVStart / 2)
+        {
+            isCAC = true;
+            if (!startCAC)
+            {
+                StartCoroutine(CAC());
+            }
+            
+        }
+        else
+        {
+            isCAC = false;
         }
     }
 
@@ -60,33 +84,47 @@ public class BossScript : MonoBehaviour
             canAttack = true;
             StopCoroutine(Vague());
         }
-        
-        for (int i = 0; i < 5; i++)
+        else
         {
-            GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.4f);
-            Destroy(attackChute);
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
+                yield return new WaitForSeconds(0.4f);
+                Destroy(attackChute);
+            }
+            yield return new WaitForSeconds(1f);
+            canAttack = true;
         }
-
-        canAttack = true;
 
     }
     
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(CAC());
-        }
-    }
+    
 
     IEnumerator CAC()
     {
-        isCAC = true;
-        zone.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        zone.SetActive(false);
-        isCAC = false;
+        if (canAttack)
+        {
+            startCAC = true;
+            canAttack = false;
+            attaqueAvant1.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            attaqueAvant1.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            attaqueAvant2.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            attaqueAvant2.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            if (isCAC)
+            {
+                zone.SetActive(true);
+                yield return new WaitForSeconds(0.2f);
+                zone.SetActive(false);
+                yield return new WaitForSeconds(1f);
+            }
+            
+            startCAC = false;
+            canAttack = true;
+        }
     }
 }
