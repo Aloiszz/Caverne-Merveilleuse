@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject deathBloodPS;
     public GameObject bloodPS;
-    
-    
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -141,7 +140,6 @@ public class PlayerController : MonoBehaviour
         }
         if (playerSO.isStriking)
         {
-            Mechant.instance.ReceiveCloseLightDamage();
             playerSO.isStriking = false;
             CinemachineShake.instance.ShakeCamera(playerSO.intensityLightCloseDamage, playerSO.frequencyLightCloseDamage ,playerSO.timerLightCloseDamage);
         }

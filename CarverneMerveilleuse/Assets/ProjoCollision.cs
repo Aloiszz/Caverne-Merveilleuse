@@ -14,5 +14,10 @@ public class ProjoCollision : MonoBehaviour
             PlayerController.instance.LoseLife();
         }
 
+        else if(!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist"))
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

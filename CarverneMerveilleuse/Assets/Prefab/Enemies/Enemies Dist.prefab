@@ -432,11 +432,10 @@ GameObject:
   - component: {fileID: 2101363264773630890}
   - component: {fileID: 2101363264773630885}
   - component: {fileID: 2101363264773630884}
-  - component: {fileID: 2101363264773630887}
   - component: {fileID: 2686426251251013887}
   m_Layer: 6
   m_Name: Enemies Dist
-  m_TagString: Untagged
+  m_TagString: Dist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,7 +527,7 @@ MonoBehaviour:
   speed: 3
   life: 5
   projo: {fileID: 4828584988822855267, guid: 7570cc8005a99c64d80b2fbc6ac78cd4, type: 3}
-  shootForce: 5
+  shootForce: 50
   TimeBeforeShoot: 3
   rb: {fileID: 2686426251251013887}
   linearDragDeceleration: 0
@@ -565,22 +564,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!58 &2101363264773630887
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101363264773630886}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6.38
 --- !u!50 &2686426251251013887
 Rigidbody2D:
   serializedVersion: 4

@@ -8,7 +8,6 @@ public class BossScript : MonoBehaviour
 {
     [Header("Boss Stats")] 
     public float BossPVStart = 10;
-    public float BossPV;
 
     [Header("Phase 1")] 
     public GameObject spawner1;
@@ -31,6 +30,7 @@ public class BossScript : MonoBehaviour
 
     [Header("Info")] 
     public GameObject player;
+    public Mechant mechantScript;
 
     private Vector2 vague1Pos;
     private Vector2 vague2Pos;
@@ -50,23 +50,24 @@ public class BossScript : MonoBehaviour
 
     private void Start()
     {
-        Mechant.instance.life = BossPVStart;
+        mechantScript.life = BossPVStart;
         vague1Pos = vague1.transform.position;
         vague2Pos = vague2.transform.position;
     }
 
     void Update()
     {
-        if (Mechant.instance.life > BossPVStart / 2 && startVague)
+        if (mechantScript.life > BossPVStart / 2 && startVague)
         {
             StartCoroutine(Vague());
         }
-        if (Mechant.instance.life <= BossPVStart / 2 && canAttack && !isCAC)
+        if (mechantScript.life <= BossPVStart / 2 && canAttack && !isCAC)
         {
+            StopCoroutine(Vague());
             StartCoroutine(Dist());
         }
 
-        if ((player.transform.position - transform.position).magnitude <= 10 && Mechant.instance.life <= BossPVStart / 2)
+        if ((player.transform.position - transform.position).magnitude <= 10 && mechantScript.life <= BossPVStart / 2)
         {
             isCAC = true;
             if (!startCAC)
@@ -97,6 +98,7 @@ public class BossScript : MonoBehaviour
             }
 
             Ennemi1 = Instantiate(spawnEnnemi, spawner1.transform.position, Quaternion.identity);
+            Ennemi1.GetComponent<Mechant>().see = true;
             nbEnnemi += 1;
             ennemi1Vivant = true;
             if (Random.Range(1, 3) == 2)
@@ -109,6 +111,7 @@ public class BossScript : MonoBehaviour
             }
 
             Ennemi2 = Instantiate(spawnEnnemi, spawner2.transform.position, Quaternion.identity);
+            Ennemi2.GetComponent<Mechant>().see = true;
             nbEnnemi += 1;
             ennemi2Vivant = true;
             if (Random.Range(1, 3) == 2)
@@ -121,6 +124,7 @@ public class BossScript : MonoBehaviour
             }
 
             Ennemi3 = Instantiate(spawnEnnemi, spawner3.transform.position, Quaternion.identity);
+            Ennemi3.GetComponent<Mechant>().see = true;
             nbEnnemi += 1;
             ennemi3Vivant = true;
             if (Random.Range(1, 3) == 2)
@@ -133,6 +137,7 @@ public class BossScript : MonoBehaviour
             }
 
             Ennemi4 = Instantiate(spawnEnnemi, spawner4.transform.position, Quaternion.identity);
+            Ennemi4.GetComponent<Mechant>().see = true;
             nbEnnemi += 1;
             ennemi4Vivant = true;
         }

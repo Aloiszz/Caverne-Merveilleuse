@@ -9,7 +9,7 @@ public class PlayerAttackCollision : MonoBehaviour
     public SpriteRenderer sprite;
     public Collider2D coll;
     public Transform pivot;
-    
+
     [Header("Singleton")]
     public static PlayerAttackCollision instance;
     
@@ -58,9 +58,10 @@ public class PlayerAttackCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("CAC"))
+        if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist"))
         {
             PlayerController.instance.playerSO.isStriking = true;
+            col.GetComponent<Mechant>().ReceiveCloseLightDamage();
         }
     }
 }
