@@ -67,10 +67,12 @@ public class Mechant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerDir =(player.transform.position - transform.position);
-        OnSeePlayer();
+        if (!CompareTag("Boss"))
+        {
+            playerDir = (player.transform.position - transform.position);
+            OnSeePlayer();
+        }
         Death();
-        
         Debug.Log(life);
     }
 
