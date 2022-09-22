@@ -1,8 +1,6 @@
+
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Pathfinding;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -39,20 +37,6 @@ public class Mechant : MonoBehaviour
     private bool canRandomMove = true;
     private Vector2 playerDir;
 
-    public static Mechant instance;
-    
-    private void Awake()
-    {
-        if (instance != null && instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            instance = this; 
-        } 
-    }
-    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -67,21 +51,19 @@ public class Mechant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerDir =(player.transform.position - transform.position);
-        OnSeePlayer();
-        Death();
-        
-        Debug.Log(life);
-    }
+        if (!CompareTag("Boss"))
+        {
+            playerDir = (player.transform.position - transform.position);
+            OnSeePlayer();
+        }
 
-    private void OnTriggerStay2D(Collider2D col)
-    {
-        //PlayerController.instance.LoseLife(); 
-        if (col.gameObject.CompareTag("Player"))
+        if (playerDir.magnitude == distanceToPlayer)
         {
             see = true;
         }
+        Death();
     }
+    
     void Death()
     {
         if (life <= 0)
@@ -103,16 +85,14 @@ public class Mechant : MonoBehaviour
         {
             StopCoroutine(RandomMove());
             if (playerDir.magnitude < distanceToPlayer && !CompareTag("CAC"))
-                {
+            {
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position,
                         -speed * Time.deltaTime);
-                }
-                else
-                {
-                    transform.position =
-                        Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-
-                }
+            }
+            else
+            {
+                    transform.position =Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            }
             if (canShoot && !CompareTag("CAC"))
             {
                 StartCoroutine(Shoot());
@@ -128,7 +108,7 @@ public class Mechant : MonoBehaviour
     {
         canShoot = false;
         GameObject projectile = Instantiate(projo, transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir * shootForce);
+        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * shootForce);
         yield return new WaitForSeconds(TimeBeforeShoot);
         canShoot = true;
         
@@ -144,7 +124,7 @@ public class Mechant : MonoBehaviour
         canRandomMove = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
