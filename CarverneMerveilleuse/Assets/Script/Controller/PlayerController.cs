@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
         {
             Mechant.instance.ReceiveCloseLightDamage();
             playerSO.isStriking = false;
-            CinemachineShake.instance.ShakeCamera(playerSO.intensityLightCloseDamage, playerSO.frequencyLightCloseDamage ,playerSO.timerLightCloseDamage); 
+            CinemachineShake.instance.ShakeCamera(playerSO.intensityLightCloseDamage, playerSO.frequencyLightCloseDamage ,playerSO.timerLightCloseDamage);
         }
     }
 

@@ -10,10 +10,17 @@ public class AddRoomTop : MonoBehaviour
     private int rand;
     public bool spawned = false;
 
+    public Direction direction;
+    public enum Direction
+    {
+        Top, Down, Right, Left
+    };
+
     // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        Direction myDirection;
     }
 
     // Update is called once per frame
@@ -25,30 +32,38 @@ public class AddRoomTop : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D other)
     {
-        
-        if (spawned == false)
+        ChoixDeSalle(direction);
+    }
+    
+    Direction ChoixDeSalle (Direction dir)
+    {
+        if (!spawned)
         {
-            if (openingDirection == 1)
+            if (dir == Direction.Down)
             {
                 rand = Random.Range(0, templates.topRooms.Length);
-                Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                Instantiate(templates.topRooms[rand], new Vector3(transform.position.x, transform.position.y -5.5f, transform.position.z), templates.topRooms[rand].transform.rotation);
             }
-            else if (openingDirection == 2)
+            else if (dir == Direction.Top)
             {
                 rand = Random.Range(0, templates.bottomRooms.Length);
                 Instantiate(templates.bottomRooms[rand], new Vector3(transform.position.x, transform.position.y +5.5f, transform.position.z), templates.bottomRooms[rand].transform.rotation);
             }
-            else if (openingDirection == 3)
+            
+            else if (dir == Direction.Left)
             {
                 rand = Random.Range(0, templates.rightRooms.Length);
-                Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                Instantiate(templates.rightRooms[rand], new Vector3(transform.position.x -5.5f, transform.position.y, transform.position.z), templates.rightRooms[rand].transform.rotation);
             }
-            else if (openingDirection == 4)
+            
+            else if (dir == Direction.Right)
             {
                 rand = Random.Range(0, templates.leftRooms.Length);
-                Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                Instantiate(templates.leftRooms[rand], new Vector3(transform.position.x+5.5f, transform.position.y, transform.position.z), templates.leftRooms[rand].transform.rotation);
             }
             spawned = true;
+            
         }
+        return dir; 
     }
 }

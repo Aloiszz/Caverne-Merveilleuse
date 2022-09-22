@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,7 +9,7 @@ using Random = UnityEngine.Random;
 public class Mechant : MonoBehaviour
 {
     private PlayerController player;
-    
+
     [Header("AI Config")]
     public float speed;
     public float life;
