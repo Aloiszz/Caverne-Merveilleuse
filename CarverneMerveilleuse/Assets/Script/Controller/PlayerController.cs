@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public SO_PlayerController playerSO;
     
     
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Collider2D coll;
 
     public List<Vector2> lastMovement;
@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity);
         }
+
+        
     }
 
     private void GameMove()

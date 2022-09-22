@@ -12,12 +12,12 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     public bool spawned = false;
-    
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", 0.1f);
     }
+    
 
     // Update is called once per frame
     void Spawn()
@@ -26,22 +26,22 @@ public class RoomSpawner : MonoBehaviour
         {
             if (openingDirection == 1)
             {
-                rand = Random.Range(0, templates.topRooms.Length);
+                rand = Random.Range(0, templates.topRooms.Count);
                 Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
             }
             else if (openingDirection == 2)
             {
-                rand = Random.Range(0, templates.bottomRooms.Length);
+                rand = Random.Range(0, templates.bottomRooms.Count);
                 Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
             }
             else if (openingDirection == 3)
             {
-                rand = Random.Range(0, templates.rightRooms.Length);
+                rand = Random.Range(0, templates.rightRooms.Count);
                 Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
             }
             else if (openingDirection == 4)
             {
-                rand = Random.Range(0, templates.leftRooms.Length);
+                rand = Random.Range(0, templates.leftRooms.Count);
                 Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
             }
             spawned = true;

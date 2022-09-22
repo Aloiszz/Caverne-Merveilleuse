@@ -41,24 +41,24 @@ public class AddRoomTop : MonoBehaviour
         {
             if (dir == Direction.Down)
             {
-                rand = Random.Range(0, templates.topRooms.Length);
+                rand = Random.Range(0, templates.topRooms.Count);
                 Instantiate(templates.topRooms[rand], new Vector3(transform.position.x, transform.position.y -5.5f, transform.position.z), templates.topRooms[rand].transform.rotation);
             }
             else if (dir == Direction.Top)
             {
-                rand = Random.Range(0, templates.bottomRooms.Length);
+                rand = Random.Range(0, templates.bottomRooms.Count);
                 Instantiate(templates.bottomRooms[rand], new Vector3(transform.position.x, transform.position.y +5.5f, transform.position.z), templates.bottomRooms[rand].transform.rotation);
             }
             
             else if (dir == Direction.Left)
             {
-                rand = Random.Range(0, templates.rightRooms.Length);
+                rand = Random.Range(0, templates.rightRooms.Count);
                 Instantiate(templates.rightRooms[rand], new Vector3(transform.position.x -5.5f, transform.position.y, transform.position.z), templates.rightRooms[rand].transform.rotation);
             }
             
             else if (dir == Direction.Right)
             {
-                rand = Random.Range(0, templates.leftRooms.Length);
+                rand = Random.Range(0, templates.leftRooms.Count);
                 Instantiate(templates.leftRooms[rand], new Vector3(transform.position.x+5.5f, transform.position.y, transform.position.z), templates.leftRooms[rand].transform.rotation);
             }
             spawned = true;
