@@ -6,14 +6,14 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Player config")]
     public SO_PlayerController playerSO;
-    
-    
-    public Rigidbody2D rb;
+
+    private Rigidbody2D rb;
     private Collider2D coll;
 
     public List<Vector2> lastMovement;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         } 
         else 
         { 
-            instance = this; 
+            instance = this;
         } 
     }
 
@@ -49,21 +49,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GameMove();
+        GameMove(); // Physics movements
+        
         rb.drag = playerSO.linearDragDeceleration * playerSO.linearDragMultiplier;
     }
 
     private void Update()
     {
         Dash();
-        Attack();
+
         if (playerSO.life == 0)
         {
             Destroy(gameObject);
             Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity);
         }
-
-        
     }
 
     private void GameMove()
@@ -129,32 +128,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(playerSO.dashInvinsibleTime);
         coll.enabled = true;
     }
-
-
-    private void Attack()
-    {
-        if (!playerSO.isCoolDown)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                StartCoroutine(LightCloseDamageCoolDown());
-            }
-        }
-        if (playerSO.isStriking)
-        {
-            playerSO.isStriking = false;
-            CinemachineShake.instance.ShakeCamera(playerSO.intensityLightCloseDamage, playerSO.frequencyLightCloseDamage ,playerSO.timerLightCloseDamage);
-        }
-    }
-
-    IEnumerator LightCloseDamageCoolDown()
-    {
-        PlayerAttackCollision.instance.sprite.enabled = true;
-        PlayerAttackCollision.instance.coll.enabled = true;
-        playerSO.isCoolDown = true;
-        yield return new WaitForSeconds(playerSO.lightCloseDamageCoolDown);
-        playerSO.isCoolDown = false;
-        PlayerAttackCollision.instance.sprite.enabled = false;
-        PlayerAttackCollision.instance.coll.enabled = false;
-    }
+    
 }

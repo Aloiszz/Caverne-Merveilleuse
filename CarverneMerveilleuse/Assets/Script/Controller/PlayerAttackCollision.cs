@@ -48,10 +48,10 @@ public class PlayerAttackCollision : MonoBehaviour
             {
                 pivot.transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
             } 
-            /*else if (PlayerController.instance.gameObject.transform.eulerAngles.y == 180) 
+            else if (PlayerController.instance.gameObject.transform.eulerAngles.y == 180) 
             {
                 pivot.transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
-            }*/
+            }
         }
     }
 
@@ -60,8 +60,8 @@ public class PlayerAttackCollision : MonoBehaviour
     {
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist"))
         {
-            PlayerController.instance.playerSO.isStriking = true;
-            col.GetComponent<Mechant>().ReceiveCloseLightDamage();
+            PlayerLightAttack.instance.playerLightAttack.isStriking = true;
+            col.GetComponent<Mechant>().ReceiveLightDamage();
         }
     }
 }
