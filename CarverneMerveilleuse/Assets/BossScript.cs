@@ -172,6 +172,7 @@ public class BossScript : MonoBehaviour
     
     IEnumerator Dist()
     {
+        yield return new WaitForSeconds(1);
         canAttack = false;
         vague1.SetActive(true);
         vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,-1)*vaguesSpeed);
@@ -196,6 +197,8 @@ public class BossScript : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
+                attackChute.GetComponent<SpriteRenderer>().color.g.Equals(1);
+                yield return new WaitForSeconds(0.3f);
                 yield return new WaitForSeconds(0.4f);
                 Destroy(attackChute);
             }
@@ -215,16 +218,19 @@ public class BossScript : MonoBehaviour
             startCAC = true;
             canAttack = false;
             attaqueAvant1.SetActive(true);
+            attaqueAvant1.GetComponent<BossAttackScript>().Prevention();
             yield return new WaitForSeconds(0.5f);
             attaqueAvant1.SetActive(false);
             yield return new WaitForSeconds(1f);
             attaqueAvant2.SetActive(true);
+            attaqueAvant2.GetComponent<BossAttackScript>().Prevention();
             yield return new WaitForSeconds(0.5f);
             attaqueAvant2.SetActive(false);
             yield return new WaitForSeconds(1f);
             if (isCAC)
             {
                 zone.SetActive(true);
+                zone.GetComponent<BossAttackScript>().Prevention();
                 yield return new WaitForSeconds(0.2f);
                 zone.SetActive(false);
                 yield return new WaitForSeconds(1f);

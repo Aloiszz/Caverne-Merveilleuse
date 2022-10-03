@@ -12,18 +12,35 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     public bool spawned = false;
+    public bool isCollision;
+    
+    public static float lastFrameSpawn;
+    
+    
+    IEnumerator DoSpawn()
+    {
+        while (lastFrameSpawn - Time.timeSinceLevelLoad > -0.1f)
+        {
+            yield return null;
+        }
+        InstantiateRoom();
+    }
+    
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 0.1f);
+        Invoke(nameof(Spawn), 0.1f);
     }
-    
 
-    // Update is called once per frame
-    void Spawn()
+    void InstantiateRoom()
     {
+        if (isCollision)
+        {
+            return;
+        }
         if (spawned == false)
         {
+            lastFrameSpawn = Time.timeSinceLevelLoad;
             if (openingDirection == 1)
             {
                 rand = Random.Range(0, templates.topRooms.Count);
@@ -46,22 +63,28 @@ public class RoomSpawner : MonoBehaviour
             }
             spawned = true;
         }
-        
+    }
+    
+    
+    // Update is called once per frame
+    void Spawn()
+    {
+        StartCoroutine(DoSpawn());
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SpawnPoint"))
         {
-            Destroy(gameObject);
+            isCollision = true;
             spawned = true;
+            Debug.Log(transform.position + transform.parent.gameObject.name);
             
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 Instantiate(templates.closedRooms, transform.position, quaternion.identity);
-                Destroy(gameObject);
+                Destroy(other.gameObject);
             }
-            
         }
     }
 }

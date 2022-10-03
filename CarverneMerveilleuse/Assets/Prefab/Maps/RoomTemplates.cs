@@ -34,13 +34,7 @@ public class RoomTemplates : MonoBehaviour
     {
         CountRoomSpawned();
     }
-
-    private void Start()
-    {
-        
-    }
-
-
+    
     void CountRoomSpawned()
     {
         if (rooms.Count >= maxRoom)

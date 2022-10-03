@@ -62,6 +62,11 @@ public class Mechant : MonoBehaviour
             see = true;
         }
         Death();
+        
+
+        
+        
+        //Debug.Log(life);
     }
     
     void Death()
@@ -72,9 +77,17 @@ public class Mechant : MonoBehaviour
         }
     }
 
-    public void ReceiveCloseLightDamage()
-    { 
-        life -= PlayerController.instance.playerSO.lightCloseDamage;
+    public void ReceiveLightDamage()
+    {
+        if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
+        {
+            life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage;
+        }
+        else
+        {
+            life -= PlayerLightAttack.instance.playerLightAttack.lightDamage;
+        }
+        
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
     }
     
