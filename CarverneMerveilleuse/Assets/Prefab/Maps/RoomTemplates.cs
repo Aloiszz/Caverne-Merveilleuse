@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -23,6 +24,11 @@ public class RoomTemplates : MonoBehaviour
     private int spawnBossRoom = 0;
     
     private GameObject roomSpawner;
+    
+    public List<GameObject> bottomRoomsStorage;
+    public List<GameObject> topRoomsStorage;
+    public List<GameObject> leftRoomsStorage;
+    public List<GameObject> rightRoomsStorage;
 
     private void Update()
     {
@@ -39,7 +45,7 @@ public class RoomTemplates : MonoBehaviour
     {
         if (rooms.Count >= maxRoom)
         {
-            bottomRooms.Clear();
+            bottomRoomsStorage = bottomRooms;
             topRooms.Clear();
             leftRooms.Clear();
             rightRooms.Clear();
