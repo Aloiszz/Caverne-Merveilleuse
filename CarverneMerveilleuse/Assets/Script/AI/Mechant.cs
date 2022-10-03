@@ -156,8 +156,9 @@ public class Mechant : MonoBehaviour
     {
         canShoot = false;
         GameObject projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * shootForce);
+        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * grosForce);
         yield return new WaitForSeconds(TimeBeforeShoot + 0.5f);
+        Destroy(projectile);
         canShoot = true;
     }
 
