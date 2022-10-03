@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6101451386079648064}
   - component: {fileID: 1067268324635661890}
   - component: {fileID: 7416420095737525713}
+  - component: {fileID: 2778687619277738121}
   m_Layer: 0
   m_Name: Chute
   m_TagString: Untagged
@@ -97,4 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64760b9c39f66742b84dc9071a363b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prevention: 1
+--- !u!58 &2778687619277738121
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7184246990048684619}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

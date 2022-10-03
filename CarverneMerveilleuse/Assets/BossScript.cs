@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class BossScript : MonoBehaviour
 {
     [Header("Boss Stats")] 
     public float BossPVStart = 10;
+    public Image lifeBarre;
 
     [Header("Phase 1")] 
     public GameObject spawner1;
@@ -16,6 +19,7 @@ public class BossScript : MonoBehaviour
     public GameObject spawner4;
     public GameObject TypeEnnemi1;
     public GameObject TypeEnnemi2;
+    public GameObject TypeEnnemi3;
     public int nbEnnemi;
     
     
@@ -26,7 +30,9 @@ public class BossScript : MonoBehaviour
     public GameObject attaqueAvant2;
     public GameObject zone;
     public GameObject chute;
+    public GameObject transitionPoint;
     public float vaguesSpeed;
+    public float tempsPrevention = 0.2f;
 
     [Header("Info")] 
     public GameObject player;
@@ -47,6 +53,7 @@ public class BossScript : MonoBehaviour
     private bool ennemi2Vivant;
     private bool ennemi3Vivant;
     private bool ennemi4Vivant;
+    private bool phaseTransition = true;
 
     private void Start()
     {
@@ -57,13 +64,24 @@ public class BossScript : MonoBehaviour
 
     void Update()
     {
+        lifeBarre.fillAmount = mechantScript.life / BossPVStart;
         if (mechantScript.life > BossPVStart / 2 && startVague)
         {
             StartCoroutine(Vague());
         }
+
+        if (mechantScript.life <= BossPVStart / 2 && phaseTransition)
+        {
+            Destroy(Ennemi1);
+            Destroy(Ennemi2);
+            Destroy(Ennemi3);
+            Destroy(Ennemi4);
+            player.transform.position = transitionPoint.transform.position;
+            phaseTransition = false;
+        }
+        
         if (mechantScript.life <= BossPVStart / 2 && canAttack && !isCAC)
         {
-            StopCoroutine(Vague());
             StartCoroutine(Dist());
         }
 
@@ -88,58 +106,85 @@ public class BossScript : MonoBehaviour
         if (nbEnnemi == 0)
         {
             yield return new WaitForSeconds(3f);
-            if (Random.Range(1, 3) == 2)
+            if (!canAttack)
             {
-                spawnEnnemi = TypeEnnemi2;
+                StopCoroutine(Vague());
             }
             else
             {
-                spawnEnnemi = TypeEnnemi1;
-            }
+                int nb = Random.Range(1, 4);
+                if (nb == 2)
+                {
+                    spawnEnnemi = TypeEnnemi2;
+                }
+                else if (nb == 1)
+                {
+                    spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
+                }
 
-            Ennemi1 = Instantiate(spawnEnnemi, spawner1.transform.position, Quaternion.identity);
-            Ennemi1.GetComponent<Mechant>().see = true;
-            nbEnnemi += 1;
-            ennemi1Vivant = true;
-            if (Random.Range(1, 3) == 2)
-            {
-                spawnEnnemi = TypeEnnemi2;
-            }
-            else
-            {
-                spawnEnnemi = TypeEnnemi1;
-            }
+                Ennemi1 = Instantiate(spawnEnnemi, spawner1.transform.position, Quaternion.identity);
+                Ennemi1.GetComponent<Mechant>().see = true;
+                nbEnnemi += 1;
+                ennemi1Vivant = true;
+                nb = Random.Range(1, 4);
+                if (nb == 2)
+                {
+                    spawnEnnemi = TypeEnnemi2;
+                }
+                else if (nb == 1)
+                {
+                    spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
+                }
 
-            Ennemi2 = Instantiate(spawnEnnemi, spawner2.transform.position, Quaternion.identity);
-            Ennemi2.GetComponent<Mechant>().see = true;
-            nbEnnemi += 1;
-            ennemi2Vivant = true;
-            if (Random.Range(1, 3) == 2)
-            {
-                spawnEnnemi = TypeEnnemi2;
-            }
-            else
-            {
-                spawnEnnemi = TypeEnnemi1;
-            }
+                Ennemi2 = Instantiate(spawnEnnemi, spawner2.transform.position, Quaternion.identity);
+                Ennemi2.GetComponent<Mechant>().see = true;
+                nbEnnemi += 1;
+                ennemi2Vivant = true;
+                nb = Random.Range(1, 4);
+                if (nb == 2)
+                {
+                    spawnEnnemi = TypeEnnemi2;
+                }
+                else if (nb == 1)
+                {
+                    spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
+                }
 
-            Ennemi3 = Instantiate(spawnEnnemi, spawner3.transform.position, Quaternion.identity);
-            Ennemi3.GetComponent<Mechant>().see = true;
-            nbEnnemi += 1;
-            ennemi3Vivant = true;
-            if (Random.Range(1, 3) == 2)
-            {
-                spawnEnnemi = TypeEnnemi2;
-            }
-            else
-            {
-                spawnEnnemi = TypeEnnemi1;
-            }
+                Ennemi3 = Instantiate(spawnEnnemi, spawner3.transform.position, Quaternion.identity);
+                Ennemi3.GetComponent<Mechant>().see = true;
+                nbEnnemi += 1;
+                ennemi3Vivant = true;
+                nb = Random.Range(1, 4);
+                if (nb == 2)
+                {
+                    spawnEnnemi = TypeEnnemi2;
+                }
+                else if (nb == 1)
+                {
+                    spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
+                }
 
-            Ennemi4 = Instantiate(spawnEnnemi, spawner4.transform.position, Quaternion.identity);
-            Ennemi4.GetComponent<Mechant>().see = true;
-            nbEnnemi += 1;
-            ennemi4Vivant = true;
+                Ennemi4 = Instantiate(spawnEnnemi, spawner4.transform.position, Quaternion.identity);
+                Ennemi4.GetComponent<Mechant>().see = true;
+                nbEnnemi += 1;
+                ennemi4Vivant = true;
+            }
         }
 
         else
@@ -172,8 +217,8 @@ public class BossScript : MonoBehaviour
     
     IEnumerator Dist()
     {
-        yield return new WaitForSeconds(1);
         canAttack = false;
+        yield return new WaitForSeconds(1);
         vague1.SetActive(true);
         vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,-1)*vaguesSpeed);
         yield return new WaitForSeconds(2f);
@@ -197,8 +242,11 @@ public class BossScript : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
-                attackChute.GetComponent<SpriteRenderer>().color.g.Equals(1);
-                yield return new WaitForSeconds(0.3f);
+                attackChute.GameObject().GetComponent<Collider2D>().enabled = false;
+                attackChute.GetComponent<SpriteRenderer>().color = Color.green;
+                yield return new WaitForSeconds(tempsPrevention);
+                attackChute.GameObject().GetComponent<Collider2D>().enabled = true;
+                attackChute.GetComponent<SpriteRenderer>().color = Color.red;
                 yield return new WaitForSeconds(0.4f);
                 Destroy(attackChute);
             }
@@ -208,9 +256,6 @@ public class BossScript : MonoBehaviour
 
     }
     
-
-    
-
     IEnumerator CAC()
     {
         if (canAttack)
@@ -218,19 +263,31 @@ public class BossScript : MonoBehaviour
             startCAC = true;
             canAttack = false;
             attaqueAvant1.SetActive(true);
-            attaqueAvant1.GetComponent<BossAttackScript>().Prevention();
+            attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = false;
+            attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
+            yield return new WaitForSeconds(tempsPrevention);
+            attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.red;
+            attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = true;
             yield return new WaitForSeconds(0.5f);
             attaqueAvant1.SetActive(false);
             yield return new WaitForSeconds(1f);
             attaqueAvant2.SetActive(true);
-            attaqueAvant2.GetComponent<BossAttackScript>().Prevention();
+            attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
+            attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
+            yield return new WaitForSeconds(tempsPrevention);
+            attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
+            attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = true;
             yield return new WaitForSeconds(0.5f);
             attaqueAvant2.SetActive(false);
             yield return new WaitForSeconds(1f);
             if (isCAC)
             {
                 zone.SetActive(true);
-                zone.GetComponent<BossAttackScript>().Prevention();
+                zone.GameObject().GetComponent<Collider2D>().enabled = false;
+                zone.GetComponent<SpriteRenderer>().color = Color.green;
+                yield return new WaitForSeconds(tempsPrevention);
+                zone.GetComponent<SpriteRenderer>().color = Color.red;
+                zone.GameObject().GetComponent<Collider2D>().enabled = true;
                 yield return new WaitForSeconds(0.2f);
                 zone.SetActive(false);
                 yield return new WaitForSeconds(1f);

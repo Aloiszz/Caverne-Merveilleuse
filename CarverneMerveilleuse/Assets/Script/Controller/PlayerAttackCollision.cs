@@ -58,7 +58,7 @@ public class PlayerAttackCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist"))
+        if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             col.GetComponent<Mechant>().ReceiveLightDamage();
