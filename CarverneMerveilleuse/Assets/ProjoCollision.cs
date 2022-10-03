@@ -28,12 +28,10 @@ public class ProjoCollision : MonoBehaviour
                 col.gameObject.GetComponent<Rigidbody2D>().AddForce((col.transform.position - transform.position) * 500);
                 Destroy(gameObject);
                 PlayerController.instance.LoseLife();
-                Debug.Log("Bam");
             }
             if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
             {
                 Destroy(gameObject);
-                Debug.Log("Bim");
             }
         }
         else if (!mode2)

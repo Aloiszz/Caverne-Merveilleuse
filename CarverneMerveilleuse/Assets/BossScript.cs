@@ -19,6 +19,7 @@ public class BossScript : MonoBehaviour
     public GameObject spawner4;
     public GameObject TypeEnnemi1;
     public GameObject TypeEnnemi2;
+    public GameObject TypeEnnemi3;
     public int nbEnnemi;
     
     
@@ -111,54 +112,72 @@ public class BossScript : MonoBehaviour
             }
             else
             {
-
-
-                if (Random.Range(1, 3) == 2)
+                int nb = Random.Range(1, 4);
+                if (nb == 2)
                 {
                     spawnEnnemi = TypeEnnemi2;
                 }
-                else
+                else if (nb == 1)
                 {
                     spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
                 }
 
                 Ennemi1 = Instantiate(spawnEnnemi, spawner1.transform.position, Quaternion.identity);
                 Ennemi1.GetComponent<Mechant>().see = true;
                 nbEnnemi += 1;
                 ennemi1Vivant = true;
-                if (Random.Range(1, 3) == 2)
+                nb = Random.Range(1, 4);
+                if (nb == 2)
                 {
                     spawnEnnemi = TypeEnnemi2;
                 }
-                else
+                else if (nb == 1)
                 {
                     spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
                 }
 
                 Ennemi2 = Instantiate(spawnEnnemi, spawner2.transform.position, Quaternion.identity);
                 Ennemi2.GetComponent<Mechant>().see = true;
                 nbEnnemi += 1;
                 ennemi2Vivant = true;
-                if (Random.Range(1, 3) == 2)
+                nb = Random.Range(1, 4);
+                if (nb == 2)
                 {
                     spawnEnnemi = TypeEnnemi2;
                 }
-                else
+                else if (nb == 1)
                 {
                     spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
                 }
 
                 Ennemi3 = Instantiate(spawnEnnemi, spawner3.transform.position, Quaternion.identity);
                 Ennemi3.GetComponent<Mechant>().see = true;
                 nbEnnemi += 1;
                 ennemi3Vivant = true;
-                if (Random.Range(1, 3) == 2)
+                nb = Random.Range(1, 4);
+                if (nb == 2)
                 {
                     spawnEnnemi = TypeEnnemi2;
                 }
-                else
+                else if (nb == 1)
                 {
                     spawnEnnemi = TypeEnnemi1;
+                }
+                else
+                {
+                    spawnEnnemi = TypeEnnemi3;
                 }
 
                 Ennemi4 = Instantiate(spawnEnnemi, spawner4.transform.position, Quaternion.identity);
@@ -237,9 +256,6 @@ public class BossScript : MonoBehaviour
 
     }
     
-
-    
-
     IEnumerator CAC()
     {
         if (canAttack)
