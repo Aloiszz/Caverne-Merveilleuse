@@ -11,9 +11,12 @@ public class Mechant : MonoBehaviour
     [Header("AI Config")]
     public float speed;
     public float life;
-    
+    private float lifeDepart;
+    public GameObject lifeBarre;
     public GameObject projo;
+    public GameObject grosProjo;
     public float shootForce = 3f;
+    public float grosForce = 2f;
     public float TimeBeforeShoot = 3f;
     
     [Header("AI Physics")]
@@ -39,6 +42,10 @@ public class Mechant : MonoBehaviour
 
     void Start()
     {
+        if (!CompareTag("Boss"))
+        {
+            lifeDepart = life;
+        }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,9 +58,23 @@ public class Mechant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!CompareTag("Boss"))
         {
-            playerDir = (player.transform.position - transform.position);
+            lifeBarre.transform.localScale = new Vector2(life / lifeDepart, 0.1f);
+            if (life > lifeDepart * 2 / 3)
+            {
+                lifeBarre.GetComponent<SpriteRenderer>().color = Color.green;
+            }
+            else if (life <= lifeDepart * 2 / 3 && life > lifeDepart / 3)
+            {
+                lifeBarre.GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
+            else
+            {
+                lifeBarre.GetComponent<SpriteRenderer>().color = Color.red;
+            }
+            playerDir = (player.gameObject.transform.position - transform.position);
             OnSeePlayer();
         }
 
@@ -99,16 +120,20 @@ public class Mechant : MonoBehaviour
             StopCoroutine(RandomMove());
             if (playerDir.magnitude < distanceToPlayer && !CompareTag("CAC"))
             {
-                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position,
+                    transform.position = Vector2.MoveTowards(transform.position, player.gameObject.transform.position,
                         -speed * Time.deltaTime);
             }
             else
             {
-                    transform.position =Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                    transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
             }
-            if (canShoot && !CompareTag("CAC"))
+            if (canShoot && CompareTag("Dist"))
             {
                 StartCoroutine(Shoot());
+            }
+            else if (canShoot && CompareTag("Gros"))
+            {
+                StartCoroutine(Gros());
             }
         }
         else if (canRandomMove)
@@ -125,6 +150,16 @@ public class Mechant : MonoBehaviour
         yield return new WaitForSeconds(TimeBeforeShoot);
         canShoot = true;
         
+    }
+
+    IEnumerator Gros()
+    {
+        canShoot = false;
+        GameObject projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * grosForce);
+        yield return new WaitForSeconds(TimeBeforeShoot + 0.5f);
+        Destroy(projectile);
+        canShoot = true;
     }
 
     IEnumerator RandomMove()

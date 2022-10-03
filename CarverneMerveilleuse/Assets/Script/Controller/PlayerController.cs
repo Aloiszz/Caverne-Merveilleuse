@@ -24,6 +24,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject deathBloodPS;
     public GameObject bloodPS;
+    public float speedMovement;
+    private float dashForce;
+    public float dashReload;
+    public float dashInvinsibleTime;
+    public int life;
+    public float linearDragDeceleration;
+    public float linearDragMultiplier;
 
     // Start is called before the first frame update
     private void Awake()
@@ -40,10 +47,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        playerSO.life = 4;
         playerSO.isDash = true;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        SecureSO();
+    }
+
+    void SecureSO()
+    {
+        speedMovement = playerSO.speedMovement;
+        dashForce = playerSO.dashForce;
+        dashReload = playerSO.dashReload;
+        dashInvinsibleTime = playerSO.dashInvinsibleTime;
+        life = playerSO.life;
+        linearDragDeceleration = playerSO.linearDragDeceleration;
+        linearDragMultiplier = playerSO.linearDragMultiplier;
     }
 
     // Update is called once per frame
@@ -58,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         Dash();
 
-        if (playerSO.life == 0)
+        if (life == 0)
         {
             Destroy(gameObject);
             Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity);
@@ -70,28 +88,28 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Z))
         {
             //transform.Translate(Vector3.up * speed * Time.deltaTime);
-            rb.AddForce(Vector2.up * playerSO.speedMovement);
+            rb.AddForce(Vector2.up * speedMovement);
             lastMovement.Add(Vector2.up);
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
             //transform.Translate(Vector3.left * speed * Time.deltaTime);
-            rb.AddForce(Vector2.left * playerSO.speedMovement);
+            rb.AddForce(Vector2.left * speedMovement);
             lastMovement.Add(Vector2.left);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             //transform.Translate(Vector3.down * speed * Time.deltaTime);
-            rb.AddForce(Vector2.down * playerSO.speedMovement);
+            rb.AddForce(Vector2.down * speedMovement);
             lastMovement.Add(Vector2.down);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             //transform.Translate(Vector3.right * speed * Time.deltaTime);
-            rb.AddForce(Vector2.right * playerSO.speedMovement);
+            rb.AddForce(Vector2.right * speedMovement);
             lastMovement.Add(Vector2.right);
         }
     }
@@ -102,7 +120,7 @@ public class PlayerController : MonoBehaviour
     }
     public void LoseLife()
     {
-        playerSO.life -= 1;
+        life -= 1;
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity);
     }
 
