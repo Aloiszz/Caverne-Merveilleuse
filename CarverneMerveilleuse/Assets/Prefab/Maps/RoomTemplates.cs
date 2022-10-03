@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoomTemplates : MonoBehaviour
@@ -39,7 +40,7 @@ public class RoomTemplates : MonoBehaviour
     {
         if (rooms.Count >= maxRoom)
         {
-            bottomRoomsStorage = bottomRooms;
+            bottomRooms.Clear();
             topRooms.Clear();
             leftRooms.Clear();
             rightRooms.Clear();
@@ -50,6 +51,12 @@ public class RoomTemplates : MonoBehaviour
                 BossRoom();
             }
         }
+    }
+
+    IEnumerator WaitBoss()
+    {
+        yield return new WaitForSeconds(4f);
+        
     }
 
     void BossRoom()

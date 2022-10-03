@@ -23,16 +23,16 @@ public class RoomSpawner : MonoBehaviour
         {
             yield return null;
         }
-        InstantiateRoom();
+        GenerateGoldenPath();
     }
     
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke(nameof(Spawn), 0.1f);
+        Invoke(nameof(GenerateGoldenPath), 0.7f);
     }
 
-    void InstantiateRoom()
+    void GenerateGoldenPath()
     {
         if (isCollision)
         {
