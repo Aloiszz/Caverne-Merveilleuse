@@ -291,17 +291,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  spaceFromPlayer: 5
   life: 100
   lifeBarre: {fileID: 1268570029348340258}
   projo: {fileID: 0}
+  grosProjo: {fileID: 0}
   shootForce: 0
+  grosForce: 2
   TimeBeforeShoot: 0
   rb: {fileID: 2670320833063829144}
   linearDragDeceleration: 5
   linearDragMultiplier: 2
   forcelightDamage: 150
   see: 0
-  distanceToPlayer: 5
+  distanceToSeePlayer: 10
   intensity: 1.5
   frequency: 1.5
   timer: 0.3

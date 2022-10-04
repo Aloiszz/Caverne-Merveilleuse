@@ -10,6 +10,8 @@ public class Mechant : MonoBehaviour
 
     [Header("AI Config")]
     public float speed;
+
+    public float spaceFromPlayer = 5;
     public float life;
     private float lifeDepart;
     public GameObject lifeBarre;
@@ -27,7 +29,7 @@ public class Mechant : MonoBehaviour
 
     [Header("AI perception")]
     public bool see = false;
-    public float distanceToPlayer = 5f;
+    public float distanceToSeePlayer = 5f;
 
     [Header("AI Cinemachine Shake")] 
     public float intensity;
@@ -78,7 +80,7 @@ public class Mechant : MonoBehaviour
             OnSeePlayer();
         }
 
-        if (playerDir.magnitude == distanceToPlayer)
+        if (playerDir.magnitude <= distanceToSeePlayer)
         {
             see = true;
         }
@@ -118,7 +120,7 @@ public class Mechant : MonoBehaviour
         if (see)
         {
             StopCoroutine(RandomMove());
-            if (playerDir.magnitude < distanceToPlayer && !CompareTag("CAC"))
+            if (playerDir.magnitude < spaceFromPlayer && !CompareTag("CAC"))
             {
                     transform.position = Vector2.MoveTowards(transform.position, player.gameObject.transform.position,
                         -speed * Time.deltaTime);

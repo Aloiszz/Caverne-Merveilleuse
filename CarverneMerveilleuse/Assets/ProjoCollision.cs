@@ -42,6 +42,7 @@ public class ProjoCollision : MonoBehaviour
                 gameObject.transform.localScale = new Vector3(5, 5);
                 initialSpeed = col.gameObject.GetComponent<PlayerController>().speedMovement;
                 mode2 = true;
+                Debug.Log("bonjour");
                 PlayerController.instance.LoseLife();
             }
             if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
@@ -54,19 +55,25 @@ public class ProjoCollision : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (isProjoGros)
         {
-            col.gameObject.GetComponent<PlayerController>().speedMovement = speed;
-            
+            if (col.gameObject.CompareTag("Player"))
+            {
+                col.gameObject.GetComponent<PlayerController>().speedMovement = speed;
+
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (isProjoGros)
         {
-            col.gameObject.GetComponent<PlayerController>().speedMovement = initialSpeed;
-            
+            if (col.gameObject.CompareTag("Player"))
+            {
+                col.gameObject.GetComponent<PlayerController>().speedMovement = initialSpeed;
+
+            }
         }
     }
 
