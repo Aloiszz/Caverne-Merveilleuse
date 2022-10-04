@@ -9,7 +9,7 @@ public class RoomSpawnerV2 : MonoBehaviour
 {
     
     private int rand;
-    public bool vierge;
+    public bool colliderVierge;
     public Direction direction;
     
     public enum Direction
@@ -29,23 +29,23 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
+            
             KeepMemoryDirection();
-            if (!vierge)
+            if (!colliderVierge)
             {
-                
                 TeleportPlayer(); 
                 InstatiateRoom();
-                
+                Debug.Log("Nouvelle Room");
+                colliderVierge = true;
             }
             else
             {
                 if (direction == RoomManager.instance.roomMemoryDirection[^1])
                 {
                     Return();
+                    Debug.Log("On Revient en arrire");
                 }
             }
-            vierge = true;
-            
         }
     }
     
@@ -84,6 +84,7 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     public void KeepMemoryDirection()
     {
+        RoomManager.instance.roomMemoryDirectionIndex++;
         switch (direction)
         {
             case Direction.Top:
@@ -106,7 +107,7 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     public void Return()
     {
-        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemory.Count - 1);
+        RoomManager.instance.roomMemoryDirection.Remove(RoomManager.instance.roomMemoryDirection[^1]);
         
         PlayerController.instance.transform.position -= new Vector3(10,10,0);
         RoomManager.instance.roomMemory[^1].SetActive(false);
