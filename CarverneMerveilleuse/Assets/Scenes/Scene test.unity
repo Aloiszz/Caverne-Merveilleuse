@@ -408,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2dcc68e499232f419dbaced52417ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossPVStart: 1000
   lifeBarre: {fileID: 1970938680}
   spawner1: {fileID: 175455147}
   spawner2: {fileID: 1145200017}
@@ -462,23 +461,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  life: 10
+  life: 1000
+  lifeDepart: 0
   lifeBarre: {fileID: 0}
-  projo: {fileID: 4828584988822855267, guid: 7570cc8005a99c64d80b2fbc6ac78cd4, type: 3}
-  grosProjo: {fileID: 0}
-  shootForce: 3
-  grosForce: 2
-  TimeBeforeShoot: 3
   rb: {fileID: 156372997}
   linearDragDeceleration: 0
   linearDragMultiplier: 0
   forcelightDamage: 100
-  see: 0
-  distanceToPlayer: 5
-  intensity: 0
-  frequency: 0
-  timer: 0
+  invokeByBoss: 0
 --- !u!1 &175455147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,11 +1253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79625110420020026, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.95
+      value: -46.47
       objectReference: {fileID: 0}
     - target: {fileID: 79625110420020026, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.25
+      value: -6.57
       objectReference: {fileID: 0}
     - target: {fileID: 79625110420020026, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_LocalPosition.z
