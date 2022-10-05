@@ -12,6 +12,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public bool colliderVierge;
     public Direction direction;
     
+    
     public enum Direction
     {
         Top,
@@ -29,10 +30,9 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            
-            KeepMemoryDirection();
             if (!colliderVierge)
             {
+                KeepMemoryDirection();
                 TeleportPlayer(); 
                 InstatiateRoom();
                 Debug.Log("Nouvelle Room");
@@ -42,6 +42,7 @@ public class RoomSpawnerV2 : MonoBehaviour
             {
                 if (direction == RoomManager.instance.roomMemoryDirection[^1])
                 {
+                    KeepMemoryDirection();
                     Return();
                     Debug.Log("On Revient en arrire");
                 }
@@ -56,35 +57,40 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     public void InstatiateRoom()
     {
+        RoomManager.instance.roomMemoryIndex++;
         transform.parent.gameObject.SetActive(false);
 
         switch (direction)
         {
             case Direction.Top :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateDown.Count);
-                Instantiate(RoomManager.instance.roomTemplateDown[rand], PlayerController.instance.transform.position, transform.rotation);
+                Instantiate(RoomManager.instance.roomTemplateDown[rand], PlayerController.instance.transform.position, 
+                    transform.rotation).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                
                 break;
             
             case Direction.Down :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateTop.Count);
-                Instantiate(RoomManager.instance.roomTemplateTop[rand], PlayerController.instance.transform.position, transform.rotation);
+                Instantiate(RoomManager.instance.roomTemplateTop[rand], PlayerController.instance.transform.position, 
+                    transform.rotation).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Right :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateLeft.Count);
-                Instantiate(RoomManager.instance.roomTemplateLeft[rand], PlayerController.instance.transform.position, transform.rotation);
+                Instantiate(RoomManager.instance.roomTemplateLeft[rand], PlayerController.instance.transform.position, 
+                    transform.rotation).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Left :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateRight.Count);
-                Instantiate(RoomManager.instance.roomTemplateRight[rand], PlayerController.instance.transform.position, transform.rotation);
+                Instantiate(RoomManager.instance.roomTemplateRight[rand], PlayerController.instance.transform.position, 
+                    transform.rotation).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
                 break;
         }
     }
 
     public void KeepMemoryDirection()
     {
-        RoomManager.instance.roomMemoryDirectionIndex++;
         switch (direction)
         {
             case Direction.Top:
@@ -107,11 +113,14 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     public void Return()
     {
-        RoomManager.instance.roomMemoryDirection.Remove(RoomManager.instance.roomMemoryDirection[^1]);
+        RoomManager.instance.roomMemoryIndex--;
         
+        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
         PlayerController.instance.transform.position -= new Vector3(10,10,0);
-        RoomManager.instance.roomMemory[^1].SetActive(false);
-        RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemory.Count - 1);
-        RoomManager.instance.roomMemory[^1].SetActive(true);
+        
+        
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
+        //RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemory.Count - 1);
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
     }
 }
