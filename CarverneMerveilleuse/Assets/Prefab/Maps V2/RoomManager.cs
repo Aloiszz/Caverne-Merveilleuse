@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
     public int roomMemoryDirectionIndex;
 
-    public List<GameObject> roomTemplateTop;
+    public List<GameObject> roomTemplateTop;    
     public int roomTemplateTopIndex;
     
     public List<GameObject> roomTemplateDown;
