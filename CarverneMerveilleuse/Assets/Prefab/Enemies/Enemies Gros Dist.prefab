@@ -528,9 +528,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2101363264773630891}
   - component: {fileID: 2101363264773630890}
-  - component: {fileID: 2101363264773630885}
   - component: {fileID: 2101363264773630884}
   - component: {fileID: 2686426251251013887}
+  - component: {fileID: 2101363264773630885}
+  - component: {fileID: -6143253697806767368}
   m_Layer: 6
   m_Name: Enemies Gros Dist
   m_TagString: Gros
@@ -611,36 +612,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2101363264773630885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101363264773630886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  spaceFromPlayer: 5
-  life: 75
-  lifeBarre: {fileID: 811942589903022784}
-  projo: {fileID: 0}
-  grosProjo: {fileID: 4828584988822855267, guid: f4bb6262fe7afad4ca9540adda9bddae, type: 3}
-  shootForce: 50
-  grosForce: 30
-  TimeBeforeShoot: 3
-  rb: {fileID: 2686426251251013887}
-  linearDragDeceleration: 0
-  linearDragMultiplier: 0
-  forcelightDamage: 0
-  see: 0
-  distanceToSeePlayer: 10
-  intensity: 0
-  frequency: 0
-  timer: 0
 --- !u!61 &2101363264773630884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -688,3 +659,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2101363264773630885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101363264773630886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 75
+  lifeBarre: {fileID: 811942589903022784}
+  rb: {fileID: 2686426251251013887}
+  linearDragDeceleration: 0
+  linearDragMultiplier: 0
+  forcelightDamage: 0
+  invokeByBoss: 0
+--- !u!114 &-6143253697806767368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101363264773630886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c593eda4a662444bb4044e5e762ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  spaceFromPlayer: 5
+  grosProjo: {fileID: 4828584988822855267, guid: f4bb6262fe7afad4ca9540adda9bddae, type: 3}
+  grosForce: 30
+  TimeBeforeShoot: 4
+  rb: {fileID: 0}
+  linearDragDeceleration: 0
+  linearDragMultiplier: 0
+  see: 0
+  distanceToSeePlayer: 10
+  intensity: 0
+  frequency: 0
+  timer: 0

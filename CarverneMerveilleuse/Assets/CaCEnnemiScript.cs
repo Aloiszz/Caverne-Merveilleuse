@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 public class CaCEnnemiScript : MonoBehaviour
@@ -58,8 +59,7 @@ public class CaCEnnemiScript : MonoBehaviour
     {
         if (see)
         {
-            transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
-
+            gameObject.GetComponent<AIDestinationSetter>().enabled = true;
         }
         else if (canRandomMove)
         {
