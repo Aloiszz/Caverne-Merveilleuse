@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 5904098094530398249}
   - component: {fileID: 5904098094530398254}
   - component: {fileID: 5904098094530398255}
+  - component: {fileID: -8138841871068977120}
   - component: {fileID: 5904098094530398252}
   - component: {fileID: 2670320833063829144}
   - component: {fileID: 2924875521473287416}
@@ -290,24 +291,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  spaceFromPlayer: 5
   life: 100
+  lifeDepart: 0
   lifeBarre: {fileID: 1268570029348340258}
-  projo: {fileID: 0}
-  grosProjo: {fileID: 0}
-  shootForce: 0
-  grosForce: 2
-  TimeBeforeShoot: 0
   rb: {fileID: 2670320833063829144}
   linearDragDeceleration: 5
   linearDragMultiplier: 2
   forcelightDamage: 150
+  invokeByBoss: 0
+--- !u!114 &-8138841871068977120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904098094530398242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8c3aa593683d9469ba120fc564c60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  rb: {fileID: 0}
+  linearDragDeceleration: 0
+  linearDragMultiplier: 0
   see: 0
   distanceToSeePlayer: 10
-  intensity: 1.5
-  frequency: 1.5
-  timer: 0.3
+  intensity: 0
+  frequency: 0
+  timer: 0
 --- !u!61 &5904098094530398252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -432,7 +444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5904098094530398242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
