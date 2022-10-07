@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 public class GrosEnnemiScript : MonoBehaviour
@@ -32,6 +33,7 @@ public class GrosEnnemiScript : MonoBehaviour
     private bool canShoot = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
+    private AIDestinationSetter AI;
 
     void Start()
     {
@@ -41,6 +43,8 @@ public class GrosEnnemiScript : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+        AI = gameObject.GetComponent<AIDestinationSetter>();
+        AI.target = player.transform;
     }
     
     void FixedUpdate()
@@ -65,14 +69,10 @@ public class GrosEnnemiScript : MonoBehaviour
         if (see)
         {
             StopCoroutine(RandomMove());
+            AI.enabled = true;
             if (playerDir.magnitude < spaceFromPlayer)
             {
-                    transform.position = Vector2.MoveTowards(transform.position, player.gameObject.transform.position,
-                        -speed * Time.deltaTime);
-            }
-            else
-            {
-                    transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
+                transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, -speed * Time.deltaTime);
             }
             if (canShoot)
             {
@@ -112,6 +112,10 @@ public class GrosEnnemiScript : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
             CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
+        }
+        if (col.gameObject.layer == 4)
+        {
+            rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
         }
     }
 }

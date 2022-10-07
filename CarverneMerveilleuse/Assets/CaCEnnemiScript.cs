@@ -36,6 +36,7 @@ public class CaCEnnemiScript : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+        gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
     }
     
     void FixedUpdate()
@@ -60,6 +61,7 @@ public class CaCEnnemiScript : MonoBehaviour
         if (see)
         {
             gameObject.GetComponent<AIDestinationSetter>().enabled = true;
+            
         }
         else if (canRandomMove)
         {
@@ -85,6 +87,11 @@ public class CaCEnnemiScript : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
             CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
+        }
+
+        if (col.gameObject.layer == 4)
+        {
+            rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
         }
     }
 }
