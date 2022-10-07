@@ -8,7 +8,7 @@ public class ProjoCollision : MonoBehaviour
 {
     public bool isProjoGros;
     private float speed;
-    private bool mode2;
+    public bool mode2;
     private float initialSpeed;
 
     private void Update()
@@ -45,8 +45,9 @@ public class ProjoCollision : MonoBehaviour
                 Debug.Log("bonjour");
                 PlayerController.instance.LoseLife();
             }
-            if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
+            else if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
             {
+                Debug.Log("aaaaaaaaaaaaaaaaaaaaaa");
                 Destroy(gameObject);
             }
         }

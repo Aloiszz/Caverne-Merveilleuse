@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
-public class DistScript : MonoBehaviour
+public class CaCEnnemiScript : MonoBehaviour
 {
     private PlayerController player;
 
     [Header("AI Config")]
     public float speed;
+    private float lifeDepart;
 
-    public float spaceFromPlayer = 5;
-    public GameObject projo;
-    public float shootForce = 3f;
-    public float TimeBeforeShoot = 3f;
-    
     [Header("AI Physics")]
     public Rigidbody2D rb;
     public float linearDragDeceleration;
@@ -28,9 +25,6 @@ public class DistScript : MonoBehaviour
     public float frequency;
     public float timer;
     
-    
-    private bool canShoot = true;
-    
     private bool canRandomMove = true;
     private Vector2 playerDir;
 
@@ -42,6 +36,7 @@ public class DistScript : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+        gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
     }
     
     void FixedUpdate()
@@ -65,36 +60,15 @@ public class DistScript : MonoBehaviour
     {
         if (see)
         {
-            StopCoroutine(RandomMove());
-            if (playerDir.magnitude < spaceFromPlayer)
-            {
-                    transform.position = Vector2.MoveTowards(transform.position, player.gameObject.transform.position,
-                        -speed * Time.deltaTime);
-            }
-            else
-            {
-                    transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
-            }
-            if (canShoot)
-            {
-                StartCoroutine(Shoot());
-            }
+            gameObject.GetComponent<AIDestinationSetter>().enabled = true;
+            
         }
         else if (canRandomMove)
         {
             StartCoroutine(RandomMove());
         }
     }
-
-    IEnumerator Shoot()
-    {
-        canShoot = false;
-        GameObject projectile = Instantiate(projo, transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * shootForce);
-        yield return new WaitForSeconds(TimeBeforeShoot);
-        canShoot = true;
-        
-    }
+    
 
     IEnumerator RandomMove()
     {
@@ -113,6 +87,11 @@ public class DistScript : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
             CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
+        }
+
+        if (col.gameObject.layer == 4)
+        {
+            rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
         }
     }
 }

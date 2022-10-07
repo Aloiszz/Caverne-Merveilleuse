@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject deathBloodPS;
     public GameObject bloodPS;
+    public Image healthBar;
     public float speedMovement;
     private float dashForce;
     public float dashReload;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public int life;
     public float linearDragDeceleration;
     public float linearDragMultiplier;
+    private float lifeDepard;
 
     // Start is called before the first frame update
     private void Awake()
@@ -47,10 +50,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        
         playerSO.isDash = true;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         SecureSO();
+        lifeDepard = life;
     }
 
     void SecureSO()
@@ -74,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        healthBar.fillAmount = life / lifeDepard;
         Dash();
 
         if (life == 0)

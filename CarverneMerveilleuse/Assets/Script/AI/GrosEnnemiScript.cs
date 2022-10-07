@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
-public class CaCEnnemiScript : MonoBehaviour
+public class GrosEnnemiScript : MonoBehaviour
 {
     private PlayerController player;
 
     [Header("AI Config")]
     public float speed;
-    private float lifeDepart;
-
+    public float spaceFromPlayer = 5;
+    public GameObject grosProjo;
+    public float grosForce = 2f;
+    public float TimeBeforeShoot = 3f;
+    
     [Header("AI Physics")]
     public Rigidbody2D rb;
     public float linearDragDeceleration;
     public float linearDragMultiplier;
+    
 
     [Header("AI perception")]
     public bool see;
@@ -25,8 +29,11 @@ public class CaCEnnemiScript : MonoBehaviour
     public float frequency;
     public float timer;
     
+    
+    private bool canShoot = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
+    private AIDestinationSetter AI;
 
     void Start()
     {
@@ -36,6 +43,8 @@ public class CaCEnnemiScript : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+        AI = gameObject.GetComponent<AIDestinationSetter>();
+        AI.target = player.transform;
     }
     
     void FixedUpdate()
@@ -59,14 +68,32 @@ public class CaCEnnemiScript : MonoBehaviour
     {
         if (see)
         {
-            gameObject.GetComponent<AIDestinationSetter>().enabled = true;
+            StopCoroutine(RandomMove());
+            AI.enabled = true;
+            if (playerDir.magnitude < spaceFromPlayer)
+            {
+                transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, -speed * Time.deltaTime);
+            }
+            if (canShoot)
+            {
+                StartCoroutine(GrosShoot());
+            }
         }
         else if (canRandomMove)
         {
             StartCoroutine(RandomMove());
         }
     }
-    
+
+    IEnumerator GrosShoot()
+    {
+        canShoot = false;
+        GameObject projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * grosForce);
+        yield return new WaitForSeconds(TimeBeforeShoot);
+        Destroy(projectile);
+        canShoot = true;
+    }
 
     IEnumerator RandomMove()
     {
@@ -85,6 +112,10 @@ public class CaCEnnemiScript : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
             CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
+        }
+        if (col.gameObject.layer == 4)
+        {
+            rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
         }
     }
 }
