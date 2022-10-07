@@ -283,7 +283,7 @@ public class BossScript : MonoBehaviour
                 zone.SetActive(true);
                 zone.GameObject().GetComponent<Collider2D>().enabled = false;
                 zone.GetComponent<SpriteRenderer>().color = Color.green;
-                yield return new WaitForSeconds(tempsPrevention);
+                yield return new WaitForSeconds(tempsPrevention + 0.5f);
                 zone.GetComponent<SpriteRenderer>().color = Color.red;
                 zone.GameObject().GetComponent<Collider2D>().enabled = true;
                 yield return new WaitForSeconds(0.2f);
