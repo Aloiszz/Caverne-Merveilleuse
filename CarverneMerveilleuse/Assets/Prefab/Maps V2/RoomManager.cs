@@ -24,6 +24,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> roomTemplateLeft;
     public int roomTemplateLeftIndex;
 
+    public int goldenPathCount = 0;
     
     public static RoomManager instance;
     

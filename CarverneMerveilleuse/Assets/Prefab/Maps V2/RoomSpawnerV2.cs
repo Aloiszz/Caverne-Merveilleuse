@@ -28,8 +28,8 @@ public class RoomSpawnerV2 : MonoBehaviour
     private void Start()
     {
         Direction myDirection;
-        
         Tag();
+        //GetComponent<Room>().CreateGoldenPath();
     }
 
     void Tag()
@@ -38,16 +38,36 @@ public class RoomSpawnerV2 : MonoBehaviour
         {
             case Direction.Top :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointTop");
+                /*if (spawnpoint == null)
+                {
+                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointDown");
+                }*/
                 break;
+            
             case Direction.Down :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointDown");
+                /*if (spawnpoint == null)
+                {
+                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointTop");
+                }*/
                 break;
+            
             case Direction.Right :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointRight");
+                /*if (spawnpoint == null)
+                {
+                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointLeft");
+                }*/
                 break;
+            
             case Direction.Left :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointLeft");
+                /*if (spawnpoint == null)
+                {
+                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointRight");
+                }*/
                 break;
+            
         }
     }
     
@@ -70,21 +90,30 @@ public class RoomSpawnerV2 : MonoBehaviour
                 {
                     //KeepMemoryDirection();
                     Return();
+                    TeleportPlayerToNextRoom();
                     Debug.Log("On Revient en arrire");
                 }
                 else
                 {
                     Debug.Log("Ok jsuis perdo");
                     ChangeDavis();
+                    TeleportPlayerToNextRoom();
                 }
             }
+        } 
+    }
+
+    public void VerificationGoldenPath()
+    {
+        if (direction == RoomManager.instance.roomMemoryDirection[^1])
+        {
+            GetComponent<Room>().CreateGoldenPath();
         }
     }
     
     public void TeleportPlayerToNextRoom()
     {
         PlayerController.instance.transform.position = spawnpoint.transform.position;
-        Debug.Log(spawnpoint.transform.position);
     }
 
     public void InstatiateRoom()
