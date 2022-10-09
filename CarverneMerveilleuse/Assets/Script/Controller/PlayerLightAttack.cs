@@ -34,6 +34,7 @@ public class PlayerLightAttack : MonoBehaviour
     private void Update()
     {
         LightAttack();
+        
         TimeRemaining(activate);
     }
 
