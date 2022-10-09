@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        healthBar.fillAmount = life / lifeDepard;
+        //healthBar.fillAmount = life / lifeDepard;
         Dash();
 
         if (life == 0)
