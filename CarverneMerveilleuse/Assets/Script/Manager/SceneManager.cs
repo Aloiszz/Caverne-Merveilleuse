@@ -25,7 +25,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(1, 0.5f);
         levelCG_.DOFade(0, 0.5f);
 
-        StartCoroutine(UnPauseTime());
+        //StartCoroutine(UnPauseTime());
     }
     
     public void level()
@@ -36,7 +36,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(0, 0.5f);
         levelCG_.DOFade(1, 0.5f);
 
-        StartCoroutine(PauseTime());
+        //StartCoroutine(PauseTime());
     }
     
     
