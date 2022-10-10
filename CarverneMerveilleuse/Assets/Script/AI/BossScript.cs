@@ -219,35 +219,26 @@ public class BossScript : MonoBehaviour
     {
         canAttack = false;
         yield return new WaitForSeconds(1);
-        if (posXJoueur <= 0)
+        for (int i = 0; i < 2; i++)
         {
-            vague1.SetActive(true);
-            vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
-            yield return new WaitForSeconds(2f);
-            vague1.SetActive(false);
-            vague1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            vague1.transform.position = vague1Pos;
-            vague2.SetActive(true);
-            vague2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
-            yield return new WaitForSeconds(2f);
-            vague2.SetActive(false);
-            vague2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            vague2.transform.position = vague2Pos;
-        }
-        else
-        {
-            vague2.SetActive(true);
-            vague2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
-            yield return new WaitForSeconds(2f);
-            vague2.SetActive(false);
-            vague2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            vague2.transform.position = vague2Pos;
-            vague1.SetActive(true);
-            vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
-            yield return new WaitForSeconds(2f);
-            vague1.SetActive(false);
-            vague1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            vague1.transform.position = vague1Pos;
+            if (posXJoueur <= 0)
+            {
+                vague1.SetActive(true);
+                vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
+                yield return new WaitForSeconds(2f);
+                vague1.SetActive(false);
+                vague1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                vague1.transform.position = vague1Pos;
+            }
+            else
+            {
+                vague2.SetActive(true);
+                vague2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
+                yield return new WaitForSeconds(2f);
+                vague2.SetActive(false);
+                vague2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                vague2.transform.position = vague2Pos;
+            }
         }
 
         if (isCAC)
@@ -280,47 +271,32 @@ public class BossScript : MonoBehaviour
         {
             startCAC = true;
             canAttack = false;
-            if (posXJoueur >= 0)
+            for (int i = 0; i < 2; i++)
             {
-                attaqueAvant1.SetActive(true);
-                attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = false;
-                attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
-                yield return new WaitForSeconds(tempsPrevention);
-                attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.red;
-                attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = true;
-                yield return new WaitForSeconds(0.5f);
-                attaqueAvant1.SetActive(false);
-                yield return new WaitForSeconds(1f);
-                attaqueAvant2.SetActive(true);
-                attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
-                attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
-                yield return new WaitForSeconds(tempsPrevention);
-                attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
-                attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = true;
-                yield return new WaitForSeconds(0.5f);
-                attaqueAvant2.SetActive(false);
-                yield return new WaitForSeconds(1f);
-            }
-            else
-            {
-                attaqueAvant2.SetActive(true);
-                attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
-                attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
-                yield return new WaitForSeconds(tempsPrevention);
-                attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
-                attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = true;
-                yield return new WaitForSeconds(0.5f);
-                attaqueAvant2.SetActive(false);
-                yield return new WaitForSeconds(1f);
-                attaqueAvant1.SetActive(true);
-                attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = false;
-                attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
-                yield return new WaitForSeconds(tempsPrevention);
-                attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.red;
-                attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = true;
-                yield return new WaitForSeconds(0.5f);
-                attaqueAvant1.SetActive(false);
-                yield return new WaitForSeconds(1f);
+                if (posXJoueur >= 0)
+                {
+                    attaqueAvant1.SetActive(true);
+                    attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = false;
+                    attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
+                    yield return new WaitForSeconds(tempsPrevention);
+                    attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.red;
+                    attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = true;
+                    yield return new WaitForSeconds(0.5f);
+                    attaqueAvant1.SetActive(false);
+                    yield return new WaitForSeconds(1f);
+                }
+                else
+                {
+                    attaqueAvant2.SetActive(true);
+                    attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
+                    attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
+                    yield return new WaitForSeconds(tempsPrevention);
+                    attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
+                    attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = true;
+                    yield return new WaitForSeconds(0.5f);
+                    attaqueAvant2.SetActive(false);
+                    yield return new WaitForSeconds(1f);
+                }
             }
 
             if (isCAC)
