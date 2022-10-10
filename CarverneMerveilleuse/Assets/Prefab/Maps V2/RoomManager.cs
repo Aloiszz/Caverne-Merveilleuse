@@ -9,7 +9,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> roomMemory;
     public int roomMemoryIndex;
     
-    [SerializeField] public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
+    [SerializeField]public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
     public int roomMemoryDirectionIndex;
 
     public List<GameObject> roomTemplateTop;    
@@ -39,6 +39,4 @@ public class RoomManager : MonoBehaviour
             instance = this; 
         } 
     }
-    
-    
 }
