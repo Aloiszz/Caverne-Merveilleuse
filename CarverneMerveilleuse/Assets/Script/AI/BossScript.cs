@@ -226,8 +226,8 @@ public class BossScript : MonoBehaviour
                 vague1.SetActive(true);
                 vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
-                vague1.SetActive(false);
                 vague1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                vague1.SetActive(false);
                 vague1.transform.position = vague1Pos;
             }
             else
@@ -235,8 +235,8 @@ public class BossScript : MonoBehaviour
                 vague2.SetActive(true);
                 vague2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
-                vague2.SetActive(false);
                 vague2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                vague2.SetActive(false);
                 vague2.transform.position = vague2Pos;
             }
         }
