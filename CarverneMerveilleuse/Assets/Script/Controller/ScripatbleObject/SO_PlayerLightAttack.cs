@@ -7,7 +7,7 @@ public class SO_PlayerLightAttack : ScriptableObject
 {
     [Header("Verification")] 
     public bool isStriking;
-    public bool isCoolDown;
+    public bool isCoolDown = false;
     
     [Header("Damage")]
     public float lightDamage;

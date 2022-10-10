@@ -28,6 +28,7 @@ public class PlayerLightAttack : MonoBehaviour
         }
 
         timerRemainingStored = playerLightAttack.timerRemaining;
+        playerLightAttack.isCoolDown = false;
     }
 
 
