@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
     public List<GameObject> AlternativeDoor;
     public GameObject goldenDoor;
     private int result;
+    public bool isGoldenPath;
     
     //[SerializeField] public List<Room.Direction> roomGoldenPath = new ();
     
@@ -33,6 +34,7 @@ public class Room : MonoBehaviour
     {
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
 
+        isGoldenPath = true;
 
         if (RoomManager.instance.goldenPathCount == 0)
         {
@@ -45,12 +47,6 @@ public class Room : MonoBehaviour
         }
         else
         {
-            var i = RoomManager.instance.roomMemoryDirection[RoomManager.instance.roomMemoryDirectionIndex-1];
-            bool cbon = false;
-            //Debug.Log(i);
-            
-            //AlternativeDoor.Remove(GameObject.FindWithTag("Door").GetComponent<RoomSpawnerV2>().colliderVierge);
-
             foreach (GameObject x in AlternativeDoor.ToList())
             {
                 if (x.CompareTag("Door"))
@@ -64,42 +60,14 @@ public class Room : MonoBehaviour
                     }
                 }
             }
-            
             result = Random.Range(0, AlternativeDoor.Count);
-            Debug.Log(result);
-            //Debug.Log(GameObject.FindWithTag("Door").GetComponent<RoomSpawnerV2>().porteQuiFautDetruire);
 
             goldenDoor = AlternativeDoor[result];
             AlternativeDoor.Remove(AlternativeDoor[result]);
             goldenDoor.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.96f,0.016f, 0.8f),0.2f);
             
-            
-            /*if (roomGoldenPath[0] == RoomManager.instance.roomMemoryDirection[^1])
-            {
-                
-            }*/
         }
         
-        /*switch (result)
-        {
-            case 0 :
-                roomGoldenPath.Add(Direction.Down);
-                break;
-            case 1 :
-                roomGoldenPath.Add(Direction.Top);
-                break;
-            case 2 :
-                roomGoldenPath.Add(Direction.Left);
-                break;
-            case 3 :
-                roomGoldenPath.Add(Direction.Right);
-                break;
-        }*
-
-        if (roomGoldenPath[0] == Direction.Down)
-        {
-            
-        }*/
     }
     
     public void CreateAlternativePath()

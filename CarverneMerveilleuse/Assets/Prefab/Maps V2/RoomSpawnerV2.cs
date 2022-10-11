@@ -90,6 +90,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 TeleportPlayerToNextRoom(); 
                 Debug.Log("Nouvelle Room");
                 colliderVierge = true;
+                
             }
             else
             {
