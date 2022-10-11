@@ -30,7 +30,7 @@ public class DentScript : MonoBehaviour
         {
             if (golden)
             {
-                ui.golden += 1;
+                ui.goldenMoney += 1;
             }
             else
             {
