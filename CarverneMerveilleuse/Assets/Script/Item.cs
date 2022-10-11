@@ -13,6 +13,10 @@ public class Item : MonoBehaviour
     public GameObject player;
     public string nomItem;
     public string descriptionItem;
+    public int prix;
+    public UIManager ui;
+    
+    
 
     private void Update()
     {
@@ -22,10 +26,11 @@ public class Item : MonoBehaviour
             canvasItem.transform.parent = transform;
             canvasItem.transform.position = transform.position;
             canvasItem.GameObject().SetActive(true);
-            tmpNomItem.SetText(nomItem);
+            tmpNomItem.SetText(nomItem+prix+"$");
             tmpDescriptionItem.SetText(descriptionItem);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && ui.money >= prix)
             {
+                ui.money -= prix;
                 canvasItem.transform.parent = null;
                 canvasItem.GameObject().SetActive(false);
                 Destroy(gameObject);
