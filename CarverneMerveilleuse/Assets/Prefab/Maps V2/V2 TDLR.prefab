@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3403997522789993732}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,6 +174,8 @@ MonoBehaviour:
   colliderVierge: 0
   direction: 1
   spawnpoint: {fileID: 0}
+  isAlternativeDoor: 0
+  porteQuiFautDetruire: 0
 --- !u!1 &676112938966127447
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +187,7 @@ GameObject:
   - component: {fileID: 605079204906636076}
   - component: {fileID: 3113004052393818486}
   - component: {fileID: 2127069895999264510}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,6 +393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd48ad302ba35454daa480a2923e7c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AlternativeDoor: []
+  goldenDoor: {fileID: 0}
+  isGoldenPath: 0
 --- !u!1 &1193591182798149164
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +469,7 @@ GameObject:
   - component: {fileID: 1699544966975860078}
   - component: {fileID: 1699544966975860080}
   - component: {fileID: 1699544966975860079}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,6 +696,8 @@ MonoBehaviour:
   colliderVierge: 0
   direction: 0
   spawnpoint: {fileID: 0}
+  isAlternativeDoor: 0
+  porteQuiFautDetruire: 0
 --- !u!1 &1699544968537077000
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +709,7 @@ GameObject:
   - component: {fileID: 1699544968537077001}
   - component: {fileID: 1699544968537077003}
   - component: {fileID: 1699544968537077002}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +820,7 @@ GameObject:
   - component: {fileID: 1699544968769809241}
   - component: {fileID: 1699544968769809243}
   - component: {fileID: 1699544968769809242}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,6 +1047,8 @@ MonoBehaviour:
   colliderVierge: 0
   direction: 3
   spawnpoint: {fileID: 0}
+  isAlternativeDoor: 0
+  porteQuiFautDetruire: 0
 --- !u!1 &1780964042242681209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1060,7 @@ GameObject:
   - component: {fileID: 3283162978333188936}
   - component: {fileID: 7627986019483679419}
   - component: {fileID: 2512464029439385871}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1171,7 @@ GameObject:
   - component: {fileID: 2380977775670912350}
   - component: {fileID: 2380977775670912344}
   - component: {fileID: 2380977775670912351}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1282,7 @@ GameObject:
   - component: {fileID: 2380977776076002821}
   - component: {fileID: 2380977776076002823}
   - component: {fileID: 2380977776076002822}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1393,7 @@ GameObject:
   - component: {fileID: 2380977777432929158}
   - component: {fileID: 2380977777432929152}
   - component: {fileID: 2380977777432929159}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1495,7 +1504,7 @@ GameObject:
   - component: {fileID: 1999124631468740496}
   - component: {fileID: 353659517890163477}
   - component: {fileID: 5328930394332753929}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1606,7 +1615,7 @@ GameObject:
   - component: {fileID: 8992548248280024364}
   - component: {fileID: 9102929922012877005}
   - component: {fileID: 9161799093556214096}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,6 +1842,8 @@ MonoBehaviour:
   colliderVierge: 0
   direction: 2
   spawnpoint: {fileID: 0}
+  isAlternativeDoor: 0
+  porteQuiFautDetruire: 0
 --- !u!1 &4898052989007162659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,7 +1855,7 @@ GameObject:
   - component: {fileID: 2335127141125186571}
   - component: {fileID: 5743680155360797398}
   - component: {fileID: 7788324063163990800}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1986,7 +1997,7 @@ GameObject:
   - component: {fileID: 6347194918149979358}
   - component: {fileID: 6347194918149979356}
   - component: {fileID: 6347194918149979359}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2097,7 +2108,7 @@ GameObject:
   - component: {fileID: 6347194918180029175}
   - component: {fileID: 6347194918180029173}
   - component: {fileID: 6347194918180029172}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,7 +2219,7 @@ GameObject:
   - component: {fileID: 6347194918613559471}
   - component: {fileID: 6347194918613559469}
   - component: {fileID: 6347194918613559468}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2350,7 +2361,7 @@ GameObject:
   - component: {fileID: 8523574097860288060}
   - component: {fileID: 5863585456847210933}
   - component: {fileID: 4472824281886200161}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2461,7 +2472,7 @@ GameObject:
   - component: {fileID: 3320763155201501136}
   - component: {fileID: 1936384337640920696}
   - component: {fileID: 4434977404527544680}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
