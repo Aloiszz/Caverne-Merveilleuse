@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    [Header("----------Golden Path----------")]
     public List<GameObject> roomMemory;
     public int roomMemoryIndex;
     
@@ -25,6 +26,17 @@ public class RoomManager : MonoBehaviour
     public int roomTemplateLeftIndex;
 
     public int goldenPathCount = 0;
+    
+    
+    [Header("----------Alternative Path----------")]
+    public List<GameObject> roomTemplateTopEND;    
+    
+    public List<GameObject> roomTemplateDownEND;
+    
+    public List<GameObject> roomTemplateRightEND;
+    
+    public List<GameObject> roomTemplateLeftEND;
+    
     
     public static RoomManager instance;
     

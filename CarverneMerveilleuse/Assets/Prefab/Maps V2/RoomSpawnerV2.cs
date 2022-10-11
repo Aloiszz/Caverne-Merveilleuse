@@ -7,6 +7,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 using DG.Tweening;
+using UnityEditor.ShaderGraph.Drawing;
 
 public class RoomSpawnerV2 : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public bool colliderVierge;
     public Direction direction;
     public GameObject spawnpoint;
+    public bool isAlternativeDoor;
 
     public int porteQuiFautDetruire;
     
@@ -31,7 +33,6 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         Direction myDirection;
         Tag();
-        //GetComponent<Room>().CreateGoldenPath();
     }
 
     void Tag()
@@ -82,17 +83,17 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            if (!colliderVierge)
+            if (!colliderVierge && !isAlternativeDoor)
             {
                 KeepMemoryDirection();
-                InstatiateRoom();
+                InstatiateNewRoom();
                 Tag();
                 TeleportPlayerToNextRoom(); 
                 Debug.Log("Nouvelle Room");
                 colliderVierge = true;
                 
             }
-            else
+            else if(!isAlternativeDoor)
             {
                 if (direction == RoomManager.instance.roomMemoryDirection[^1])
                 {
@@ -108,15 +109,15 @@ public class RoomSpawnerV2 : MonoBehaviour
                     TeleportPlayerToNextRoom();
                 }
             }
-        } 
-    }
 
-    public void VerificationGoldenPath()
-    {
-        if (direction == RoomManager.instance.roomMemoryDirection[^1])
-        {
-            GetComponent<Room>().CreateGoldenPath();
-        }
+            if (isAlternativeDoor)
+            {
+                KeepMemoryDirection();
+                Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
+                InstatiateNewAlternativePath();
+                TeleportPlayerToNextRoom(); 
+            }
+        } 
     }
     
     public void TeleportPlayerToNextRoom()
@@ -124,7 +125,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         PlayerController.instance.transform.position = spawnpoint.transform.position;
     }
 
-    public void InstatiateRoom()
+    public void InstatiateNewRoom()
     {
         RoomManager.instance.roomMemoryIndex++;
         RoomManager.instance.roomMemoryDirectionIndex++;
@@ -203,5 +204,41 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(true);
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(false);
         RoomManager.instance.roomMemoryIndex++;
+    }
+    
+    
+    //----------------------- Alternative Path -----------------
+    public void InstatiateNewAlternativePath()
+    {
+        //RoomManager.instance.roomMemoryIndex++;
+        //RoomManager.instance.roomMemoryDirectionIndex++;
+        transform.parent.gameObject.SetActive(false);
+
+        switch (direction)
+        {
+            case Direction.Top :
+                rand = Random.Range(0, RoomManager.instance.roomTemplateDownEND.Count);
+                Instantiate(RoomManager.instance.roomTemplateDownEND[rand], new Vector3(0,0,0),
+                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;  
+            
+            case Direction.Down :
+                rand = Random.Range(0, RoomManager.instance.roomTemplateTopEND.Count);
+                Instantiate(RoomManager.instance.roomTemplateTopEND[rand], new Vector3(0,0,0), 
+                    transform.rotation).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+            
+            case Direction.Right :
+                rand = Random.Range(0, RoomManager.instance.roomTemplateLeftEND.Count);
+                Instantiate(RoomManager.instance.roomTemplateLeftEND[rand], new Vector3(0,0,0), 
+                    transform.rotation).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+            
+            case Direction.Left :
+                rand = Random.Range(0, RoomManager.instance.roomTemplateRightEND.Count);
+                Instantiate(RoomManager.instance.roomTemplateRightEND[rand], new Vector3(0,0,0), 
+                    transform.rotation).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
+                break;
+        }
     }
 }

@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         RoomManager.instance.roomMemory.Add(this.gameObject);
+        AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         CreateGoldenPath();
         CreateAlternativePath();
     }
@@ -32,7 +33,6 @@ public class Room : MonoBehaviour
     
     public void CreateGoldenPath()
     {
-        AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
 
         isGoldenPath = true;
 
@@ -72,10 +72,13 @@ public class Room : MonoBehaviour
     
     public void CreateAlternativePath()
     {
-        for (int j = 0; j < AlternativeDoor.Count; j++)
+        foreach (GameObject x in AlternativeDoor)
         {
-            //Debug.Log(AlternativeDoor[j]);
+            if (x.CompareTag("Door"))
+            {
+                x.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.2f,0.8f, 0.8f),0.2f);
+                x.GetComponent<RoomSpawnerV2>().isAlternativeDoor = true;
+            }
         }
-        
     }
 }
