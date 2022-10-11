@@ -10,12 +10,15 @@ public class UIManager : MonoBehaviour
     public PlayerController player;
     public Image healthBar;
     public TMP_Text moneyGet;
+    public TMP_Text goldenGet;
+    public int golden;
     public int money;
 
     private void Update()
     {
         healthBar.fillAmount = player.life / player.lifeDepard;
         moneyGet.SetText(money.ToString());
+        goldenGet.SetText(golden.ToString());
         if (Input.GetKeyDown(KeyCode.M))
         {
             money += 10;

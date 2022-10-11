@@ -19,9 +19,13 @@ public class Mechant : MonoBehaviour
     public float linearDragDeceleration;
     public float linearDragMultiplier;
     public float forcelightDamage;
-
-    public bool invokeByBoss;
+    
+    [Header("Loot")]
     public GameObject dent;
+    public GameObject goldenDent;
+    
+    [HideInInspector] public bool invokeByBoss;
+    
 
 
     void Start()
@@ -65,10 +69,19 @@ public class Mechant : MonoBehaviour
     {
         if (life <= 0)
         {
-            for (int i = 0; i < Random.Range(1,5); i++)
+            if (!invokeByBoss)
             {
-                Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3,4),Random.Range(-3,4)), Quaternion.identity);
+                for (int i = 0; i < Random.Range(1, 5); i++)
+                {
+                    Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
+                }
+
+                if (Random.Range(1, 101) == 100)
+                {
+                    Instantiate(goldenDent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
+                }
             }
+
             Destroy(gameObject);
         }
     }
