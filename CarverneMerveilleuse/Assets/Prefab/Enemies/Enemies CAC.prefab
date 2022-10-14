@@ -192,10 +192,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5904098094530398249}
   - component: {fileID: 5904098094530398254}
-  - component: {fileID: 5904098094530398255}
-  - component: {fileID: -8138841871068977120}
   - component: {fileID: 5904098094530398252}
   - component: {fileID: 2670320833063829144}
+  - component: {fileID: 5904098094530398255}
+  - component: {fileID: -8138841871068977120}
   - component: {fileID: 2924875521473287416}
   - component: {fileID: 5546698200822781360}
   - component: {fileID: 2110108415860532889}
@@ -279,49 +279,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5904098094530398255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904098094530398242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 100
-  lifeDepart: 0
-  lifeBarre: {fileID: 1268570029348340258}
-  rb: {fileID: 2670320833063829144}
-  linearDragDeceleration: 5
-  linearDragMultiplier: 2
-  forcelightDamage: 150
-  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
-  goldenDent: {fileID: 1756168027805832055, guid: 978e6ab0a4b855f40b481ed4b7d656ed, type: 3}
-  invokeByBoss: 0
---- !u!114 &-8138841871068977120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904098094530398242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8c3aa593683d9469ba120fc564c60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  rb: {fileID: 0}
-  linearDragDeceleration: 0
-  linearDragMultiplier: 0
-  see: 0
-  distanceToSeePlayer: 10
-  intensity: 0
-  frequency: 0
-  timer: 0
 --- !u!61 &5904098094530398252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -369,6 +326,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5904098094530398255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904098094530398242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
+  lifeDepart: 0
+  lifeBarre: {fileID: 1268570029348340258}
+  rb: {fileID: 2670320833063829144}
+  linearDragDeceleration: 5
+  linearDragMultiplier: 2
+  forcelightDamage: 150
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
+  goldenDent: {fileID: 1756168027805832055, guid: 978e6ab0a4b855f40b481ed4b7d656ed, type: 3}
+  maxDentDrop: 3
+  pourcentageDropOr: 10
+  invokeByBoss: 0
+--- !u!114 &-8138841871068977120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904098094530398242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8c3aa593683d9469ba120fc564c60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  rb: {fileID: 0}
+  linearDragDeceleration: 0
+  linearDragMultiplier: 0
+  see: 0
+  distanceToSeePlayer: 10
+  intensity: 0
+  frequency: 0
+  timer: 0
 --- !u!114 &2924875521473287416
 MonoBehaviour:
   m_ObjectHideFlags: 0
