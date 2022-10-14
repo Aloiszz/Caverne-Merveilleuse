@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class DentScript : MonoBehaviour
 {
-    public PlayerController player; 
-    public UIManager ui;
+    private PlayerController player; 
+    private UIManager ui;
+    public float distanceToGet;
+    [SerializeField] public bool golden;
 
     private void Start()
     {
@@ -16,7 +18,7 @@ public class DentScript : MonoBehaviour
 
     private void Update()
     {
-        if ((player.transform.position - transform.position).magnitude <= 2)
+        if ((player.transform.position - transform.position).magnitude <= distanceToGet)
         {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, 5);
         }
@@ -26,7 +28,15 @@ public class DentScript : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            ui.money += 1;
+            if (golden)
+            {
+                ui.goldenMoney += 1;
+            }
+            else
+            {
+                ui.money += 1;
+            }
+            
             Destroy(gameObject);
         }
     }
