@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3700859029623930163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3700859029623930165}
+  - component: {fileID: 3700859029623930162}
+  m_Layer: 0
+  m_Name: RoomManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3700859029623930165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3700859029623930163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.138788, y: 10.555085, z: 1.9692328}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3700859029623930162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3700859029623930163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73d9eda68153494b898c5e0107e0216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomMemory: []
+  roomMemoryIndex: 0
+  roomMemoryDirection: 
+  roomMemoryDirectionIndex: 0
+  roomTemplateTop:
+  - {fileID: 1135459559344514503, guid: afd1237aca34e3a42806f05965281c45, type: 3}
+  - {fileID: 4689471179321947404, guid: 936d9f4c98094934291f8301dfe669c9, type: 3}
+  - {fileID: 2232910896604710085, guid: 22b3c733c78daf4479a8f3a2e48a4391, type: 3}
+  - {fileID: 1084970310764122515, guid: aa8d623fc5ca0b643894c80ab7d6ac34, type: 3}
+  roomTemplateTopIndex: 0
+  roomTemplateDown:
+  - {fileID: 6075977379328262818, guid: 86f304e896fdf9d499cc0fb90ec47d25, type: 3}
+  - {fileID: 4689471179321947404, guid: 936d9f4c98094934291f8301dfe669c9, type: 3}
+  - {fileID: 2385293327649361657, guid: 3769c37702dfe4c42b4757f6e4c8aa19, type: 3}
+  - {fileID: 1084970310764122515, guid: aa8d623fc5ca0b643894c80ab7d6ac34, type: 3}
+  roomTemplateDownIndex: 0
+  roomTemplateRight:
+  - {fileID: 1135459559344514503, guid: afd1237aca34e3a42806f05965281c45, type: 3}
+  - {fileID: 2232910896604710085, guid: 22b3c733c78daf4479a8f3a2e48a4391, type: 3}
+  - {fileID: 2385293327649361657, guid: 3769c37702dfe4c42b4757f6e4c8aa19, type: 3}
+  - {fileID: 1084970310764122515, guid: aa8d623fc5ca0b643894c80ab7d6ac34, type: 3}
+  roomTemplateRightIndex: 0
+  roomTemplateLeft:
+  - {fileID: 1885902306896914953, guid: 4be9cd088267f1642ab462c019ebe011, type: 3}
+  - {fileID: 2232910896604710085, guid: 22b3c733c78daf4479a8f3a2e48a4391, type: 3}
+  - {fileID: 2385293327649361657, guid: 3769c37702dfe4c42b4757f6e4c8aa19, type: 3}
+  - {fileID: 1084970310764122515, guid: aa8d623fc5ca0b643894c80ab7d6ac34, type: 3}
+  roomTemplateLeftIndex: 0
+  goldenPathCount: 0
+  roomLeftToBossRoom: 5
+  isBossRoom: 0
+  roomTemplateTopEND:
+  - {fileID: 1049492111545967070, guid: d4c8ea379c981274294feb1892633eb8, type: 3}
+  - {fileID: 1049492111545967070, guid: d4c8ea379c981274294feb1892633eb8, type: 3}
+  - {fileID: 4689471179321947404, guid: 936d9f4c98094934291f8301dfe669c9, type: 3}
+  - {fileID: 1135459559344514503, guid: afd1237aca34e3a42806f05965281c45, type: 3}
+  roomTemplateDownEND:
+  - {fileID: 4971548361537936954, guid: 7e3b60d12bb627241bc6cc80f220effb, type: 3}
+  - {fileID: 4971548361537936954, guid: 7e3b60d12bb627241bc6cc80f220effb, type: 3}
+  - {fileID: 1885902306896914953, guid: 4be9cd088267f1642ab462c019ebe011, type: 3}
+  - {fileID: 6075977379328262818, guid: 86f304e896fdf9d499cc0fb90ec47d25, type: 3}
+  - {fileID: 4689471179321947404, guid: 936d9f4c98094934291f8301dfe669c9, type: 3}
+  - {fileID: 4971548361537936954, guid: 7e3b60d12bb627241bc6cc80f220effb, type: 3}
+  roomTemplateRightEND:
+  - {fileID: 1435106843800534853, guid: 10a933c284632db44a6647818d099d66, type: 3}
+  - {fileID: 1435106843800534853, guid: 10a933c284632db44a6647818d099d66, type: 3}
+  - {fileID: 6075977379328262818, guid: 86f304e896fdf9d499cc0fb90ec47d25, type: 3}
+  - {fileID: 1135459559344514503, guid: afd1237aca34e3a42806f05965281c45, type: 3}
+  roomTemplateLeftEND:
+  - {fileID: 4374175200926849603, guid: c27641587f9265d418f46359372c6dd4, type: 3}
+  - {fileID: 4374175200926849603, guid: c27641587f9265d418f46359372c6dd4, type: 3}
+  - {fileID: 1885902306896914953, guid: 4be9cd088267f1642ab462c019ebe011, type: 3}
+  bossRoom:
+  - {fileID: 6569679407192225437, guid: 7fd1cf1b80bf78440a8133e75c50e9d3, type: 3}

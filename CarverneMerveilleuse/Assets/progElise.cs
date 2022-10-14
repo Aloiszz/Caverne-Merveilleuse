@@ -34,6 +34,14 @@ public class progElise : MonoBehaviour
         déplacement();
     }
 
+    void tire()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            
+        }
+    }
+
     void déplacement()
     {
         if (Input.GetKeyDown(KeyCode.D))
@@ -54,4 +62,10 @@ public class progElise : MonoBehaviour
         }
         
     }
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
+
 }

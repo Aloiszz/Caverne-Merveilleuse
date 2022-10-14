@@ -26,6 +26,8 @@ public class RoomManager : MonoBehaviour
     public int roomTemplateLeftIndex;
 
     public int goldenPathCount = 0;
+    public int roomLeftToBossRoom; 
+    public  bool isBossRoom;
     
     
     [Header("----------Alternative Path----------")]
@@ -37,6 +39,8 @@ public class RoomManager : MonoBehaviour
     
     public List<GameObject> roomTemplateLeftEND;
     
+    [Header("----------Boss Room----------")]
+    public List<GameObject> bossRoom;
     
     public static RoomManager instance;
     
@@ -49,6 +53,15 @@ public class RoomManager : MonoBehaviour
         else 
         { 
             instance = this; 
-        } 
+        }
+        
+    }
+
+    private void Update()
+    {
+        if (goldenPathCount >= roomLeftToBossRoom)
+        {
+            isBossRoom = true;
+        }
     }
 }

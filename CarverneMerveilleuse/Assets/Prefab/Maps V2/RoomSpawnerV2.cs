@@ -83,6 +83,16 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
+            ProceduralGeneration();
+        } 
+    }
+    
+    //----------------------- Generate Room Golden Path-----------------
+
+    void ProceduralGeneration()
+    {
+        if (!RoomManager.instance.isBossRoom)
+        {
             if (!colliderVierge && !isAlternativeDoor)
             {
                 KeepMemoryDirection();
@@ -91,8 +101,6 @@ public class RoomSpawnerV2 : MonoBehaviour
                 TeleportPlayerToNextRoom(); 
                 Debug.Log("Nouvelle Room");
                 colliderVierge = true;
-                AstarPath.active.Scan();
-                
             }
             else if(!isAlternativeDoor)
             {
@@ -116,11 +124,18 @@ public class RoomSpawnerV2 : MonoBehaviour
                 KeepMemoryDirection();
                 Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
                 InstatiateNewAlternativePath();
-                TeleportPlayerToNextRoom(); 
+                TeleportPlayerToNextRoom();
             }
-        } 
+        }
+        else
+        {
+            Debug.Log("UN Boss apparait");
+            InstatiateBossRoom();
+            TeleportPlayerToNextRoom();
+        }
+        AstarPath.active.Scan();
     }
-    
+    #region Generate Room
     public void TeleportPlayerToNextRoom()
     {
         PlayerController.instance.transform.position = spawnpoint.transform.position;
@@ -211,14 +226,18 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemoryIndex++;
     }
     
-    
-    //----------------------- Spawn Ennemy -----------------
+
+    #endregion
+
+    //----------------------- Spawn Ennemy Region-----------------
     void SpawnEnnemy()
     {
         
     }
     
-    //----------------------- Alternative Path -----------------
+    //----------------------- Alternative Path Region-----------------
+
+    #region Alternative Path
     public void InstatiateNewAlternativePath()
     {
         //RoomManager.instance.roomMemoryIndex++;
@@ -252,4 +271,48 @@ public class RoomSpawnerV2 : MonoBehaviour
                 break;
         }
     }
+    #endregion
+    
+    //----------------------- Boss Room Region-----------------
+
+    #region Boss Room
+    public void InstatiateBossRoom()
+    {
+        //RoomManager.instance.roomMemoryIndex++;
+        //RoomManager.instance.roomMemoryDirectionIndex++;
+        transform.parent.gameObject.SetActive(false);
+        
+        rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+        Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
+            transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+
+        /*switch (direction)
+        {
+            case Direction.Top :
+                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
+                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;  
+            
+            case Direction.Down :
+                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0), 
+                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+            
+            case Direction.Right :
+                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0), 
+                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+            
+            case Direction.Left :
+                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0), 
+                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
+                break;
+        }*/
+    }
+    #endregion
+    
 }

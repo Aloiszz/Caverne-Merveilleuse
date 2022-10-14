@@ -11,7 +11,7 @@ public class Room : MonoBehaviour
     public GameObject goldenDoor;
     private int result;
     public bool isGoldenPath;
-    
+
     //[SerializeField] public List<Room.Direction> roomGoldenPath = new ();
     
     public enum Direction
@@ -26,24 +26,30 @@ public class Room : MonoBehaviour
     {
         RoomManager.instance.roomMemory.Add(this.gameObject);
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
-        CreateGoldenPath();
+        if (AlternativeDoor.Count > 1)
+        {
+            CreateGoldenPath();
+        }
+        else
+        {
+            
+        }
+        
         CreateAlternativePath();
     }
     
     
     public void CreateGoldenPath()
     {
-
         isGoldenPath = true;
-
+        RoomManager.instance.goldenPathCount++;
+        
         if (RoomManager.instance.goldenPathCount == 0)
         {
             result = Random.Range(0, AlternativeDoor.Count);
             goldenDoor = AlternativeDoor[result];
             AlternativeDoor.Remove(AlternativeDoor[result]);
             goldenDoor.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.96f,0.016f, 0.8f),0.2f);
-
-            RoomManager.instance.goldenPathCount++;
         }
         else
         {
