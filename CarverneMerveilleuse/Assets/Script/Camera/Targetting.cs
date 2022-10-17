@@ -14,7 +14,11 @@ public class Targetting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = pos;
+        /*Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = pos;*/
+        
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+        mouseWorldPosition.z = 0f;
+        transform.position = mouseWorldPosition;
     }
 }

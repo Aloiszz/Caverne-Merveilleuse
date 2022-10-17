@@ -123,11 +123,22 @@ public class RoomSpawnerV2 : MonoBehaviour
 
             if (isAlternativeDoor)
             {
-                KeepMemoryDirection();
-                Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
-                InstatiateNewAlternativePath();
-                SpawnPointLocation();
-                TeleportPlayerToNextRoom();
+                if (direction == RoomManager.instance.roomMemoryDirection[^1])
+                {
+                    //KeepMemoryDirection();
+                    ReturnAlternativePath();
+                    SpawnPointLocation();
+                    TeleportPlayerToNextRoom();
+                    Debug.Log("On Revient en arrire");
+                }
+                else
+                {
+                    KeepMemoryDirectionAlternativePath();
+                    Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
+                    InstatiateNewAlternativePath();
+                    SpawnPointLocation();
+                    TeleportPlayerToNextRoom();
+                }
             }
         }
         else
@@ -245,8 +256,8 @@ public class RoomSpawnerV2 : MonoBehaviour
     #region Alternative Path
     public void InstatiateNewAlternativePath()
     {
-        //RoomManager.instance.roomMemoryIndex++;
-        //RoomManager.instance.roomMemoryDirectionIndex++;
+        RoomManager.instance.roomMemoryAlternativePathIndex++;
+        RoomManager.instance.roomMemoryDirectionAlternativePathIndex++;
         transform.parent.gameObject.SetActive(false);
 
         switch (direction)
@@ -275,6 +286,51 @@ public class RoomSpawnerV2 : MonoBehaviour
                     transform.rotation).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
                 break;
         }
+    }
+    public void KeepMemoryDirectionAlternativePath()
+    {
+        switch (direction)
+        {
+            case Direction.Top:
+                RoomManager.instance.roomMemoryDirectionAlternativePath.Add(Direction.Down);
+                break;
+            
+            case Direction.Down:
+                RoomManager.instance.roomMemoryDirectionAlternativePath.Add(Direction.Top);
+                break; 
+            
+            case Direction.Right:
+                RoomManager.instance.roomMemoryDirectionAlternativePath.Add(Direction.Left);
+                break;
+            
+            case Direction.Left:
+                RoomManager.instance.roomMemoryDirectionAlternativePath.Add(Direction.Right);
+                break;
+        }
+    }
+    public void ReturnAlternativePath()
+    {
+        RoomManager.instance.roomMemoryAlternativePathIndex++;
+        RoomManager.instance.roomMemoryDirectionAlternativePathIndex++;
+        
+        RoomManager.instance.roomMemoryDirectionAlternativePath.RemoveAt(RoomManager.instance.roomMemoryDirectionAlternativePathIndex);
+        //PlayerController.instance.transform.position -= new Vector3(10,0,0);
+        
+        
+        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex+1].SetActive(false);
+        //RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemory.Count - 1);
+        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex].SetActive(true);
+    }
+
+    public void ChangeDavisAlternativePath()
+    {
+        TeleportPlayerToNextRoom();
+        KeepMemoryDirection();
+        RoomManager.instance.roomMemoryDirectionAlternativePathIndex++;
+        
+        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex+1].SetActive(true);
+        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex].SetActive(false);
+        RoomManager.instance.roomMemoryAlternativePathIndex++;
     }
     #endregion
     

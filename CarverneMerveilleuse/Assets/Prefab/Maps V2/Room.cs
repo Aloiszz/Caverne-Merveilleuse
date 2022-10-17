@@ -24,18 +24,15 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        RoomManager.instance.roomMemory.Add(this.gameObject);
+        
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         if (AlternativeDoor.Count > 1)
         {
             CreateGoldenPath();
+            RoomManager.instance.roomMemory.Add(this.gameObject);
         }
-        else
-        {
-            
-        }
-        
         CreateAlternativePath();
+        RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
     }
     
     
