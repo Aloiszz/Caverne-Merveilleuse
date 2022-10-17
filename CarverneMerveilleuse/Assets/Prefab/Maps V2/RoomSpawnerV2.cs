@@ -87,7 +87,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         } 
     }
     
-    //----------------------- Generate Room Golden Path-----------------
+    //----------------------- Room Generattion -----------------
 
     void ProceduralGeneration()
     {
@@ -134,10 +134,12 @@ public class RoomSpawnerV2 : MonoBehaviour
         {
             Debug.Log("UN Boss apparait");
             InstatiateBossRoom();
+            SpawnPointLocation();
             TeleportPlayerToNextRoom();
         }
         AstarPath.active.Scan();
     }
+    
     #region Generate Room
     public void TeleportPlayerToNextRoom()
     {
@@ -288,33 +290,6 @@ public class RoomSpawnerV2 : MonoBehaviour
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
         Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
             transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-
-        /*switch (direction)
-        {
-            case Direction.Top :
-                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
-                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                break;  
-            
-            case Direction.Down :
-                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
-                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                break;
-            
-            case Direction.Right :
-                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
-                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                break;
-            
-            case Direction.Left :
-                rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
-                Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
-                break;
-        }*/
     }
     #endregion
     
