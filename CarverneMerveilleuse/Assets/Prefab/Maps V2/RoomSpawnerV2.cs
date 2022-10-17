@@ -32,10 +32,10 @@ public class RoomSpawnerV2 : MonoBehaviour
     private void Start()
     {
         Direction myDirection;
-        Tag();
+        SpawnPointLocation();
     }
 
-    void Tag()
+    void SpawnPointLocation()
     {
         switch (direction)
         {
@@ -97,7 +97,7 @@ public class RoomSpawnerV2 : MonoBehaviour
             {
                 KeepMemoryDirection();
                 InstatiateNewRoom();
-                Tag();
+                SpawnPointLocation();
                 TeleportPlayerToNextRoom(); 
                 Debug.Log("Nouvelle Room");
                 colliderVierge = true;
@@ -108,6 +108,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 {
                     //KeepMemoryDirection();
                     Return();
+                    SpawnPointLocation();
                     TeleportPlayerToNextRoom();
                     Debug.Log("On Revient en arrire");
                 }
@@ -115,6 +116,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 {
                     Debug.Log("Ok jsuis perdo");
                     ChangeDavis();
+                    SpawnPointLocation();
                     TeleportPlayerToNextRoom();
                 }
             }
@@ -124,6 +126,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 KeepMemoryDirection();
                 Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
                 InstatiateNewAlternativePath();
+                SpawnPointLocation();
                 TeleportPlayerToNextRoom();
             }
         }
