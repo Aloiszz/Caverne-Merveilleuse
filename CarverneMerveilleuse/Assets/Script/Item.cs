@@ -17,15 +17,22 @@ public class Item : MonoBehaviour
     public int goldenPrix;
 
 
-    [Header("Intern info")] 
+    [Header("Info")] 
     [SerializeField] public bool isMerveilleux;
     
-    [Header("External info")]
-    public GameObject player;
-    public UIManager ui;
-    
-    
+    private GameObject player;
+    private UIManager ui;
+    private ItemManager itemManager;
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        ui = GameObject.Find("UIManager").GetComponent<UIManager>();
+        itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        canvasItem = GameObject.Find("ItemCanvas").GetComponent<Canvas>();
+        tmpDescriptionItem = GameObject.Find("Description").GetComponent<TMP_Text>();
+        tmpNomItem = GameObject.Find("Text item").GetComponent<TMP_Text>();
+    }
     private void Update()
     {
         
@@ -42,11 +49,12 @@ public class Item : MonoBehaviour
                 tmpDescriptionItem.color = Color.yellow;
                 if (Input.GetKeyDown(KeyCode.E) && ui.goldenMoney >= goldenPrix)
                 {
+                    
                     ui.goldenMoney -= goldenPrix;
                     canvasItem.transform.parent = null;
                     canvasItem.GameObject().SetActive(false);
+                    itemManager.OnBuy(gameObject.name);
                     Destroy(gameObject);
-                    Debug.Log("modifier les stats en fonction de l'objet pris");
                 }
             }
             else
@@ -59,8 +67,8 @@ public class Item : MonoBehaviour
                     ui.money -= prix;
                     canvasItem.transform.parent = null;
                     canvasItem.GameObject().SetActive(false);
+                    itemManager.OnBuy(gameObject.name);
                     Destroy(gameObject);
-                    Debug.Log("modifier les stats en fonction de l'objet pris");
                 }
             }
             

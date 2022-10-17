@@ -27,12 +27,17 @@ public class Mechant : MonoBehaviour
     public int pourcentageDropOr;
     
     [HideInInspector] public bool invokeByBoss;
+    private ItemManager itemManager;
+    private float buffAtk;
+    private float buffCritique;
     
 
 
     void Start()
     {
+        buffAtk = 0;
         lifeDepart = life;
+        itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -92,11 +97,15 @@ public class Mechant : MonoBehaviour
     {
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
         {
-            life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage;
+            buffAtk = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATK;
+            buffCritique = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATKCritique;
+            life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage + buffAtk + buffCritique;
         }
         else
         {
-            life -= PlayerLightAttack.instance.playerLightAttack.lightDamage;
+            buffAtk = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATK;
+            buffCritique = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATKCritique;
+            life -= PlayerLightAttack.instance.playerLightAttack.lightDamage + buffAtk + buffCritique;
         }
         
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
