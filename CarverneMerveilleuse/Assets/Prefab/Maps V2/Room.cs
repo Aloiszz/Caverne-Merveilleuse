@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Room : MonoBehaviour
 {
@@ -24,6 +25,16 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
+        gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var k in i)
+        {
+            k.DOFade(0, 0);
+            k.DOFade(0.9f, 0.7f);
+        }
+        
+        gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
+        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         if (AlternativeDoor.Count > 1)
@@ -31,8 +42,12 @@ public class Room : MonoBehaviour
             CreateGoldenPath();
             RoomManager.instance.roomMemory.Add(this.gameObject);
         }
+        else
+        {
+            RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
+        }
         CreateAlternativePath();
-        RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
+        
     }
     
     

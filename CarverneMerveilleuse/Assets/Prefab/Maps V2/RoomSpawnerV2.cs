@@ -125,17 +125,24 @@ public class RoomSpawnerV2 : MonoBehaviour
             {
                 if (direction == RoomManager.instance.roomMemoryDirection[^1])
                 {
-                    //KeepMemoryDirection();
+                    Debug.Log("On Revient en arrire alternativement bebe");
                     ReturnAlternativePath();
                     SpawnPointLocation();
                     TeleportPlayerToNextRoom();
-                    Debug.Log("On Revient en arrire");
                 }
                 else
                 {
                     KeepMemoryDirectionAlternativePath();
                     Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
                     InstatiateNewAlternativePath();
+                    SpawnPointLocation();
+                    TeleportPlayerToNextRoom();
+                }
+
+                if (colliderVierge)
+                {
+                    Debug.Log("Ok jsuis perdo dans l'alternativement passages secrets");
+                    ChangeDavisAlternativePath();
                     SpawnPointLocation();
                     TeleportPlayerToNextRoom();
                 }
@@ -313,7 +320,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemoryAlternativePathIndex++;
         RoomManager.instance.roomMemoryDirectionAlternativePathIndex++;
         
-        RoomManager.instance.roomMemoryDirectionAlternativePath.RemoveAt(RoomManager.instance.roomMemoryDirectionAlternativePathIndex);
+        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
         //PlayerController.instance.transform.position -= new Vector3(10,0,0);
         
         
