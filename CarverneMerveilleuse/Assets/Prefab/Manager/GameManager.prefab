@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1891921921721395359}
   - component: {fileID: 8785446625310703101}
+  - component: {fileID: 7768128023171480798}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,7 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17156589c7da8084bb8ef3e716b0ff6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playModeCG: {fileID: 0}
-  levelCG: {fileID: 0}
-  playModePanel: {fileID: 0}
-  LevelPanel: {fileID: 0}
+  playModeCG_: {fileID: 0}
+  levelCG_: {fileID: 0}
+  playModePanel_: {fileID: 0}
+  LevelPanel_: {fileID: 0}
+--- !u!114 &7768128023171480798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393067401662969414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45af420460838644780cda1c96d698e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spider: {fileID: 5904098094530398242, guid: 410d94e60b020a8448b0ba556149188d, type: 3}
+  bat: {fileID: 2101363264773630886, guid: f671b19df1393354681d842cdab18c0a, type: 3}
+  petrol: {fileID: 2101363264773630886, guid: 617c2bed990fed9428c077bf1945f279, type: 3}

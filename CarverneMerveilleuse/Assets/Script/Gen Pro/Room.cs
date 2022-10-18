@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class Room : MonoBehaviour
 {
@@ -13,28 +12,9 @@ public class Room : MonoBehaviour
     private int result;
     public bool isGoldenPath;
 
-    //[SerializeField] public List<Room.Direction> roomGoldenPath = new ();
-    
-    public enum Direction
-    {
-        Top,
-        Down,
-        Right,
-        Left
-    }
-
     private void Start()
     {
-        gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var k in i)
-        {
-            k.DOFade(0, 0);
-            k.DOFade(0.9f, 0.7f);
-        }
-        
-        gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
-        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+        FadeInRoom();
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         if (AlternativeDoor.Count > 1)
@@ -98,5 +78,20 @@ public class Room : MonoBehaviour
                 x.GetComponent<RoomSpawnerV2>().isAlternativeDoor = true;
             }
         }
+    }
+
+
+    void FadeInRoom()
+    {
+        gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var k in i)
+        {
+            k.DOFade(0, 0);
+            k.DOFade(0.9f, 0.7f);
+        }
+        
+        gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
+        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
     }
 }

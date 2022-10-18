@@ -1,17 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 using DG.Tweening;
-using UnityEditor.ShaderGraph.Drawing;
 
 public class RoomSpawnerV2 : MonoBehaviour
 {
-    
     private int rand;
     public bool colliderVierge;
     public Direction direction;
@@ -123,14 +118,7 @@ public class RoomSpawnerV2 : MonoBehaviour
 
             if (isAlternativeDoor)
             {
-                if (direction == RoomManager.instance.roomMemoryDirection[^1])
-                {
-                    Debug.Log("On Revient en arrire alternativement bebe");
-                    ReturnAlternativePath();
-                    SpawnPointLocation();
-                    TeleportPlayerToNextRoom();
-                }
-                else
+                if(!colliderVierge)
                 {
                     KeepMemoryDirectionAlternativePath();
                     Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
@@ -138,13 +126,22 @@ public class RoomSpawnerV2 : MonoBehaviour
                     SpawnPointLocation();
                     TeleportPlayerToNextRoom();
                 }
-
-                if (colliderVierge)
+                else
                 {
-                    Debug.Log("Ok jsuis perdo dans l'alternativement passages secrets");
-                    ChangeDavisAlternativePath();
-                    SpawnPointLocation();
-                    TeleportPlayerToNextRoom();
+                    if (direction == RoomManager.instance.roomMemoryDirectionAlternativePath[^1])
+                    {
+                        Debug.Log("On Revient en arrire alternativement bebe");
+                        ReturnAlternativePath();
+                        SpawnPointLocation();
+                        TeleportPlayerToNextRoom();
+                    }
+                    else
+                    {
+                        /*Debug.Log("Ok jsuis perdo dans l'alternativement passages secrets");
+                        ChangeDavisAlternativePath();
+                        SpawnPointLocation();
+                        TeleportPlayerToNextRoom();*/
+                    }
                 }
             }
         }
@@ -317,27 +314,22 @@ public class RoomSpawnerV2 : MonoBehaviour
     }
     public void ReturnAlternativePath()
     {
-        RoomManager.instance.roomMemoryAlternativePathIndex++;
-        RoomManager.instance.roomMemoryDirectionAlternativePathIndex++;
+        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex].SetActive(false);
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
         
-        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
-        //PlayerController.instance.transform.position -= new Vector3(10,0,0);
+        RoomManager.instance.roomMemoryAlternativePath.RemoveAt(RoomManager.instance.roomMemoryAlternativePathIndex);
         
-        
-        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex+1].SetActive(false);
-        //RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemory.Count - 1);
-        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex].SetActive(true);
+        RoomManager.instance.roomMemoryAlternativePathIndex--;
+        RoomManager.instance.roomMemoryDirectionAlternativePathIndex--;
     }
 
     public void ChangeDavisAlternativePath()
     {
-        TeleportPlayerToNextRoom();
-        KeepMemoryDirection();
         RoomManager.instance.roomMemoryDirectionAlternativePathIndex++;
-        
-        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex+1].SetActive(true);
-        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex].SetActive(false);
         RoomManager.instance.roomMemoryAlternativePathIndex++;
+        
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
+        RoomManager.instance.roomMemoryAlternativePath[RoomManager.instance.roomMemoryAlternativePathIndex].SetActive(false);
     }
     #endregion
     

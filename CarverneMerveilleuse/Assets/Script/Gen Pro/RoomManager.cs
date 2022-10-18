@@ -37,6 +37,8 @@ public class RoomManager : MonoBehaviour
     [SerializeField]public List<RoomSpawnerV2.Direction> roomMemoryDirectionAlternativePath = new ();
     public int roomMemoryDirectionAlternativePathIndex;
     
+    [Range(0, 100)]
+    public int maxAlternativeRoomDepth; 
     public List<GameObject> roomTemplateTopEND;    
     
     public List<GameObject> roomTemplateDownEND;
