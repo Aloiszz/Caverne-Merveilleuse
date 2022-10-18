@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
     public int life;
     public float linearDragDeceleration;
     public float linearDragMultiplier;
-    [HideInInspector] public float lifeDepard;
+    [HideInInspector] public int lifeDepard;
+
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     private void Awake()
@@ -79,13 +81,44 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        animator.SetFloat("speedX", rb.velocity.x);
+        animator.SetFloat("speedY", rb.velocity.y);
+
         //healthBar.fillAmount = life / lifeDepard;
         Dash();
 
         if (life == 0)
         {
-            Destroy(gameObject);
-            Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity);
+            if (ItemManager.instance.nbVieEnPlus >= 1)
+            {
+                life = lifeDepard / 2;
+                ItemManager.instance.nbVieEnPlus -= 1;
+            }
+            else
+            {
+                Destroy(gameObject);
+                Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity); 
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator.Play("Dos_Idle");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.Play("profil idle");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            animator.Play("Face_run");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            animator.Play("profil idle");
         }
     }
 
@@ -104,7 +137,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.left * speedMovement);
             lastMovement.Add(Vector2.left);
         }
-
+        
         if (Input.GetKey(KeyCode.S))
         {
             //transform.Translate(Vector3.down * speed * Time.deltaTime);
