@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public int life;
     public float linearDragDeceleration;
     public float linearDragMultiplier;
-    [HideInInspector] public float lifeDepard;
+    [HideInInspector] public int lifeDepard;
 
     // Start is called before the first frame update
     private void Awake()

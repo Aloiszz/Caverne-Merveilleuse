@@ -78,12 +78,12 @@ public class Mechant : MonoBehaviour
         {
             if (!invokeByBoss || !CompareTag("Boss"))
             {
-                for (int i = 0; i < Random.Range(1, maxDentDrop + 1); i++)
+                for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
                 {
                     Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
                 }
 
-                if (Random.Range(1, 101) >= 100 - pourcentageDropOr && pourcentageDropOr != 0)
+                if (Random.Range(1, 101) >= 100 - (pourcentageDropOr + itemManager.dropOrSupp) && pourcentageDropOr != 0)
                 {
                     Instantiate(goldenDent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
                 }

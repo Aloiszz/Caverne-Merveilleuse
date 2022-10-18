@@ -7,6 +7,8 @@ public class ItemManager : MonoBehaviour
 {
     [HideInInspector] public float buffATK;
     [HideInInspector] public float buffATKCritique;
+    [HideInInspector] public int dropSupp;
+    [HideInInspector] public int dropOrSupp;
     private PlayerController player;
     
     [Header("Arme Principal")]
@@ -23,7 +25,8 @@ public class ItemManager : MonoBehaviour
 
     [Header("Dash")] 
     [Header("Drop")] 
-    private bool pourPasDErreur;
+    public int nombreDentDropEnPlus = 2;
+    public int pourcentageDropOrEnPlus;
 
 
     private void Start()
@@ -107,10 +110,12 @@ public class ItemManager : MonoBehaviour
             
             case "ArgentDrop":
                 Debug.Log("Augmente le taux de drop des dents en argent");
+                dropOrSupp = pourcentageDropOrEnPlus;
                 break;
             
             case "CommuneDrop":
                 Debug.Log("Augmente le taux de drop des dents communes");
+                dropSupp = nombreDentDropEnPlus;
                 break;
             
             case "FenteAP":
