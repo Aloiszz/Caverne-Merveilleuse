@@ -84,8 +84,16 @@ public class PlayerController : MonoBehaviour
 
         if (life == 0)
         {
-            Destroy(gameObject);
-            Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity);
+            if (ItemManager.instance.nbVieEnPlus >= 1)
+            {
+                life = lifeDepard / 2;
+                ItemManager.instance.nbVieEnPlus -= 1;
+            }
+            else
+            {
+                Destroy(gameObject);
+                Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity); 
+            }
         }
     }
 

@@ -23,13 +23,16 @@ public class Mechant : MonoBehaviour
     [Header("Loot")]
     public GameObject dent;
     public GameObject goldenDent;
+    public GameObject coeur;
     public int maxDentDrop;
     public int pourcentageDropOr;
+    public int pourcentageDropCoeur;
     
     [HideInInspector] public bool invokeByBoss;
     private ItemManager itemManager;
     private float buffAtk;
     private float buffCritique;
+    private float buffByDash;
     
 
 
@@ -87,6 +90,11 @@ public class Mechant : MonoBehaviour
                 {
                     Instantiate(goldenDent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
                 }
+                
+                if (Random.Range(1, 101) >= 100 - (pourcentageDropCoeur + itemManager.dropCoeurSupp) && pourcentageDropCoeur != 0)
+                {
+                    Instantiate(coeur, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
+                }
             }
 
             Destroy(gameObject);
@@ -97,15 +105,17 @@ public class Mechant : MonoBehaviour
     {
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
         {
+            buffByDash = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.dashBuff;
             buffAtk = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATKCritique;
-            life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage + buffAtk + buffCritique;
+            life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage + buffAtk + buffCritique + buffByDash;
         }
         else
         {
+            buffByDash = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.dashBuff;
             buffAtk = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATKCritique;
-            life -= PlayerLightAttack.instance.playerLightAttack.lightDamage + buffAtk + buffCritique;
+            life -= PlayerLightAttack.instance.playerLightAttack.lightDamage + buffAtk + buffCritique + buffByDash;
         }
         
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);

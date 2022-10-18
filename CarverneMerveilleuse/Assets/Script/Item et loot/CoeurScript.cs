@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class CoeurScript : MonoBehaviour
 {
-    private PlayerController player; 
-    private UIManager ui;
+    private PlayerController player;
     public float distanceToGet;
-    [SerializeField] public bool golden;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        ui = GameObject.Find("UIManager").GetComponent<UIManager>();
     }
 
     private void Update()

@@ -9,7 +9,15 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int dropSupp;
     [HideInInspector] public int dropOrSupp;
+    [HideInInspector] public int dropCoeurSupp;
+    [HideInInspector] public int dashBuff;
+    [HideInInspector] public float initialSpeed;
+    [HideInInspector] public int nbVieEnPlus;
+    private bool canCrit;
+    private bool canDashBuff;
     private PlayerController player;
+
+    public static ItemManager instance;
     
     [Header("Arme Principal")]
     public float pourcentageBuffDegats = 20;
@@ -24,14 +32,30 @@ public class ItemManager : MonoBehaviour
     public float pourcentageBuffATKDuSeuilVie;
 
     [Header("Dash")] 
+    public int pourcentageAttaqueEnPlusPostDash = 10;
+    public int pourcentageSpeedEnPlusPostDash = 20;
+
     [Header("Drop")] 
     public int nombreDentDropEnPlus = 2;
     public int pourcentageDropOrEnPlus;
+    public int pourcentageDropCoeurEnPlus = 10;
 
-
+    private void Awake()
+    {
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this;
+        } 
+    }
     private void Start()
     {
-        player = GameObject.FindWithTag("PLayer").GetComponent<PlayerController>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        Debug.Log(player);
+        initialSpeed = player.speedMovement;
     }
 
     public void OnBuy(string itemName)
@@ -82,10 +106,7 @@ public class ItemManager : MonoBehaviour
             
             case "SeuilPV":
                 Debug.Log("Augmente les dégâts quand les PV passent en dessous d'un certain seuil");
-                if (player.life <= player.lifeDepard / pourcentageVieForCritique)
-                {
-                    buffATKCritique = pourcentageBuffATKDuSeuilVie / 100;
-                }
+                canCrit = true;
                 break;
             
             case "BouclierPV":
@@ -106,6 +127,7 @@ public class ItemManager : MonoBehaviour
             
             case "PVDrop":
                 Debug.Log("Augmente le taux de drop de PV");
+                dropCoeurSupp = pourcentageDropCoeurEnPlus;
                 break;
             
             case "ArgentDrop":
@@ -148,6 +170,7 @@ public class ItemManager : MonoBehaviour
             
             case "SecondeviePV":
                 Debug.Log("Quand votre vie tombe à zéro, elle remonte jusqu'à la moitié de la jauge de vie (une seule fois par game)");
+                nbVieEnPlus += 1;
                 break;
             
             case "PetroleDash":
@@ -156,7 +179,33 @@ public class ItemManager : MonoBehaviour
             
             case "VitesseDegatsDash":
                 Debug.Log("Votre vitesse de déplacement et vos dégâts sont augmentés après un dash");
+                canDashBuff = true;
                 break;
         }
     }
+
+    private void Update()
+    {
+        if (player.life <= player.lifeDepard / pourcentageVieForCritique && canCrit)
+        {
+            buffATKCritique = pourcentageBuffATKDuSeuilVie / 100;
+        }
+        else
+        {
+            buffATKCritique = 0;
+        }
+
+        if (!player.playerSO.isDash && canDashBuff)
+        {
+            player.speedMovement = initialSpeed * (pourcentageSpeedEnPlusPostDash / 100);
+            dashBuff = pourcentageAttaqueEnPlusPostDash / 100;
+        }
+        else
+        {
+            player.speedMovement = initialSpeed;
+            dashBuff = 0;
+        }
+    }
+
+    
 }
