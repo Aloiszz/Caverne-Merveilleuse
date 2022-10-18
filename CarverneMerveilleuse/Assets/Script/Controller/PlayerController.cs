@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int lifeDepard;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     private void Awake()
@@ -120,6 +121,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.Play("profil idle");
         }
+
+        if (Input.GetKey(KeyCode.Q)) spriteRenderer.flipX = true;
+        else if (Input.GetKey(KeyCode.Q)) spriteRenderer.flipX = true;
+        
     }
 
     private void GameMove()
