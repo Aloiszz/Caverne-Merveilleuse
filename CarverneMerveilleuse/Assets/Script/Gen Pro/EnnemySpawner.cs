@@ -34,11 +34,11 @@ public class EnnemySpawner : MonoBehaviour
         spawnPointPosition = GameObject.FindGameObjectsWithTag("SpawnEnnemy");
         spawnPointPosition.ToList();
 
-        for (int i = 0; i < 2; i++)
+        /*for (int i = 0; i < 2; i++)
         {
             rand = Random.Range(0, spawnPointPosition.Length);
-            Instantiate(EnnemyManager.instance.spider, spawnPointPosition[rand].transform.position, quaternion.identity, childSlot.transform);
-        }
+            Instantiate(EnnemyManager.instance.spider, spawnPointPosition[rand].transform.position, quaternion.identity);
+        }*/
         
     }
 }

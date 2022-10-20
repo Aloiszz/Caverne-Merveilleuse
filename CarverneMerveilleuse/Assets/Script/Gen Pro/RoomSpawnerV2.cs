@@ -156,25 +156,25 @@ public class RoomSpawnerV2 : MonoBehaviour
             case Direction.Top :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateDown.Count);
                 Instantiate(RoomManager.instance.roomTemplateDown[rand], new Vector3(0,0,0),
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;  
             
             case Direction.Down :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateTop.Count);
                 Instantiate(RoomManager.instance.roomTemplateTop[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Right :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateLeft.Count);
                 Instantiate(RoomManager.instance.roomTemplateLeft[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Left :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateRight.Count);
                 Instantiate(RoomManager.instance.roomTemplateRight[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
         }
     }
