@@ -83,7 +83,10 @@ public class PlayerController : MonoBehaviour
         /*animator.SetFloat("speedX", rb.velocity.x);
         animator.SetFloat("speedY", rb.velocity.y);*/
 
-        //healthBar.fillAmount = life / lifeDepard;
+        if (life > lifeDepard)
+        {
+            life = lifeDepard;
+        }
         Dash();
 
         if (life == 0)

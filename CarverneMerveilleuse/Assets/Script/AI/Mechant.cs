@@ -19,6 +19,7 @@ public class Mechant : MonoBehaviour
     public float linearDragDeceleration;
     public float linearDragMultiplier;
     public float forcelightDamage;
+    private float initialforcelightDamage;
     
     [Header("Loot")]
     public GameObject dent;
@@ -38,6 +39,7 @@ public class Mechant : MonoBehaviour
 
     void Start()
     {
+        initialforcelightDamage = forcelightDamage;
         buffAtk = 0;
         lifeDepart = life;
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -110,6 +112,7 @@ public class Mechant : MonoBehaviour
             buffCritique = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage + buffAtk + buffCritique + buffByDash;
             player.life += itemManager.regenVie;
+            forcelightDamage += itemManager.puissancePush;
         }
         else
         {
@@ -117,9 +120,11 @@ public class Mechant : MonoBehaviour
             buffAtk = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.playerLightAttack.lightDamage + buffAtk + buffCritique + buffByDash;
+            player.life += itemManager.regenVie;
         }
         
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
+        forcelightDamage = initialforcelightDamage;
     }
 
 }

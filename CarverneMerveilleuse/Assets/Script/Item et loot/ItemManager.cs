@@ -5,15 +5,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [HideInInspector] public float buffATK;
-    [HideInInspector] public float buffATKCritique;
-    [HideInInspector] public int dropSupp;
-    [HideInInspector] public int dropOrSupp;
-    [HideInInspector] public int dropCoeurSupp;
-    [HideInInspector] public int dashBuff;
-    [HideInInspector] public float initialSpeed;
-    [HideInInspector] public int nbVieEnPlus;
-    [HideInInspector] public int regenVie;
+    
     private bool canCrit;
     private bool canDashBuff;
     private PlayerController player;
@@ -21,26 +13,39 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
     
     [Header("Arme Principal")]
-    public float pourcentageBuffDegats = 20;
-    public int nbPVRecupVie = 1;
+    public float degatsAP = 20;
+    [HideInInspector] public float buffATK;
+    public float pushAP = 50;
+    [HideInInspector] public float puissancePush;
+    public float cooldownAP = 0.5f;
+    [HideInInspector] public float endComboSoustracteur;
+    public int recupereVieAP = 1;
+    [HideInInspector] public int regenVie;
     
     [Header("Arme Beyblade")]
     
     [Header("Arme lancé de faux")]
     
     [Header("PV")]
-    public int nbPVEnPlus = 2;
-    public int pourcentageVieForCritique = 10;
-    public float pourcentageBuffATKDuSeuilVie;
+    public int MaxPV = 2;
+    public int pourcentageVieForSeuilPV = 10;
+    public float pourcentageBuffATKDuSeuilPV;
+    [HideInInspector] public float buffATKCritique;
+    [HideInInspector] public int nbVieEnPlus;
 
     [Header("Dash")] 
     public int pourcentageAttaqueEnPlusPostDash = 10;
+    [HideInInspector] public int dashBuff;
     public int pourcentageSpeedEnPlusPostDash = 20;
+    [HideInInspector] public float initialSpeed;
 
     [Header("Drop")] 
     public int nombreDentDropEnPlus = 2;
+    [HideInInspector] public int dropSupp;
     public int pourcentageDropOrEnPlus;
+    [HideInInspector] public int dropOrSupp;
     public int pourcentageDropCoeurEnPlus = 10;
+    [HideInInspector] public int dropCoeurSupp;
 
     private void Awake()
     {
@@ -64,16 +69,18 @@ public class ItemManager : MonoBehaviour
         switch (itemName)
         {
             case "DegatsAP":
-                buffATK = pourcentageBuffDegats / 100;
-                Debug.Log("augmenter attaque");
+                buffATK = degatsAP / 100;
+                //Debug.Log("augmenter attaque");
                 break;
             
             case "CooldownAP":
-                Debug.Log("Baisse le cooldown");
+                //Debug.Log("Baisse le cooldown");
+                endComboSoustracteur = cooldownAP;
                 break;
             
             case "PushAP":
-                Debug.Log("Le 3ème coup push les ennemis");
+                //Debug.Log("Le 3ème coup push les ennemis");
+                puissancePush = pushAP;
                 break;
             
             case "PortéeAB":
@@ -101,12 +108,12 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "MaxPV":
-                Debug.Log("Augmente le max PV");
-                player.lifeDepard += nbPVEnPlus;
+                //Debug.Log("Augmente le max PV");
+                player.lifeDepard += MaxPV;
                 break;
             
             case "SeuilPV":
-                Debug.Log("Augmente les dégâts quand les PV passent en dessous d'un certain seuil");
+                //Debug.Log("Augmente les dégâts quand les PV passent en dessous d'un certain seuil");
                 canCrit = true;
                 break;
             
@@ -127,17 +134,17 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "PVDrop":
-                Debug.Log("Augmente le taux de drop de PV");
+                //Debug.Log("Augmente le taux de drop de PV");
                 dropCoeurSupp = pourcentageDropCoeurEnPlus;
                 break;
             
             case "ArgentDrop":
-                Debug.Log("Augmente le taux de drop des dents en argent");
+                //Debug.Log("Augmente le taux de drop des dents en argent");
                 dropOrSupp = pourcentageDropOrEnPlus;
                 break;
             
             case "CommuneDrop":
-                Debug.Log("Augmente le taux de drop des dents communes");
+                //Debug.Log("Augmente le taux de drop des dents communes");
                 dropSupp = nombreDentDropEnPlus;
                 break;
             
@@ -146,8 +153,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "RecupereVieAP":
-                Debug.Log("A chaque fois que vous attaquez avec cette attaque, vous récupérez un pourcentage de vie en fonction des dégâts infligé");
-                regenVie = nbPVRecupVie;
+                //Debug.Log("A chaque fois que vous attaquez avec cette attaque, vous récupérez un pourcentage de vie en fonction des dégâts infligé");
+                regenVie = recupereVieAP;
                 break;
             
             case "InvincibleAB":
@@ -171,7 +178,7 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "SecondeviePV":
-                Debug.Log("Quand votre vie tombe à zéro, elle remonte jusqu'à la moitié de la jauge de vie (une seule fois par game)");
+                //Debug.Log("Quand votre vie tombe à zéro, elle remonte jusqu'à la moitié de la jauge de vie (une seule fois par game)");
                 nbVieEnPlus += 1;
                 break;
             
@@ -180,7 +187,7 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "VitesseDegatsDash":
-                Debug.Log("Votre vitesse de déplacement et vos dégâts sont augmentés après un dash");
+                //Debug.Log("Votre vitesse de déplacement et vos dégâts sont augmentés après un dash");
                 canDashBuff = true;
                 break;
         }
@@ -188,9 +195,9 @@ public class ItemManager : MonoBehaviour
 
     private void Update()
     {
-        if (player.life <= player.lifeDepard / pourcentageVieForCritique && canCrit)
+        if (player.life <= player.lifeDepard / pourcentageVieForSeuilPV && canCrit)
         {
-            buffATKCritique = pourcentageBuffATKDuSeuilVie / 100;
+            buffATKCritique = pourcentageBuffATKDuSeuilPV / 100;
         }
         else
         {
