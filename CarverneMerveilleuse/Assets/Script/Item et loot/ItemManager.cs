@@ -13,6 +13,7 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public int dashBuff;
     [HideInInspector] public float initialSpeed;
     [HideInInspector] public int nbVieEnPlus;
+    [HideInInspector] public int regenVie;
     private bool canCrit;
     private bool canDashBuff;
     private PlayerController player;
@@ -21,6 +22,7 @@ public class ItemManager : MonoBehaviour
     
     [Header("Arme Principal")]
     public float pourcentageBuffDegats = 20;
+    public int nbPVRecupVie = 1;
     
     [Header("Arme Beyblade")]
     
@@ -54,7 +56,6 @@ public class ItemManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        Debug.Log(player);
         initialSpeed = player.speedMovement;
     }
 
@@ -146,6 +147,7 @@ public class ItemManager : MonoBehaviour
             
             case "RecupereVieAP":
                 Debug.Log("A chaque fois que vous attaquez avec cette attaque, vous récupérez un pourcentage de vie en fonction des dégâts infligé");
+                regenVie = nbPVRecupVie;
                 break;
             
             case "InvincibleAB":

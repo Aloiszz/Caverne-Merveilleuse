@@ -109,6 +109,7 @@ public class Mechant : MonoBehaviour
             buffAtk = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage + buffAtk + buffCritique + buffByDash;
+            player.life += itemManager.regenVie;
         }
         else
         {
