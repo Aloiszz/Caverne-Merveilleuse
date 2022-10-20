@@ -31,6 +31,21 @@ public class Room : MonoBehaviour
     }
     
     
+    
+    
+    void FadeInRoom()
+    {
+        gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var k in i)
+        {
+            k.DOFade(0, 0);
+            k.DOFade(0.9f, 0.7f);
+        }
+        
+        gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
+        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+    }
     public void CreateGoldenPath()
     {
         isGoldenPath = true;
@@ -67,7 +82,6 @@ public class Room : MonoBehaviour
         }
         
     }
-    
     public void CreateAlternativePath()
     {
         foreach (GameObject x in AlternativeDoor)
@@ -79,19 +93,5 @@ public class Room : MonoBehaviour
             }
         }
     }
-
-
-    void FadeInRoom()
-    {
-        gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var k in i)
-        {
-            k.DOFade(0, 0);
-            k.DOFade(0.9f, 0.7f);
-        }
-        
-        gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
-        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
-    }
+    
 }

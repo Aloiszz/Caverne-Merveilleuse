@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
@@ -82,8 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("speedX", rb.velocity.x);
-        animator.SetFloat("speedY", rb.velocity.y);
+        /*animator.SetFloat("speedX", rb.velocity.x);
+        animator.SetFloat("speedY", rb.velocity.y);*/
 
         //healthBar.fillAmount = life / lifeDepard;
         Dash();
