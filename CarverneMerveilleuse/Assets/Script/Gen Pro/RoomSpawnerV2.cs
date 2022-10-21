@@ -37,38 +37,22 @@ public class RoomSpawnerV2 : MonoBehaviour
             case Direction.Top :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointTop");
                 porteQuiFautDetruire = 1; // TOP
-
-                /*if (spawnpoint == null)
-                {
-                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointDown");
-                }*/
+                
                 break;
             
             case Direction.Down :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointDown");
                 porteQuiFautDetruire = 0; // Down
-                /*if (spawnpoint == null)
-                {
-                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointTop");
-                }*/
                 break;
             
             case Direction.Right :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointRight");
                 porteQuiFautDetruire = 3; // RIGHT
-                /*if (spawnpoint == null)
-                {
-                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointLeft");
-                }*/
                 break;
             
             case Direction.Left :
                 spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointLeft");    
                 porteQuiFautDetruire = 2; //LEFT
-                /*if (spawnpoint == null)
-                {
-                    spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointRight");
-                }*/
                 break;
             
         }
@@ -78,11 +62,11 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            ProceduralGeneration();
+            ProceduralGeneration(); //Entre en contact avec une porte
         } 
     }
     
-    //----------------------- Room Generattion -----------------
+    //----------------------- Room Generation -----------------
 
     void ProceduralGeneration()
     {
@@ -147,7 +131,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         }
         else
         {
-            Debug.Log("UN Boss apparait");
+            Debug.Log("Une Salle Boss apparait");
             InstatiateBossRoom();
             SpawnPointLocation();
             TeleportPlayerToNextRoom();
@@ -172,29 +156,25 @@ public class RoomSpawnerV2 : MonoBehaviour
             case Direction.Top :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateDown.Count);
                 Instantiate(RoomManager.instance.roomTemplateDown[rand], new Vector3(0,0,0),
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                SpawnEnnemy();
+                    Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;  
             
             case Direction.Down :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateTop.Count);
                 Instantiate(RoomManager.instance.roomTemplateTop[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                SpawnEnnemy();
+                    Quaternion.identity).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Right :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateLeft.Count);
                 Instantiate(RoomManager.instance.roomTemplateLeft[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                SpawnEnnemy();
+                    Quaternion.identity).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Left :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateRight.Count);
                 Instantiate(RoomManager.instance.roomTemplateRight[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-                SpawnEnnemy();
+                    Quaternion.identity).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
         }
     }
@@ -227,11 +207,8 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemoryDirectionIndex--;
         
         RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
-        //PlayerController.instance.transform.position -= new Vector3(10,0,0);
-        
         
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
-        //RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemory.Count - 1);
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
     }
 
@@ -248,12 +225,6 @@ public class RoomSpawnerV2 : MonoBehaviour
     
 
     #endregion
-
-    //----------------------- Spawn Ennemy Region-----------------
-    void SpawnEnnemy()
-    {
-        
-    }
     
     //----------------------- Alternative Path Region-----------------
 
