@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
 
@@ -15,7 +16,8 @@ public class Room : MonoBehaviour
     private void Start()
     {
         FadeInRoom();
-        
+        //FindCameraBorder();
+
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         if (AlternativeDoor.Count > 1)
         {
@@ -29,10 +31,14 @@ public class Room : MonoBehaviour
         CreateAlternativePath();
         
     }
-    
-    
-    
-    
+
+
+    public void FindCameraBorder()
+    {
+        Collider2D col = gameObject.transform.Find("CameraCollision").GetComponent<Collider2D>();
+        Debug.Log(col);
+        GetComponent<CinemachineConfiner>().m_BoundingShape2D = col;
+    }
     void FadeInRoom()
     {
         gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
