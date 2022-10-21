@@ -26,11 +26,12 @@ public class ShopScript : MonoBehaviour
     public List<GameObject> listItem;
     public List<GameObject> listMerveilleux;
 
-    public bool test;
+    public bool Exittest;
 
     private void Update()
     {
-        if (test)
+        
+        if (Exittest)
         {
             OnExit();
         }
@@ -98,6 +99,6 @@ public class ShopScript : MonoBehaviour
             listItem.Add(stockageMeveilleuxShop[1]);
         }
         
-        test = false;
+        Exittest = false;
     }
 }
