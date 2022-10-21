@@ -96,6 +96,6 @@ public class PlayerLightAttack : MonoBehaviour
         PlayerAttackCollision.instance.sprite.enabled = false;
         PlayerAttackCollision.instance.coll.enabled = false;
         playerLightAttack.isCoolDown = false;
-        yield return new WaitForSeconds(playerLightAttack.coolDownEndCombo);
+        yield return new WaitForSeconds(playerLightAttack.coolDownEndCombo - ItemManager.instance.endComboSoustracteur);
     }
 }

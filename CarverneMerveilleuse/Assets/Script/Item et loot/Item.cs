@@ -35,7 +35,6 @@ public class Item : MonoBehaviour
     }
     private void Update()
     {
-        
         if ((player.transform.position - transform.position).magnitude <= 2)
         {
             canvasItem.transform.parent = transform;
