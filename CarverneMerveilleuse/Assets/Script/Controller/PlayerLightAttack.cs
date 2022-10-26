@@ -51,9 +51,12 @@ public class PlayerLightAttack : MonoBehaviour
                 if (countInput <= playerLightAttack.combo)
                 {
                     StartCoroutine(CoolDown());
+                    
                 }
                 else
                 {
+                    CinemachineCameraZoom.instance.CameraZoom(8f, 0.1f, 0.8f);
+                    CinemachineShake.instance.ShakeCamera(10,10,0.5f);
                     StartCoroutine(CoolDownEndCombo());
                     countInput = 0;
                 }

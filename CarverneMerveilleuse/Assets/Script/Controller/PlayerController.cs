@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D coll;
 
-    public List<Vector2> lastMovement;
+    [HideInInspector]public List<Vector2> lastMovement;
     private string strMovement;
     
     [Header("Singleton")]
@@ -24,13 +24,14 @@ public class PlayerController : MonoBehaviour
     public GameObject deathBloodPS;
     public GameObject bloodPS;
     public Image healthBar;
-    public float speedMovement;
-    private float dashForce;
-    public float dashReload;
-    public float dashInvinsibleTime;
-    public int life;
-    public float linearDragDeceleration;
-    public float linearDragMultiplier;
+    
+    [HideInInspector]public float speedMovement;
+    [HideInInspector]public float dashForce;
+    [HideInInspector]public float dashReload;
+    [HideInInspector]public float dashInvinsibleTime;
+    [HideInInspector]public int life;
+    [HideInInspector]public float linearDragDeceleration;
+    [HideInInspector]public float linearDragMultiplier;
     [HideInInspector] public int lifeDepard;
 
     [SerializeField] private Animator animator;
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         GameMove(); // Physics movements
         
-        rb.drag = playerSO.linearDragDeceleration * playerSO.linearDragMultiplier;
+        rb.drag = linearDragDeceleration * linearDragMultiplier;
     }
 
     private void Update()
@@ -173,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && playerSO.isDash)
         {
-            rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * playerSO.dashForce);
+            rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
             StartCoroutine(DashInvinsibleTimer());
             lastMovement.Clear();
@@ -182,13 +183,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator DashReload()
     {
         playerSO.isDash = false;
-        yield return new WaitForSeconds(playerSO.dashReload);
+        yield return new WaitForSeconds(dashReload);
         playerSO.isDash = true;
     }
     IEnumerator DashInvinsibleTimer()
     {
         coll.enabled = false;
-        yield return new WaitForSeconds(playerSO.dashInvinsibleTime);
+        yield return new WaitForSeconds(dashInvinsibleTime);
         coll.enabled = true;
     }
     

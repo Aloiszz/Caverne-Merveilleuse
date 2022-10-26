@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 79625110420020027}
   - component: {fileID: 79625110420020029}
   - component: {fileID: 4825069532071953669}
+  - component: {fileID: 245021141579859556}
   - component: {fileID: 2305777225139207135}
   - component: {fileID: 5199127943103591038}
+  - component: {fileID: 79625110100545835}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -106,6 +108,17 @@ MonoBehaviour:
   lastMovement: []
   deathBloodPS: {fileID: 268355469034774027, guid: 8f82fff7ac021ec4cbb4a68d62a44cea, type: 3}
   bloodPS: {fileID: 5816967078158904841, guid: 598d5b4fd2f5ade4baa7727fc8478daf, type: 3}
+  healthBar: {fileID: 0}
+  speedMovement: 0
+  dashForce: 0
+  dashReload: 0
+  dashInvinsibleTime: 0
+  life: 0
+  linearDragDeceleration: 0
+  linearDragMultiplier: 0
+  lifeDepard: 0
+  animator: {fileID: 79625110100545835}
+  spriteRenderer: {fileID: 79625110420020027}
 --- !u!114 &4825069532071953669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +135,18 @@ MonoBehaviour:
   countInput: 0
   activate: 0
   timerRemainingStored: 0
+--- !u!114 &245021141579859556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79625110420020024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10daf23b6436b34ab560913610c2539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &2305777225139207135
 Rigidbody2D:
   serializedVersion: 4
@@ -169,6 +194,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &79625110100545835
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79625110420020024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdeb304a3e36d6344b2d82a516816386, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1812093167853577832
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +740,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -17
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b53fcc88d174957469b183db7408a559, type: 3}
   m_Color: {r: 0.9622642, g: 0.077162705, b: 0.077162705, a: 0.39607844}
   m_FlipX: 0
@@ -842,7 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5582292409906248164}
   m_Layer: 0
-  m_Name: FAce
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
