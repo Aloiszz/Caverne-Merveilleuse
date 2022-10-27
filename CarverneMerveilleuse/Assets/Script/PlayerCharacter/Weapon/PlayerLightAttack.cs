@@ -88,11 +88,10 @@ public class PlayerLightAttack : MonoBehaviour
     {
         LightAttack();
         mouseWorldPosition = Camera.main.WorldToScreenPoint(transform.position);
-        
         TimeRemaining(activate);
     }
 
-    private void LightAttack()
+    public void LightAttack()
     {
         if (!isCoolDown)
         {

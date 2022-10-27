@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 79625110420020026}
   - component: {fileID: 79625110420020027}
+  - component: {fileID: 174963601460665254}
   - component: {fileID: 79625110420020029}
   - component: {fileID: 4825069532071953669}
   - component: {fileID: 245021141579859556}
@@ -92,6 +93,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &174963601460665254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79625110420020024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00c27288e86c0749952cf729c146faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &79625110420020029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSO: {fileID: 11400000, guid: 18cb5be2f6329444bb02c3a7e183a6ea, type: 2}
+  rb: {fileID: 0}
   lastMovement: []
   deathBloodPS: {fileID: 268355469034774027, guid: 8f82fff7ac021ec4cbb4a68d62a44cea, type: 3}
   bloodPS: {fileID: 5816967078158904841, guid: 598d5b4fd2f5ade4baa7727fc8478daf, type: 3}

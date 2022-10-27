@@ -9,6 +9,7 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     public int countInput = 0;
     public bool activate = false;
+    public GameObject AttackCollision;
 
     public static PlayerHeavyAttack instance;
     
@@ -47,12 +48,12 @@ public class PlayerHeavyAttack : MonoBehaviour
     }
     void Start()
     {
+        AttackCollision = GameObject.FindGameObjectWithTag("AttackCollision");
         SecureSO();
     }
     private void Update()
     {
         HeavyAttack();
-        
         TimeRemaining(activate);
     }
     void SecureSO()
@@ -71,23 +72,27 @@ public class PlayerHeavyAttack : MonoBehaviour
         timerLightCloseDamage = playerHeavyAttack.timerLightCloseDamage;
     }
 
-    void HeavyAttack()
+    public void HeavyAttack()
     {
         if (!isCoolDown)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("Hello");
                 activate = false;
                 countInput++;
                 if (countInput <= numberOfTurn[numberOfTurnIndex])
                 {
-                    StartCoroutine(CoolDown());
+                    StartCoroutine(Turn());
                     if (countInput == numberOfTurn[numberOfTurnIndex])
                     {
                         CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
                         CinemachineShake.instance.ShakeCamera(3,3,0.5f);
                     }
+                }
+                else
+                {
+                    StartCoroutine(CoolDown());
+                    countInput = 0;
                 }
             }
         }
@@ -112,6 +117,15 @@ public class PlayerHeavyAttack : MonoBehaviour
     }
     
     IEnumerator CoolDown()
+    {
+        PlayerAttackCollision.instance.sprite.enabled = false;
+        PlayerAttackCollision.instance.coll.enabled = false;
+        isCoolDown = true;
+        yield return new WaitForSeconds(coolDown[coolDownIndex]); //- ItemManager.instance.endComboSoustracteur
+        isCoolDown = false;
+    }
+
+    IEnumerator Turn()
     {
         PlayerAttackCollision.instance.sprite.enabled = true;
         PlayerAttackCollision.instance.coll.enabled = true;
