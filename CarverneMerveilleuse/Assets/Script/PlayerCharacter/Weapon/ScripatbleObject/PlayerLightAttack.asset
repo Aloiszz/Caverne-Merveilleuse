@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Player_LightAttack
   isStriking: 0
   isCoolDown: 0
-  lightDamage: 15
-  lastLightDamage: 30
-  coolDown: 0.2
-  coolDownEndCombo: 1
+  lightDamage:
+  - 15
+  lightDamageIndex: 0
+  lastLightDamage:
+  - 30
+  lastLightDamageIndex: 0
+  pushEnnemy: 0
+  coolDown:
+  - 0.2
+  coolDownIndex: 0
+  coolDownEndCombo:
+  - 1
+  coolDownEndComboIndex: 0
   timerRemaining: 1.2
   combo: 3
   intensityLightCloseDamage: 1

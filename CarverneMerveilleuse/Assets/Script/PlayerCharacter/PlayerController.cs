@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player config")]
     public SO_PlayerController playerSO;
 
-    private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     private Collider2D coll;
 
     [HideInInspector]public List<Vector2> lastMovement;

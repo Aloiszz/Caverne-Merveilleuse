@@ -10,12 +10,18 @@ public class SO_PlayerLightAttack : ScriptableObject
     public bool isCoolDown = false;
     
     [Header("Damage")]
-    public float lightDamage;
-    public float lastLightDamage;
-
+    public List<float> lightDamage;
+    public int lightDamageIndex;
+    public List<float> lastLightDamage;
+    public int lastLightDamageIndex;
+    
+    public bool pushEnnemy = false;
+    
     [Header("Combo")]
-    public float coolDown; // temps entre chaque coups
-    public float coolDownEndCombo; // temps entre chaque combo
+    public List<float> coolDown; // temps entre chaque coups
+    public int coolDownIndex;
+    public List<float> coolDownEndCombo; // temps entre chaque combo
+    public int coolDownEndComboIndex;
     public float timerRemaining; // temps restant entre chaque coup pour arriver au combo
     public int combo; //nombre de coup que peut enchainner le joueur avant le coolDown final
 

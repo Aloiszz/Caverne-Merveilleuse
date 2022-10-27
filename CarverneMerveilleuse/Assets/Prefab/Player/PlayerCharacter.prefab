@@ -135,6 +135,10 @@ MonoBehaviour:
   countInput: 0
   activate: 0
   timerRemainingStored: 0
+  lightDamage: []
+  lightDamageIndex: 0
+  lastLightDamage: []
+  lastLightDamageIndex: 0
 --- !u!114 &245021141579859556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10daf23b6436b34ab560913610c2539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHeavyAttack: {fileID: 11400000, guid: 4e23314f660869043bc066a681921328, type: 2}
+  countInput: 0
+  activate: 0
+  heavyDamage: []
+  heavyDamageIndex: 0
 --- !u!50 &2305777225139207135
 Rigidbody2D:
   serializedVersion: 4

@@ -107,19 +107,19 @@ public class Mechant : MonoBehaviour
     {
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
         {
-            buffByDash = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.dashBuff;
-            buffAtk = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATK;
-            buffCritique = PlayerLightAttack.instance.playerLightAttack.lastLightDamage * itemManager.buffATKCritique;
-            life -= PlayerLightAttack.instance.playerLightAttack.lastLightDamage + buffAtk + buffCritique + buffByDash;
+            buffByDash = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.dashBuff;
+            buffAtk = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATK;
+            buffCritique = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATKCritique;
+            life -= PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] + buffAtk + buffCritique + buffByDash;
             player.life += itemManager.regenVie;
             forcelightDamage += itemManager.puissancePush;
         }
         else
         {
-            buffByDash = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.dashBuff;
-            buffAtk = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATK;
-            buffCritique = PlayerLightAttack.instance.playerLightAttack.lightDamage * itemManager.buffATKCritique;
-            life -= PlayerLightAttack.instance.playerLightAttack.lightDamage + buffAtk + buffCritique + buffByDash;
+            buffByDash = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.dashBuff;
+            buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
+            buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
+            life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash;
             player.life += itemManager.regenVie;
         }
         
