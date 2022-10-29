@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         lifeDepard = life;
     }
 
-    void SecureSO()
+    public void SecureSO()
     {
         speedMovement = playerSO.speedMovement;
         dashForce = playerSO.dashForce;

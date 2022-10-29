@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00c27288e86c0749952cf729c146faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pressed: 0
 --- !u!114 &79625110420020029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +169,9 @@ MonoBehaviour:
   playerHeavyAttack: {fileID: 11400000, guid: 4e23314f660869043bc066a681921328, type: 2}
   countInput: 0
   activate: 0
+  zoomSize: 8
+  timeToArrive: 1.5
+  timeToComeBack: 0.1
   heavyDamage: []
   heavyDamageIndex: 0
 --- !u!50 &2305777225139207135
@@ -703,7 +707,7 @@ GameObject:
   - component: {fileID: 353566256}
   m_Layer: 0
   m_Name: AttackCollision
-  m_TagString: Untagged
+  m_TagString: AttackCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -774,7 +778,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &5493268261970453393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -790,8 +794,8 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.49, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.015625, y: 0.015625, z: 0.015625, w: 0.015625}
-    pivot: {x: 0.014596076, y: 0.4988685}
+    border: {x: 0.0078125, y: 0.015625, z: 0.015625, w: 0.015625}
+    pivot: {x: 0, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
