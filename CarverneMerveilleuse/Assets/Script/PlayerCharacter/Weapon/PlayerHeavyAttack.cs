@@ -66,7 +66,6 @@ public class PlayerHeavyAttack : MonoBehaviour
     private void Update()
     {
         HeavyAttack();
-        TimeRemaining(activate);
     }
     void SecureSO()
     {
@@ -106,21 +105,6 @@ public class PlayerHeavyAttack : MonoBehaviour
                 CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
                 StartCoroutine(Turn());
                 activate = false;
-                //countInput++;
-                
-                
-                /*if (countInput <= numberOfTurn[numberOfTurnIndex])
-                {
-                    if (countInput == numberOfTurn[numberOfTurnIndex])
-                    {
-                        CinemachineShake.instance.ShakeCamera(3,3,0.5f);
-                    }
-                }
-                else
-                {
-                    
-                    //countInput = 0;
-                }*/
             }
         }
         if (isStriking)
@@ -130,28 +114,7 @@ public class PlayerHeavyAttack : MonoBehaviour
                 frequencyLightCloseDamage ,timerLightCloseDamage);
         }
     }
-    private void TimeRemaining(bool activate)
-    {
-        if (activate && timerRemaining >= 0)
-        {
-            timerRemaining -= Time.deltaTime;
-        }
-
-        if (timerRemaining <= 0)
-        {
-            countInput = 0;
-        }
-    }
     
-    IEnumerator CoolDown()
-    {
-        PlayerAttackCollision.instance.sprite.enabled = false;
-        PlayerAttackCollision.instance.coll.enabled = false;
-        isCoolDown = true;
-        yield return new WaitForSeconds(timerRemaining);
-        isCoolDown = false;
-    }
-
     IEnumerator Turn()
     {
         PrepTrourne();
@@ -159,12 +122,10 @@ public class PlayerHeavyAttack : MonoBehaviour
         yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);
         
         Tourne();
-        
-        yield return new WaitForSeconds(coolDown[coolDownIndex]);
+
+        yield return new WaitForSeconds(timerRemaining);
         
         FinTourne();
-
-        //StartCoroutine(CoolDown());
     }
 
     void PrepTrourne()
@@ -172,29 +133,48 @@ public class PlayerHeavyAttack : MonoBehaviour
         PlayerController.instance.speedMovement /= 2;
     }
 
+    //private int i;
     void Tourne()
     {
-        isKeyUp = false;
-        PlayerAttackCollision.instance.sprite.enabled = true;
-        PlayerAttackCollision.instance.coll.enabled = true;
-        isCoolDown = true;
-        
-        PlayerController.instance.SecureSO();
         PlayerLightAttack.instance.enabled = false;
         PlayerController.instance.enabled = false;
         
-        Pivot.transform.DORotate(new Vector3(0, 180, -2160), coolDown[coolDownIndex]).SetEase(Ease.Linear);
+        isCoolDown = true;
+        isKeyUp = false;
+
+        
+        StartCoroutine(CoolDown());
+    }
+
+    IEnumerator CoolDown()
+    {
+        for (int i = 0; i < numberOfTurn[numberOfTurnIndex]; i++)
+        {
+            coolDownIndex = i;
+            
+            yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            HeavyAttackCollision.instance.sprite.enabled = true;
+            HeavyAttackCollision.instance.coll.enabled = true;
+    
+            yield return new WaitForSeconds(coolDown[coolDownIndex + 1]);
+
+            HeavyAttackCollision.instance.sprite.enabled = false;
+            HeavyAttackCollision.instance.coll.enabled = false;
+        }
     }
 
     void FinTourne()
     {
+        PlayerController.instance.SecureSO();
         PlayerLightAttack.instance.enabled = true;
+        PlayerController.instance.enabled = true;
+        
         isCoolDown = false;
-        PlayerAttackCollision.instance.sprite.enabled = false;
-        PlayerAttackCollision.instance.coll.enabled = false;
+        
+        HeavyAttackCollision.instance.sprite.enabled = false;
+        HeavyAttackCollision.instance.coll.enabled = false;
+        
         activate = true;
         isKeyUp = true;
-        
-        PlayerController.instance.enabled = true;
     }
 }
