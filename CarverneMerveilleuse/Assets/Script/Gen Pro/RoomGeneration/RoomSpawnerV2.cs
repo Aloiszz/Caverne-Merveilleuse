@@ -12,6 +12,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public Direction direction;
     public GameObject spawnpoint;
     public bool isAlternativeDoor;
+    public bool isShopDoor;
 
     public int porteQuiFautDetruire;
     
@@ -127,6 +128,13 @@ public class RoomSpawnerV2 : MonoBehaviour
                         TeleportPlayerToNextRoom();*/
                     }
                 }
+            }
+
+            if (isShopDoor)
+            {
+                ComeBackToTheRoom();
+                SpawnPointLocation();
+                TeleportPlayerToNextRoom(); 
             }
         }
         else
@@ -319,4 +327,19 @@ public class RoomSpawnerV2 : MonoBehaviour
     }
     #endregion
     
+    
+    //----------------------- Shop Room Region -----------------
+
+    #region Shop
+
+    public void GenerateShopRoom()
+    {
+        
+    }
+
+    void ComeBackToTheRoom()
+    {
+        
+    }
+    #endregion
 }
