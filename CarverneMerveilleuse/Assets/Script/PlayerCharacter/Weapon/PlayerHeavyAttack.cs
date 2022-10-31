@@ -132,12 +132,12 @@ public class PlayerHeavyAttack : MonoBehaviour
     {
         PlayerController.instance.speedMovement /= 2;
     }
-
-    //private int i;
+    
     void Tourne()
     {
         PlayerLightAttack.instance.enabled = false;
         PlayerController.instance.enabled = false;
+        PlayerThrowAttack.instance.enabled = false;
         
         isCoolDown = true;
         isKeyUp = false;
@@ -167,6 +167,7 @@ public class PlayerHeavyAttack : MonoBehaviour
     {
         PlayerController.instance.SecureSO();
         PlayerLightAttack.instance.enabled = true;
+        PlayerThrowAttack.instance.enabled = true;
         PlayerController.instance.enabled = true;
         
         isCoolDown = false;
