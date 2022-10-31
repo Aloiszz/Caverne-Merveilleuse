@@ -35,26 +35,39 @@ public class PlayerThrowAttack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            IsWeaponDisable(true);
+            Aim();
             
-            lineRender.gameObject.SetActive(true);
-            
-            points.Clear();
-            points.Add(transform.position);
-        
-            DoRay(PlayerController.instance.transform.position, PlayerAttackCollision.instance.difference, maxBounce, distance); 
-            lineRender.positionCount = points.Count;
-        
-            lineRender.SetPositions(points.ToArray());
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Debug.Log("Throw Weapon");
+                ThrowCollision.instance.ThrowWeapon();
+                ThrowCollision.instance.IsWeaponActive(true);
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             IsWeaponDisable(false);
+            ThrowCollision.instance.IsWeaponActive(false);
             
             lineRender.gameObject.SetActive(false);
         }
+    }
+
+
+    void Aim()
+    {
+        IsWeaponDisable(true);
+            
+        lineRender.gameObject.SetActive(true);
+            
+        points.Clear();
+        points.Add(transform.position);
         
+        DoRay(PlayerController.instance.transform.position, PlayerAttackCollision.instance.difference, maxBounce, distance); 
+        lineRender.positionCount = points.Count;
+        
+        lineRender.SetPositions(points.ToArray());
     }
 
     void DoRay(Vector3 origin, Vector3 direction, int bounceLeft, float distance)
