@@ -13,6 +13,7 @@ public class ThrowCollision : MonoBehaviour
     
 
     public static ThrowCollision instance;
+    
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -37,8 +38,22 @@ public class ThrowCollision : MonoBehaviour
 
     public void ThrowWeapon()
     {
-        rb.AddForce((PlayerAttackCollision.instance.difference), ForceMode2D.Force);
+        //rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
+
+        StartCoroutine(wait());
+        
         gameObject.transform.DORotate(new Vector3(0, 0, 2160), 3);
+    }
+
+    IEnumerator wait()
+    {
+        for (int i = 0; i < PlayerThrowAttack.instance.points.Count;)
+        {
+            gameObject.transform.DOMove(PlayerThrowAttack.instance.points[i], 0.2f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(.2f);
+
+            i++;
+        }
     }
     
     

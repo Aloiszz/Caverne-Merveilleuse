@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bloodPS;
     public Image healthBar;
     
-    [HideInInspector]public float speedMovement;
+    public float speedMovement;
     [HideInInspector]public float dashForce;
     [HideInInspector]public float dashReload;
     [HideInInspector]public float dashInvinsibleTime;

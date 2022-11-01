@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerThrowAttack : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerThrowAttack : MonoBehaviour
 
     public List<Vector3> points = new List<Vector3>();
 
+    public bool isThrow;
 
     public static PlayerThrowAttack instance;
     
@@ -33,7 +35,7 @@ public class PlayerThrowAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1) && !isThrow)
         {
             Aim();
             
@@ -41,16 +43,28 @@ public class PlayerThrowAttack : MonoBehaviour
             {
                 Debug.Log("Throw Weapon");
                 ThrowCollision.instance.ThrowWeapon();
-                ThrowCollision.instance.IsWeaponActive(true);
+                isThrow = true;
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        if (isThrow)
         {
+            PlayerController.instance.speedMovement = 110;
+            ThrowCollision.instance.IsWeaponActive(true);
+            lineRender.gameObject.SetActive(false);
+            
+            if(Input.GetKey(KeyCode.F))
+            {
+                Debug.Log("return weapon");
+                ReturnWeapon();
+            }
+        }
+        else
+        {
+            PlayerController.instance.SecureSO();
+            ThrowCollision.instance.gameObject.transform.position = PlayerController.instance.transform.position;
             IsWeaponDisable(false);
             ThrowCollision.instance.IsWeaponActive(false);
-            
-            lineRender.gameObject.SetActive(false);
         }
     }
 
@@ -120,6 +134,19 @@ public class PlayerThrowAttack : MonoBehaviour
             }
         }
         
+    }
+
+    void ReturnWeapon()
+    {
+        StartCoroutine(WaitForReturnWeapon());
+        ThrowCollision.instance.gameObject.transform.DOMove(PlayerController.instance.transform.position, 0.2f)
+            .SetEase(Ease.OutQuad);
+    }
+
+    IEnumerator WaitForReturnWeapon()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isThrow = false;
     }
 
 
