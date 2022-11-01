@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -50,6 +51,12 @@ public class RoomManager : MonoBehaviour
     [Header("----------Boss Room----------")]
     public List<GameObject> bossRoom;
     
+    [Header("----------Shop Room----------")]
+    public int roomLeftToshopRoom; 
+    public  bool isShopRoom;
+    public List<GameObject> shopRoom;
+    public GameObject potitChat;
+    
     public static RoomManager instance;
     
     public void Awake()
@@ -65,11 +72,20 @@ public class RoomManager : MonoBehaviour
         
     }
 
+    private bool verif;
     private void Update()
     {
         if (goldenPathCount >= roomLeftToBossRoom)
         {
             isBossRoom = true;
+        }
+        if (goldenPathCount >= roomLeftToshopRoom)
+        {
+            if (!verif)
+            {
+                Instantiate(potitChat, Vector3.zero, quaternion.identity);
+                verif = true;
+            }
         }
     }
 }

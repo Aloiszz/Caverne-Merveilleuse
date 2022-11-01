@@ -30,6 +30,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         Direction myDirection;
         SpawnPointLocation();
     }
+    
 
     void SpawnPointLocation()
     {
@@ -129,7 +130,14 @@ public class RoomSpawnerV2 : MonoBehaviour
                     }
                 }
             }
-
+            
+            /*if (RoomManager.instance.isShopRoom)
+            {
+                Debug.Log("fsdf");
+                GenerateShopRoom();
+                SpawnPointLocation();
+                TeleportPlayerToNextRoom();
+            }*/
             if (isShopDoor)
             {
                 ComeBackToTheRoom();
@@ -334,7 +342,11 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     public void GenerateShopRoom()
     {
+        transform.parent.gameObject.SetActive(false);
         
+        rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+        Instantiate(RoomManager.instance.shopRoom[rand], new Vector3(0,0,0),
+            transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
     }
 
     void ComeBackToTheRoom()
