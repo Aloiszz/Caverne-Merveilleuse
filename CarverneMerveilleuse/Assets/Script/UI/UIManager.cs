@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour
     public int goldenMoney;
     public int money;
 
+    private void Start()
+    {
+        player = PlayerController.instance;
+    }
+
     private void Update()
     {
         healthBar.fillAmount = player.life / player.lifeDepard;
