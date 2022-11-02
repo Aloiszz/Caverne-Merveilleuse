@@ -28,12 +28,23 @@ public class CinemachineCameraZoom : MonoBehaviour
         } 
     }
 
+    private void Start()
+    {
+        cinemachineVirtualCamera.m_Lens.OrthographicSize = initialZoom;
+    }
+
     public void CameraZoom(float targetZoom, float timeToArrive, float timeToComeBack)
     {
         StopAllCoroutines();
         StartCoroutine(Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, targetZoom, timeToArrive));
         
         this.timeToComeBack = timeToComeBack;
+    }
+
+    public void StopZoom(float timeToComeBack)
+    {
+        StopAllCoroutines();
+        StartCoroutine(Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, initialZoom, timeToComeBack));
     }
     
     IEnumerator Lerp(float start, float end, float time) 

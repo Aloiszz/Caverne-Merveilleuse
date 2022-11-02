@@ -17,6 +17,8 @@ public class SO_PlayerHeavyAttack : ScriptableObject
     public bool pushEnnemy = false;
     
     [Header("Tour")]
+    public List<float> loadingCoolDown; // temps entre chaque coups
+    public int loadingCoolDownIndex;
     public List<float> coolDown; // temps entre chaque coups
     public int coolDownIndex;
     public float timerRemaining; // temps restant entre chaque coup pour arriver au combo

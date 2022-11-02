@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerHeavyAttack : MonoBehaviour
 {
@@ -9,7 +10,15 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     public int countInput = 0;
     public bool activate = false;
-    public GameObject AttackCollision;
+    private bool isKeyUp = true;
+
+    [Header("Camera")] 
+    public float zoomSize;
+    public float timeToArrive;
+    public float timeToComeBack;
+    
+    private GameObject AttackCollision;
+    private GameObject Pivot;
 
     public static PlayerHeavyAttack instance;
     
@@ -24,6 +33,8 @@ public class PlayerHeavyAttack : MonoBehaviour
     [HideInInspector]public int heavyDamageIndex;
 
     [Header("Combo")]
+    private List<float> loadingCoolDown; // temps entre chaque coups
+    private int loadingCoolDownIndex;
     private List<float> coolDown; // temps entre chaque coups
     private int coolDownIndex;
     private float timerRemaining; // temps restant entre chaque coup pour arriver au combo
@@ -49,12 +60,12 @@ public class PlayerHeavyAttack : MonoBehaviour
     void Start()
     {
         AttackCollision = GameObject.FindGameObjectWithTag("AttackCollision");
+        Pivot = GameObject.FindGameObjectWithTag("PivotAttackPoint");
         SecureSO();
     }
     private void Update()
     {
         HeavyAttack();
-        TimeRemaining(activate);
     }
     void SecureSO()
     {
@@ -62,8 +73,14 @@ public class PlayerHeavyAttack : MonoBehaviour
         isCoolDown = playerHeavyAttack.isCoolDown;
 
         heavyDamage = playerHeavyAttack.heavyDamage;
+        heavyDamageIndex = playerHeavyAttack.heavyDamageIndex;
+
+        loadingCoolDown = playerHeavyAttack.loadingCoolDown;
+        loadingCoolDownIndex = playerHeavyAttack.loadingCoolDownIndex;
         
         coolDown = playerHeavyAttack.coolDown;
+        coolDownIndex = playerHeavyAttack.coolDownIndex;
+        
         timerRemaining = playerHeavyAttack.timerRemaining;
         numberOfTurn = playerHeavyAttack.numberOfTurn;
         
@@ -74,26 +91,20 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     public void HeavyAttack()
     {
-        if (!isCoolDown)
+        if (Input.GetKeyUp(KeyCode.F) && isKeyUp) // annule l'attaque lourde
         {
-            if (Input.GetMouseButtonDown(1))
+            StopAllCoroutines();
+            CinemachineCameraZoom.instance.StopZoom(timeToComeBack);
+            PlayerController.instance.SecureSO();
+        }
+        
+        if (!isCoolDown) // Attaque lourde
+        {
+            if (Input.GetKeyDown(KeyCode.F))
             {
+                CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
+                StartCoroutine(Turn());
                 activate = false;
-                countInput++;
-                if (countInput <= numberOfTurn[numberOfTurnIndex])
-                {
-                    StartCoroutine(Turn());
-                    if (countInput == numberOfTurn[numberOfTurnIndex])
-                    {
-                        CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
-                        CinemachineShake.instance.ShakeCamera(3,3,0.5f);
-                    }
-                }
-                else
-                {
-                    StartCoroutine(CoolDown());
-                    countInput = 0;
-                }
             }
         }
         if (isStriking)
@@ -103,37 +114,68 @@ public class PlayerHeavyAttack : MonoBehaviour
                 frequencyLightCloseDamage ,timerLightCloseDamage);
         }
     }
-    private void TimeRemaining(bool activate)
-    {
-        if (activate && timerRemaining >= 0)
-        {
-            timerRemaining -= Time.deltaTime;
-        }
-
-        if (timerRemaining <= 0)
-        {
-            countInput = 0;
-        }
-    }
     
-    IEnumerator CoolDown()
-    {
-        PlayerAttackCollision.instance.sprite.enabled = false;
-        PlayerAttackCollision.instance.coll.enabled = false;
-        isCoolDown = true;
-        yield return new WaitForSeconds(coolDown[coolDownIndex]); //- ItemManager.instance.endComboSoustracteur
-        isCoolDown = false;
-    }
-
     IEnumerator Turn()
     {
-        PlayerAttackCollision.instance.sprite.enabled = true;
-        PlayerAttackCollision.instance.coll.enabled = true;
+        PrepTrourne();
+        
+        yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);
+        
+        Tourne();
+
+        yield return new WaitForSeconds(timerRemaining);
+        
+        FinTourne();
+    }
+
+    void PrepTrourne()
+    {
+        PlayerController.instance.speedMovement /= 2;
+    }
+    
+    void Tourne()
+    {
+        PlayerLightAttack.instance.enabled = false;
+        PlayerController.instance.enabled = false;
+        PlayerThrowAttack.instance.enabled = false;
+        
         isCoolDown = true;
-        yield return new WaitForSeconds(coolDown[coolDownIndex]);
+        isKeyUp = false;
+
+        
+        StartCoroutine(CoolDown());
+    }
+
+    IEnumerator CoolDown()
+    {
+        for (int i = 0; i < numberOfTurn[numberOfTurnIndex]; i++)
+        {
+            coolDownIndex = i;
+            
+            yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            HeavyAttackCollision.instance.sprite.enabled = true;
+            HeavyAttackCollision.instance.coll.enabled = true;
+    
+            yield return new WaitForSeconds(coolDown[coolDownIndex + 1]);
+
+            HeavyAttackCollision.instance.sprite.enabled = false;
+            HeavyAttackCollision.instance.coll.enabled = false;
+        }
+    }
+
+    void FinTourne()
+    {
+        PlayerController.instance.SecureSO();
+        PlayerLightAttack.instance.enabled = true;
+        PlayerThrowAttack.instance.enabled = true;
+        PlayerController.instance.enabled = true;
+        
         isCoolDown = false;
-        PlayerAttackCollision.instance.sprite.enabled = false;
-        PlayerAttackCollision.instance.coll.enabled = false;    
+        
+        HeavyAttackCollision.instance.sprite.enabled = false;
+        HeavyAttackCollision.instance.coll.enabled = false;
+        
         activate = true;
+        isKeyUp = true;
     }
 }

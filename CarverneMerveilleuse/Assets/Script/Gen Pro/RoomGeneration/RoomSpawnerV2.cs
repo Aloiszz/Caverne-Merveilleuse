@@ -12,6 +12,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public Direction direction;
     public GameObject spawnpoint;
     public bool isAlternativeDoor;
+    public bool isShopDoor;
 
     public int porteQuiFautDetruire;
     
@@ -29,6 +30,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         Direction myDirection;
         SpawnPointLocation();
     }
+    
 
     void SpawnPointLocation()
     {
@@ -127,6 +129,20 @@ public class RoomSpawnerV2 : MonoBehaviour
                         TeleportPlayerToNextRoom();*/
                     }
                 }
+            }
+            
+            /*if (RoomManager.instance.isShopRoom)
+            {
+                Debug.Log("fsdf");
+                GenerateShopRoom();
+                SpawnPointLocation();
+                TeleportPlayerToNextRoom();
+            }*/
+            if (isShopDoor)
+            {
+                ComeBackToTheRoom();
+                SpawnPointLocation();
+                TeleportPlayerToNextRoom(); 
             }
         }
         else
@@ -319,4 +335,23 @@ public class RoomSpawnerV2 : MonoBehaviour
     }
     #endregion
     
+    
+    //----------------------- Shop Room Region -----------------
+
+    #region Shop
+
+    public void GenerateShopRoom()
+    {
+        transform.parent.gameObject.SetActive(false);
+        
+        rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
+        Instantiate(RoomManager.instance.shopRoom[rand], new Vector3(0,0,0),
+            transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+    }
+
+    void ComeBackToTheRoom()
+    {
+        
+    }
+    #endregion
 }
