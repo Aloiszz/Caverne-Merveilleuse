@@ -136,8 +136,11 @@ public class PlayerHeavyAttack : MonoBehaviour
     void Tourne()
     {
         PlayerLightAttack.instance.enabled = false;
-        PlayerController.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
+        if (!ItemManager.instance.canMoveWhileBeyblade)
+        {
+            PlayerController.instance.enabled = false;
+        }
         
         isCoolDown = true;
         isKeyUp = false;
