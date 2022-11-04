@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
     {
         /*animator.SetFloat("speedX", rb.velocity.x);
         animator.SetFloat("speedY", rb.velocity.y);*/
-
         if (life > lifeDepard)
         {
             life = lifeDepard;
@@ -188,9 +187,12 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator DashInvinsibleTimer()
     {
-        coll.enabled = false;
+        Physics2D.IgnoreLayerCollision(0,6, true);
+        Physics2D.IgnoreLayerCollision(0,7, true);
         yield return new WaitForSeconds(dashInvinsibleTime);
-        coll.enabled = true;
+        Physics2D.IgnoreLayerCollision(0,6, false);
+        Physics2D.IgnoreLayerCollision(0,7, false);
+        
     }
     
 }

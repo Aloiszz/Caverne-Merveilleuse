@@ -136,8 +136,17 @@ public class PlayerHeavyAttack : MonoBehaviour
     void Tourne()
     {
         PlayerLightAttack.instance.enabled = false;
-        PlayerController.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
+        if (!ItemManager.instance.canMoveWhileBeyblade)
+        {
+            PlayerController.instance.enabled = false;
+        }
+
+        if (ItemManager.instance.beybladeInvinsible)
+        {
+            Physics2D.IgnoreLayerCollision(0,6, true);
+            Physics2D.IgnoreLayerCollision(0,7, true);
+        }
         
         isCoolDown = true;
         isKeyUp = false;
@@ -177,5 +186,7 @@ public class PlayerHeavyAttack : MonoBehaviour
         
         activate = true;
         isKeyUp = true;
+        Physics2D.IgnoreLayerCollision(0,6, false);
+        Physics2D.IgnoreLayerCollision(0,7, false);
     }
 }

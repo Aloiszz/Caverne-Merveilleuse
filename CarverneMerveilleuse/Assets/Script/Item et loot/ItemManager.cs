@@ -21,8 +21,10 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public float endComboSoustracteur;
     public int recupereVieAP = 1;
     [HideInInspector] public int regenVie;
-    
+
     [Header("Arme Beyblade")]
+    [HideInInspector] public bool canMoveWhileBeyblade;
+    [HideInInspector] public bool beybladeInvinsible;
     
     [Header("Arme lancé de faux")]
     
@@ -158,11 +160,13 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "InvincibleAB":
-                Debug.Log("Vous ne subissez pas de dégâts quand vous tournez");
+                //Debug.Log("Vous ne subissez pas de dégâts quand vous tournez");
+                beybladeInvinsible = true;
                 break;
             
             case "DeplacerAB":
-                Debug.Log("Vous pouvez vous déplacer quand vous tournez");
+                //Debug.Log("Vous pouvez vous déplacer quand vous tournez");
+                canMoveWhileBeyblade = true;
                 break;
             
             case "ExplosifALF":
