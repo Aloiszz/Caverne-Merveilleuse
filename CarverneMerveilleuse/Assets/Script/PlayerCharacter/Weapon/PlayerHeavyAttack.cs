@@ -45,6 +45,8 @@ public class PlayerHeavyAttack : MonoBehaviour
     private float intensityLightCloseDamage;
     private float frequencyLightCloseDamage;
     private float timerLightCloseDamage;
+
+    private bool isAlreadyScaled;
     
     private void Awake()
     {

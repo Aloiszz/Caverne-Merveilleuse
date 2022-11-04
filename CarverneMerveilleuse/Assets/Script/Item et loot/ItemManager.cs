@@ -22,7 +22,9 @@ public class ItemManager : MonoBehaviour
     public int recupereVieAP = 1;
     [HideInInspector] public int regenVie;
 
-    [Header("Arme Beyblade")]
+    [Header("Arme Beyblade")] 
+    public float pourcentagePortéeEnPlus = 20;
+    [HideInInspector] public float valeurNouvelleRange;
     [HideInInspector] public bool canMoveWhileBeyblade;
     [HideInInspector] public bool beybladeInvinsible;
     
@@ -86,7 +88,9 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "PortéeAB":
-                Debug.Log("Augmente la portée du coup");
+                //Debug.Log("Augmente la portée du coup");
+                valeurNouvelleRange = pourcentagePortéeEnPlus / 100 + 1;
+                HeavyAttackCollision.instance.transform.localScale *= valeurNouvelleRange;
                 break;
             
             case "TourAB":
