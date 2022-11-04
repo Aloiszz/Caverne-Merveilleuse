@@ -59,15 +59,16 @@ public class MenuManager : MonoBehaviour
 
     public void Option()
     {
-        CinemachineShake.instance.ShakeCamera(10,10,2);
+        CinemachineShake.instance.ShakeCamera(3,3,0.2f);
     }
+
 
     IEnumerator PlayAnim()
     {
         cg_btn_Option.DOFade(0, 2);
         cg_btn_Quit.DOFade(0, 2);
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         
         cg_btn_Play.DOFade(0, 2);
         
