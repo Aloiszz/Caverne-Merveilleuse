@@ -127,4 +127,10 @@ public class Mechant : MonoBehaviour
         forcelightDamage = initialforcelightDamage;
     }
 
+    public void ReceiveAOEDamage()
+    {
+        life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex];
+        forcelightDamage += 1000 * itemManager.buffPushAB;
+        rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
+    }
 }

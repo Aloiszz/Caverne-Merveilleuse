@@ -25,6 +25,8 @@ public class ItemManager : MonoBehaviour
     [Header("Arme Beyblade")] 
     public float pourcentagePortéeEnPlus = 20;
     [HideInInspector] public float valeurNouvelleRange;
+    public float pourcentagePushABEnPlus = 40;
+    [HideInInspector] public float buffPushAB;
     [HideInInspector] public bool canMoveWhileBeyblade;
     [HideInInspector] public bool beybladeInvinsible;
     
@@ -98,7 +100,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "PushAB":
-                Debug.Log("Push plus loins les ennemis");
+                //Debug.Log("Push plus loins les ennemis");
+                buffPushAB = pourcentagePushABEnPlus / 100 + 1;
                 break;
             
             case "RebondALF":
