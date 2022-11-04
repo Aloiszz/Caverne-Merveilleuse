@@ -18,6 +18,27 @@ public class MenuManager : MonoBehaviour
     public CanvasGroup cg_btn_Play;
     public CanvasGroup cg_btn_Option;
     public CanvasGroup cg_btn_Quit;
+
+
+    public GameObject globalVolume;
+
+    public bool verif;
+    
+    
+    public static MenuManager instance;
+    
+    public void Awake()
+    {
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this; 
+        }
+        
+    }
     
     void Start()
     {
@@ -65,14 +86,17 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator PlayAnim()
     {
-        cg_btn_Option.DOFade(0, 2);
+        cg_btn_Option.DOFade(0, 2.5F);
         cg_btn_Quit.DOFade(0, 2);
         
         yield return new WaitForSeconds(1.5f);
         
         cg_btn_Play.DOFade(0, 2);
-        
-        yield return new WaitForSeconds(2);
+        cg_MenuMainMenu.DOFade(0, 1.5f);
+        //globalVolume
+        verif = true;
+
+        yield return new WaitForSeconds(2.5f);
         
         
         
