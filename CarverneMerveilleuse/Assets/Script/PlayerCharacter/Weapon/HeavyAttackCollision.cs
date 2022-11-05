@@ -35,7 +35,7 @@ public class HeavyAttackCollision : MonoBehaviour
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
-            col.GetComponent<Mechant>().ReceiveLightDamage();
+            col.GetComponent<Mechant>().ReceiveAOEDamage();
         }
     }
 }
