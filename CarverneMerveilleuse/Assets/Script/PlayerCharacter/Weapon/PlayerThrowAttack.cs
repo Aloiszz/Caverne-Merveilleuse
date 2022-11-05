@@ -38,7 +38,6 @@ public class PlayerThrowAttack : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1) && !isThrow)
         {
             Aim();
-            
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Debug.Log("Throw Weapon");
@@ -138,9 +137,12 @@ public class PlayerThrowAttack : MonoBehaviour
 
     void ReturnWeapon()
     {
+        ThrowCollision.instance.rb.velocity = Vector3.zero;
+        ThrowCollision.instance.rb.angularVelocity = 0;
+        
         StartCoroutine(WaitForReturnWeapon());
         ThrowCollision.instance.gameObject.transform.DOMove(PlayerController.instance.transform.position, 0.2f)
-            .SetEase(Ease.OutQuad);
+            .SetEase(Ease.OutQuint);
     }
 
     IEnumerator WaitForReturnWeapon()

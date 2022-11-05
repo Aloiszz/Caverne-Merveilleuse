@@ -7,9 +7,9 @@ using UnityEngine;
 public class ProjoCollision : MonoBehaviour
 {
     public bool isProjoGros;
-    private float speed;
+    public float speed;
     public bool mode2;
-    private float initialSpeed;
+    public float initialSpeed;
 
     private void Update()
     {

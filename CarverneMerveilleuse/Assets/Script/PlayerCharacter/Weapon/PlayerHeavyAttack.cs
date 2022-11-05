@@ -132,23 +132,25 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     void PrepTrourne()
     {
-        PlayerController.instance.speedMovement /= 2;
+        PlayerController.instance.speedMovement = 50;
     }
     
     void Tourne()
     {
         PlayerLightAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
-        if (!ItemManager.instance.canMoveWhileBeyblade)
+        
+        PlayerController.instance.enabled = false;
+        /*if (!ItemManager.instance.canMoveWhileBeyblade)
         {
             PlayerController.instance.enabled = false;
-        }
+        }*/
 
-        if (ItemManager.instance.beybladeInvinsible)
+        /*if (ItemManager.instance.beybladeInvinsible)
         {
             Physics2D.IgnoreLayerCollision(0,6, true);
             Physics2D.IgnoreLayerCollision(0,7, true);
-        }
+        }*/
         
         isCoolDown = true;
         isKeyUp = false;
