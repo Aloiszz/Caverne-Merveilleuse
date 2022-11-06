@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 
 public class ThrowCollision : MonoBehaviour
 {
@@ -38,9 +39,9 @@ public class ThrowCollision : MonoBehaviour
 
     public void ThrowWeapon()
     {
-        //rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
+        rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
 
-        StartCoroutine(wait());
+        //StartCoroutine(wait());
         
         gameObject.transform.DORotate(new Vector3(0, 0, 2160), 3);
     }
@@ -55,7 +56,23 @@ public class ThrowCollision : MonoBehaviour
             i++;
         }
     }
-    
+
+    void BounceWeapon()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0;
+        Debug.Log("sdqsd");
+        rb.AddForce((PlayerThrowAttack.instance.points[2]), ForceMode2D.Impulse);
+        
+        /*for (int i = 2; i < PlayerThrowAttack.instance.points.Count;)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = 0;
+            Debug.Log("sdqsd");
+            rb.AddForce((PlayerThrowAttack.instance.points[i]) * 120, ForceMode2D.Impulse);
+            i++;
+        }*/
+    }
     
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -64,6 +81,11 @@ public class ThrowCollision : MonoBehaviour
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             
             //col.GetComponent<Mechant>().ReceiveThrowDamage;     A Faire !!!
+        }
+
+        if (col.gameObject.layer == 9)
+        {
+            BounceWeapon();
         }
     }
 
