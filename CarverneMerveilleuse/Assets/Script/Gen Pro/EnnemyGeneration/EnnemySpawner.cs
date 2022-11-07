@@ -14,27 +14,55 @@ public class EnnemySpawner : MonoBehaviour
     
     [SerializeField] private GameObject childSlot;
     [SerializeField] private GameObject[] spawnPointPosition;
-    public GameObject[] ennemyAlive;
+    public List<GameObject> ennemyAlive;
 
     [Tooltip("1 chiffre correspond au spyider, 2eme au Bat, 3eme Petrol")]
     public List<int> nbrEnnemySpawned; 
     private int rand;
+
+    public int actualNumberOfWave;
+    public int numberOfWave;
     private void Start()
     {
+        Secure_So();
         SpawnEnnemy();
         LookForEnnemyAlive();
     }
 
     void LookForEnnemyAlive()
     {
-        ennemyAlive = GameObject.FindGameObjectsWithTag("CAC");
-        /*ennemyAlive = GameObject.FindGameObjectsWithTag("Dist");
-        ennemyAlive = GameObject.FindGameObjectsWithTag("Gros");*/
+        addEnnemyToList("CAC");
+        addEnnemyToList("Dist");
+        addEnnemyToList("Gros");
+    }
+    void addEnnemyToList(string tag)
+    {
+        foreach (var go in GameObject.FindGameObjectsWithTag(tag))
+        {
+            ennemyAlive.Add(go);
+        }
     }
 
+
+    void Secure_So()
+    {
+        actualNumberOfWave = SO_ennemySpawner.numberOfWave;
+        numberOfWave = SO_ennemySpawner.numberOfWave;
+    }
     private void Update()
     {
-        
+        if (numberOfWave < actualNumberOfWave)
+        {
+            if (ennemyAlive.Count >= 0)
+            {
+                SpawnEnnemy();
+                actualNumberOfWave--;
+            }
+            else
+            {
+                // Deverouille les portes 
+            }
+        }
         if (spawnPointPosition.Length < 0)
         {
             //Door fermé (bool liée au script Room)
@@ -42,6 +70,15 @@ public class EnnemySpawner : MonoBehaviour
         else
         {
             //Door ouverte
+        }
+    }
+
+    private void LateUpdate()
+    {
+        for(var i = ennemyAlive.Count - 1; i > -1; i--)
+        {
+            if (ennemyAlive[i] == null)
+                ennemyAlive.RemoveAt(i);
         }
     }
 
