@@ -10,6 +10,7 @@ public class ProjoCollision : MonoBehaviour
     public float speed;
     public bool mode2;
     public float initialSpeed;
+    [HideInInspector] public GrosEnnemiScript origine;
 
     private void Update()
     {
@@ -38,16 +39,13 @@ public class ProjoCollision : MonoBehaviour
         {
             if (col.gameObject.CompareTag("Player"))
             {
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                gameObject.transform.localScale = new Vector3(5, 5);
-                initialSpeed = col.gameObject.GetComponent<PlayerController>().speedMovement;
-                mode2 = true;
+                Grossissement(col.gameObject);
                 Debug.Log("bonjour");
                 PlayerController.instance.LoseLife();
             }
             else if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
             {
-                Debug.Log("aaaaaaaaaaaaaaaaaaaaaa");
+                origine.canShoot = true;
                 Destroy(gameObject);
             }
         }
@@ -78,9 +76,18 @@ public class ProjoCollision : MonoBehaviour
         }
     }
 
+    public void Grossissement(GameObject player)
+    {
+        
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        gameObject.transform.localScale = new Vector3(5, 5);
+        initialSpeed = player.gameObject.GetComponent<PlayerController>().speedMovement;
+        mode2 = true;
+    }
     IEnumerator TimeBeforeDestroy()
     {
         yield return new WaitForSeconds(2f);
+        origine.canShoot = true;
         Destroy(gameObject);
     }
 }

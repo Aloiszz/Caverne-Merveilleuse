@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrosEnnemiScript : MonoBehaviour
@@ -12,6 +13,7 @@ public class GrosEnnemiScript : MonoBehaviour
     public float spaceFromPlayer = 5;
     public GameObject grosProjo;
     public float grosForce = 2f;
+    public float maxRangeProjo;
     public float TimeBeforeShoot = 3f;
     
     [Header("AI Physics")]
@@ -30,10 +32,11 @@ public class GrosEnnemiScript : MonoBehaviour
     public float timer;
     
     
-    private bool canShoot = true;
+    public bool canShoot = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
-    private AIDestinationSetter AI;
+    private AIPath AI;
+    private GameObject projectile;
 
     void Start()
     {
@@ -43,7 +46,7 @@ public class GrosEnnemiScript : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        AI = gameObject.GetComponent<AIDestinationSetter>();
+        AI = gameObject.GetComponent<AIPath>();
         AI.target = player.transform;
     }
     
@@ -69,14 +72,13 @@ public class GrosEnnemiScript : MonoBehaviour
         if (see)
         {
             StopCoroutine(RandomMove());
-            AI.enabled = true;
-            if (playerDir.magnitude < spaceFromPlayer)
-            {
-                transform.position =Vector2.MoveTowards(transform.position, player.gameObject.transform.position, -speed * Time.deltaTime);
-            }
             if (canShoot)
             {
-                StartCoroutine(GrosShoot());
+                AI.enabled = true;
+                if (playerDir.magnitude < spaceFromPlayer)
+                {
+                    StartCoroutine(GrosShoot());
+                }
             }
         }
         else if (canRandomMove)
@@ -88,11 +90,13 @@ public class GrosEnnemiScript : MonoBehaviour
     IEnumerator GrosShoot()
     {
         canShoot = false;
-        GameObject projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * grosForce);
-        yield return new WaitForSeconds(TimeBeforeShoot);
-        Destroy(projectile);
-        canShoot = true;
+        AI.enabled = false;
+        projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * grosForce;
+        projectile.GetComponent<ProjoCollision>().origine = this;
+        yield return new WaitUntil(() => (projectile.transform.position - transform.position).magnitude >= maxRangeProjo);
+        Debug.Log("Bah alors");
+        projectile.GetComponent<ProjoCollision>().Grossissement(player.gameObject);
     }
 
     IEnumerator RandomMove()
