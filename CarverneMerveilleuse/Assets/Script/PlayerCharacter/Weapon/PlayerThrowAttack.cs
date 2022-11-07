@@ -166,6 +166,9 @@ public class PlayerThrowAttack : MonoBehaviour
         StartCoroutine(WaitForReturnWeapon());
         ThrowCollision.instance.gameObject.transform.DOMove(PlayerController.instance.transform.position, 0.2f)
             .SetEase(Ease.OutQuint);
+
+        /*ThrowCollision.instance.transform.position = Vector3.MoveTowards(ThrowCollision.instance.transform.position,
+            PlayerController.instance.transform.position, 10);*/
     }
 
     IEnumerator WaitForReturnWeapon()

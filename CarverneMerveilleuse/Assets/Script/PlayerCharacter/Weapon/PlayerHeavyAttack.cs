@@ -33,7 +33,7 @@ public class PlayerHeavyAttack : MonoBehaviour
     [HideInInspector]public int heavyDamageIndex;
 
     [Header("Combo")]
-    private List<float> loadingCoolDown; // temps entre chaque coups
+    private List<float> loadingCoolDown; // Préparation de l'attaque
     private int loadingCoolDownIndex;
     private List<float> coolDown; // temps entre chaque coups
     private int coolDownIndex;
