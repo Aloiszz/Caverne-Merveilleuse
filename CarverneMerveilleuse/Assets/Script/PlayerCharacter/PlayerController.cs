@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using Cinemachine;
 using DG.Tweening;
 using UnityEngine.UI;
 
@@ -34,10 +33,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float linearDragMultiplier;
     [HideInInspector] public int lifeDepard;
 
+    [Header("Animator")]
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
+    
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
         playerSO.isDash = true;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour
         linearDragMultiplier = playerSO.linearDragMultiplier;
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         GameMove(); // Physics movements
@@ -81,8 +80,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        /*animator.SetFloat("speedX", rb.velocity.x);
-        animator.SetFloat("speedY", rb.velocity.y);*/
+        //rb.velocity = new Vector2((speedMovement), rb.velocity.y);
+        
+        animator.SetFloat("speedX", rb.velocity.x);
+        animator.SetFloat("speedY", rb.velocity.y);
+        
         if (life > lifeDepard)
         {
             life = lifeDepard;
@@ -105,26 +107,26 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            animator.Play("Dos_Idle");
+            //animator.Play("Dos_Idle");
         }
         
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            animator.Play("profil idle");
+            //animator.Play("profil idle");
         }
         
         if (Input.GetKeyDown(KeyCode.S))
         {
-            animator.Play("Face_run");
+            //animator.Play("Face_run");
         }
         
         if (Input.GetKeyDown(KeyCode.D))
         {
-            animator.Play("profil idle");
+            //animator.Play("profil idle");
         }
 
         if (Input.GetKey(KeyCode.Q)) spriteRenderer.flipX = true;
-        else if (Input.GetKey(KeyCode.Q)) spriteRenderer.flipX = true;
+        if (Input.GetKey(KeyCode.D)) spriteRenderer.flipX = false;
         
     }
 
@@ -158,11 +160,7 @@ public class PlayerController : MonoBehaviour
             lastMovement.Add(Vector2.right);
         }
     }
-
-    private void Shoot()
-    {
-        
-    }
+    
     public void LoseLife()
     {
         life -= 1;

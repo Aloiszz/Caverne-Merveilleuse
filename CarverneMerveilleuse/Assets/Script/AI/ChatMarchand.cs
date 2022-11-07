@@ -63,8 +63,9 @@ public class ChatMarchand : MonoBehaviour
             TeleportPlayerToNextRoom();*/
         }
     }
-    
-    
+
+    #region Shop Generation 
+
     public void GenerateShopRoom()
     {
         //transform.parent.gameObject.SetActive(false);
@@ -73,4 +74,7 @@ public class ChatMarchand : MonoBehaviour
         Instantiate(RoomManager.instance.shopRoom[rand], new Vector3(0,0,0),
             transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
     }
+
+    #endregion
+    
 }
