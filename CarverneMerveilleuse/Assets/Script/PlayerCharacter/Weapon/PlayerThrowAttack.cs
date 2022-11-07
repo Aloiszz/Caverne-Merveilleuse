@@ -9,6 +9,9 @@ public class PlayerThrowAttack : MonoBehaviour
     public float distance;
     public LineRenderer lineRender;
     public LayerMask mask;
+    
+    private Quaternion deflectRotation;
+    private Vector3 deflectDirection;
 
     public List<Vector3> points = new List<Vector3>();
 
@@ -137,7 +140,12 @@ public class PlayerThrowAttack : MonoBehaviour
                 points.Add(raycastHit.point);
                 Debug.Log(raycastHit.transform.name);
                 
-                DoRay(raycastHit.point, (Vector2)origin + raycastHit.normal * 0.01f, bounceLeft, distance);
+                deflectRotation =
+                    Quaternion.FromToRotation(-direction, raycastHit.normal);
+            
+                deflectDirection = deflectRotation * raycastHit.normal * this.distance;
+                
+                DoRay(raycastHit.point, newDirection, bounceLeft, distance);
 
             }
             else
@@ -149,10 +157,11 @@ public class PlayerThrowAttack : MonoBehaviour
         
     }
 
-    void ReturnWeapon()
+    public void ReturnWeapon()
     {
         ThrowCollision.instance.rb.velocity = Vector3.zero;
         ThrowCollision.instance.rb.angularVelocity = 0;
+        ThrowCollision.instance.bounceInt = 2;
         
         StartCoroutine(WaitForReturnWeapon());
         ThrowCollision.instance.gameObject.transform.DOMove(PlayerController.instance.transform.position, 0.2f)
@@ -385,5 +394,4 @@ public class ArrowAim : MonoBehaviour
             Gizmos.DrawRay(hit.point, deflectDirection);
         }
     }
-}
-*/
+}*/

@@ -11,7 +11,8 @@ public class ThrowCollision : MonoBehaviour
     public SpriteRenderer sprite;
     public Collider2D coll;
     public Rigidbody2D rb;
-    
+
+    [HideInInspector] public int bounceInt = 2;
 
     public static ThrowCollision instance;
     
@@ -56,19 +57,18 @@ public class ThrowCollision : MonoBehaviour
             i++;
         }
     }
-
+    
     void BounceWeapon()
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = 0;
-        //Debug.Log("sdqsd");
-        rb.AddForce((PlayerThrowAttack.instance.points[2]), ForceMode2D.Impulse);
-        
+        rb.AddForce((PlayerThrowAttack.instance.points[bounceInt]), ForceMode2D.Impulse);
+        bounceInt++;
+
         /*for (int i = 2; i < PlayerThrowAttack.instance.points.Count;)
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = 0;
-            Debug.Log("sdqsd");
             rb.AddForce((PlayerThrowAttack.instance.points[i]) * 120, ForceMode2D.Impulse);
             i++;
         }*/

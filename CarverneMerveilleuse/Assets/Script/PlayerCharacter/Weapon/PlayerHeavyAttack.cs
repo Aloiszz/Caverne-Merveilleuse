@@ -93,7 +93,7 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     public void HeavyAttack()
     {
-        if (Input.GetKeyUp(KeyCode.F) && isKeyUp) // annule l'attaque lourde
+        if (Input.GetKeyUp(KeyCode.Mouse0) && isKeyUp) // annule l'attaque lourde
         {
             StopAllCoroutines();
             CinemachineCameraZoom.instance.StopZoom(timeToComeBack);
@@ -102,7 +102,7 @@ public class PlayerHeavyAttack : MonoBehaviour
         
         if (!isCoolDown) // Attaque lourde
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
                 StartCoroutine(Turn());
