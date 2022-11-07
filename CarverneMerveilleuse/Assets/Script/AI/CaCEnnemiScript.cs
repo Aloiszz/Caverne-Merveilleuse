@@ -9,7 +9,10 @@ public class CaCEnnemiScript : MonoBehaviour
 
     [Header("AI Config")]
     public float speed;
-    private float lifeDepart;
+    private bool canJump = true;
+    public float jumpForce;
+    public float distToJumpOnPlayer;
+    private AIPath _aiPath;
 
     [Header("AI Physics")]
     public Rigidbody2D rb;
@@ -34,6 +37,7 @@ public class CaCEnnemiScript : MonoBehaviour
         {
             see = true;
         }
+        _aiPath = gameObject.GetComponent<AIPath>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
@@ -51,6 +55,7 @@ public class CaCEnnemiScript : MonoBehaviour
         if (playerDir.magnitude <= distanceToSeePlayer)
         {
             see = true;
+            canRandomMove = false;
         }
         OnSeePlayer();
     }
@@ -60,12 +65,20 @@ public class CaCEnnemiScript : MonoBehaviour
     {
         if (see)
         {
-            gameObject.GetComponent<AIDestinationSetter>().enabled = true;
-            
+            StopCoroutine(RandomMove());
+            if (canJump)
+            {
+                _aiPath.enabled = true;
+                Debug.Log("Je bouge");
+                if (playerDir.magnitude <= distToJumpOnPlayer)
+                {
+                    StartCoroutine(JumpOnPlayer());
+                }
+            }
         }
         else if (canRandomMove)
         {
-            StartCoroutine(RandomMove());
+            //StartCoroutine(RandomMove());
         }
     }
     
@@ -78,6 +91,21 @@ public class CaCEnnemiScript : MonoBehaviour
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(3f);
         canRandomMove = true;
+    }
+
+    IEnumerator JumpOnPlayer()
+    {
+        canJump = false;
+        _aiPath.enabled = false;
+        Debug.Log("Jattend");
+        yield return new WaitForSeconds(1f);
+        rb.AddForce(playerDir.normalized * jumpForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1);
+        Debug.Log("dash fini");
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(1);
+        Debug.Log("On y va");
+        canJump = true;
     }
 
     private void OnCollisionEnter2D(Collision2D col)

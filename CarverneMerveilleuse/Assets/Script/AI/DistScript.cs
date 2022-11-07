@@ -34,7 +34,7 @@ public class DistScript : MonoBehaviour
     
     private bool canRandomMove = true;
     private Vector2 playerDir;
-    private AIDestinationSetter AI;
+    private AIPath AI;
 
     void Start()
     {
@@ -44,7 +44,7 @@ public class DistScript : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        AI = gameObject.GetComponent<AIDestinationSetter>();
+        AI = gameObject.GetComponent<AIPath>();
         AI.target = player.transform;
     }
     
