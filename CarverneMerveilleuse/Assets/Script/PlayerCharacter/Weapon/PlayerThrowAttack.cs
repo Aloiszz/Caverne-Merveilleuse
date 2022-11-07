@@ -83,6 +83,19 @@ public class PlayerThrowAttack : MonoBehaviour
         lineRender.SetPositions(points.ToArray());
     }
 
+    Vector2 revertDir(bool topCollide, Vector2 dir)
+    {
+        if (!topCollide)
+        {
+            return new Vector2(dir.x, -dir.y);
+        }
+        else
+        {
+            return new Vector2(-dir.x, dir.y);
+        }
+        
+    }
+    
     void DoRay(Vector3 origin, Vector3 direction, int bounceLeft, float distance)
     {
         /*if (bounceLeft > 0)
@@ -113,22 +126,23 @@ public class PlayerThrowAttack : MonoBehaviour
         {
             RaycastHit2D raycastHit = Physics2D.Raycast(origin, direction, distance, mask);;
             
-            if (Physics2D.Raycast(origin, direction, distance, mask))
+            if (raycastHit.collider != null)
             {
-                Debug.DrawRay(origin, direction * raycastHit.distance, Color.green);
-                Vector3 newDirection = Vector3.Reflect(direction, raycastHit.normal);
-                Debug.DrawRay(raycastHit.point, newDirection,Color.green);
+                Vector2 newDirection = Vector2.Reflect(direction.normalized, raycastHit.normal);
+                //Debug.Log(raycastHit.normal);
+
                 bounceLeft --;
                 distance -= raycastHit.distance;
                 
                 points.Add(raycastHit.point);
+                Debug.Log(raycastHit.transform.name);
                 
                 DoRay(raycastHit.point, newDirection, bounceLeft, distance);
-                
+
             }
             else
             {
-                Debug.DrawRay(origin, direction* distance, Color.red);
+                //Debug.DrawRay(origin, direction, Color.red);
                 points.Add(direction * distance + origin);
             }
         }

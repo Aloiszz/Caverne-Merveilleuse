@@ -61,7 +61,7 @@ public class ThrowCollision : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = 0;
-        Debug.Log("sdqsd");
+        //Debug.Log("sdqsd");
         rb.AddForce((PlayerThrowAttack.instance.points[2]), ForceMode2D.Impulse);
         
         /*for (int i = 2; i < PlayerThrowAttack.instance.points.Count;)
