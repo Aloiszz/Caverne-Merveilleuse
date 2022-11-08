@@ -140,10 +140,10 @@ public class PlayerThrowAttack : MonoBehaviour
                 points.Add(raycastHit.point);
                 Debug.Log(raycastHit.transform.name);
                 
-                deflectRotation =
+                /*deflectRotation =
                     Quaternion.FromToRotation(-direction, raycastHit.normal);
             
-                deflectDirection = deflectRotation * raycastHit.normal * this.distance;
+                deflectDirection = deflectRotation * raycastHit.normal * this.distance;*/
                 
                 DoRay(raycastHit.point, newDirection, bounceLeft, distance);
 
