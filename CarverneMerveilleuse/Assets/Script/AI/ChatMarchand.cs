@@ -68,7 +68,7 @@ public class ChatMarchand : MonoBehaviour
 
     public void GenerateShopRoom()
     {
-        //transform.parent.gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
         
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
         Instantiate(RoomManager.instance.shopRoom[rand], new Vector3(0,0,0),

@@ -83,7 +83,7 @@ public class RoomManager : MonoBehaviour
         {
             if (!verif)
             {
-                Instantiate(potitChat, Vector3.zero, quaternion.identity);
+                Instantiate(potitChat, Vector3.zero, quaternion.identity, roomMemory[roomMemoryIndex].transform);
                 verif = true;
             }
         }

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.02, y: 1.55}
+  m_AnchoredPosition: {x: 0.08, y: 2.27}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1542715437164303299
@@ -705,6 +705,7 @@ MonoBehaviour:
   spaceFromPlayer: 5
   grosProjo: {fileID: 4828584988822855267, guid: f4bb6262fe7afad4ca9540adda9bddae, type: 3}
   grosForce: 30
+  maxRangeProjo: 0
   TimeBeforeShoot: 4
   rb: {fileID: 0}
   linearDragDeceleration: 0
@@ -714,6 +715,7 @@ MonoBehaviour:
   intensity: 0
   frequency: 0
   timer: 0
+  canShoot: 1
 --- !u!114 &-6376591011155877619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,23 +817,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 74e45a90dbf78254ea33a79aa6717c6d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.22164415
+      value: 0.35877538
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 74e45a90dbf78254ea33a79aa6717c6d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.22164415
+      value: 0.35877538
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 74e45a90dbf78254ea33a79aa6717c6d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.22164415
+      value: 0.35877538
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 74e45a90dbf78254ea33a79aa6717c6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 0.00097107
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 74e45a90dbf78254ea33a79aa6717c6d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.62
+      value: -1.2481
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 74e45a90dbf78254ea33a79aa6717c6d, type: 3}
       propertyPath: m_LocalPosition.z

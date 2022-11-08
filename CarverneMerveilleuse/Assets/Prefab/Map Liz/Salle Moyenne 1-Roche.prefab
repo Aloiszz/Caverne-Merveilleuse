@@ -866,11 +866,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179a55ea50e6a4d49a649f4afc61840b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SO_ennemySpawner: {fileID: 0}
-  childSlot: {fileID: 0}
+  SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
+  childSlot: {fileID: 1611773074733827163}
   spawnPointPosition: []
   ennemyAlive: []
   nbrEnnemySpawned: 
+  actualNumberOfWave: 0
+  numberOfWave: 0
 --- !u!1 &1750016376843501977
 GameObject:
   m_ObjectHideFlags: 0

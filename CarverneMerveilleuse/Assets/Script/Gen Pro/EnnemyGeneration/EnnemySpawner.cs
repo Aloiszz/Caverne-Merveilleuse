@@ -24,6 +24,9 @@ public class EnnemySpawner : MonoBehaviour
     public int numberOfWave;
     private void Start()
     {
+        spawnPointPosition = GameObject.FindGameObjectsWithTag("SpawnEnnemy");
+        spawnPointPosition.ToList();
+        
         Secure_So();
         SpawnEnnemy();
         LookForEnnemyAlive();
@@ -51,25 +54,21 @@ public class EnnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (numberOfWave < actualNumberOfWave)
+        
+        if(ennemyAlive.Count <= 0)
         {
-            if (ennemyAlive.Count >= 0)
+            Debug.Log("qsds");
+            if (numberOfWave < actualNumberOfWave)
             {
                 SpawnEnnemy();
                 actualNumberOfWave--;
+                
+                //Door fermé (bool liée au script Room)
             }
             else
             {
-                // Deverouille les portes 
+                //Door ouverte
             }
-        }
-        if (spawnPointPosition.Length < 0)
-        {
-            //Door fermé (bool liée au script Room)
-        }
-        else
-        {
-            //Door ouverte
         }
     }
 
@@ -85,11 +84,7 @@ public class EnnemySpawner : MonoBehaviour
     //----------------------- Spawn Ennemy Region-----------------
     public void SpawnEnnemy()
     {
-        spawnPointPosition = GameObject.FindGameObjectsWithTag("SpawnEnnemy");
-        spawnPointPosition.ToList();
-
         
-
         for (int i = 0; i < SO_ennemySpawner.spawn_Spyder[SO_ennemySpawner.difficulty_Index]; i++)
         {
             var apparitionChance = Random.Range(0, 100);
