@@ -30,7 +30,7 @@ public class ProjoCollision : MonoBehaviour
                 Destroy(gameObject);
                 PlayerController.instance.LoseLife();
             }
-            if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
+            if (col.gameObject.layer == 4 || col.gameObject.layer == 9)
             {
                 Destroy(gameObject);
             }
@@ -43,7 +43,7 @@ public class ProjoCollision : MonoBehaviour
                 Debug.Log("bonjour");
                 PlayerController.instance.LoseLife();
             }
-            else if (!col.gameObject.CompareTag("CAC") | !col.gameObject.CompareTag("Boss") | !col.gameObject.CompareTag("Dist") | !col.gameObject.CompareTag("Gros"))
+            else if (col.gameObject.layer == 4 || col.gameObject.layer == 9)
             {
                 origine.canShoot = true;
                 Destroy(gameObject);
