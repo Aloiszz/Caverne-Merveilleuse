@@ -47,7 +47,7 @@ public class GrosEnnemiScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         AI = gameObject.GetComponent<AIPath>();
-        AI.target = player.transform;
+        gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
     }
     
     void FixedUpdate()
@@ -83,7 +83,7 @@ public class GrosEnnemiScript : MonoBehaviour
         }
         else if (canRandomMove)
         {
-            StartCoroutine(RandomMove());
+            //StartCoroutine(RandomMove());
         }
     }
 
@@ -91,6 +91,7 @@ public class GrosEnnemiScript : MonoBehaviour
     {
         canShoot = false;
         AI.enabled = false;
+        rb.velocity = Vector2.zero;
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * grosForce;
         projectile.GetComponent<ProjoCollision>().origine = this;
