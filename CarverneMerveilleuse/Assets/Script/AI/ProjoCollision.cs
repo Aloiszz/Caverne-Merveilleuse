@@ -11,15 +11,25 @@ public class ProjoCollision : MonoBehaviour
     public bool mode2;
     private float initialSpeed;
     private GameObject player;
+    private GameObject newProjo;
+    private Vector2 playerDir;
     [HideInInspector] public GrosEnnemiScript origine;
+    private bool check;
+    public GameObject projo;
+    
 
     private void Update()
     {
         if (mode2)
         {
             speed = initialSpeed / 2;
-            StartCoroutine(TimeBeforeDestroy());
+            if(check)
+            {
+                StartCoroutine(TimeBeforeDestroy());
+                check = false;
+            }
         }
+        playerDir = PlayerController.instance.transform.position - transform.position;
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -83,12 +93,32 @@ public class ProjoCollision : MonoBehaviour
         gameObject.transform.localScale = new Vector3(5, 5);
         initialSpeed = player.gameObject.GetComponent<PlayerController>().speedMovement;
         mode2 = true;
+        check = true;
     }
     IEnumerator TimeBeforeDestroy()
     {
         yield return new WaitForSeconds(2f);
-        origine.canShoot = true;
-        PlayerController.instance.speedMovement = initialSpeed;
-        Destroy(gameObject);
+        if (origine.projoList.Count < 3)
+        {
+            newProjo = Instantiate(projo, transform.position, Quaternion.identity);
+            newProjo.GetComponent<ProjoCollision>().mode2 = false;
+            newProjo.transform.localScale = new Vector2(1, 1);
+            origine.projoList.Add(newProjo);
+            newProjo.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * origine.grosForce;
+            newProjo.GetComponent<ProjoCollision>().origine = origine;
+            yield return new WaitUntil(() => (newProjo.transform.position - transform.position).magnitude >= origine.maxRangeProjo);
+            newProjo.GetComponent<ProjoCollision>().Grossissement(PlayerController.instance.gameObject);
+        }
+        else
+        {
+            for (int i = 0; i < origine.projoList.Count; i++)
+            {
+                Destroy(origine.projoList[i]);
+            }
+            origine.projoList.Clear();
+            origine.canShoot = true;
+            PlayerController.instance.speedMovement = initialSpeed;
+
+        }
     }
 }

@@ -37,6 +37,7 @@ public class GrosEnnemiScript : MonoBehaviour
     private Vector2 playerDir;
     private AIPath AI;
     private GameObject projectile;
+    [HideInInspector] public List<GameObject> projoList;
 
     void Start()
     {
@@ -93,6 +94,7 @@ public class GrosEnnemiScript : MonoBehaviour
         AI.enabled = false;
         rb.velocity = Vector2.zero;
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
+        projoList.Add(projectile);
         projectile.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * grosForce;
         projectile.GetComponent<ProjoCollision>().origine = this;
         yield return new WaitUntil(() => (projectile.transform.position - transform.position).magnitude >= maxRangeProjo);
