@@ -69,7 +69,6 @@ public class CaCEnnemiScript : MonoBehaviour
             if (canJump)
             {
                 _aiPath.enabled = true;
-                Debug.Log("Je bouge");
                 if (playerDir.magnitude <= distToJumpOnPlayer)
                 {
                     StartCoroutine(JumpOnPlayer());
@@ -97,14 +96,11 @@ public class CaCEnnemiScript : MonoBehaviour
     {
         canJump = false;
         _aiPath.enabled = false;
-        Debug.Log("Jattend");
         yield return new WaitForSeconds(1f);
         rb.AddForce(playerDir.normalized * jumpForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
-        Debug.Log("dash fini");
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(1);
-        Debug.Log("On y va");
         canJump = true;
     }
 

@@ -7,9 +7,10 @@ using UnityEngine;
 public class ProjoCollision : MonoBehaviour
 {
     public bool isProjoGros;
-    public float speed;
+    private float speed;
     public bool mode2;
-    public float initialSpeed;
+    private float initialSpeed;
+    private GameObject player;
     [HideInInspector] public GrosEnnemiScript origine;
 
     private void Update()
@@ -40,7 +41,6 @@ public class ProjoCollision : MonoBehaviour
             if (col.gameObject.CompareTag("Player"))
             {
                 Grossissement(col.gameObject);
-                Debug.Log("bonjour");
                 PlayerController.instance.LoseLife();
             }
             else if (col.gameObject.layer == 4 || col.gameObject.layer == 9)
@@ -70,6 +70,7 @@ public class ProjoCollision : MonoBehaviour
         {
             if (col.gameObject.CompareTag("Player"))
             {
+                
                 col.gameObject.GetComponent<PlayerController>().speedMovement = initialSpeed;
 
             }
@@ -78,7 +79,6 @@ public class ProjoCollision : MonoBehaviour
 
     public void Grossissement(GameObject player)
     {
-        
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         gameObject.transform.localScale = new Vector3(5, 5);
         initialSpeed = player.gameObject.GetComponent<PlayerController>().speedMovement;
@@ -88,6 +88,7 @@ public class ProjoCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         origine.canShoot = true;
+        PlayerController.instance.speedMovement = initialSpeed;
         Destroy(gameObject);
     }
 }

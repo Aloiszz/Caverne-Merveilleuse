@@ -96,7 +96,6 @@ public class GrosEnnemiScript : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * grosForce;
         projectile.GetComponent<ProjoCollision>().origine = this;
         yield return new WaitUntil(() => (projectile.transform.position - transform.position).magnitude >= maxRangeProjo);
-        Debug.Log("Bah alors");
         projectile.GetComponent<ProjoCollision>().Grossissement(player.gameObject);
     }
 
