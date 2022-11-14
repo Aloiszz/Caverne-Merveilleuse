@@ -9,13 +9,12 @@ public class GrosEnnemiScript : MonoBehaviour
     private PlayerController player;
 
     [Header("AI Config")]
-    public float speed;
     public float spaceFromPlayer = 5;
     public GameObject grosProjo;
     public float grosForce = 2f;
     public float maxRangeProjo;
-    public float TimeBeforeShoot = 3f;
-    
+    public float TimeBeforeLinkedShoot = 2;
+
     [Header("AI Physics")]
     public Rigidbody2D rb;
 
