@@ -9,7 +9,7 @@ public class ProjoCollision : MonoBehaviour
     public bool isProjoGros;
     
     public bool mode2;
-    private float initialSpeed = PlayerController.instance.playerSO.speedMovement;
+    private float initialSpeed ;
     private float speed;
     private GameObject player;
     private GameObject newProjo;
@@ -20,6 +20,7 @@ public class ProjoCollision : MonoBehaviour
 
     private void Start()
     {
+        initialSpeed = PlayerController.instance.playerSO.speedMovement;
         speed = initialSpeed / 2;
     }
 
