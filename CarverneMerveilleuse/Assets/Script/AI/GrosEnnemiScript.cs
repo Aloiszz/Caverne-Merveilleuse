@@ -18,9 +18,7 @@ public class GrosEnnemiScript : MonoBehaviour
     
     [Header("AI Physics")]
     public Rigidbody2D rb;
-    public float linearDragDeceleration;
-    public float linearDragMultiplier;
-    
+
 
     [Header("AI perception")]
     public bool see;
@@ -49,11 +47,6 @@ public class GrosEnnemiScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         AI = gameObject.GetComponent<AIPath>();
         gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
-    }
-    
-    void FixedUpdate()
-    {
-        rb.drag = linearDragDeceleration * linearDragMultiplier; 
     }
 
     // Update is called once per frame
