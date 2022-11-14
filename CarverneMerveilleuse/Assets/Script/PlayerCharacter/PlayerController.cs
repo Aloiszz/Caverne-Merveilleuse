@@ -201,7 +201,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                animator[0].SetBool("isFaceDeath", true);
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity); 
             }
         }
