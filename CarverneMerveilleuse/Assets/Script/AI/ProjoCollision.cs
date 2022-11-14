@@ -7,29 +7,35 @@ using UnityEngine;
 public class ProjoCollision : MonoBehaviour
 {
     public bool isProjoGros;
-    private float speed;
+    
     public bool mode2;
-    private float initialSpeed;
+    private float initialSpeed = PlayerController.instance.playerSO.speedMovement;
+    private float speed;
     private GameObject player;
     private GameObject newProjo;
     private Vector2 playerDir;
     [HideInInspector] public GrosEnnemiScript origine;
     private bool check;
     public GameObject projo;
-    
+
+    private void Start()
+    {
+        speed = initialSpeed / 2;
+    }
 
     private void Update()
     {
         if (mode2)
         {
-            speed = initialSpeed / 2;
             if(check)
             {
-                StartCoroutine(TimeBeforeDestroy());
+                StartCoroutine(NewProjoOrDestroy());
                 check = false;
             }
         }
         playerDir = PlayerController.instance.transform.position - transform.position;
+        Debug.Log(speed);
+        Debug.Log(initialSpeed);
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -55,7 +61,13 @@ public class ProjoCollision : MonoBehaviour
             }
             else if (col.gameObject.layer == 4 || col.gameObject.layer == 9)
             {
+                for (int i = 0; i < origine.projoList.Count; i++)
+                {
+                    Destroy(origine.projoList[i]);
+                }
+                origine.projoList.Clear();
                 origine.canShoot = true;
+                PlayerController.instance.speedMovement = initialSpeed;
                 Destroy(gameObject);
             }
         }
@@ -68,8 +80,8 @@ public class ProjoCollision : MonoBehaviour
         {
             if (col.gameObject.CompareTag("Player"))
             {
-                col.gameObject.GetComponent<PlayerController>().speedMovement = speed;
-
+                PlayerController.instance.speedMovement = speed;
+                PlayerThrowAttack.instance.isInGrosProjo = true;
             }
         }
     }
@@ -82,6 +94,7 @@ public class ProjoCollision : MonoBehaviour
             {
                 
                 col.gameObject.GetComponent<PlayerController>().speedMovement = initialSpeed;
+                PlayerThrowAttack.instance.isInGrosProjo = false;
 
             }
         }
@@ -91,13 +104,12 @@ public class ProjoCollision : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         gameObject.transform.localScale = new Vector3(5, 5);
-        initialSpeed = player.gameObject.GetComponent<PlayerController>().speedMovement;
         mode2 = true;
         check = true;
     }
-    IEnumerator TimeBeforeDestroy()
+    IEnumerator NewProjoOrDestroy()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(origine.TimeBeforeLinkedShoot);
         if (origine.projoList.Count < 3)
         {
             newProjo = Instantiate(projo, transform.position, Quaternion.identity);
