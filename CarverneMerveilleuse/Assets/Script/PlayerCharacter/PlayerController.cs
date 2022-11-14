@@ -178,14 +178,16 @@ public class PlayerController : MonoBehaviour
             animator[1].SetBool("Face", false);
             animator[1].SetBool("Profile", true);
         }
-        
-        /*if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.S))
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Q))
-            {
-                animator.SetBool("Profile", false);
-            }
-        }*/
+            animator[0].SetBool("isLightAttacking", true);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            animator[0].SetBool("isLightAttacking", false);
+        }
     }
 
     void Life()
@@ -199,7 +201,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                animator[0].SetBool("isFaceDeath", true);
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity); 
             }
         }
