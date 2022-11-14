@@ -17,8 +17,6 @@ public class DistScript : MonoBehaviour
     
     [Header("AI Physics")]
     public Rigidbody2D rb;
-    public float linearDragDeceleration;
-    public float linearDragMultiplier;
 
     [Header("AI perception")]
     public bool see;
@@ -45,12 +43,7 @@ public class DistScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         AI = gameObject.GetComponent<AIPath>();
-        AI.target = player.transform;
-    }
-    
-    void FixedUpdate()
-    {
-        rb.drag = linearDragDeceleration * linearDragMultiplier; 
+        gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
     }
 
     // Update is called once per frame

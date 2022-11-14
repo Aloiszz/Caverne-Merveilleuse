@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float dashForce;
     [HideInInspector]public float dashReload;
     [HideInInspector]public float dashInvinsibleTime;
-    [HideInInspector]public int life;
+    public int life;
     [HideInInspector]public float linearDragDeceleration;
     [HideInInspector]public float linearDragMultiplier;
-    [HideInInspector] public int lifeDepard;
+    public int lifeDepard;
 
     [Header("Animator")]
     [SerializeField] private Animator animator;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         SecureSO();
-        lifeDepard = life;
+        life = lifeDepard;
     }
 
     public void SecureSO()
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         dashForce = playerSO.dashForce;
         dashReload = playerSO.dashReload;
         dashInvinsibleTime = playerSO.dashInvinsibleTime;
-        life = playerSO.life;
+        lifeDepard = playerSO.life;
         linearDragDeceleration = playerSO.linearDragDeceleration;
         linearDragMultiplier = playerSO.linearDragMultiplier;
     }
@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
     {
         //rb.velocity = new Vector2((speedMovement), rb.velocity.y);
         
-          Debug.Log(rb.velocity.x);
 
           if (rb.velocity.x > 0.03f || rb.velocity.x < -0.03f)
           {
@@ -104,10 +103,7 @@ public class PlayerController : MonoBehaviour
 
           animator.SetFloat("speedY", rb.velocity.y);
         
-        if (life > lifeDepard)
-        {
-            life = lifeDepard;
-        }
+        
         Dash();
 
         if (life == 0)
@@ -124,26 +120,6 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            //animator.Play("Dos_Idle");
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //animator.Play("profil idle");
-        }
-        
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            //animator.Play("Face_run");
-        }
-        
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            //animator.Play("profil idle");
-        }
-
         if (Input.GetKey(KeyCode.Q)) graphProfile.transform.localScale = new Vector3(-1,1,1);
         if (Input.GetKey(KeyCode.D)) graphProfile.transform.localScale = new Vector3(1,1,1);
     }
@@ -198,6 +174,7 @@ public class PlayerController : MonoBehaviour
     public void LoseLife()
     {
         life -= 1;
+        Debug.Log("lose");
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity);
     }
 
