@@ -40,9 +40,9 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public int nbVieEnPlus;
 
     [Header("Dash")] 
-    public int pourcentageAttaqueEnPlusPostDash = 10;
-    [HideInInspector] public int dashBuff;
-    public int pourcentageSpeedEnPlusPostDash = 20;
+    public float pourcentageAttaqueEnPlusPostDash = 10;
+    [HideInInspector] public float dashBuff;
+    public float pourcentageSpeedEnPlusPostDash = 20;
     [HideInInspector] public float initialSpeed;
 
     [Header("Drop")] 
@@ -114,6 +114,7 @@ public class ItemManager : MonoBehaviour
             
             case "TailleALF":
                 Debug.Log("Augmente la taille de l'AOE");
+                
                 break;
             
             case "MaxPV":
