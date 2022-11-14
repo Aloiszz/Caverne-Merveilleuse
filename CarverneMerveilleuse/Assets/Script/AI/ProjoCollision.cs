@@ -110,7 +110,7 @@ public class ProjoCollision : MonoBehaviour
     IEnumerator NewProjoOrDestroy()
     {
         yield return new WaitForSeconds(origine.TimeBeforeLinkedShoot);
-        if (origine.projoList.Count < 3)
+        if (origine.projoList.Count < origine.maxProjo)
         {
             newProjo = Instantiate(projo, transform.position, Quaternion.identity);
             newProjo.GetComponent<ProjoCollision>().mode2 = false;
