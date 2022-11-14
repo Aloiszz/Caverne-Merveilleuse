@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public int lifeDepard;
 
     [Header("Animator")]
-    [SerializeField] private Animator animator;
+    [SerializeField] private List<Animator>  animator;
     [SerializeField] private GameObject graphFace;
     [SerializeField] private GameObject graphProfile;
     [SerializeField] private GameObject graphDos;
@@ -81,31 +81,117 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //rb.velocity = new Vector2((speedMovement), rb.velocity.y);
+        foreach (var i in animator)
+        {
+            i.SetFloat("speedX", rb.velocity.x);
+            i.SetFloat("speedY", rb.velocity.y);
+            
+            if (rb.velocity.x > 0.3f || rb.velocity.x < -0.3f)
+            {
+                i.SetBool("isProfileRunning", true);
+            }
+            else
+            {
+                i.SetBool("isProfileRunning", false);
+            }
+        
+            if (rb.velocity.y > 0.3f || rb.velocity.y < -0.3f)
+            {
+                i.SetBool("isFaceRunning", true);
+            }
+            else
+            {
+                i.SetBool("isFaceRunning", false);
+            }
+        }
         
 
-          if (rb.velocity.x > 0.03f || rb.velocity.x < -0.03f)
-          {
-              graphFace.SetActive(false);
-              graphDos.SetActive(false);
-              graphProfile.SetActive(true);
-              animator.SetBool("isProfileRunning", true);
-          }
-          else
-          {
-              animator.SetBool("isProfileRunning", false);
-          }
-
-          if (!animator.GetBool("isProfileRunning") && !animator.GetBool("Profile"))
-          {
-              graphProfile.SetActive(false);
-          }
-
-          animator.SetFloat("speedY", rb.velocity.y);
-        
-        
         Dash();
+        Life();
+        GameAnimatinon();
 
+
+        if (Input.GetKey(KeyCode.Q)) graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
+        if (Input.GetKey(KeyCode.D)) graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
+    }
+
+    private void GameMove()
+    {
+        if (Input.GetKey(KeyCode.Z))
+        {
+            //transform.Translate(Vector3.up * speed * Time.deltaTime);
+            rb.AddForce(Vector2.up * speedMovement);
+            lastMovement.Add(Vector2.up);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            rb.AddForce(Vector2.left * speedMovement);
+            lastMovement.Add(Vector2.left);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(Vector2.down * speedMovement);
+            lastMovement.Add(Vector2.down);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(Vector2.right * speedMovement);
+            lastMovement.Add(Vector2.right);
+        }
+    }
+
+    private void GameAnimatinon()
+    {
+        if (Input.GetKey(KeyCode.Z))
+        {
+            graphFace.SetActive(false);
+            graphDos.SetActive(true);
+            graphProfile.SetActive(false);
+
+            animator[2].SetBool("Face", false);
+            animator[2].SetBool("Profile", false);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            graphFace.SetActive(false);
+            graphDos.SetActive(false);
+            graphProfile.SetActive(true);
+            
+            animator[1].SetBool("Face", false);
+            animator[1].SetBool("Profile", true);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            graphFace.SetActive(true);
+            graphDos.SetActive(false);
+            graphProfile.SetActive(false);
+
+            animator[0].SetBool("Face", true);
+            animator[0].SetBool("Profile", false);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            graphFace.SetActive(false);
+            graphDos.SetActive(false);
+            graphProfile.SetActive(true);
+
+            animator[1].SetBool("Face", false);
+            animator[1].SetBool("Profile", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator[0].SetBool("isLightAttacking", true);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            animator[0].SetBool("isLightAttacking", false);
+        }
+    }
+
+    void Life()
+    {
         if (life == 0)
         {
             if (ItemManager.instance.nbVieEnPlus >= 1)
@@ -119,58 +205,7 @@ public class PlayerController : MonoBehaviour
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity); 
             }
         }
-        
-        if (Input.GetKey(KeyCode.Q)) graphProfile.transform.localScale = new Vector3(-1,1,1);
-        if (Input.GetKey(KeyCode.D)) graphProfile.transform.localScale = new Vector3(1,1,1);
     }
-
-    private void GameMove()
-    {
-        if (Input.GetKey(KeyCode.Z))
-        {
-            //transform.Translate(Vector3.up * speed * Time.deltaTime);
-            rb.AddForce(Vector2.up * speedMovement);
-            lastMovement.Add(Vector2.up);
-            graphFace.SetActive(false);
-            graphDos.SetActive(true);
-            animator.SetBool("Face", false);
-        }
-
-        if (Input.GetKey(KeyCode.Q))
-        {
-            //transform.Translate(Vector3.left * speed * Time.deltaTime);
-            rb.AddForce(Vector2.left * speedMovement);
-            lastMovement.Add(Vector2.left);
-            animator.SetBool("Profile", true);
-        }
-        
-        if (Input.GetKey(KeyCode.S))
-        {
-            //transform.Translate(Vector3.down * speed * Time.deltaTime);
-            rb.AddForce(Vector2.down * speedMovement);
-            lastMovement.Add(Vector2.down);
-            graphFace.SetActive(true);
-            graphDos.SetActive(false);
-            animator.SetBool("Face", true);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            //transform.Translate(Vector3.right * speed * Time.deltaTime);
-            rb.AddForce(Vector2.right * speedMovement);
-            lastMovement.Add(Vector2.right);
-            animator.SetBool("Profile", true);
-        }
-
-        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.S))
-        {
-            if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Q))
-            {
-                animator.SetBool("Profile", false);
-            }
-        }
-    }
-    
     public void LoseLife()
     {
         life -= 1;

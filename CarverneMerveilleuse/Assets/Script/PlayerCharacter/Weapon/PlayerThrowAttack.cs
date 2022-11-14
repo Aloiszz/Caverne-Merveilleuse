@@ -16,6 +16,7 @@ public class PlayerThrowAttack : MonoBehaviour
     public List<Vector3> points = new List<Vector3>();
 
     public bool isThrow;
+    public bool isInGrosProjo;
 
     public static PlayerThrowAttack instance;
     
@@ -51,7 +52,10 @@ public class PlayerThrowAttack : MonoBehaviour
 
         if (isThrow)
         {
-            PlayerController.instance.speedMovement = 110;
+            if (!isInGrosProjo)
+            {
+                PlayerController.instance.speedMovement = 110;
+            }
             ThrowCollision.instance.IsWeaponActive(true);
             lineRender.gameObject.SetActive(false);
             
@@ -63,7 +67,11 @@ public class PlayerThrowAttack : MonoBehaviour
         }
         else
         {
-            PlayerController.instance.SecureSO();
+            if (!isInGrosProjo)
+            {
+                PlayerController.instance.speedMovement = PlayerController.instance.playerSO.speedMovement;
+            }
+            
             ThrowCollision.instance.gameObject.transform.position = PlayerController.instance.transform.position;
             IsWeaponDisable(false);
             ThrowCollision.instance.IsWeaponActive(false);

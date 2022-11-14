@@ -222,7 +222,6 @@ public class ItemManager : MonoBehaviour
         }
         else
         {
-            player.speedMovement = initialSpeed;
             dashBuff = 0;
         }
     }
