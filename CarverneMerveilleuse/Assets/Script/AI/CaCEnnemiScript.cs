@@ -90,7 +90,22 @@ public class CaCEnnemiScript : MonoBehaviour
     {
         canJump = false;
         _aiPath.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < 10; i++)
+        {
+            if (i%2 == 0)
+            {
+                yield return new WaitForSeconds(0.1f);
+                transform.localPosition = new Vector2(transform.localPosition.x + 0.2f, transform.localPosition.y);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.1f);
+                transform.localPosition = new Vector2(transform.localPosition.x - 0.2f, transform.localPosition.y);
+            }
+        }
+        
+        
         rb.AddForce(playerDir.normalized * jumpForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         rb.velocity = Vector2.zero;
