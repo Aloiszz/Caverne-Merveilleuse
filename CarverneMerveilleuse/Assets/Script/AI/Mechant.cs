@@ -99,6 +99,14 @@ public class Mechant : MonoBehaviour
                 }
             }
 
+            if (CompareTag("Gros"))
+            {
+                for (int i = 0; i < gameObject.GetComponent<GrosEnnemiScript>().projoList.Count; i++)
+                {
+                    Destroy(gameObject.GetComponent<GrosEnnemiScript>().projoList[i]);
+                }
+                
+            }
             Destroy(gameObject);
         }
     }
