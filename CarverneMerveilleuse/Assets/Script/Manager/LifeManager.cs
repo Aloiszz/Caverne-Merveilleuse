@@ -11,6 +11,7 @@ public class LifeManager : MonoBehaviour
     
     [SerializeField] private Image life_Bar;
     [SerializeField] private TextMeshProUGUI lifeTxt;
+    private bool verif;
     
     [SerializeField] private int maxLife;
 
@@ -30,6 +31,8 @@ public class LifeManager : MonoBehaviour
     
     private void Start()
     {
+        StartCoroutine(AfficheHealthBar());
+        
         SecureSO();
         maxLife = PlayerControllerSO.life;
     }
@@ -40,10 +43,17 @@ public class LifeManager : MonoBehaviour
     
     private void Update()
     {
-        life_Bar.DOFillAmount((float)PlayerController.instance.life / (float)maxLife, 0.15f);
-        
+        if (verif)
+        {
+            life_Bar.DOFillAmount((float)PlayerController.instance.life / (float)maxLife, 0.15f);
+        }
         //lifeTxt.text = current_life + " / " + nextLifeLevel;
+    }
 
-       
+    IEnumerator AfficheHealthBar()
+    {
+        life_Bar.DOFillAmount((float)1, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        verif = true;
     }
 }
