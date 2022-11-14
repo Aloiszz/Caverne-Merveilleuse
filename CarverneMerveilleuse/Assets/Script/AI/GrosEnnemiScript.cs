@@ -13,6 +13,7 @@ public class GrosEnnemiScript : MonoBehaviour
     public GameObject grosProjo;
     public float grosForce = 2f;
     public float maxRangeProjo;
+    public int maxProjo = 3;
     public float TimeBeforeLinkedShoot = 2;
 
     [Header("AI Physics")]
