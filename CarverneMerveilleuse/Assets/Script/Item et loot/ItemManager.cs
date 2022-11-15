@@ -29,8 +29,9 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public float buffPushAB;
     [HideInInspector] public bool canMoveWhileBeyblade;
     [HideInInspector] public bool beybladeInvinsible;
-    
-    [Header("Arme lancé de faux")]
+
+    [Header("Arme lancé de faux")] 
+    public float pourcentagePortéeEnPlusALF = 20;
     
     [Header("PV")]
     public int MaxPV = 2;
@@ -113,8 +114,10 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "TailleALF":
-                Debug.Log("Augmente la taille de l'AOE");
-                
+                //Debug.Log("Augmente la taille de l'AOE");
+                ThrowCollision.instance.transform.localScale = new Vector2(
+                    ThrowCollision.instance.transform.localScale.x * (pourcentagePortéeEnPlusALF / 100 + 1),
+                    ThrowCollision.instance.transform.localScale.y * (pourcentagePortéeEnPlusALF / 100 + 1));
                 break;
             
             case "MaxPV":
