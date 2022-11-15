@@ -9,6 +9,7 @@ public class ChatMarchand : MonoBehaviour
     public float speed;
     public MerchantSecretDoor merchantRoom;
     private int rand;
+    [SerializeField] private GameObject spawnpoint;
 
     public bool see;
     public static ChatMarchand instance;
@@ -30,6 +31,7 @@ public class ChatMarchand : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         merchantRoom = GameObject.FindGameObjectWithTag("MerchantSecretDoor").GetComponent<MerchantSecretDoor>();
+        spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointTop");
     }
 
     // Update is called once per frame
@@ -59,8 +61,7 @@ public class ChatMarchand : MonoBehaviour
             RoomManager.instance.isShopRoom = true;
             
             GenerateShopRoom();
-            /*SpawnPointLocation();
-            TeleportPlayerToNextRoom();*/
+            TeleportPlayerToNextRoom();
         }
     }
 
@@ -68,11 +69,18 @@ public class ChatMarchand : MonoBehaviour
 
     public void GenerateShopRoom()
     {
+        RoomManager.instance.roomMemoryIndex++;
+        RoomManager.instance.roomMemoryDirectionIndex++;
         transform.parent.gameObject.SetActive(false);
         
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
         Instantiate(RoomManager.instance.shopRoom[rand], new Vector3(0,0,0),
             transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+    }
+    
+    public void TeleportPlayerToNextRoom()
+    {
+        PlayerController.instance.transform.position = spawnpoint.transform.position;
     }
 
     #endregion

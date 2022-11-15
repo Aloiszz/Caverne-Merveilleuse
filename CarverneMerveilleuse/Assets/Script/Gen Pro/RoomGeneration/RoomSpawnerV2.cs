@@ -74,6 +74,14 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (!RoomManager.instance.isBossRoom)
         {
+            if (isShopDoor)
+            {
+                Debug.Log("On COCO");
+                ReturnShopRoom();
+                SpawnPointLocation();
+                TeleportPlayerToNextRoom();
+            }
+            
             if (!colliderVierge && !isAlternativeDoor)
             {
                 KeepMemoryDirection();
@@ -83,8 +91,9 @@ public class RoomSpawnerV2 : MonoBehaviour
                 Debug.Log("Nouvelle Room");
                 colliderVierge = true;
             }
-            else if(!isAlternativeDoor)
+            else if(!isAlternativeDoor && !isShopDoor)
             {
+                Debug.Log("NONO");
                 if (direction == RoomManager.instance.roomMemoryDirection[^1])
                 {
                     //KeepMemoryDirection();
@@ -138,12 +147,6 @@ public class RoomSpawnerV2 : MonoBehaviour
                 SpawnPointLocation();
                 TeleportPlayerToNextRoom();
             }*/
-            if (isShopDoor)
-            {
-                ComeBackToTheRoom();
-                SpawnPointLocation();
-                TeleportPlayerToNextRoom(); 
-            }
         }
         else
         {
@@ -349,9 +352,15 @@ public class RoomSpawnerV2 : MonoBehaviour
             transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
     }
 
-    void ComeBackToTheRoom()
+    void ReturnShopRoom()
     {
+        RoomManager.instance.roomMemoryIndex--;
+        RoomManager.instance.roomMemoryDirectionIndex--;
         
+        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
+        
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
     }
     #endregion
 }

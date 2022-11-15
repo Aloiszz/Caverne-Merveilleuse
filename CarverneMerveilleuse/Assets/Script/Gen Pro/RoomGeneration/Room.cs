@@ -12,24 +12,32 @@ public class Room : MonoBehaviour
     public GameObject goldenDoor;
     private int result;
     public bool isGoldenPath;
+    public bool isShopRoom;
 
     private void Start()
     {
         FadeInRoom();
         //FindCameraBorder();
-
+        
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
-        if (AlternativeDoor.Count > 1)
+        
+        if (!isShopRoom)
         {
-            CreateGoldenPath();
-            RoomManager.instance.roomMemory.Add(this.gameObject);
+            if (AlternativeDoor.Count > 1)
+            {
+                CreateGoldenPath();
+                RoomManager.instance.roomMemory.Add(this.gameObject);
+            }
+            else
+            {
+                RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
+            }
+            CreateAlternativePath();
         }
         else
         {
-            RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
+            RoomManager.instance.roomMemory.Add(this.gameObject);
         }
-        CreateAlternativePath();
-        
     }
 
 
