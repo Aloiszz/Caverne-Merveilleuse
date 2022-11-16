@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 79625110420020026}
   - component: {fileID: 174963601460665254}
   - component: {fileID: 79625110420020029}
+  - component: {fileID: 1626818320714861270}
   - component: {fileID: 4825069532071953669}
   - component: {fileID: 245021141579859556}
   - component: {fileID: 5367627528932333836}
   - component: {fileID: 2305777225139207135}
   - component: {fileID: 5199127943103591038}
+  - component: {fileID: 393726491}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -84,8 +86,22 @@ MonoBehaviour:
   linearDragDeceleration: 0
   linearDragMultiplier: 0
   lifeDepard: 0
+--- !u!114 &1626818320714861270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79625110420020024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09fa8a09f0611084a87dcbd28a5f5f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   animator:
-  - {fileID: 0}
+  - {fileID: 7821984284873875654}
+  - {fileID: 937374150}
+  - {fileID: 2044199968}
   graphFace: {fileID: 7740151312404345513}
   graphProfile: {fileID: 2745228928988454445}
   graphDos: {fileID: 7967740950873251355}
@@ -197,6 +213,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 1.51}
   m_EdgeRadius: 0
+--- !u!95 &393726491
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79625110420020024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de30a0ec8240c6c49984565931afdbb1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1817975990173132760
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +612,6 @@ MonoBehaviour:
   sprite: {fileID: 0}
   coll: {fileID: 0}
   rb: {fileID: 0}
-  explosion: {fileID: 1035398548036724833, guid: d3217ae86409f5b45b878f3ce1be7f01, type: 3}
   bounceInt: 2
 --- !u!58 &5132792625361111448
 CircleCollider2D:
@@ -1344,6 +1379,11 @@ PrefabInstance:
 --- !u!1 &7740151312404345513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7669744521787702885, guid: a041c5a003c161444bcce923f61ae527, type: 3}
+  m_PrefabInstance: {fileID: 79625110063221964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7821984284873875654 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7896965043845950474, guid: a041c5a003c161444bcce923f61ae527, type: 3}
   m_PrefabInstance: {fileID: 79625110063221964}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8908844954083207882 stripped
