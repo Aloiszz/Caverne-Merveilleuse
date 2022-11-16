@@ -12,6 +12,7 @@ public class ChatMarchand : MonoBehaviour
     [SerializeField] private GameObject spawnpoint;
 
     public bool see;
+    public bool isStillActive;
     public static ChatMarchand instance;
 
     // Start is called before the first frame update
@@ -37,7 +38,11 @@ public class ChatMarchand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindMerchantRoom();   
+        if (!isStillActive)
+        {
+            FindMerchantRoom();  
+        }
+        
     }
     
 
@@ -62,6 +67,10 @@ public class ChatMarchand : MonoBehaviour
             
             GenerateShopRoom();
             TeleportPlayerToNextRoom();
+            AstarPath.active.Scan();
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            isStillActive = true;
         }
     }
 

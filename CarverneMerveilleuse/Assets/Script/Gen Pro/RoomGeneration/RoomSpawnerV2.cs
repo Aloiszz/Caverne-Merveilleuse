@@ -93,7 +93,6 @@ public class RoomSpawnerV2 : MonoBehaviour
             }
             else if(!isAlternativeDoor && !isShopDoor)
             {
-                Debug.Log("NONO");
                 if (direction == RoomManager.instance.roomMemoryDirection[^1])
                 {
                     //KeepMemoryDirection();
@@ -343,24 +342,15 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     #region Shop
 
-    public void GenerateShopRoom()
-    {
-        transform.parent.gameObject.SetActive(false);
-        
-        rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
-        Instantiate(RoomManager.instance.shopRoom[rand], new Vector3(0,0,0),
-            transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
-    }
-
     void ReturnShopRoom()
     {
         RoomManager.instance.roomMemoryIndex--;
         RoomManager.instance.roomMemoryDirectionIndex--;
         
-        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
-        
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
+        
+        RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemoryIndex);
     }
     #endregion
 }
