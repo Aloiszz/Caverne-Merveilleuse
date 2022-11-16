@@ -11,7 +11,7 @@ public class ThrowCollision : MonoBehaviour
     public SpriteRenderer sprite;
     public Collider2D coll;
     public Rigidbody2D rb;
-
+    public GameObject explosion;
     [HideInInspector] public int bounceInt = 2;
 
     public static ThrowCollision instance;
@@ -81,6 +81,10 @@ public class ThrowCollision : MonoBehaviour
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             
             //col.GetComponent<Mechant>().ReceiveThrowDamage;     A Faire !!!
+            if (ItemManager.instance.isExplosfALFGet)
+            {
+                StartCoroutine(ExplosionColl());
+            }
         }
 
         if (col.gameObject.layer == 9)
@@ -89,6 +93,13 @@ public class ThrowCollision : MonoBehaviour
         }
     }
 
+    IEnumerator ExplosionColl()
+    {
+        GameObject expColl = Instantiate(explosion, transform.position, Quaternion.identity);
+        expColl.transform.localScale =new Vector2(ItemManager.instance.tailleExplosion, ItemManager.instance.tailleExplosion);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(expColl);
+    }
 
     public void IsWeaponActive(bool verif)
     {

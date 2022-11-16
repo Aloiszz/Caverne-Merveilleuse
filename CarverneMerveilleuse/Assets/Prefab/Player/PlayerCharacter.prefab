@@ -84,7 +84,8 @@ MonoBehaviour:
   linearDragDeceleration: 0
   linearDragMultiplier: 0
   lifeDepard: 0
-  animator: {fileID: 0}
+  animator:
+  - {fileID: 0}
   graphFace: {fileID: 7740151312404345513}
   graphProfile: {fileID: 2745228928988454445}
   graphDos: {fileID: 7967740950873251355}
@@ -148,6 +149,7 @@ MonoBehaviour:
     m_Bits: 512
   points: []
   isThrow: 0
+  isInGrosProjo: 0
 --- !u!50 &2305777225139207135
 Rigidbody2D:
   serializedVersion: 4
@@ -574,6 +576,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   coll: {fileID: 0}
   rb: {fileID: 0}
+  explosion: {fileID: 1035398548036724833, guid: d3217ae86409f5b45b878f3ce1be7f01, type: 3}
   bounceInt: 2
 --- !u!58 &5132792625361111448
 CircleCollider2D:

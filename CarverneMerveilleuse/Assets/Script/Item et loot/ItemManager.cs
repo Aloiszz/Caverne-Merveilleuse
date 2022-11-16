@@ -32,6 +32,9 @@ public class ItemManager : MonoBehaviour
 
     [Header("Arme lancé de faux")] 
     public float pourcentagePortéeEnPlusALF = 20;
+    public int nbRebondEnPlusALF = 1;
+    public float tailleExplosion = 4;
+    [HideInInspector] public bool isExplosfALFGet;
     
     [Header("PV")]
     public int MaxPV = 2;
@@ -106,7 +109,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "RebondALF":
-                Debug.Log("Augmente le nombre de rebond");
+                //Debug.Log("Augmente le nombre de rebond");
+                PlayerThrowAttack.instance.maxBounce += nbRebondEnPlusALF;
                 break;
             
             case "ChargementALF":
@@ -182,6 +186,7 @@ public class ItemManager : MonoBehaviour
             
             case "ExplosifALF":
                 Debug.Log("Vos projectiles deviennent explosifs, ils infligent plus de dégâts et font des dégâts de zones quand ils touchent un ennemi");
+                isExplosfALFGet = true;
                 break;
             
             case "DiviseALF":
