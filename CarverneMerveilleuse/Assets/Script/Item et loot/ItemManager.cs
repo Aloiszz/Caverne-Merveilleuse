@@ -33,6 +33,7 @@ public class ItemManager : MonoBehaviour
     [Header("Arme lancé de faux")] 
     public float pourcentagePortéeEnPlusALF = 20;
     public int nbRebondEnPlusALF = 1;
+    public GameObject explosion;
     public float tailleExplosion = 4;
     [HideInInspector] public bool isExplosfALFGet;
     
