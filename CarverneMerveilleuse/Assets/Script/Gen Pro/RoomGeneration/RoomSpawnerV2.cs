@@ -348,9 +348,10 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemoryDirectionIndex--;
         
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
+        RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemoryIndex);
+        
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
         
-        RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemoryIndex);
     }
     #endregion
 }
