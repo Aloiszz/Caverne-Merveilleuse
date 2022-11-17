@@ -52,6 +52,8 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public float dashBuff;
     public float pourcentageSpeedEnPlusPostDash = 20;
     [HideInInspector] public float initialSpeed;
+    public GameObject petrole;
+    [HideInInspector] public bool isPetroleDashGet;
 
     [Header("Drop")] 
     public int nombreDentDropEnPlus = 2;
@@ -210,6 +212,7 @@ public class ItemManager : MonoBehaviour
             
             case "PetroleDash":
                 Debug.Log("Vous laissez un trait de pétrole derrière vous, les ennemis subissent des dégâts et sont ralentis quand ils se trouvent dessus");
+                isPetroleDashGet = true;
                 break;
             
             case "VitesseDegatsDash":
