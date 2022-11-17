@@ -76,10 +76,9 @@ public class RoomSpawnerV2 : MonoBehaviour
         {
             if (isShopDoor)
             {
-                Debug.Log("On COCO");
+                Debug.Log("Come Back From Shop");
                 ReturnShopRoom();
-                SpawnPointLocation();
-                TeleportPlayerToNextRoom();
+                TeleportPlayerBackToRoom();
             }
             
             if (!colliderVierge && !isAlternativeDoor)
@@ -348,9 +347,13 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemoryDirectionIndex--;
         
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
-        RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemoryIndex);
-        
+        RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemoryIndex+1);
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
+        
+    }
+    public void TeleportPlayerBackToRoom()
+    {
+        PlayerController.instance.transform.position = GameObject.FindGameObjectWithTag("Chat").transform.position;
         
     }
     #endregion
