@@ -38,8 +38,8 @@ public class PlayerHeavyAttack : MonoBehaviour
     private List<float> coolDown; // temps entre chaque coups
     private int coolDownIndex;
     private float timerRemaining; // temps restant entre chaque coup pour arriver au combo
-    private List<int> numberOfTurn; //nombre de tour que peut faire l'attaque
-    private int numberOfTurnIndex;
+    [HideInInspector] public List<int> numberOfTurn; //nombre de tour que peut faire l'attaque
+    [HideInInspector] public int numberOfTurnIndex;
 
     [Header("Cinemachine Schake")] 
     private float intensityLightCloseDamage;

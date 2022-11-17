@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Unity.Mathematics;
 
 public class PlayerLightAttack : MonoBehaviour
 {
@@ -110,6 +111,10 @@ public class PlayerLightAttack : MonoBehaviour
                         Vector3 direction = (Vector3)(Input.mousePosition-mouseWorldPosition);
                         direction.Normalize();
                         PlayerController.instance.rb.AddForce(direction * 1200);
+                        if (ItemManager.instance.isFenteAPGet)
+                        {
+                            StartCoroutine(FenteAP());
+                        }
                     }
                 }
                 else
@@ -159,5 +164,19 @@ public class PlayerLightAttack : MonoBehaviour
         isCoolDown = true;
         yield return new WaitForSeconds(coolDownEndCombo[coolDownEndComboIndex]); //- ItemManager.instance.endComboSoustracteur
         isCoolDown = false;
+    }
+
+    IEnumerator FenteAP()
+    {
+        GameObject fente = Instantiate(ItemManager.instance.fente, PlayerAttackCollision.instance.transform.position, PlayerAttackCollision.instance.transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < ItemManager.instance.nbCoupFente; i++)
+        {
+            fente.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+            fente.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+        }
+        Destroy(fente);
     }
 }
