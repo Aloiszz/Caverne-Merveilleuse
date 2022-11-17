@@ -36,42 +36,7 @@ public class ThrowCollision : MonoBehaviour
         sprite.enabled = false;
         coll.enabled = false;
     }
-
-    public void ThrowWeapon()
-    {
-        rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
-
-        //StartCoroutine(wait());
-        
-        gameObject.transform.DORotate(new Vector3(0, 0, 2160), 3);
-    }
-
-    IEnumerator wait()
-    {
-        for (int i = 0; i < PlayerThrowAttack.instance.points.Count;)
-        {
-            gameObject.transform.DOMove(PlayerThrowAttack.instance.points[i], 0.2f).SetEase(Ease.Linear);
-            yield return new WaitForSeconds(.2f);
-
-            i++;
-        }
-    }
     
-    void BounceWeapon()
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = 0;
-        rb.AddForce((PlayerThrowAttack.instance.points[bounceInt]), ForceMode2D.Impulse);
-        bounceInt++;
-
-        /*for (int i = 2; i < PlayerThrowAttack.instance.points.Count;)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = 0;
-            rb.AddForce((PlayerThrowAttack.instance.points[i]) * 120, ForceMode2D.Impulse);
-            i++;
-        }*/
-    }
     
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -90,6 +55,29 @@ public class ThrowCollision : MonoBehaviour
         {
             BounceWeapon();
         }
+    }
+    
+    public void ThrowWeapon()
+    {
+        rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
+
+        gameObject.transform.DORotate(new Vector3(0, 0, 2160), 3);
+    }
+
+    void BounceWeapon()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0;
+        rb.AddForce((PlayerThrowAttack.instance.points[bounceInt]), ForceMode2D.Impulse);
+        bounceInt++;
+
+        /*for (int i = 2; i < PlayerThrowAttack.instance.points.Count;)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = 0;
+            rb.AddForce((PlayerThrowAttack.instance.points[i]) * 120, ForceMode2D.Impulse);
+            i++;
+        }*/
     }
 
     IEnumerator ExplosionColl()

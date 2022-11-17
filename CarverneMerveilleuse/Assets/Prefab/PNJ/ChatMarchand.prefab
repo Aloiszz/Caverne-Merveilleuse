@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 4
 --- !u!114 &9218886278744469020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,9 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 4
   merchantRoom: {fileID: 0}
+  spawnpoint: {fileID: 0}
   see: 0
+  isStillActive: 0
 --- !u!61 &9218886280517931730
 BoxCollider2D:
   m_ObjectHideFlags: 0

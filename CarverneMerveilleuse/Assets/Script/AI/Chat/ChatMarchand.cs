@@ -12,6 +12,8 @@ public class ChatMarchand : MonoBehaviour
     [SerializeField] private GameObject spawnpoint;
 
     public bool see;
+    public bool isStillActive;
+    [HideInInspector] public bool PlayerCameBack;
     public static ChatMarchand instance;
 
     // Start is called before the first frame update
@@ -31,13 +33,22 @@ public class ChatMarchand : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         merchantRoom = GameObject.FindGameObjectWithTag("MerchantSecretDoor").GetComponent<MerchantSecretDoor>();
-        spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointTop");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        FindMerchantRoom();   
+        if (!isStillActive)
+        {
+            FindMerchantRoom();  
+        }
+
+        if (PlayerCameBack)
+        {
+            StartCoroutine(PlayerCameback());
+            
+        }
     }
     
 
@@ -60,13 +71,25 @@ public class ChatMarchand : MonoBehaviour
         {
             RoomManager.instance.isShopRoom = true;
             
-            GenerateShopRoom();
-            TeleportPlayerToNextRoom();
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+        
+            isStillActive = true;
+            
+            Shop();
+            
         }
     }
 
-    #region Shop Generation 
+    #region Shop Generation
 
+
+    void Shop()
+    {
+        StartCoroutine(Mini_cinematic());
+        
+    }
+    
     public void GenerateShopRoom()
     {
         RoomManager.instance.roomMemoryIndex++;
@@ -80,7 +103,32 @@ public class ChatMarchand : MonoBehaviour
     
     public void TeleportPlayerToNextRoom()
     {
-        PlayerController.instance.transform.position = spawnpoint.transform.position;
+        PlayerController.instance.transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
+    }
+
+    IEnumerator Mini_cinematic()
+    {
+        PlayerController.instance.enabled = false;
+        //Play Anim 
+        //Camera effetc
+        
+        yield return new WaitForSeconds(2);
+        
+        GenerateShopRoom();
+        TeleportPlayerToNextRoom();
+        AstarPath.active.Scan();
+        
+    }
+    
+    IEnumerator PlayerCameback()
+    {
+        PlayerController.instance.enabled = false;
+        //Play Anim 
+        //Camera effetc
+        
+        yield return new WaitForSeconds(2);   
+        
+        PlayerController.instance.enabled = true;
     }
 
     #endregion

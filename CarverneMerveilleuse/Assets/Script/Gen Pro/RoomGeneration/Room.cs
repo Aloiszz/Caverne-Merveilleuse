@@ -12,6 +12,7 @@ public class Room : MonoBehaviour
     public GameObject goldenDoor;
     private int result;
     public bool isGoldenPath;
+    
     public bool isShopRoom;
 
     private void Start()
@@ -37,6 +38,7 @@ public class Room : MonoBehaviour
         else
         {
             RoomManager.instance.roomMemory.Add(this.gameObject);
+            StartCoroutine(Mini_cinematic_ShopRoom());
         }
     }
 
@@ -106,6 +108,14 @@ public class Room : MonoBehaviour
                 x.GetComponent<RoomSpawnerV2>().isAlternativeDoor = true;
             }
         }
+    }
+
+
+    IEnumerator Mini_cinematic_ShopRoom()
+    {
+        //Camera effetc
+        yield return new WaitForSeconds(0.7f);
+        PlayerController.instance.enabled = true;
     }
     
 }

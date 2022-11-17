@@ -21,6 +21,9 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public float endComboSoustracteur;
     public int recupereVieAP = 1;
     [HideInInspector] public int regenVie;
+    public GameObject fente;
+    public int nbCoupFente = 5;
+    [HideInInspector] public bool isFenteAPGet;
 
     [Header("Arme Beyblade")] 
     public float pourcentagePortéeEnPlus = 20;
@@ -101,7 +104,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "TourAB":
-                Debug.Log("Permet de faire un tour en plus");
+                //Debug.Log("Permet de faire un tour en plus");
+                PlayerHeavyAttack.instance.numberOfTurn[PlayerHeavyAttack.instance.numberOfTurnIndex] += 1;
                 break;
             
             case "PushAB":
@@ -167,7 +171,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "FenteAP":
-                Debug.Log("Votre 3ème coup créer une fente devant vous qui inflige des dégâts");
+                //Debug.Log("Votre 3ème coup créer une fente devant vous qui inflige des dégâts");
+                isFenteAPGet = true;
                 break;
             
             case "RecupereVieAP":
@@ -186,7 +191,7 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "ExplosifALF":
-                Debug.Log("Vos projectiles deviennent explosifs, ils infligent plus de dégâts et font des dégâts de zones quand ils touchent un ennemi");
+                //Debug.Log("Vos projectiles deviennent explosifs, ils infligent plus de dégâts et font des dégâts de zones quand ils touchent un ennemi");
                 isExplosfALFGet = true;
                 break;
             
