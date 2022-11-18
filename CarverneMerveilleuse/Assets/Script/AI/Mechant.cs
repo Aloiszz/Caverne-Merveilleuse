@@ -30,6 +30,7 @@ public class Mechant : MonoBehaviour
     public int pourcentageDropCoeur;
     
     [HideInInspector] public bool invokeByBoss;
+    [HideInInspector] public bool isInPetrole;
     private ItemManager itemManager;
     private float buffAtk;
     private float buffCritique;
@@ -140,5 +141,16 @@ public class Mechant : MonoBehaviour
         life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex];
         forcelightDamage += 1000 * itemManager.buffPushAB;
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
+    }
+
+    public void ReceiveThrowDamage()
+    {
+        life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
+        
+    }
+
+    public void OtherHit()
+    {
+        life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] / 2;
     }
 }

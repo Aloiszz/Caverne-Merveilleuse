@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
             StartCoroutine(DashInvinsibleTimer());
+            StartCoroutine(PetrolDash());
             lastMovement.Clear();
         }
     }
@@ -154,6 +155,25 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0,7, false);
     }
 
-    
+    IEnumerator PetrolDash()
+    {
+        
+        if (ItemManager.instance.isPetroleDashGet)
+        {
+            List<GameObject> petrole = new List<GameObject>();
+            for (int i = 0; i < ItemManager.instance.nbTachePetrole; i++)
+            {
+                petrole.Add(Instantiate(ItemManager.instance.petrole, transform.position, Quaternion.identity));
+                yield return new WaitForSeconds(dashInvinsibleTime / ItemManager.instance.nbTachePetrole);
+            }
+
+            yield return new WaitForSeconds(ItemManager.instance.secondAvantDisparitionPetrole);
+            for (int i = 0; i < petrole.Count; i++)
+            {
+                Destroy(petrole[i]);
+            }
+
+        }
+    }
     
 }

@@ -53,6 +53,8 @@ public class ItemManager : MonoBehaviour
     public float pourcentageSpeedEnPlusPostDash = 20;
     [HideInInspector] public float initialSpeed;
     public GameObject petrole;
+    public int nbTachePetrole;
+    public float secondAvantDisparitionPetrole;
     [HideInInspector] public bool isPetroleDashGet;
 
     [Header("Drop")] 
