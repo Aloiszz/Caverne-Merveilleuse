@@ -109,6 +109,10 @@ public class DistScript : MonoBehaviour
             {
                 rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
             }
+            if (ItemManager.instance.isDegatDashGet)
+            {
+                GetComponent<Mechant>().OtherHit();
+            }
         }
         else
         {
