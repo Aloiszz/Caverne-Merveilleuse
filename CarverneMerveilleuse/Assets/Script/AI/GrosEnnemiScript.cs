@@ -10,6 +10,7 @@ public class GrosEnnemiScript : MonoBehaviour
 
     [Header("AI Config")]
     public float spaceFromPlayer = 5;
+    public float distForCAC = 3;
     public GameObject grosProjo;
     public float grosForce = 2f;
     public float maxRangeProjo;
@@ -31,10 +32,12 @@ public class GrosEnnemiScript : MonoBehaviour
     
     
     public bool canShoot = true;
+    public bool canCaC = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
     private AIPath AI;
     private GameObject projectile;
+    public GameObject cacHitBox;
     [HideInInspector] public List<GameObject> projoList;
 
     void Start()
@@ -74,6 +77,11 @@ public class GrosEnnemiScript : MonoBehaviour
                     StartCoroutine(GrosShoot());
                 }
             }
+
+            if (playerDir.magnitude <= distForCAC && canCaC)
+            {
+                StartCoroutine(CaC());
+            }
         }
         else if (canRandomMove)
         {
@@ -92,6 +100,28 @@ public class GrosEnnemiScript : MonoBehaviour
         projectile.GetComponent<ProjoCollision>().origine = this;
         yield return new WaitUntil(() => (projectile.transform.position - transform.position).magnitude >= maxRangeProjo);
         projectile.GetComponent<ProjoCollision>().Grossissement(player.gameObject);
+    }
+
+    IEnumerator CaC()
+    {
+        canCaC = false;
+        for (int i = 0; i < 8; i++)
+        {
+            if (i % 2 == 0)
+            {
+                yield return new WaitForSeconds(0.1f);
+                transform.localPosition = new Vector2(transform.localPosition.x + 0.2f, transform.localPosition.y);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.1f);
+                transform.localPosition = new Vector2(transform.localPosition.x - 0.2f, transform.localPosition.y);
+            }
+        }
+        cacHitBox.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        cacHitBox.SetActive(false);
+        canCaC = true;
     }
 
     IEnumerator RandomMove()

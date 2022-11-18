@@ -152,7 +152,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
-        
     }
+
+    
     
 }
