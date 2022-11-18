@@ -46,8 +46,11 @@ public class ItemManager : MonoBehaviour
     public float pourcentageBuffATKDuSeuilPV;
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int nbVieEnPlus;
-
+    
     [Header("Dash")] 
+    public float puissancePushDash;
+    [HideInInspector] public bool isPushDashGet;
+    [HideInInspector] public bool isDegatDashGet;
     public float pourcentageAttaqueEnPlusPostDash = 10;
     [HideInInspector] public float dashBuff;
     public float pourcentageSpeedEnPlusPostDash = 20;
@@ -149,6 +152,7 @@ public class ItemManager : MonoBehaviour
             
             case "DegatsDash":
                 Debug.Log("Inflige des dégâts aux ennemis sur la trajectoire du dash");
+                isDegatDashGet = true;
                 break;
             
             case "NombreDash":
@@ -156,7 +160,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "PushDash":
-                Debug.Log("Push les ennemis sur la trajectoire du dash");
+                //Debug.Log("Push les ennemis sur la trajectoire du dash");
+                isPushDashGet = true;
                 break;
             
             case "PVDrop":

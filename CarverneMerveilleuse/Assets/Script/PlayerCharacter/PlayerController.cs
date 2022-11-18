@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float linearDragDeceleration;
     [HideInInspector]public float linearDragMultiplier;
     public int lifeDepard;
+    [HideInInspector] public bool isDashing;
     
     private void Awake()
     {
@@ -148,11 +149,16 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator DashInvinsibleTimer()
     {
-        Physics2D.IgnoreLayerCollision(0,6, true);
-        Physics2D.IgnoreLayerCollision(0,7, true);
+        isDashing = true;
+        if (!ItemManager.instance.isPushDashGet && !ItemManager.instance.isDegatDashGet)
+        {
+            Physics2D.IgnoreLayerCollision(0,6, true);
+            Physics2D.IgnoreLayerCollision(0,7, true);
+        }
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
+        isDashing = false;
     }
 
     IEnumerator PetrolDash()

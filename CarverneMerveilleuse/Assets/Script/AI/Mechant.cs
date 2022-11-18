@@ -111,7 +111,6 @@ public class Mechant : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     public void ReceiveLightDamage()
     {
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
