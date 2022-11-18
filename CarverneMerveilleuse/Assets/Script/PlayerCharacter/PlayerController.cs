@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float linearDragMultiplier;
     public int lifeDepard;
     [HideInInspector] public bool isDashing;
+    [HideInInspector] public int nbPossibleDash = 1;
     
     private void Awake()
     {
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKey(KeyCode.Space) && playerSO.isDash)
+        if (Input.GetKeyDown(KeyCode.Space) && playerSO.isDash)
         {
             rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
@@ -143,8 +144,13 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator DashReload()
     {
-        playerSO.isDash = false;
+        nbPossibleDash -= 1;
+        if (nbPossibleDash == 0)
+        {
+            playerSO.isDash = false;
+        }
         yield return new WaitForSeconds(dashReload);
+        nbPossibleDash += 1;
         playerSO.isDash = true;
     }
     IEnumerator DashInvinsibleTimer()

@@ -151,12 +151,13 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "DegatsDash":
-                Debug.Log("Inflige des dégâts aux ennemis sur la trajectoire du dash");
+                //Debug.Log("Inflige des dégâts aux ennemis sur la trajectoire du dash");
                 isDegatDashGet = true;
                 break;
             
             case "NombreDash":
                 Debug.Log("Permet de faire un dash en plus");
+                PlayerController.instance.nbPossibleDash += 1;
                 break;
             
             case "PushDash":
