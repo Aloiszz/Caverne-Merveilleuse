@@ -5,7 +5,10 @@ using DG.Tweening;
 
 public class PlayerThrowAttack : MonoBehaviour
 {
-    public  int maxBounce = 3;
+
+    public SO_Player_ThrowAttack SO_Player_Throw; 
+    
+    public  int maxBounce ;
     [SerializeField]private float distance;
     [SerializeField]private LineRenderer lineRender;
     [SerializeField]private LayerMask mask;
@@ -19,7 +22,12 @@ public class PlayerThrowAttack : MonoBehaviour
     public bool isThrow;
     public bool isInGrosProjo;
 
-    public float ThrowSpeed = 40;
+    public List<float> ThrowSpeed;
+    [HideInInspector] public int ThrowSpeedIndex;
+
+    public List<float> ThrowDamage;
+    [HideInInspector] public int ThrowDamageIndex;
+    
 
     public static PlayerThrowAttack instance;
     
@@ -38,6 +46,19 @@ public class PlayerThrowAttack : MonoBehaviour
     {
         lineRender = GetComponentInChildren<LineRenderer>();
         //lineRender.gameObject.SetActive(false);
+        SecureSO();
+    }
+
+    public void SecureSO()
+    {
+        maxBounce = SO_Player_Throw.maxBounce;
+        distance = SO_Player_Throw.distance;
+        
+        ThrowSpeed = SO_Player_Throw.ThrowSpeed;
+        ThrowSpeedIndex = SO_Player_Throw.ThrowSpeedIndex;
+
+        ThrowDamage = SO_Player_Throw.ThrowDamage;
+        ThrowDamageIndex = SO_Player_Throw.ThrowDamageIndex;
     }
 
     private void Update()
@@ -48,7 +69,7 @@ public class PlayerThrowAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Debug.Log("Throw Weapon");
-                ThrowCollision.instance.ThrowWeapon();
+                
                 isThrow = true;
             }
         }
@@ -60,6 +81,7 @@ public class PlayerThrowAttack : MonoBehaviour
                 PlayerController.instance.speedMovement = 110;
             }
             ThrowCollision.instance.IsWeaponActive(true);
+            PointCollission.instance.IsWeaponActive(true);
             lineRender.gameObject.SetActive(false);
             
             if(Input.GetKey(KeyCode.F))
@@ -72,6 +94,11 @@ public class PlayerThrowAttack : MonoBehaviour
             {
                 ReturnWeapon();
             }
+
+            if (!PointCollission.instance.verifPremierTouch)
+            {
+                PointCollission.instance.ThrowWeapon();
+            }
             
         }
         else
@@ -81,9 +108,11 @@ public class PlayerThrowAttack : MonoBehaviour
                 PlayerController.instance.speedMovement = PlayerController.instance.playerSO.speedMovement;
             }
             
-            ThrowCollision.instance.gameObject.transform.position = PlayerController.instance.transform.position;
+            //ThrowCollision.instance.gameObject.transform.position = PlayerController.instance.transform.position;
+            PointCollission.instance.gameObject.transform.position = PlayerController.instance.transform.position;
             IsWeaponDisable(false);
             ThrowCollision.instance.IsWeaponActive(false);
+            PointCollission.instance.IsWeaponActive(false);
         }
     }
 
@@ -158,22 +187,23 @@ public class PlayerThrowAttack : MonoBehaviour
 
     public void ReturnWeapon()
     {
-        ThrowCollision.instance.rb.velocity = Vector3.zero;
-        ThrowCollision.instance.rb.angularVelocity = 0;
-        ThrowCollision.instance.bounceInt = 2;
+        PointCollission.instance.rb.velocity = Vector3.zero;
+        PointCollission.instance.rb.angularVelocity = 0;
+        PointCollission.instance.bounceInt = 2;
         
         //StartCoroutine(WaitForReturnWeapon());
         
         /*ThrowCollision.instance.gameObject.transform.DOMove(PlayerController.instance.transform.position, 0.2f)
             .SetEase(Ease.OutQuint);*/
 
-        ThrowCollision.instance.transform.position = Vector3.MoveTowards(ThrowCollision.instance.transform.position,
-            PlayerController.instance.transform.position, Time.deltaTime * ThrowSpeed);
+        PointCollission.instance.transform.position = Vector3.MoveTowards(PointCollission.instance.transform.position,
+            PlayerController.instance.transform.position, Time.deltaTime * ThrowSpeed[ThrowDamageIndex]);
 
-        if (ThrowCollision.instance.transform.position == PlayerController.instance.transform.position)
+        if (PointCollission.instance.transform.position == PlayerController.instance.transform.position)
         {
             isThrow = false;
             is_F_Pressed = false;
+            PointCollission.instance.verifPremierTouch = false;
         }
     }
 

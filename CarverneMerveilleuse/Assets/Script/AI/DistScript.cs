@@ -103,7 +103,18 @@ public class DistScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (PlayerController.instance.isDashing)
+        {
+            if (ItemManager.instance.isPushDashGet)
+            {
+                rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+            }
+            if (ItemManager.instance.isDegatDashGet)
+            {
+                GetComponent<Mechant>().OtherHit();
+            }
+        }
+        else
         {
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core.Easing;
+using Unity.VisualScripting;
 
 public class ThrowCollision : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class ThrowCollision : MonoBehaviour
     public SpriteRenderer sprite;
     public Collider2D coll;
     public Rigidbody2D rb;
-    [HideInInspector] public int bounceInt = 2;
 
     public static ThrowCollision instance;
     
@@ -31,7 +31,7 @@ public class ThrowCollision : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         
         sprite.enabled = false;
         coll.enabled = false;
@@ -44,41 +44,15 @@ public class ThrowCollision : MonoBehaviour
         {
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             
-            //col.GetComponent<Mechant>().ReceiveThrowDamage;     A Faire !!!
+            col.GetComponent<Mechant>().ReceiveThrowDamage();
+    // Mettre pour les degat  ==>  PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
             if (ItemManager.instance.isExplosfALFGet)
             {
                 StartCoroutine(ExplosionColl());
             }
         }
-
-        if (col.gameObject.layer == 9)
-        {
-            BounceWeapon();
-        }
     }
     
-    public void ThrowWeapon()
-    {
-        rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
-
-        gameObject.transform.DORotate(new Vector3(0, 0, 2160), 3);
-    }
-
-    void BounceWeapon()
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = 0;
-        rb.AddForce((PlayerThrowAttack.instance.points[bounceInt]), ForceMode2D.Impulse);
-        bounceInt++;
-
-        /*for (int i = 2; i < PlayerThrowAttack.instance.points.Count;)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = 0;
-            rb.AddForce((PlayerThrowAttack.instance.points[i]) * 120, ForceMode2D.Impulse);
-            i++;
-        }*/
-    }
 
     IEnumerator ExplosionColl()
     {

@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float linearDragDeceleration;
     [HideInInspector]public float linearDragMultiplier;
     public int lifeDepard;
+    [HideInInspector] public bool isDashing;
+    [HideInInspector] public int nbPossibleDash = 1;
     
     private void Awake()
     {
@@ -131,28 +133,59 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKey(KeyCode.Space) && playerSO.isDash)
+        if (Input.GetKeyDown(KeyCode.Space) && playerSO.isDash)
         {
             rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
             StartCoroutine(DashInvinsibleTimer());
+            StartCoroutine(PetrolDash());
             lastMovement.Clear();
         }
     }
     IEnumerator DashReload()
     {
-        playerSO.isDash = false;
+        nbPossibleDash -= 1;
+        if (nbPossibleDash == 0)
+        {
+            playerSO.isDash = false;
+        }
         yield return new WaitForSeconds(dashReload);
+        nbPossibleDash += 1;
         playerSO.isDash = true;
     }
     IEnumerator DashInvinsibleTimer()
     {
-        Physics2D.IgnoreLayerCollision(0,6, true);
-        Physics2D.IgnoreLayerCollision(0,7, true);
+        isDashing = true;
+        if (!ItemManager.instance.isPushDashGet && !ItemManager.instance.isDegatDashGet)
+        {
+            Physics2D.IgnoreLayerCollision(0,6, true);
+            Physics2D.IgnoreLayerCollision(0,7, true);
+        }
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
+        isDashing = false;
+    }
+
+    IEnumerator PetrolDash()
+    {
         
+        if (ItemManager.instance.isPetroleDashGet)
+        {
+            List<GameObject> petrole = new List<GameObject>();
+            for (int i = 0; i < ItemManager.instance.nbTachePetrole; i++)
+            {
+                petrole.Add(Instantiate(ItemManager.instance.petrole, transform.position, Quaternion.identity));
+                yield return new WaitForSeconds(dashInvinsibleTime / ItemManager.instance.nbTachePetrole);
+            }
+
+            yield return new WaitForSeconds(ItemManager.instance.secondAvantDisparitionPetrole);
+            for (int i = 0; i < petrole.Count; i++)
+            {
+                Destroy(petrole[i]);
+            }
+
+        }
     }
     
 }

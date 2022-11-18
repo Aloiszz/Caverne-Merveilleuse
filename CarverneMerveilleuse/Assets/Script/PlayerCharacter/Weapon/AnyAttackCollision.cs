@@ -9,7 +9,7 @@ public class AnyAttackCollision : MonoBehaviour
     {
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
-            col.GetComponent<Mechant>().ReceiveLightDamage();
+            col.GetComponent<Mechant>().OtherHit();
         }
     }
 }

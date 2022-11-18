@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class CaCEnnemiScript : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class CaCEnnemiScript : MonoBehaviour
     
     private bool canRandomMove = true;
     private Vector2 playerDir;
+    private Vector2 playerPos; //Pour le dash
 
     void Start()
     {
@@ -103,10 +105,15 @@ public class CaCEnnemiScript : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 transform.localPosition = new Vector2(transform.localPosition.x - 0.2f, transform.localPosition.y);
             }
+
+            if (i == 7)
+            {
+                playerPos = playerDir;
+            }
         }
-        
-        
-        rb.AddForce(playerDir.normalized * jumpForce, ForceMode2D.Impulse);
+
+
+        rb.AddForce(playerPos.normalized * jumpForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(1);
@@ -115,13 +122,23 @@ public class CaCEnnemiScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (PlayerController.instance.isDashing)
+        {
+            if (ItemManager.instance.isPushDashGet)
+            {
+                rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+            }
+            if (ItemManager.instance.isDegatDashGet)
+            {
+                GetComponent<Mechant>().OtherHit();
+            }
+        }
+        else
         {
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
             CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
         }
-
         if (col.gameObject.layer == 4)
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
