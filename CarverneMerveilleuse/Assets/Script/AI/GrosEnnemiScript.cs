@@ -32,6 +32,7 @@ public class GrosEnnemiScript : MonoBehaviour
     
     
     public bool canShoot = true;
+    public bool canCaC = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
     private AIPath AI;
@@ -77,7 +78,7 @@ public class GrosEnnemiScript : MonoBehaviour
                 }
             }
 
-            if (playerDir.magnitude <= distForCAC)
+            if (playerDir.magnitude <= distForCAC && canCaC)
             {
                 StartCoroutine(CaC());
             }
@@ -103,7 +104,7 @@ public class GrosEnnemiScript : MonoBehaviour
 
     IEnumerator CaC()
     {
-
+        canCaC = false;
         for (int i = 0; i < 8; i++)
         {
             if (i % 2 == 0)
@@ -120,6 +121,7 @@ public class GrosEnnemiScript : MonoBehaviour
         cacHitBox.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         cacHitBox.SetActive(false);
+        canCaC = true;
     }
 
     IEnumerator RandomMove()
