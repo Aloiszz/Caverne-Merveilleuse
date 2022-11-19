@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerAnim : MonoBehaviour
 {
@@ -12,15 +13,8 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private GameObject graphProfile;
     [SerializeField] private GameObject graphDos;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void Update()
     {
-        GameAnimatinon();
         foreach (var i in animator)
         {
             i.SetFloat("speedX", PlayerController.instance.rb.velocity.x);
@@ -44,15 +38,12 @@ public class PlayerAnim : MonoBehaviour
                 i.SetBool("isFaceRunning", false);
             }
         }
-        
-        if (Input.GetKey(KeyCode.Q)) graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
-        if (Input.GetKey(KeyCode.D)) graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        
+        GameAnimation();
     }
     
     private void GameAnimatinon()
@@ -93,6 +84,67 @@ public class PlayerAnim : MonoBehaviour
             animator[1].SetBool("Face", false);
             animator[1].SetBool("Profile", true);
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator[0].SetBool("isLightAttacking", true);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            animator[0].SetBool("isLightAttacking", false);
+        }
+    } // oublis cette version 
+    
+    
+    private void GameAnimation()
+    {
+        if (PlayerAttackCollision.instance.rotationZ < -145 || PlayerAttackCollision.instance.rotationZ > 145) // profil G
+        {
+            graphFace.SetActive(false);
+            graphDos.SetActive(false);
+            graphProfile.SetActive(true);
+            
+            animator[1].SetBool("Face", false);
+            animator[1].SetBool("Profile", true);
+            
+            //graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
+            graphProfile.transform.DOScale(new Vector3(-0.08f,0.08f,0.08f), .2f);
+        }
+        
+        else //Profil D
+        {
+            graphFace.SetActive(false);
+            graphDos.SetActive(false);
+            graphProfile.SetActive(true);
+
+            animator[1].SetBool("Face", false);
+            animator[1].SetBool("Profile", true);
+            
+            //graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
+            graphProfile.transform.DOScale(new Vector3(0.08f,0.08f,0.08f), .2f);
+        }
+
+        if (PlayerAttackCollision.instance.rotationZ > -145 && PlayerAttackCollision.instance.rotationZ < -39) // Face
+        {
+            graphFace.SetActive(true);
+            graphDos.SetActive(false);
+            graphProfile.SetActive(false);
+
+            animator[0].SetBool("Face", true);
+            animator[0].SetBool("Profile", false);
+        }
+        
+        if(PlayerAttackCollision.instance.rotationZ < 145 && PlayerAttackCollision.instance.rotationZ > 39) // dos
+        {
+            graphFace.SetActive(false);
+            graphDos.SetActive(true);
+            graphProfile.SetActive(false);
+
+            animator[2].SetBool("Face", false);
+            animator[2].SetBool("Profile", false);
+        }
+        
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
