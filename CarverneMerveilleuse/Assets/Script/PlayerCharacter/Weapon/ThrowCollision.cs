@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core.Easing;
+using Unity.VisualScripting;
 
 public class ThrowCollision : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class ThrowCollision : MonoBehaviour
         {
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             
-            //col.GetComponent<Mechant>().ReceiveThrowDamage;
+            col.GetComponent<Mechant>().ReceiveThrowDamage();
     // Mettre pour les degat  ==>  PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
             if (ItemManager.instance.isExplosfALFGet)
             {

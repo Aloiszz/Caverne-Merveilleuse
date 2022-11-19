@@ -122,13 +122,23 @@ public class CaCEnnemiScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (PlayerController.instance.isDashing)
+        {
+            if (ItemManager.instance.isPushDashGet)
+            {
+                rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+            }
+            if (ItemManager.instance.isDegatDashGet)
+            {
+                GetComponent<Mechant>().OtherHit();
+            }
+        }
+        else
         {
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
             PlayerController.instance.LoseLife();
             CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
         }
-
         if (col.gameObject.layer == 4)
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
