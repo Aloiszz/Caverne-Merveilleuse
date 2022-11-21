@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6557916231900195118}
   - component: {fileID: 6557916231900195117}
+  - component: {fileID: 3897608485156674573}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -71,6 +72,9 @@ MonoBehaviour:
   pourcentageBuffATKDuSeuilPV: 0
   buffATKCritique: 0
   nbVieEnPlus: 0
+  puissancePushDash: 0
+  isPushDashGet: 0
+  isDegatDashGet: 0
   pourcentageAttaqueEnPlusPostDash: 10
   dashBuff: 0
   pourcentageSpeedEnPlusPostDash: 20
@@ -85,3 +89,40 @@ MonoBehaviour:
   dropOrSupp: 0
   pourcentageDropCoeurEnPlus: 10
   dropCoeurSupp: 0
+--- !u!114 &3897608485156674573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557916231900195116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a4cf084239a76488a3b1c1d4fcbfd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listItem:
+  - {fileID: 8251434255750018629, guid: 557301692d4a88441874504481ee1b66, type: 3}
+  - {fileID: 8900838007908440558, guid: fe76c573f3030a342a82a934af864cef, type: 3}
+  - {fileID: 8900838007908440558, guid: 29a5b5d7b8345dc42873b5f4966bc443, type: 3}
+  - {fileID: 8900838007908440558, guid: f721fa8fd6fc6dd449aa8890cbefa5d3, type: 3}
+  - {fileID: 8900838007908440558, guid: 216340d6f3768c34b85109ee586a003e, type: 3}
+  - {fileID: 8900838007908440558, guid: 0c29ec049290ed84f91f3956215e9c34, type: 3}
+  - {fileID: 8900838007908440558, guid: 40d331beb85133b47aed103091534936, type: 3}
+  - {fileID: 8900838007908440558, guid: e2733580855844f4cba00f11b2b0fc1a, type: 3}
+  - {fileID: 8900838007908440558, guid: dbe9e294bc9637a4285652f9add1b67f, type: 3}
+  - {fileID: 8900838007908440558, guid: d0b5f1950ca05c94a87c7712c9311e7c, type: 3}
+  - {fileID: 8900838007908440558, guid: 419966a475a65bc48a2cd34004adfb8e, type: 3}
+  - {fileID: 8900838007908440558, guid: 925f64ed8c8baf3468c754730b0c99da, type: 3}
+  - {fileID: 8900838007908440558, guid: 70251e4c7ad63a144ba33623031f9776, type: 3}
+  - {fileID: 8900838007908440558, guid: ca1f8a97d13d15145a9d3bc13274bfac, type: 3}
+  - {fileID: 8900838007908440558, guid: 2d66e207616b6ff419c3dd5cb3d5794b, type: 3}
+  listMerveilleux:
+  - {fileID: 659820544013695856, guid: 9aabeb94e1114e74f9599792d0a7c93e, type: 3}
+  - {fileID: 659820544013695856, guid: 266021861788bc341be19cf36bec3f73, type: 3}
+  - {fileID: 659820544013695856, guid: 1cea5c85aca65ad419d6a5d3b05332e8, type: 3}
+  - {fileID: 659820544013695856, guid: fca5d58b16787f84e9c4ef5271ded2b8, type: 3}
+  - {fileID: 659820544013695856, guid: c64c5655100fb4648a15e342e055bf93, type: 3}
+  - {fileID: 659820544013695856, guid: 87f214b300d0447409715c73c33d16b4, type: 3}
+  - {fileID: 659820544013695856, guid: fc15e3cab17938a4b8ebd394bce8f589, type: 3}
+  - {fileID: 659820544013695856, guid: 94e0d0f5f76511e4889f133f32ccc361, type: 3}

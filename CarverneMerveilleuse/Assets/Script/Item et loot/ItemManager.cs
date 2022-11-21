@@ -156,7 +156,7 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "NombreDash":
-                Debug.Log("Permet de faire un dash en plus");
+                //Debug.Log("Permet de faire un dash en plus");
                 PlayerController.instance.nbPossibleDash += 1;
                 break;
             
