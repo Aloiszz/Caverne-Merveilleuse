@@ -108,8 +108,8 @@ public class PlayerAnim : MonoBehaviour
             animator[1].SetBool("Face", false);
             animator[1].SetBool("Profile", true);
             
-            //graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
-            graphProfile.transform.DOScale(new Vector3(-0.08f,0.08f,0.08f), .2f);
+            graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
+            //graphProfile.transform.DOScale(new Vector3(-0.08f,0.08f,0.08f), .2f);
         }
         
         else //Profil D
@@ -121,8 +121,8 @@ public class PlayerAnim : MonoBehaviour
             animator[1].SetBool("Face", false);
             animator[1].SetBool("Profile", true);
             
-            //graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
-            graphProfile.transform.DOScale(new Vector3(0.08f,0.08f,0.08f), .2f);
+            graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
+            //graphProfile.transform.DOScale(new Vector3(0.08f,0.08f,0.08f), .2f);
         }
 
         if (PlayerAttackCollision.instance.rotationZ > -145 && PlayerAttackCollision.instance.rotationZ < -39) // Face

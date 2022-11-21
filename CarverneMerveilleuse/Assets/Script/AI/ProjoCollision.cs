@@ -35,8 +35,6 @@ public class ProjoCollision : MonoBehaviour
             }
         }
         playerDir = PlayerController.instance.transform.position - transform.position;
-        Debug.Log(speed);
-        Debug.Log(initialSpeed);
     }
     private void OnTriggerEnter2D(Collider2D col)
     {

@@ -7,7 +7,7 @@ public class PointCollission : MonoBehaviour
 {
     public Collider2D coll;
     public Rigidbody2D rb;
-    public int bounceInt = 2;
+    public int bounceInt = 1;
 
     public static PointCollission instance;
     
@@ -53,6 +53,7 @@ public class PointCollission : MonoBehaviour
             verif = true;
             verifPremierTouch = true;
             Debug.Log(transform.position.x + "" + transform.position.y);
+            bounceInt++;
         }
         
     }
@@ -66,8 +67,6 @@ public class PointCollission : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position,
             PlayerThrowAttack.instance.points[bounceInt], Time.deltaTime * 
                                                           PlayerThrowAttack.instance.ThrowSpeed[PlayerThrowAttack.instance.ThrowDamageIndex] );
-
-        //bounceInt++;
     }
     
     public void ThrowWeapon()

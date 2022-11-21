@@ -30,6 +30,8 @@ public class EnnemySpawner : MonoBehaviour
         Secure_So();
         SpawnEnnemy();
         LookForEnnemyAlive();
+        
+        actualNumberOfWave = 0;
     }
 
     void LookForEnnemyAlive()
@@ -49,7 +51,6 @@ public class EnnemySpawner : MonoBehaviour
 
     void Secure_So()
     {
-        actualNumberOfWave = SO_ennemySpawner.numberOfWave;
         numberOfWave = SO_ennemySpawner.numberOfWave;
     }
     private void Update()
@@ -57,11 +58,13 @@ public class EnnemySpawner : MonoBehaviour
         
         if(ennemyAlive.Count <= 0)
         {
-            Debug.Log("qsds");
-            if (numberOfWave < actualNumberOfWave)
+            
+            if (numberOfWave > actualNumberOfWave)
             {
+                Debug.Log("qsds");
                 SpawnEnnemy();
-                actualNumberOfWave--;
+                LookForEnnemyAlive();
+                actualNumberOfWave++;
                 
                 //Door fermé (bool liée au script Room)
             }

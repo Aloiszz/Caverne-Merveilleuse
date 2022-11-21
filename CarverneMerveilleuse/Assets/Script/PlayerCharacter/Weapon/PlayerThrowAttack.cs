@@ -76,6 +76,7 @@ public class PlayerThrowAttack : MonoBehaviour
 
         if (isThrow)
         {
+            ThrowCollision.instance.laFaux.SetActive(true);
             if (!isInGrosProjo)
             {
                 PlayerController.instance.speedMovement = 110;
@@ -189,7 +190,7 @@ public class PlayerThrowAttack : MonoBehaviour
     {
         PointCollission.instance.rb.velocity = Vector3.zero;
         PointCollission.instance.rb.angularVelocity = 0;
-        PointCollission.instance.bounceInt = 2;
+        PointCollission.instance.bounceInt = 1;
         
         //StartCoroutine(WaitForReturnWeapon());
         
@@ -204,6 +205,7 @@ public class PlayerThrowAttack : MonoBehaviour
             isThrow = false;
             is_F_Pressed = false;
             PointCollission.instance.verifPremierTouch = false;
+            ThrowCollision.instance.laFaux.SetActive(false);
         }
     }
 

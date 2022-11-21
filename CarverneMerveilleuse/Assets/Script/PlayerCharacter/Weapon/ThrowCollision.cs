@@ -13,6 +13,8 @@ public class ThrowCollision : MonoBehaviour
     public Collider2D coll;
     public Rigidbody2D rb;
 
+    public GameObject laFaux;
+
     public static ThrowCollision instance;
     
     private void Awake()
@@ -35,6 +37,7 @@ public class ThrowCollision : MonoBehaviour
         
         sprite.enabled = false;
         coll.enabled = false;
+        laFaux.SetActive(false);
     }
     
     
