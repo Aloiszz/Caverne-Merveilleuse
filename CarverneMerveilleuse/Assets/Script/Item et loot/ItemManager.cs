@@ -13,6 +13,7 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
     
     [Header("Arme Principal")]
+    [Tooltip("ceci est genila")]
     public float degatsAP = 20;
     [HideInInspector] public float buffATK;
     public float pushAP = 50;

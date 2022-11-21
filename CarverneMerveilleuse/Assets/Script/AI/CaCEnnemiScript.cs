@@ -53,6 +53,11 @@ public class CaCEnnemiScript : MonoBehaviour
             see = true;
             canRandomMove = false;
         }
+
+        if (rb.velocity.magnitude > jumpForce)
+        {
+            rb.velocity = Vector2.zero;
+        }
         OnSeePlayer();
     }
 
@@ -98,12 +103,12 @@ public class CaCEnnemiScript : MonoBehaviour
             if (i%2 == 0)
             {
                 yield return new WaitForSeconds(0.1f);
-                transform.localPosition = new Vector2(transform.localPosition.x + 0.2f, transform.localPosition.y);
+                transform.position = new Vector2(transform.position.x + 0.2f, transform.localPosition.y);
             }
             else
             {
                 yield return new WaitForSeconds(0.1f);
-                transform.localPosition = new Vector2(transform.localPosition.x - 0.2f, transform.localPosition.y);
+                transform.position = new Vector2(transform.position.x - 0.2f, transform.localPosition.y);
             }
 
             if (i == 7)
@@ -122,23 +127,28 @@ public class CaCEnnemiScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (PlayerController.instance.isDashing)
+        if (col.gameObject.CompareTag("Player"))
         {
-            if (ItemManager.instance.isPushDashGet)
+            if (PlayerController.instance.isDashing)
             {
-                rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+                if (ItemManager.instance.isPushDashGet)
+                {
+                    rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+                }
+
+                if (ItemManager.instance.isDegatDashGet)
+                {
+                    GetComponent<Mechant>().OtherHit();
+                }
             }
-            if (ItemManager.instance.isDegatDashGet)
+            else
             {
-                GetComponent<Mechant>().OtherHit();
+                col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
+                PlayerController.instance.LoseLife();
+                CinemachineShake.instance.ShakeCamera(intensity, frequency, timer);
             }
         }
-        else
-        {
-            col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
-            PlayerController.instance.LoseLife();
-            CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
-        }
+
         if (col.gameObject.layer == 4)
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);

@@ -61,6 +61,10 @@ public class GrosEnnemiScript : MonoBehaviour
             see = true;
         }
         OnSeePlayer();
+        if (rb.velocity.magnitude > 10)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
 
@@ -110,12 +114,12 @@ public class GrosEnnemiScript : MonoBehaviour
             if (i % 2 == 0)
             {
                 yield return new WaitForSeconds(0.1f);
-                transform.localPosition = new Vector2(transform.localPosition.x + 0.2f, transform.localPosition.y);
+                transform.position = new Vector2(transform.position.x + 0.2f, transform.localPosition.y);
             }
             else
             {
                 yield return new WaitForSeconds(0.1f);
-                transform.localPosition = new Vector2(transform.localPosition.x - 0.2f, transform.localPosition.y);
+                transform.position = new Vector2(transform.position.x - 0.2f, transform.localPosition.y);
             }
         }
         cacHitBox.SetActive(true);

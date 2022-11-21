@@ -103,23 +103,28 @@ public class DistScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (PlayerController.instance.isDashing)
+        if (col.gameObject.CompareTag("Player"))
         {
-            if (ItemManager.instance.isPushDashGet)
+            if (PlayerController.instance.isDashing)
             {
-                rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+                if (ItemManager.instance.isPushDashGet)
+                {
+                    rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+                }
+
+                if (ItemManager.instance.isDegatDashGet)
+                {
+                    GetComponent<Mechant>().OtherHit();
+                }
             }
-            if (ItemManager.instance.isDegatDashGet)
+            else
             {
-                GetComponent<Mechant>().OtherHit();
+                col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
+                PlayerController.instance.LoseLife();
+                CinemachineShake.instance.ShakeCamera(intensity, frequency, timer);
             }
         }
-        else
-        {
-            col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
-            PlayerController.instance.LoseLife();
-            CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
-        }
+
         if (col.gameObject.layer == 4)
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
