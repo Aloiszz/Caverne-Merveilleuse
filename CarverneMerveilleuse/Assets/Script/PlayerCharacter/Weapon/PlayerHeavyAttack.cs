@@ -140,11 +140,10 @@ public class PlayerHeavyAttack : MonoBehaviour
         PlayerLightAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
         
-        PlayerController.instance.enabled = false;
-        /*if (!ItemManager.instance.canMoveWhileBeyblade)
+        if (!ItemManager.instance.canMoveWhileBeyblade)
         {
             PlayerController.instance.enabled = false;
-        }*/
+        }
 
         /*if (ItemManager.instance.beybladeInvinsible)
         {
