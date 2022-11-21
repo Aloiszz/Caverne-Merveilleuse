@@ -23,33 +23,24 @@ public class ShopScript : MonoBehaviour
     private GameObject itemMerv2; 
     public List<GameObject> stockageObjetShop;
     public List<GameObject> stockageMeveilleuxShop;
-    public List<GameObject> listItem;
-    public List<GameObject> listMerveilleux;
-
-    public bool Exittest;
-
-    private void Update()
-    {
-        
-        if (Exittest)
-        {
-            OnExit();
-        }
-    }
 
     private void Start()
     {
-        stockageObjetShop.Clear();
-        stockageMeveilleuxShop.Clear();
+        OnEnter();
+    }
+
+    private void OnEnter()
+    {
         for (int i = 0; i < 3; i++)
         {
-            objet = listItem[Random.Range(0, listItem.Count)];
-            listItem.Remove(objet);
-            stockageObjetShop.Add(objet);
+            objet = ObjetDispoShop.instance.listItem[Random.Range(0, ObjetDispoShop.instance.listItem.Count)];
+            stockageObjetShop.Add(ObjetDispoShop.instance.listItem[Random.Range(0, ObjetDispoShop.instance.listItem.Count)]);
+            ObjetDispoShop.instance.listItem.Remove(stockageObjetShop[i]);
+            
             if (i < 2)
             {
-                merveilleux = listMerveilleux[Random.Range(0, listMerveilleux.Count)];
-                listMerveilleux.Remove(merveilleux);
+                merveilleux = ObjetDispoShop.instance.listMerveilleux[Random.Range(0, ObjetDispoShop.instance.listMerveilleux.Count)];
+                ObjetDispoShop.instance.listMerveilleux.Remove(merveilleux);
                 stockageMeveilleuxShop.Add(merveilleux);
             }
         }
@@ -75,30 +66,36 @@ public class ShopScript : MonoBehaviour
             }
         }
     }
-    void OnExit()
+    public void OnExit()
     {
 
         if (item1 != null)
         {
-            listItem.Add(stockageObjetShop[0]);
+            ObjetDispoShop.instance.listItem.Add(stockageObjetShop[0]);
+            Destroy(item1);
         }
         if (item2 != null)
         {
-            listItem.Add(stockageObjetShop[1]);
+            ObjetDispoShop.instance.listItem.Add(stockageObjetShop[1]);
+            Destroy(item2);
         }
         if (item3 != null)
         {
-            listItem.Add(stockageObjetShop[2]);
+            ObjetDispoShop.instance.listItem.Add(stockageObjetShop[2]);
+            Destroy(item3);
         }
         if (itemMerv1 != null)
         {
-            listItem.Add(stockageMeveilleuxShop[0]);
+            ObjetDispoShop.instance.listItem.Add(stockageMeveilleuxShop[0]);
+            Destroy(itemMerv1);
         }
         if (itemMerv2 != null)
         {
-            listItem.Add(stockageMeveilleuxShop[1]);
+            ObjetDispoShop.instance.listItem.Add(stockageMeveilleuxShop[1]);
+            Destroy(itemMerv2);
         }
         
-        Exittest = false;
+        stockageObjetShop.Clear();
+        stockageMeveilleuxShop.Clear();
     }
 }

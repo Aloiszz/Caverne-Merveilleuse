@@ -346,6 +346,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         RoomManager.instance.roomMemoryIndex--;
         RoomManager.instance.roomMemoryDirectionIndex--;
         
+        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].GetComponent<ShopScript>().OnExit();
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
         RoomManager.instance.roomMemory.RemoveAt(RoomManager.instance.roomMemoryIndex+1);
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);

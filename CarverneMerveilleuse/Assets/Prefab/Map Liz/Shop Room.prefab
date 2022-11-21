@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &658292707877692481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5891358759876697854}
+  m_Layer: 0
+  m_Name: Positions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5891358759876697854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658292707877692481}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.53, y: 4.4, z: 0.8431773}
+  m_LocalScale: {x: 0.69, y: 1.14, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1144788102246356058}
+  - {fileID: 2790890940061118988}
+  - {fileID: 2698666405778662140}
+  - {fileID: 4669678716607066794}
+  - {fileID: 8549860708062043359}
+  m_Father: {fileID: 8050551237648791627}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1128162305320335018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2790890940061118988}
+  m_Layer: 0
+  m_Name: PropositionItem2
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2790890940061118988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128162305320335018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.352319, y: -2.985983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5891358759876697854}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1307620556389896798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144788102246356058}
+  m_Layer: 0
+  m_Name: PropositionItem1
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1144788102246356058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307620556389896798}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.832318, y: -2.985983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5891358759876697854}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1903408644000938177
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +580,37 @@ MonoBehaviour:
   isAlternativeDoor: 0
   isShopDoor: 0
   porteQuiFautDetruire: 0
+--- !u!1 &3342770764886164413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8549860708062043359}
+  m_Layer: 0
+  m_Name: PosiMerveilleux2
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8549860708062043359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342770764886164413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.057682, y: -2.985983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5891358759876697854}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3712057814994594101
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +643,68 @@ Transform:
   m_Father: {fileID: 8050551237648791627}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4437645192491840513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4669678716607066794}
+  m_Layer: 0
+  m_Name: PosiMerveilleux1
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4669678716607066794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437645192491840513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.5896835, y: -2.985983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5891358759876697854}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4474353272422127127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2698666405778662140}
+  m_Layer: 0
+  m_Name: PropositionItem3
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2698666405778662140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474353272422127127}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8823185, y: -2.985983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5891358759876697854}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4831866324631606796
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +716,7 @@ GameObject:
   - component: {fileID: 8050551237648791627}
   - component: {fileID: 2375591477016822909}
   - component: {fileID: 6352917403499024723}
+  - component: {fileID: 3136580411464552362}
   m_Layer: 0
   m_Name: Shop Room
   m_TagString: Untagged
@@ -553,6 +745,7 @@ Transform:
   - {fileID: 2682318072804327599}
   - {fileID: 1450958155999605093}
   - {fileID: 6804122919628431771}
+  - {fileID: 5891358759876697854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -591,6 +784,51 @@ MonoBehaviour:
   nbrEnnemySpawned: 
   actualNumberOfWave: 0
   numberOfWave: 0
+--- !u!114 &3136580411464552362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831866324631606796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b275f6dced5b8f64fa4ccf1c989f0b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proposition1: {fileID: 1144788102246356058}
+  proposition2: {fileID: 2790890940061118988}
+  proposition3: {fileID: 2698666405778662140}
+  posiMerveilleux1: {fileID: 4669678716607066794}
+  posiMerveilleux2: {fileID: 8549860708062043359}
+  stockageObjetShop: []
+  stockageMeveilleuxShop: []
+  listItem:
+  - {fileID: 8251434255750018629, guid: 557301692d4a88441874504481ee1b66, type: 3}
+  - {fileID: 8900838007908440558, guid: fe76c573f3030a342a82a934af864cef, type: 3}
+  - {fileID: 8900838007908440558, guid: 29a5b5d7b8345dc42873b5f4966bc443, type: 3}
+  - {fileID: 8900838007908440558, guid: f721fa8fd6fc6dd449aa8890cbefa5d3, type: 3}
+  - {fileID: 8900838007908440558, guid: 216340d6f3768c34b85109ee586a003e, type: 3}
+  - {fileID: 8900838007908440558, guid: 0c29ec049290ed84f91f3956215e9c34, type: 3}
+  - {fileID: 8900838007908440558, guid: 40d331beb85133b47aed103091534936, type: 3}
+  - {fileID: 8900838007908440558, guid: e2733580855844f4cba00f11b2b0fc1a, type: 3}
+  - {fileID: 8900838007908440558, guid: dbe9e294bc9637a4285652f9add1b67f, type: 3}
+  - {fileID: 8900838007908440558, guid: d0b5f1950ca05c94a87c7712c9311e7c, type: 3}
+  - {fileID: 8900838007908440558, guid: 419966a475a65bc48a2cd34004adfb8e, type: 3}
+  - {fileID: 8900838007908440558, guid: 925f64ed8c8baf3468c754730b0c99da, type: 3}
+  - {fileID: 8900838007908440558, guid: 70251e4c7ad63a144ba33623031f9776, type: 3}
+  - {fileID: 8900838007908440558, guid: ca1f8a97d13d15145a9d3bc13274bfac, type: 3}
+  - {fileID: 8900838007908440558, guid: 2d66e207616b6ff419c3dd5cb3d5794b, type: 3}
+  listMerveilleux:
+  - {fileID: 659820544013695856, guid: 9aabeb94e1114e74f9599792d0a7c93e, type: 3}
+  - {fileID: 659820544013695856, guid: 266021861788bc341be19cf36bec3f73, type: 3}
+  - {fileID: 659820544013695856, guid: 1cea5c85aca65ad419d6a5d3b05332e8, type: 3}
+  - {fileID: 659820544013695856, guid: fca5d58b16787f84e9c4ef5271ded2b8, type: 3}
+  - {fileID: 659820544013695856, guid: c64c5655100fb4648a15e342e055bf93, type: 3}
+  - {fileID: 659820544013695856, guid: 87f214b300d0447409715c73c33d16b4, type: 3}
+  - {fileID: 659820544013695856, guid: fc15e3cab17938a4b8ebd394bce8f589, type: 3}
+  - {fileID: 659820544013695856, guid: 94e0d0f5f76511e4889f133f32ccc361, type: 3}
+  Exittest: 0
 --- !u!1 &5255212512929783946
 GameObject:
   m_ObjectHideFlags: 0
