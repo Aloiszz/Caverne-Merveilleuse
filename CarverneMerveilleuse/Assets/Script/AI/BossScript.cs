@@ -59,6 +59,7 @@ public class BossScript : MonoBehaviour
     {
         vague1Pos = vague1.transform.position;
         vague2Pos = vague2.transform.position;
+        player = PlayerController.instance.gameObject;
     }
 
     void Update()
