@@ -23,7 +23,20 @@ public class ShopScript : MonoBehaviour
     private GameObject itemMerv2; 
     public List<GameObject> stockageObjetShop;
     public List<GameObject> stockageMeveilleuxShop;
+    
+    public static ShopScript instance;
 
+    private void Awake()
+    {
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this;
+        } 
+    }
     private void Start()
     {
         OnEnter();
@@ -34,8 +47,8 @@ public class ShopScript : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             objet = ObjetDispoShop.instance.listItem[Random.Range(0, ObjetDispoShop.instance.listItem.Count)];
-            stockageObjetShop.Add(ObjetDispoShop.instance.listItem[Random.Range(0, ObjetDispoShop.instance.listItem.Count)]);
-            ObjetDispoShop.instance.listItem.Remove(stockageObjetShop[i]);
+            stockageObjetShop.Add(objet);
+            ObjetDispoShop.instance.listItem.Remove(objet);
             
             if (i < 2)
             {
