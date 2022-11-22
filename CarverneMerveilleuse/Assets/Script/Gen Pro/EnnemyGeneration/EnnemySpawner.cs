@@ -15,9 +15,7 @@ public class EnnemySpawner : MonoBehaviour
     [SerializeField] private GameObject childSlot;
     [SerializeField] private GameObject[] spawnPointPosition;
     public List<GameObject> ennemyAlive;
-
-    [Tooltip("1 chiffre correspond au spyider, 2eme au Bat, 3eme Petrol")]
-    public List<int> nbrEnnemySpawned; 
+    
     private int rand;
 
     public int actualNumberOfWave;
@@ -61,16 +59,15 @@ public class EnnemySpawner : MonoBehaviour
             
             if (numberOfWave > actualNumberOfWave)
             {
-                Debug.Log("qsds");
                 SpawnEnnemy();
                 LookForEnnemyAlive();
                 actualNumberOfWave++;
                 
-                //Door fermé (bool liée au script Room)
+                GetComponent<Room>().CloseTheDoor(); //Door fermé
             }
             else
             {
-                //Door ouverte
+                GetComponent<Room>().OpenTheDoor(); // Door Ouverte
             }
         }
     }

@@ -14,10 +14,13 @@ public class Room : MonoBehaviour
     public bool isGoldenPath;
     
     public bool isShopRoom;
+    
+    public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent 
 
     private void Start()
     {
         FadeInRoom();
+        SpawnPointDoorEnnemy();
         //FindCameraBorder();
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
@@ -109,13 +112,37 @@ public class Room : MonoBehaviour
             }
         }
     }
-
-
+    
+    
+    
+    
+    
     IEnumerator Mini_cinematic_ShopRoom()
     {
         //Camera effetc
         yield return new WaitForSeconds(0.7f);
         PlayerController.instance.enabled = true;
+    }
+    
+    
+    
+    void SpawnPointDoorEnnemy()
+    {
+        foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
+        {
+            DoorEnnemy.Add(go);
+            Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation);
+        }
+    }
+
+    public void OpenTheDoor()
+    {
+        EnnemyManager.instance.Door.SetActive(false);
+    }
+
+    public void CloseTheDoor()
+    {
+        EnnemyManager.instance.Door.SetActive(true);
     }
     
 }

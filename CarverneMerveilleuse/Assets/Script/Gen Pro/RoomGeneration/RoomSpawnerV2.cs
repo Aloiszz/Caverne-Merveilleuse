@@ -16,7 +16,7 @@ public class RoomSpawnerV2 : MonoBehaviour
 
     public int porteQuiFautDetruire;
     
-    
+
     public enum Direction
     {
         Top,
@@ -59,7 +59,7 @@ public class RoomSpawnerV2 : MonoBehaviour
             
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
