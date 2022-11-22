@@ -85,6 +85,7 @@ public class DistScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         
         GameObject projectile = Instantiate(projo, transform.position, Quaternion.identity);
+        projectile.GetComponent<ProjoCollision>().shooter = gameObject;
         projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * shootForce);
         yield return new WaitForSeconds(TimeBeforeShoot);
         canShoot = true;
