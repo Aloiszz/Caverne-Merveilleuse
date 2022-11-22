@@ -50,9 +50,10 @@ public class RoomManager : MonoBehaviour
     
     [Header("----------Boss Room----------")]
     public List<GameObject> bossRoom;
-    
+
     [Header("----------Shop Room----------")]
-    public int roomLeftToshopRoom; 
+    public List<int> roomLeftToshopRoom;
+    public int roomLeftToshopRooIndex = 0; 
     public  bool isShopRoom;
     public List<GameObject> shopRoom;
     public GameObject potitChat;
@@ -69,7 +70,6 @@ public class RoomManager : MonoBehaviour
         { 
             instance = this; 
         }
-        
     }
 
     private bool verif;
@@ -79,12 +79,13 @@ public class RoomManager : MonoBehaviour
         {
             isBossRoom = true;
         }
-        if (goldenPathCount >= roomLeftToshopRoom)
+        if (goldenPathCount >= roomLeftToshopRoom[roomLeftToshopRooIndex])
         {
             if (!verif)
             {
                 Instantiate(potitChat, Vector3.zero, quaternion.identity, roomMemory[roomMemoryIndex].transform);
-                verif = true;
+                roomLeftToshopRooIndex++;
+                //verif = true;
             }
         }
     }

@@ -79,6 +79,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 Debug.Log("Come Back From Shop");
                 ReturnShopRoom();
                 TeleportPlayerBackToRoom();
+                ChatMarchand.instance.PlayerCameBack = true;
             }
             
             if (!colliderVierge && !isAlternativeDoor)

@@ -73,7 +73,7 @@ public class ChatMarchand : MonoBehaviour
             
             GetComponent<Collider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
-        
+            
             isStillActive = true;
             
             Shop();
@@ -129,6 +129,7 @@ public class ChatMarchand : MonoBehaviour
         yield return new WaitForSeconds(2);   
         
         PlayerController.instance.enabled = true;
+        Destroy(gameObject);
     }
 
     #endregion
