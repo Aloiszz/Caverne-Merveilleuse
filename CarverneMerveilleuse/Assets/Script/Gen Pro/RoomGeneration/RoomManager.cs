@@ -27,10 +27,7 @@ public class RoomManager : MonoBehaviour
     public int roomTemplateLeftIndex;
 
     public int goldenPathCount = 0;
-    public int roomLeftToBossRoom; 
-    public  bool isBossRoom;
-    
-    
+
     [Header("----------Alternative Path----------")]
     public List<GameObject> roomMemoryAlternativePath;
     public int roomMemoryAlternativePathIndex;
@@ -50,6 +47,9 @@ public class RoomManager : MonoBehaviour
     
     [Header("----------Boss Room----------")]
     public List<GameObject> bossRoom;
+    public int roomLeftToBossRoom; 
+    public  bool isBossRoom;
+
 
     [Header("----------Shop Room----------")]
     public List<int> roomLeftToshopRoom;

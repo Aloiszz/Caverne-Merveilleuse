@@ -333,7 +333,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
         Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
-            transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+            new Quaternion(0,0,0,0)).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
     }
     #endregion
     
