@@ -116,7 +116,7 @@ Transform:
   - {fileID: 1400756996865880465}
   - {fileID: 5866321719876007320}
   m_Father: {fileID: 220940456771086485}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316272757844574954
 GameObject:
@@ -739,6 +739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 220940456771086485}
+  - component: {fileID: -6892620222191883507}
   m_Layer: 0
   m_Name: Salle Moyenne (3) 2-Statue
   m_TagString: Untagged
@@ -758,11 +759,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 220377520493092172}
-  - {fileID: 2916591863279490307}
   - {fileID: 1001348082699738279}
   - {fileID: 6726567371882712518}
   - {fileID: 6368942013929889203}
+  - {fileID: 220377520493092172}
+  - {fileID: 2916591863279490307}
   - {fileID: 3770192357219907185}
   - {fileID: 4328920008060781277}
   - {fileID: 2125434045680074014}
@@ -799,6 +800,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6892620222191883507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816856758148743780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd48ad302ba35454daa480a2923e7c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlternativeDoor: []
+  goldenDoor: {fileID: 0}
+  isGoldenPath: 0
+  isShopRoom: 0
 --- !u!1 &975551409605210796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1679,7 @@ Transform:
   - {fileID: 10139954987567242}
   - {fileID: 7105143819582727985}
   m_Father: {fileID: 220940456771086485}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2443033762138289574
 GameObject:
@@ -2754,7 +2771,7 @@ Transform:
   - {fileID: 7668922381041895387}
   - {fileID: 4405858857978451974}
   m_Father: {fileID: 220940456771086485}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4115764506920671169
 GameObject:
@@ -4348,7 +4365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 220940456771086485}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6841501547294900244
 SpriteRenderer:
@@ -6041,7 +6058,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 220940456771086485}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9164617127482402451
 SpriteRenderer:
