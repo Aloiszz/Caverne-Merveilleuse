@@ -64,10 +64,6 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            if (isShopDoor)
-            {
-                ShopScript.instance.OnExit();
-            }
             ProceduralGeneration(); //Entre en contact avec une porte
         } 
     }
