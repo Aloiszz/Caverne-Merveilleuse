@@ -99,6 +99,7 @@ public class GrosEnnemiScript : MonoBehaviour
         AI.enabled = false;
         rb.velocity = Vector2.zero;
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
+        projectile.GetComponent<ProjoCollision>().shooter = gameObject;
         projoList.Add(projectile);
         projectile.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * grosForce;
         projectile.GetComponent<ProjoCollision>().origine = this;

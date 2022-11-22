@@ -15,8 +15,10 @@ public class ProjoCollision : MonoBehaviour
     private GameObject newProjo;
     private Vector2 playerDir;
     [HideInInspector] public GrosEnnemiScript origine;
+    [HideInInspector] public GameObject shooter;
     private bool check;
     public GameObject projo;
+    private bool playerInProjo;
 
     private void Start()
     {
@@ -33,6 +35,16 @@ public class ProjoCollision : MonoBehaviour
                 StartCoroutine(NewProjoOrDestroy());
                 check = false;
             }
+        }
+
+        if (shooter.activeInHierarchy == false)
+        {
+            if (isProjoGros)
+            {
+                origine.projoList.Clear();
+                origine.canShoot = true;
+            }
+            Destroy(gameObject);   
         }
         playerDir = PlayerController.instance.transform.position - transform.position;
     }
@@ -81,6 +93,7 @@ public class ProjoCollision : MonoBehaviour
             {
                 PlayerController.instance.speedMovement = speed;
                 PlayerThrowAttack.instance.isInGrosProjo = true;
+                
             }
         }
     }
@@ -108,15 +121,18 @@ public class ProjoCollision : MonoBehaviour
     }
     IEnumerator NewProjoOrDestroy()
     {
+        yield return new WaitUntil(() => PlayerThrowAttack.instance.isInGrosProjo == false);
         yield return new WaitForSeconds(origine.TimeBeforeLinkedShoot);
         if (origine.projoList.Count < origine.maxProjo)
         {
+            yield return new WaitUntil(() => PlayerThrowAttack.instance.isInGrosProjo == false);
             newProjo = Instantiate(projo, transform.position, Quaternion.identity);
             newProjo.GetComponent<ProjoCollision>().mode2 = false;
             newProjo.transform.localScale = new Vector2(1, 1);
             origine.projoList.Add(newProjo);
             newProjo.GetComponent<Rigidbody2D>().velocity = playerDir.normalized * origine.grosForce;
             newProjo.GetComponent<ProjoCollision>().origine = origine;
+            newProjo.GetComponent<ProjoCollision>().shooter = shooter;
             yield return new WaitUntil(() => (newProjo.transform.position - transform.position).magnitude >= origine.maxRangeProjo);
             newProjo.GetComponent<ProjoCollision>().Grossissement(PlayerController.instance.gameObject);
         }
