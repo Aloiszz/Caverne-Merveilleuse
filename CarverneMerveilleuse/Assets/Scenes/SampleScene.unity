@@ -711,7 +711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026593170259234906, guid: c93781e2cfedc45418e5e2696d4763d0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c93781e2cfedc45418e5e2696d4763d0, type: 3}
@@ -3049,25 +3049,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
+      propertyPath: roomLeftToBossRoom
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: roomLeftToshopRoom
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomLeftToshopRoom.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomLeftToshopRoom.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomLeftToshopRoom.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomLeftToshopRoom.Array.data[2]
-      value: 4
-      objectReference: {fileID: 0}
+      propertyPath: bossRoom.Array.data[0]
+      value: 
+      objectReference: {fileID: 8470151544048026665, guid: db2a40d1d1e5ff646ba562c3c366ce32, type: 3}
     - target: {fileID: 3700859029623930163, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: m_Name
       value: RoomManager

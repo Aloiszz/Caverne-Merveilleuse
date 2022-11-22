@@ -4380,7 +4380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7628363345452323877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 137.44675, y: 38.514038, z: -0.3669297}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4426,6 +4426,7 @@ MonoBehaviour:
   AlternativeDoor: []
   goldenDoor: {fileID: 0}
   isGoldenPath: 0
+  isShopRoom: 0
 --- !u!114 &5032803122610398570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4438,9 +4439,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179a55ea50e6a4d49a649f4afc61840b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SO_ennemySpawner: {fileID: 0}
   childSlot: {fileID: 0}
   spawnPointPosition: []
+  ennemyAlive: []
   nbrEnnemySpawned: 
+  actualNumberOfWave: 0
+  numberOfWave: 0
 --- !u!1 &7642285740132753299
 GameObject:
   m_ObjectHideFlags: 0
