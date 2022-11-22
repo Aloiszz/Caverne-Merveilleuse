@@ -20,23 +20,10 @@ public class ShopScript : MonoBehaviour
     private GameObject item2; 
     private GameObject item3;
     private GameObject itemMerv1;
-    private GameObject itemMerv2; 
+    private GameObject itemMerv2;
     public List<GameObject> stockageObjetShop;
     public List<GameObject> stockageMeveilleuxShop;
     
-    public static ShopScript instance;
-
-    private void Awake()
-    {
-        if (instance != null && instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            instance = this;
-        } 
-    }
     private void Start()
     {
         OnEnter();
@@ -99,12 +86,12 @@ public class ShopScript : MonoBehaviour
         }
         if (itemMerv1 != null)
         {
-            ObjetDispoShop.instance.listItem.Add(stockageMeveilleuxShop[0]);
+            ObjetDispoShop.instance.listMerveilleux.Add(stockageMeveilleuxShop[0]);
             Destroy(itemMerv1);
         }
         if (itemMerv2 != null)
         {
-            ObjetDispoShop.instance.listItem.Add(stockageMeveilleuxShop[1]);
+            ObjetDispoShop.instance.listMerveilleux.Add(stockageMeveilleuxShop[1]);
             Destroy(itemMerv2);
         }
         

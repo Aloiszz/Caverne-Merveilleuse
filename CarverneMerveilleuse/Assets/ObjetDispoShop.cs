@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ObjetDispoShop : MonoBehaviour
 {
+    public GameObject itemCanvas;
+    public TMP_Text tmpDescriptionItem;
+    public TMP_Text tmpNomItem;
     public List<GameObject> listItem;
     public List<GameObject> listMerveilleux;
 
