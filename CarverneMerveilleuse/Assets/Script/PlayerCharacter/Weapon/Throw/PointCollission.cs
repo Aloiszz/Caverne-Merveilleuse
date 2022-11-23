@@ -52,7 +52,7 @@ public class PointCollission : MonoBehaviour
         {
             verif = true;
             verifPremierTouch = true;
-            Debug.Log(transform.position.x + "" + transform.position.y);
+            //Debug.Log(transform.position.x + "" + transform.position.y);
             bounceInt++;
         }
         

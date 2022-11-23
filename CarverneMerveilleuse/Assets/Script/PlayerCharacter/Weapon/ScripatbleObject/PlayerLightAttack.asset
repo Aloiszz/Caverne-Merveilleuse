@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff65b2f356d48f14da8e07731ffefa61, type: 3}
   m_Name: PlayerLightAttack
   m_EditorClassIdentifier: Assembly-CSharp::SO_Player_LightAttack
-  isStriking: 0
+  isStriking: 1
   isCoolDown: 0
   lightDamage:
   - 15
@@ -25,9 +25,9 @@ MonoBehaviour:
   - 0.2
   coolDownIndex: 0
   coolDownEndCombo:
-  - 1
+  - 0.7
   coolDownEndComboIndex: 0
-  timerRemaining: 1.2
+  timerRemaining: 0.2
   combo: 3
   intensityLightCloseDamage: 1
   frequencyLightCloseDamage: 1

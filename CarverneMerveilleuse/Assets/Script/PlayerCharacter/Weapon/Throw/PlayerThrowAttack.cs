@@ -12,7 +12,7 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField]private float distance;
     [SerializeField]private LineRenderer lineRender;
     [SerializeField]private LayerMask mask;
-    private bool is_F_Pressed;
+    [HideInInspector] public bool is_F_Pressed;
     
     private Quaternion deflectRotation;
     private Vector3 deflectDirection;
@@ -63,7 +63,7 @@ public class PlayerThrowAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1) && !isThrow)
+        /*if (Input.GetKey(KeyCode.Mouse1) && !isThrow)
         {
             Aim();
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -72,10 +72,21 @@ public class PlayerThrowAttack : MonoBehaviour
                 
                 isThrow = true;
             }
+        }*/ // Input de base 
+        if (Input.GetKey(KeyCode.Mouse1) && !isThrow)
+        {
+            Aim();
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Mouse1) && !isThrow)
+        {
+            Debug.Log("Throw Weapon");
+            isThrow = true;
         }
 
         if (isThrow)
         {
+            IsWeaponDisable(true);
             ThrowCollision.instance.laFaux.SetActive(true);
             if (!isInGrosProjo)
             {
@@ -85,7 +96,7 @@ public class PlayerThrowAttack : MonoBehaviour
             PointCollission.instance.IsWeaponActive(true);
             lineRender.gameObject.SetActive(false);
             
-            if(Input.GetKey(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.Mouse1))
             {
                 Debug.Log("return weapon");
                 is_F_Pressed = true;
@@ -188,6 +199,8 @@ public class PlayerThrowAttack : MonoBehaviour
 
     public void ReturnWeapon()
     {
+        is_F_Pressed = true;
+        points.Clear();
         PointCollission.instance.rb.velocity = Vector3.zero;
         PointCollission.instance.rb.angularVelocity = 0;
         PointCollission.instance.bounceInt = 1;

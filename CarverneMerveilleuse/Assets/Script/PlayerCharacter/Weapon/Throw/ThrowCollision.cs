@@ -39,8 +39,28 @@ public class ThrowCollision : MonoBehaviour
         coll.enabled = false;
         laFaux.SetActive(false);
     }
-    
-    
+
+    private void Update()
+    {
+        if (PlayerThrowAttack.instance.points[PointCollission.instance.bounceInt] == PlayerThrowAttack.instance.points[^1])
+        {
+            Debug.Log("ici");
+            laFaux.transform.Rotate (0, 0, 0);
+        }
+        else
+        {
+            Debug.Log("par la");
+            laFaux.transform.Rotate (0, 0, 1050*Time.deltaTime);
+        }
+
+        if (PlayerThrowAttack.instance.is_F_Pressed)
+        {
+            laFaux.transform.Rotate (0, 0, -1050*Time.deltaTime);
+        }
+        
+    }
+
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
@@ -53,6 +73,11 @@ public class ThrowCollision : MonoBehaviour
             {
                 StartCoroutine(ExplosionColl());
             }
+        }
+
+        if (col.CompareTag("Player"))
+        {
+            if(PointCollission.instance.bounceInt > 1) PlayerThrowAttack.instance.ReturnWeapon();
         }
     }
     

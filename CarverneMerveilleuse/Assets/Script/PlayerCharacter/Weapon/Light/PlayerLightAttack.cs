@@ -103,7 +103,7 @@ public class PlayerLightAttack : MonoBehaviour
                 timerRemainingStored = timerRemaining ; // recupération du timer
                 if (countInput <= combo)
                 {
-                    StartCoroutine(CoolDown());
+                    StartCoroutine(CoolDown(countInput));
                     if (countInput == combo)
                     {
                         CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
@@ -145,22 +145,55 @@ public class PlayerLightAttack : MonoBehaviour
         }
     }
 
-    IEnumerator CoolDown()
+    IEnumerator CoolDown(int count)
     {
-        PlayerAttackCollision.instance.sprite.enabled = true;
-        PlayerAttackCollision.instance.coll.enabled = true;
-        isCoolDown = true;
-        yield return new WaitForSeconds(coolDown[coolDownIndex]);
-        isCoolDown = false;
-        PlayerAttackCollision.instance.sprite.enabled = false;
-        PlayerAttackCollision.instance.coll.enabled = false;    
-        activate = true;
+        if (count == 1)
+        {
+            PlayerAttackCollision.instance.sprite.enabled = true;
+            PlayerAttackCollision.instance.coll.enabled = true;
+            isCoolDown = true;
+            yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            isCoolDown = false;
+            PlayerAttackCollision.instance.sprite.enabled = false;
+            PlayerAttackCollision.instance.coll.enabled = false;    
+            activate = true;
+        }
+        else if (count == 2)
+        {
+            PlayerAttackCollision2.instance.sprite.enabled = true;
+            PlayerAttackCollision2.instance.coll.enabled = true;
+            isCoolDown = true;
+            yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            isCoolDown = false;
+            PlayerAttackCollision2.instance.sprite.enabled = false;
+            PlayerAttackCollision2.instance.coll.enabled = false;    
+            activate = true;
+        }
+        else
+        {
+            PlayerAttackCollision3.instance.sprite.enabled = true;
+            PlayerAttackCollision3.instance.coll.enabled = true;
+            isCoolDown = true;
+            yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            isCoolDown = false;
+            PlayerAttackCollision3.instance.sprite.enabled = false;
+            PlayerAttackCollision3.instance.coll.enabled = false;    
+            activate = true;
+        }
+        
     }
     
     IEnumerator CoolDownEndCombo()
     {
         PlayerAttackCollision.instance.sprite.enabled = false;
         PlayerAttackCollision.instance.coll.enabled = false;
+        
+        PlayerAttackCollision2.instance.sprite.enabled = false;
+        PlayerAttackCollision2.instance.coll.enabled = false;  
+        
+        PlayerAttackCollision3.instance.sprite.enabled = false;
+        PlayerAttackCollision3.instance.coll.enabled = false;  
+        
         isCoolDown = true;
         yield return new WaitForSeconds(coolDownEndCombo[coolDownEndComboIndex]); //- ItemManager.instance.endComboSoustracteur
         isCoolDown = false;

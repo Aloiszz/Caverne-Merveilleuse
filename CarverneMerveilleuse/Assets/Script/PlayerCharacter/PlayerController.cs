@@ -8,14 +8,15 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player config")]
-    public SO_PlayerController playerSO;
-
+    
     [HideInInspector] public Rigidbody2D rb;
     private Collider2D coll;
 
     [HideInInspector]public List<Vector2> lastMovement;
     private string strMovement;
+
+    [SerializeField] private TrailRenderer dashTrail;
+    
     
     [Header("Singleton")]
     public static PlayerController instance;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bloodPS;
     public Image healthBar;
     
+    [Header("Player config")]
+    public SO_PlayerController playerSO;
     public float speedMovement;
     [HideInInspector]public float dashForce;
     [HideInInspector]public float dashReload;
@@ -50,10 +53,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerSO.isDash = true;
+        
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        
         SecureSO();
         life = lifeDepard;
+        
+        dashTrail = GetComponent<TrailRenderer>();
+        dashTrail.enabled = false;
     }
 
     public void SecureSO()
@@ -71,13 +79,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         GameMove(); // Physics movements
-        
+        Dash();
         rb.drag = linearDragDeceleration * linearDragMultiplier;
     }
 
     private void Update()
     {
-        Dash();
         Life();
     }
 
@@ -161,10 +168,12 @@ public class PlayerController : MonoBehaviour
             Physics2D.IgnoreLayerCollision(0,6, true);
             Physics2D.IgnoreLayerCollision(0,7, true);
         }
+        dashTrail.enabled = true;
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
         isDashing = false;
+        dashTrail.enabled = false;
     }
 
     IEnumerator PetrolDash()

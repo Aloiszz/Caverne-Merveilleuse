@@ -105,7 +105,7 @@ public class PlayerHeavyAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
-                StartCoroutine(Turn());
+                //StartCoroutine(Turn());
                 activate = false;
             }
         }
