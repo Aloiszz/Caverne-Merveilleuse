@@ -726,10 +726,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1638724709738665644, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2607591671278577336, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1949,6 +1945,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &922248844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 417208380340685637, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+  m_PrefabInstance: {fileID: 415511561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &987894815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,6 +2394,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5230964412810560865, guid: 90a6370cf9f541e49aa64e2bdb9c6e76, type: 3}
   m_PrefabInstance: {fileID: 1370986210}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1508908298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7067691155354852775, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+  m_PrefabInstance: {fileID: 415511561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545187790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,6 +3184,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7564898525553219442, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: dashTxt
+      value: 
+      objectReference: {fileID: 1508908298}
+    - target: {fileID: 7564898525553219442, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: dashbar
+      value: 
+      objectReference: {fileID: 922248844}
     - target: {fileID: 8785446625310703101, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: levelCG_
       value: 
