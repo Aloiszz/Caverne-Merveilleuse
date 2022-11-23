@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed7735a5c2e7274bb579cc0194cdd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 45
   lifeDepart: 0
   lifeBarre: {fileID: 811942589903022784}
   rb: {fileID: 2686426251251013887}
@@ -688,7 +688,7 @@ MonoBehaviour:
   coeur: {fileID: 1756168027805832055, guid: e767161febbdf874488291f611b3d3b7, type: 3}
   maxDentDrop: 3
   pourcentageDropOr: 10
-  pourcentageDropCoeur: 20
+  pourcentageDropCoeur: 10
   invokeByBoss: 0
   isInPetrole: 0
 --- !u!114 &2237594888207679577
@@ -707,7 +707,7 @@ MonoBehaviour:
   spaceFromPlayer: 5
   projo: {fileID: 4828584988822855267, guid: 7570cc8005a99c64d80b2fbc6ac78cd4, type: 3}
   shootForce: 50
-  TimeBeforeShoot: 3
+  TimeBeforeShoot: 2
   rb: {fileID: 0}
   see: 0
   distanceToSeePlayer: 10
@@ -715,6 +715,7 @@ MonoBehaviour:
   frequency: 0
   timer: 0
   canShoot: 1
+  isHit: 0
   AI: {fileID: 0}
 --- !u!114 &6748942190600837522
 MonoBehaviour:

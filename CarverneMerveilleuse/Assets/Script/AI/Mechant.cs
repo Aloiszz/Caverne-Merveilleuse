@@ -36,6 +36,7 @@ public class Mechant : MonoBehaviour
     private float buffAtk;
     private float buffCritique;
     private float buffByDash;
+    private int checkIfSameHitBox;
     
 
 
@@ -75,6 +76,10 @@ public class Mechant : MonoBehaviour
             }
         }
 
+        if (PlayerLightAttack.instance.countInput == 0)
+        {
+            checkIfSameHitBox = 0;
+        }
         Death();
        
     }
@@ -125,13 +130,14 @@ public class Mechant : MonoBehaviour
             player.life += itemManager.regenVie;
             forcelightDamage += 400 + itemManager.puissancePush;
         }
-        else
+        else if (PlayerLightAttack.instance.countInput != checkIfSameHitBox)
         {
             buffByDash = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.dashBuff;
             buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash;
             player.life += itemManager.regenVie;
+            checkIfSameHitBox = PlayerLightAttack.instance.countInput;
         }
         
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
@@ -185,8 +191,6 @@ public class Mechant : MonoBehaviour
             case "Gros":
                 GrosEnnemiScript grosScript = GetComponent<GrosEnnemiScript>();
                 grosScript.StopCoroutine(grosScript.CaC());
-                grosScript.canCaC = false;
-                grosScript.AI.enabled = false;
                 break;
         }
     }
@@ -213,9 +217,7 @@ public class Mechant : MonoBehaviour
             
             case "Gros":
                 GrosEnnemiScript grosScript = GetComponent<GrosEnnemiScript>();
-                grosScript.canCaC = true;
                 grosScript.see = true;
-                grosScript.AI.enabled = true;
                 break;
         }
     }
