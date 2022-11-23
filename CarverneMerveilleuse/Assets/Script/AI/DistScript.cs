@@ -28,11 +28,12 @@ public class DistScript : MonoBehaviour
     public float timer;
     
     
-    private bool canShoot = true;
+    [HideInInspector] public bool canShoot = true;
     
     private bool canRandomMove = true;
     private Vector2 playerDir;
-    private AIPath AI;
+    [HideInInspector] public bool isHit;
+    [HideInInspector] public AIPath AI;
 
     void Start()
     {
@@ -60,7 +61,7 @@ public class DistScript : MonoBehaviour
 
     private void OnSeePlayer()
     {
-        if (see)
+        if (see && !isHit)
         {
             StopCoroutine(RandomMove());
             AI.enabled = true;

@@ -10,10 +10,10 @@ public class CaCEnnemiScript : MonoBehaviour
 
     [Header("AI Config")]
     public float speed;
-    private bool canJump = true;
+    [HideInInspector] public bool canJump = true;
     public float jumpForce;
     public float distToJumpOnPlayer;
-    private AIPath _aiPath;
+    [HideInInspector] public AIPath _aiPath;
 
     [Header("AI Physics")]
     public Rigidbody2D rb;
