@@ -114,32 +114,8 @@ public class Mechant : MonoBehaviour
     }
     public void ReceiveLightDamage()
     {
-        switch (gameObject.tag)
-        {
-            case "CAC":
-                CaCEnnemiScript cacScript = GetComponent<CaCEnnemiScript>();
-                cacScript.StopAllCoroutines();
-                cacScript.canJump = false;
-                cacScript._aiPath.enabled = false;
-                rb.velocity = Vector2.zero;
-                break;
-            
-            case "Dist":
-                DistScript distScript = GetComponent<DistScript>();
-                distScript.StopAllCoroutines();
-                distScript.canShoot = false;
-                distScript.AI.enabled = false;
-                distScript.isHit = true;
-                rb.velocity = Vector2.zero;
-                break;
-            
-            case "Gros":
-                GrosEnnemiScript grosScript = GetComponent<GrosEnnemiScript>();
-                grosScript.StopCoroutine(grosScript.CaC());
-                grosScript.canCaC = false;
-                grosScript.AI.enabled = false;
-                break;
-        }
+        DebutHitStop();
+        
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
         {
             buffByDash = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.dashBuff;
@@ -166,20 +142,53 @@ public class Mechant : MonoBehaviour
 
     public void ReceiveAOEDamage()
     {
+        DebutHitStop();
         life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex];
         forcelightDamage += 1000 * itemManager.buffPushAB;
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
+        StartCoroutine(FinHitStop());
     }
 
     public void ReceiveThrowDamage()
     {
+        DebutHitStop();
         life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
-        
+        StartCoroutine(FinHitStop());
     }
 
     public void OtherHit()
     {
         life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] / 2;
+    }
+
+    void DebutHitStop()
+    {
+        switch (gameObject.tag)
+        {
+            case "CAC":
+                CaCEnnemiScript cacScript = GetComponent<CaCEnnemiScript>();
+                cacScript.StopAllCoroutines();
+                cacScript.canJump = false;
+                cacScript._aiPath.enabled = false;
+                rb.velocity = Vector2.zero;
+                break;
+            
+            case "Dist":
+                DistScript distScript = GetComponent<DistScript>();
+                distScript.StopAllCoroutines();
+                distScript.canShoot = false;
+                distScript.AI.enabled = false;
+                distScript.isHit = true;
+                rb.velocity = Vector2.zero;
+                break;
+            
+            case "Gros":
+                GrosEnnemiScript grosScript = GetComponent<GrosEnnemiScript>();
+                grosScript.StopCoroutine(grosScript.CaC());
+                grosScript.canCaC = false;
+                grosScript.AI.enabled = false;
+                break;
+        }
     }
 
     IEnumerator FinHitStop()
@@ -190,12 +199,14 @@ public class Mechant : MonoBehaviour
             case "CAC":
                 CaCEnnemiScript cacScript = GetComponent<CaCEnnemiScript>();
                 cacScript.canJump = true;
+                cacScript.see = true;
                 cacScript._aiPath.enabled = true;
                 break;
             
             case "Dist":
                 DistScript distScript = GetComponent<DistScript>();
                 distScript.canShoot = true;
+                distScript.see = true;
                 distScript.AI.enabled = true;
                 distScript.isHit = false;
                 break;
@@ -203,6 +214,7 @@ public class Mechant : MonoBehaviour
             case "Gros":
                 GrosEnnemiScript grosScript = GetComponent<GrosEnnemiScript>();
                 grosScript.canCaC = true;
+                grosScript.see = true;
                 grosScript.AI.enabled = true;
                 break;
         }
