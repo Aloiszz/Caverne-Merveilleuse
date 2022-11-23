@@ -58,7 +58,7 @@ public class ProjoCollision : MonoBehaviour
                 Destroy(gameObject);
                 PlayerController.instance.LoseLife();
             }
-            if (col.gameObject.layer == 4 || col.gameObject.layer == 9)
+            if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint"))
             {
                 Destroy(gameObject);
             }
@@ -70,7 +70,7 @@ public class ProjoCollision : MonoBehaviour
                 Grossissement(col.gameObject);
                 PlayerController.instance.LoseLife();
             }
-            else if (col.gameObject.layer == 4 || col.gameObject.layer == 9)
+            else if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint"))
             {
                 for (int i = 0; i < origine.projoList.Count; i++)
                 {

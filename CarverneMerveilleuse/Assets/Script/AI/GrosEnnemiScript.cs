@@ -35,7 +35,7 @@ public class GrosEnnemiScript : MonoBehaviour
     public bool canCaC = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
-    private AIPath AI;
+    [HideInInspector] public AIPath AI;
     private GameObject projectile;
     public GameObject cacHitBox;
     [HideInInspector] public List<GameObject> projoList;
@@ -107,7 +107,7 @@ public class GrosEnnemiScript : MonoBehaviour
         projectile.GetComponent<ProjoCollision>().Grossissement(player.gameObject);
     }
 
-    IEnumerator CaC()
+    public IEnumerator CaC()
     {
         canCaC = false;
         for (int i = 0; i < 8; i++)
