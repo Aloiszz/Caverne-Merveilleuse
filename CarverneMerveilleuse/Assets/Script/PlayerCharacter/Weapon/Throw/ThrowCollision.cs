@@ -42,20 +42,21 @@ public class ThrowCollision : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerThrowAttack.instance.points[PointCollission.instance.bounceInt] == PlayerThrowAttack.instance.points[^1])
+        
+        if (PlayerThrowAttack.instance.is_F_Pressed)
         {
-            Debug.Log("ici");
-            laFaux.transform.Rotate (0, 0, 0);
+            laFaux.transform.Rotate (0, 0, 1050*Time.deltaTime);
         }
         else
         {
-            Debug.Log("par la");
-            laFaux.transform.Rotate (0, 0, 1050*Time.deltaTime);
-        }
-
-        if (PlayerThrowAttack.instance.is_F_Pressed)
-        {
-            laFaux.transform.Rotate (0, 0, -1050*Time.deltaTime);
+            if (PlayerThrowAttack.instance.points[PointCollission.instance.bounceInt] == PlayerThrowAttack.instance.points[^1])
+            {
+                laFaux.transform.Rotate (0, 0, 0);
+            }
+            else
+            {
+                laFaux.transform.Rotate (0, 0, -1050*Time.deltaTime);
+            }
         }
         
     }

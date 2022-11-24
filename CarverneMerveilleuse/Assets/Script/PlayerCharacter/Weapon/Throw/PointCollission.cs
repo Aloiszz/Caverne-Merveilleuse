@@ -41,7 +41,9 @@ public class PointCollission : MonoBehaviour
         if (transform.position == PlayerThrowAttack.instance.points[bounceInt])
         {
             verif = false;
+            
         }
+
     }
 
     private bool verif;
@@ -52,7 +54,6 @@ public class PointCollission : MonoBehaviour
         {
             verif = true;
             verifPremierTouch = true;
-            //Debug.Log(transform.position.x + "" + transform.position.y);
             bounceInt++;
         }
         
@@ -66,7 +67,7 @@ public class PointCollission : MonoBehaviour
         
         transform.position = Vector3.MoveTowards(transform.position,
             PlayerThrowAttack.instance.points[bounceInt], Time.deltaTime * 
-                                                          PlayerThrowAttack.instance.ThrowSpeed[PlayerThrowAttack.instance.ThrowDamageIndex] );
+                                                          PlayerThrowAttack.instance.ThrowSpeed[PlayerThrowAttack.instance.ThrowSpeedIndex] );
     }
     
     public void ThrowWeapon()
@@ -75,7 +76,7 @@ public class PointCollission : MonoBehaviour
         
         transform.position = Vector3.MoveTowards(transform.position,
             PlayerThrowAttack.instance.points[1], Time.deltaTime * 
-                                                  PlayerThrowAttack.instance.ThrowSpeed[PlayerThrowAttack.instance.ThrowDamageIndex]);
+                                                  PlayerThrowAttack.instance.ThrowSpeed[PlayerThrowAttack.instance.ThrowSpeedIndex]);
         
         /*transform.position = Vector3.MoveTowards(transform.position,
             PlayerAttackCollision.instance.difference, Time.deltaTime * 40);*/

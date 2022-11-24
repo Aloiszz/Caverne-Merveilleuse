@@ -12,7 +12,7 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField]private float distance;
     [SerializeField]private LineRenderer lineRender;
     [SerializeField]private LayerMask mask;
-    [HideInInspector] public bool is_F_Pressed;
+    public bool is_F_Pressed;
     
     private Quaternion deflectRotation;
     private Vector3 deflectDirection;
@@ -27,6 +27,11 @@ public class PlayerThrowAttack : MonoBehaviour
 
     public List<float> ThrowDamage;
     [HideInInspector] public int ThrowDamageIndex;
+    
+    [Header("Cinemachine Schake")] 
+    [SerializeField]private float intensityAmplitude;
+    [SerializeField]private float intensityFrequency;
+    [SerializeField]private float intensityTime;
     
 
     public static PlayerThrowAttack instance;
@@ -86,23 +91,47 @@ public class PlayerThrowAttack : MonoBehaviour
 
         if (isThrow)
         {
-            IsWeaponDisable(true);
-            ThrowCollision.instance.laFaux.SetActive(true);
-            if (!isInGrosProjo)
-            {
-                PlayerController.instance.speedMovement = 110;
-            }
-            ThrowCollision.instance.IsWeaponActive(true);
-            PointCollission.instance.IsWeaponActive(true);
-            lineRender.gameObject.SetActive(false);
-            
-            if(Input.GetKeyDown(KeyCode.Mouse1))
+            if(Input.GetKeyDown(KeyCode.Mouse1)) // verif pour faire revenir la faux
             {
                 Debug.Log("return weapon");
                 is_F_Pressed = true;
             }
+        }
 
-            if (is_F_Pressed)
+        IsThrow();
+    }
+    
+    void Aim() // quand on vise
+    {
+        IsWeaponDisable(true);
+            
+        lineRender.gameObject.SetActive(true);
+            
+        points.Clear();
+        points.Add(transform.position);
+        
+        DoRay(PlayerController.instance.transform.position, PlayerAttackCollision.instance.difference, maxBounce, distance);
+        
+        lineRender.positionCount = points.Count;
+        
+        lineRender.SetPositions(points.ToArray());
+    }
+    
+    void IsThrow()
+    {
+        if (isThrow)
+        {
+            IsWeaponDisable(true);
+            ThrowCollision.instance.laFaux.SetActive(true); 
+            if (!isInGrosProjo)
+            {
+                PlayerController.instance.speedMovement = 110;
+            }
+            ThrowCollision.instance.IsWeaponActive(true); // Collission et sprite visible
+            PointCollission.instance.IsWeaponActive(true); // Collission et sprite visible
+            lineRender.gameObject.SetActive(false);
+
+            if (is_F_Pressed) // Fait revenir la faux
             {
                 ReturnWeapon();
             }
@@ -123,27 +152,12 @@ public class PlayerThrowAttack : MonoBehaviour
             //ThrowCollision.instance.gameObject.transform.position = PlayerController.instance.transform.position;
             PointCollission.instance.gameObject.transform.position = PlayerController.instance.transform.position;
             IsWeaponDisable(false);
-            ThrowCollision.instance.IsWeaponActive(false);
-            PointCollission.instance.IsWeaponActive(false);
+            ThrowCollision.instance.IsWeaponActive(false); // Collission et sprite non visible
+            PointCollission.instance.IsWeaponActive(false);  // Collission et sprite non visible
         }
-    }
+    } // quand le faux est lancé
 
-
-    void Aim()
-    {
-        IsWeaponDisable(true);
-            
-        lineRender.gameObject.SetActive(true);
-            
-        points.Clear();
-        points.Add(transform.position);
-        
-        DoRay(PlayerController.instance.transform.position, PlayerAttackCollision.instance.difference, maxBounce, distance); 
-        lineRender.positionCount = points.Count;
-        
-        lineRender.SetPositions(points.ToArray());
-    }
-
+    
     void DoRay(Vector3 origin, Vector3 direction, int bounceLeft, float distance)
     {
         /*if (bounceLeft > 0)
@@ -219,6 +233,8 @@ public class PlayerThrowAttack : MonoBehaviour
             is_F_Pressed = false;
             PointCollission.instance.verifPremierTouch = false;
             ThrowCollision.instance.laFaux.SetActive(false);
+            
+            CinemachineShake.instance.ShakeCamera(intensityAmplitude,intensityFrequency,intensityTime);
         }
     }
 
