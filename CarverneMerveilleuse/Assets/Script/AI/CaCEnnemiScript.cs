@@ -11,6 +11,7 @@ public class CaCEnnemiScript : MonoBehaviour
     [Header("AI Config")]
     public float speed;
     [HideInInspector] public bool canJump = true;
+    public float secondsBeforeJump = 1;
     public float jumpForce;
     public float distToJumpOnPlayer;
     [HideInInspector] public AIPath _aiPath;
@@ -98,7 +99,7 @@ public class CaCEnnemiScript : MonoBehaviour
         canJump = false;
         _aiPath.enabled = false;
         yield return new WaitForSeconds(0.1f);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < secondsBeforeJump * 10; i++)
         {
             if (i%2 == 0)
             {
@@ -111,7 +112,7 @@ public class CaCEnnemiScript : MonoBehaviour
                 transform.position = new Vector2(transform.position.x - 0.2f, transform.localPosition.y);
             }
 
-            if (i == 7)
+            if (i == secondsBeforeJump * 10 - 3)
             {
                 playerPos = playerDir;
             }

@@ -7,6 +7,7 @@ public class CoeurScript : MonoBehaviour
 {
     private PlayerController player;
     public float distanceToGet;
+    public float speed = 4;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class CoeurScript : MonoBehaviour
     {
         if ((player.transform.position - transform.position).magnitude <= distanceToGet)
         {
-            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, 5);
+            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed);
         }
     }
 

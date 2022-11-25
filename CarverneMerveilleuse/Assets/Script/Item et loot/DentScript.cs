@@ -9,6 +9,7 @@ public class DentScript : MonoBehaviour
     private PlayerController player; 
     private UIManager ui;
     public float distanceToGet;
+    public float speed = 4;
     [SerializeField] public bool golden;
 
     private void Start()
@@ -21,7 +22,7 @@ public class DentScript : MonoBehaviour
     {
         if ((player.transform.position - transform.position).magnitude <= distanceToGet)
         {
-            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, 5);
+            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed);
         }
     }
 
