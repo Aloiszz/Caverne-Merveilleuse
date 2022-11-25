@@ -42,6 +42,11 @@ public class PlayerLightAttack : MonoBehaviour
     private float frequencyLightCloseDamage;
     private float timerLightCloseDamage;
 
+    [Header("Animator")] 
+    public bool strikkingCombo1;
+    public bool strikkingCombo2;
+    public bool strikkingCombo3;
+
 
     private Vector3 mouseWorldPosition;
     private void Awake()
@@ -152,7 +157,9 @@ public class PlayerLightAttack : MonoBehaviour
             PlayerAttackCollision.instance.sprite.enabled = true;
             PlayerAttackCollision.instance.coll.enabled = true;
             isCoolDown = true;
+            strikkingCombo1 = true;
             yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            strikkingCombo1 = false;
             isCoolDown = false;
             PlayerAttackCollision.instance.sprite.enabled = false;
             PlayerAttackCollision.instance.coll.enabled = false;    
@@ -163,7 +170,9 @@ public class PlayerLightAttack : MonoBehaviour
             PlayerAttackCollision2.instance.sprite.enabled = true;
             PlayerAttackCollision2.instance.coll.enabled = true;
             isCoolDown = true;
+            strikkingCombo2 = true;
             yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            strikkingCombo2 = false;
             isCoolDown = false;
             PlayerAttackCollision2.instance.sprite.enabled = false;
             PlayerAttackCollision2.instance.coll.enabled = false;    
@@ -174,7 +183,9 @@ public class PlayerLightAttack : MonoBehaviour
             PlayerAttackCollision3.instance.sprite.enabled = true;
             PlayerAttackCollision3.instance.coll.enabled = true;
             isCoolDown = true;
+            strikkingCombo3 = true;
             yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            strikkingCombo3 = false;
             isCoolDown = false;
             PlayerAttackCollision3.instance.sprite.enabled = false;
             PlayerAttackCollision3.instance.coll.enabled = false;    

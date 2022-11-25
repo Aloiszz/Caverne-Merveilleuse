@@ -19,24 +19,6 @@ public class PlayerAnim : MonoBehaviour
         {
             i.SetFloat("speedX", PlayerController.instance.rb.velocity.x);
             i.SetFloat("speedY", PlayerController.instance.rb.velocity.y);
-            
-            if (PlayerController.instance.rb.velocity.x > 0.3f || PlayerController.instance.rb.velocity.x < -0.3f)
-            {
-                i.SetBool("isProfileRunning", true);
-            }
-            else
-            {
-                i.SetBool("isProfileRunning", false);
-            }
-        
-            if (PlayerController.instance.rb.velocity.y > 0.3f || PlayerController.instance.rb.velocity.y < -0.3f)
-            {
-                i.SetBool("isFaceRunning", true);
-            }
-            else
-            {
-                i.SetBool("isFaceRunning", false);
-            }
         }
     }
 
@@ -44,6 +26,7 @@ public class PlayerAnim : MonoBehaviour
     void LateUpdate()
     {
         GameAnimation();
+        
     }
     
     private void GameAnimatinon()
@@ -101,59 +84,237 @@ public class PlayerAnim : MonoBehaviour
     {
         if (PlayerAttackCollision.instance.rotationZ < -145 || PlayerAttackCollision.instance.rotationZ > 145) // profil G
         {
-            graphFace.SetActive(false);
-            graphDos.SetActive(false);
-            graphProfile.SetActive(true);
+            if (PlayerController.instance.rb.velocity.x > 0.3f || PlayerController.instance.rb.velocity.x < -0.3f
+                                                               || PlayerController.instance.rb.velocity.y > 0.3f || PlayerController.instance.rb.velocity.y < -0.3f)
+            {
+                animator[1].SetBool("isProfileRunning", true);
+            }
+            else
+            {
+                animator[1].SetBool("isProfileRunning", false);
+            }
             
-            animator[1].SetBool("Face", false);
-            animator[1].SetBool("Profile", true);
+            ProfilGauche();
+        }
+        
+        else if (PlayerAttackCollision.instance.rotationZ > -145 && PlayerAttackCollision.instance.rotationZ < -39) // Face
+        {
+            if (PlayerController.instance.rb.velocity.x > 0.3f || PlayerController.instance.rb.velocity.x < -0.3f
+                                                               || PlayerController.instance.rb.velocity.y > 0.3f || PlayerController.instance.rb.velocity.y < -0.3f)
+            {
+                animator[0].SetBool("isFaceRunning", true);
+            }
+            else
+            {
+                animator[0].SetBool("isFaceRunning", false);
+            }
             
-            graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
-            //graphProfile.transform.DOScale(new Vector3(-0.08f,0.08f,0.08f), .2f);
+            Face();
+        }
+        
+        else if(PlayerAttackCollision.instance.rotationZ < 145 && PlayerAttackCollision.instance.rotationZ > 39) // dos
+        {
+            if (PlayerController.instance.rb.velocity.x > 0.3f || PlayerController.instance.rb.velocity.x < -0.3f
+                                                               || PlayerController.instance.rb.velocity.y > 0.3f || PlayerController.instance.rb.velocity.y < -0.3f)
+            {
+                animator[2].SetBool("isFaceRunning", true);
+            }
+            else
+            {
+                animator[2].SetBool("isFaceRunning", false);
+            }
+            
+            Dos();
         }
         
         else //Profil D
         {
-            graphFace.SetActive(false);
-            graphDos.SetActive(false);
-            graphProfile.SetActive(true);
-
-            animator[1].SetBool("Face", false);
-            animator[1].SetBool("Profile", true);
+            if (PlayerController.instance.rb.velocity.x > 0.3f || PlayerController.instance.rb.velocity.x < -0.3f
+                                                               && PlayerController.instance.rb.velocity.y > 0.3f || PlayerController.instance.rb.velocity.y < -0.3f)
+            {
+                animator[1].SetBool("isProfileRunning", true);
+            }
+            else
+            {
+                animator[1].SetBool("isProfileRunning", false);
+            }
             
-            graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
-            //graphProfile.transform.DOScale(new Vector3(0.08f,0.08f,0.08f), .2f);
+            ProfilDroit();
         }
+    }
 
-        if (PlayerAttackCollision.instance.rotationZ > -145 && PlayerAttackCollision.instance.rotationZ < -39) // Face
+
+    void ProfilDroit()
+    {
+        graphFace.SetActive(false);
+        graphDos.SetActive(false);
+        graphProfile.SetActive(true);
+
+        animator[1].SetBool("Face", false);
+        animator[1].SetBool("Profile", true);
+            
+        graphProfile.transform.localScale = new Vector3(0.08f,0.08f,0.08f);
+        //graphProfile.transform.DOScale(new Vector3(0.08f,0.08f,0.08f), .2f);
+
+        ProfilLightAttack();
+    }
+
+    void ProfilGauche()
+    {
+        graphFace.SetActive(false);
+        graphDos.SetActive(false);
+        graphProfile.SetActive(true);
+            
+        animator[1].SetBool("Face", false);
+        animator[1].SetBool("Profile", true);
+            
+        graphProfile.transform.localScale = new Vector3(-0.08f,0.08f,0.08f);
+        //graphProfile.transform.DOScale(new Vector3(-0.08f,0.08f,0.08f), .2f);
+
+        ProfilLightAttack();
+    }
+
+    void ProfilLightAttack()
+    {
+        if (PlayerLightAttack.instance.strikkingCombo1)
         {
-            graphFace.SetActive(true);
-            graphDos.SetActive(false);
-            graphProfile.SetActive(false);
-
-            animator[0].SetBool("Face", true);
-            animator[0].SetBool("Profile", false);
+            animator[1].SetBool("isLightAttacking", true);
         }
-        
-        if(PlayerAttackCollision.instance.rotationZ < 145 && PlayerAttackCollision.instance.rotationZ > 39) // dos
+        else
         {
-            graphFace.SetActive(false);
-            graphDos.SetActive(true);
-            graphProfile.SetActive(false);
-
-            animator[2].SetBool("Face", false);
-            animator[2].SetBool("Profile", false);
+            animator[1].SetBool("isLightAttacking", false);
+            
+            if (PlayerLightAttack.instance.strikkingCombo2)
+            {
+                animator[1].SetBool("isLightAttacking2", true);
+            }
+            else
+            {
+                animator[1].SetBool("isLightAttacking2", false);
+                
+                if (PlayerLightAttack.instance.strikkingCombo3)
+                {
+                    animator[1].SetBool("isLightAttacking3", true);
+                }
+                else
+                {
+                    animator[1].SetBool("isLightAttacking3", false);
+                }
+            }
         }
-        
+    }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+    void Face()
+    {
+        graphFace.SetActive(true);
+        graphDos.SetActive(false);
+        graphProfile.SetActive(false);
+
+        animator[0].SetBool("Face", true);
+        animator[0].SetBool("Profile", false);
+        
+        FaceLightAttack();
+
+        FaceThrowAttack();
+    }
+    
+
+    void FaceLightAttack()
+    {
+        if (PlayerLightAttack.instance.strikkingCombo1)
         {
             animator[0].SetBool("isLightAttacking", true);
         }
-        
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        else
         {
             animator[0].SetBool("isLightAttacking", false);
+            
+            if (PlayerLightAttack.instance.strikkingCombo2)
+            {
+                animator[0].SetBool("isLightAttacking2", true);
+            }
+            else
+            {
+                animator[0].SetBool("isLightAttacking2", false);
+                
+                if (PlayerLightAttack.instance.strikkingCombo3)
+                {
+                    animator[0].SetBool("isLightAttacking3", true);
+                }
+                else
+                {
+                    animator[0].SetBool("isLightAttacking3", false);
+                }
+            }
+        }
+        
+    }
+
+    void FaceThrowAttack()
+    {
+        if (PlayerThrowAttack.instance.isThrow)
+        {
+            animator[0].SetBool("isThrowAttack", true);
+        }
+        else
+        {
+            animator[0].SetBool("isThrowAttack", false);
+        }
+    }
+
+    void Dos()
+    {
+        graphFace.SetActive(false);
+        graphDos.SetActive(true);
+        graphProfile.SetActive(false);
+
+        animator[2].SetBool("Face", false);
+        animator[2].SetBool("Profile", false);
+
+        DosLightAttack();
+
+        DosThrowAttack();
+    }
+    
+    void DosLightAttack()
+    {
+        if (PlayerLightAttack.instance.strikkingCombo1)
+        {
+            animator[2].SetBool("isLightAttacking", true);
+        }
+        else
+        {
+            animator[2].SetBool("isLightAttacking", false);
+            
+            if (PlayerLightAttack.instance.strikkingCombo2)
+            {
+                animator[2].SetBool("isLightAttacking2", true);
+            }
+            else
+            {
+                animator[2].SetBool("isLightAttacking2", false);
+                
+                if (PlayerLightAttack.instance.strikkingCombo3)
+                {
+                    animator[2].SetBool("isLightAttacking3", true);
+                }
+                else
+                {
+                    animator[2].SetBool("isLightAttacking3", false);
+                }
+            }
+        }
+    }
+    
+    void DosThrowAttack()
+    {
+        if (PlayerThrowAttack.instance.isThrow)
+        {
+            animator[2].SetBool("isThrowAttack", true);
+        }
+        else
+        {
+            animator[2].SetBool("isThrowAttack", false);
         }
     }
 }

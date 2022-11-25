@@ -128,6 +128,9 @@ MonoBehaviour:
   lightDamageIndex: 0
   lastLightDamage: []
   lastLightDamageIndex: 0
+  strikkingCombo1: 0
+  strikkingCombo2: 0
+  strikkingCombo3: 0
 --- !u!114 &245021141579859556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,7 +1632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2811338768875404999, guid: 3a92a7aff18341348960718f167663a6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895732415967725720, guid: 3a92a7aff18341348960718f167663a6, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -2116,8 +2119,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7669744521787702885, guid: a041c5a003c161444bcce923f61ae527, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7896965043845950474, guid: a041c5a003c161444bcce923f61ae527, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 132787fadd65609429e11a01518b2641, type: 2}
     - target: {fileID: 8289070126967422264, guid: a041c5a003c161444bcce923f61ae527, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.010690212
@@ -2543,7 +2550,7 @@ Animator:
   m_GameObject: {fileID: 7967740950873251355}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cdeb304a3e36d6344b2d82a516816386, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d43af7d1dfd00d4db751e35f91e7811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

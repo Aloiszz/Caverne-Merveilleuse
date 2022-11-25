@@ -79,13 +79,14 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         GameMove(); // Physics movements
-        Dash();
+        
         rb.drag = linearDragDeceleration * linearDragMultiplier;
     }
 
     private void Update()
     {
         Life();
+        Dash();
     }
 
     private void GameMove()
