@@ -69,10 +69,10 @@ MonoBehaviour:
   isExplosfALFGet: 0
   MaxPV: 2
   pourcentageVieForSeuilPV: 10
-  pourcentageBuffATKDuSeuilPV: 0
+  pourcentageBuffATKDuSeuilPV: 30
   buffATKCritique: 0
   nbVieEnPlus: 0
-  puissancePushDash: 0
+  puissancePushDash: 20
   isPushDashGet: 0
   isDegatDashGet: 0
   pourcentageAttaqueEnPlusPostDash: 10
@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a4cf084239a76488a3b1c1d4fcbfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemCanvas: {fileID: 0}
+  tmpDescriptionItem: {fileID: 0}
+  tmpNomItem: {fileID: 0}
   listItem:
   - {fileID: 8251434255750018629, guid: 557301692d4a88441874504481ee1b66, type: 3}
   - {fileID: 8900838007908440558, guid: fe76c573f3030a342a82a934af864cef, type: 3}

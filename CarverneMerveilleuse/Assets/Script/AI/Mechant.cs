@@ -174,9 +174,12 @@ public class Mechant : MonoBehaviour
             case "CAC":
                 CaCEnnemiScript cacScript = GetComponent<CaCEnnemiScript>();
                 cacScript.StopAllCoroutines();
-                cacScript.canJump = false;
+                if (cacScript.canJump)
+                {
+                    cacScript.canJump = false;
+                    rb.velocity = Vector2.zero;
+                }
                 cacScript._aiPath.enabled = false;
-                rb.velocity = Vector2.zero;
                 break;
             
             case "Dist":
