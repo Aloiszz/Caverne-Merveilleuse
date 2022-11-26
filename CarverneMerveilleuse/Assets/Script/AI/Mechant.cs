@@ -92,17 +92,20 @@ public class Mechant : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
                 {
-                    Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
+                    Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
 
                 if (Random.Range(1, 101) >= 100 - (pourcentageDropOr + itemManager.dropOrSupp) && pourcentageDropOr != 0)
                 {
-                    Instantiate(goldenDent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
+                    Instantiate(goldenDent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
                 
                 if (Random.Range(1, 101) >= 100 - (pourcentageDropCoeur + itemManager.dropCoeurSupp) && pourcentageDropCoeur != 0)
                 {
-                    Instantiate(coeur, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity);
+                    Instantiate(coeur, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
             }
 

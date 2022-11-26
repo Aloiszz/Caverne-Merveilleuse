@@ -70,7 +70,8 @@ public class PlayerAttackCollision : MonoBehaviour
             rand = Random.Range(1, 3);
             for (int i = 0; i < rand; i++)
             {
-                Instantiate(bloodPS, col.transform.position, Quaternion.identity);
+                Instantiate(bloodPS, col.transform.position, Quaternion.identity, 
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             }
         }
     }

@@ -128,7 +128,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 Destroy(gameObject);
-                Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity); 
+                Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity,
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform); 
             }
         }
     }
@@ -136,7 +137,8 @@ public class PlayerController : MonoBehaviour
     {
         life -= 1;
         Debug.Log("lose");
-        Instantiate(bloodPS, gameObject.transform.position, quaternion.identity);
+        Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
+            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
     }
 
     private void Dash()

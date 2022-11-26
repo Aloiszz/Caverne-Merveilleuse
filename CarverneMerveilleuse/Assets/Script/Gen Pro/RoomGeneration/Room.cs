@@ -20,7 +20,12 @@ public class Room : MonoBehaviour
     private void Start()
     {
         FadeInRoom();
-        SpawnPointDoorEnnemy();
+
+        /*if (GetComponent<EnnemySpawner>().enabled)
+        {
+            SpawnPointDoorEnnemy();
+        }*/
+        
         //FindCameraBorder();
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
@@ -131,13 +136,16 @@ public class Room : MonoBehaviour
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
         {
             DoorEnnemy.Add(go);
-            Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation);
+            Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation, transform);
         }
     }
 
     public void OpenTheDoor()
     {
-        EnnemyManager.instance.Door.SetActive(false);
+        foreach (var i in DoorEnnemy)
+        {
+            i.SetActive(false);
+        }
     }
 
     public void CloseTheDoor()
