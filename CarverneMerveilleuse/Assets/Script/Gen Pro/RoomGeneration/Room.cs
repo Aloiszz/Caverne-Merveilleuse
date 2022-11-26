@@ -32,7 +32,7 @@ public class Room : MonoBehaviour
         
         if (!isShopRoom)
         {
-            if (AlternativeDoor.Count > 1)
+            if (AlternativeDoor.Count >= 1)
             {
                 CreateGoldenPath();
                 RoomManager.instance.roomMemory.Add(this.gameObject);

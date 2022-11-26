@@ -1548,6 +1548,7 @@ GameObject:
   - component: {fileID: 1825944631273175077}
   - component: {fileID: 1338590598928906948}
   - component: {fileID: 2026593170259234906}
+  - component: {fileID: 5038334026498170499}
   m_Layer: 0
   m_Name: Salle Moyenne 1
   m_TagString: Untagged
@@ -1607,7 +1608,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618680985572626704}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 179a55ea50e6a4d49a649f4afc61840b, type: 3}
   m_Name: 
@@ -1618,6 +1619,20 @@ MonoBehaviour:
   ennemyAlive: []
   actualNumberOfWave: 0
   numberOfWave: 0
+--- !u!114 &5038334026498170499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618680985572626704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7337428a8274dba4185a8db95d498be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propsList: []
+  props: []
 --- !u!1 &1750016376843501977
 GameObject:
   m_ObjectHideFlags: 0
@@ -7107,11 +7122,11 @@ GameObject:
   - component: {fileID: 7471558618533141942}
   m_Layer: 0
   m_Name: Variation tombe
-  m_TagString: Untagged
+  m_TagString: RoomProps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7471558618533141942
 Transform:
   m_ObjectHideFlags: 0
@@ -9013,7 +9028,7 @@ GameObject:
   - component: {fileID: 3864075737944384841}
   m_Layer: 0
   m_Name: Variation roche
-  m_TagString: Untagged
+  m_TagString: RoomProps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9325,11 +9340,11 @@ GameObject:
   - component: {fileID: 8024803597089114718}
   m_Layer: 0
   m_Name: Variation or
-  m_TagString: Untagged
+  m_TagString: RoomProps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8024803597089114718
 Transform:
   m_ObjectHideFlags: 0
