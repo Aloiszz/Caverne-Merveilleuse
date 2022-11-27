@@ -38,6 +38,12 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool isDashing;
     [HideInInspector] public int nbPossibleDash = 1;
     
+    
+    [Header("Camera Zoom")] 
+    public float zoomSize;
+    public float timeToArrive;
+    public float timeToComeBack;
+    
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -139,6 +145,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("lose");
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+        
+        CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
     }
 
     private void Dash()

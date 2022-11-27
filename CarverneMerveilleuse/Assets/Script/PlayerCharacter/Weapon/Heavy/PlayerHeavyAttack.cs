@@ -93,7 +93,7 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     public void HeavyAttack()
     {
-        if (Input.GetKeyUp(KeyCode.Mouse0) && isKeyUp) // annule l'attaque lourde
+        /*if (Input.GetKeyUp(KeyCode.Mouse0) && isKeyUp) // annule l'attaque lourde
         {
             StopAllCoroutines();
             CinemachineCameraZoom.instance.StopZoom(timeToComeBack);
@@ -105,7 +105,7 @@ public class PlayerHeavyAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
-                //StartCoroutine(Turn());
+                StartCoroutine(Turn());
                 activate = false;
             }
         }
@@ -114,14 +114,47 @@ public class PlayerHeavyAttack : MonoBehaviour
             isStriking = false;
             CinemachineShake.instance.ShakeCamera(intensityLightCloseDamage, 
                 frequencyLightCloseDamage ,timerLightCloseDamage);
+        }*/
+        
+        
+        if (!isCoolDown)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                StartCoroutine(WaitPrep());
+            }
+
+            if (activate)
+            {
+                if (Input.GetKeyUp(KeyCode.Mouse0))
+                {
+                    StartCoroutine(Turn());
+                }
+            }
+            else
+            {
+                if (Input.GetKeyUp(KeyCode.Mouse0))
+                {
+                    activate = false;
+                    StopAllCoroutines();
+                }
+            }
         }
+        
+    }
+
+    IEnumerator WaitPrep()
+    {
+        PlayerController.instance.speedMovement = 50;
+        yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);
+        activate = true;
     }
     
     IEnumerator Turn()
     {
-        PrepTrourne();
+        /*PrepTrourne();
         
-        yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);
+        yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);*/
         
         Tourne();
 
@@ -187,7 +220,7 @@ public class PlayerHeavyAttack : MonoBehaviour
         HeavyAttackCollision.instance.sprite.enabled = false;
         HeavyAttackCollision.instance.coll.enabled = false;
         
-        activate = true;
+        activate = false;
         isKeyUp = true;
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);

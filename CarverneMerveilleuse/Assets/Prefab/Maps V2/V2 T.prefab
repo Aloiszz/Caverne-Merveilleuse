@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 1284115998578957913}
   - component: {fileID: 1672032498683233425}
   - component: {fileID: 8833790334022856330}
+  - component: {fileID: 2704454537294854025}
   m_Layer: 0
   m_Name: V2 T
   m_TagString: Untagged
@@ -257,6 +258,26 @@ MonoBehaviour:
   AlternativeDoor: []
   goldenDoor: {fileID: 0}
   isGoldenPath: 0
+  isShopRoom: 0
+  DoorEnnemy: []
+--- !u!114 &2704454537294854025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049492111545967070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179a55ea50e6a4d49a649f4afc61840b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
+  childSlot: {fileID: 0}
+  spawnPointPosition: []
+  ennemyAlive: []
+  actualNumberOfWave: 0
+  numberOfWave: 0
 --- !u!1 &1588611888698318112
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +517,7 @@ MonoBehaviour:
   direction: 1
   spawnpoint: {fileID: 0}
   isAlternativeDoor: 0
+  isShopDoor: 0
   porteQuiFautDetruire: 0
 --- !u!1 &1588611890125658901
 GameObject:
@@ -989,6 +1011,7 @@ MonoBehaviour:
   direction: 2
   spawnpoint: {fileID: 0}
   isAlternativeDoor: 0
+  isShopDoor: 0
   porteQuiFautDetruire: 0
 --- !u!1 &4784929477395914094
 GameObject:
@@ -1229,6 +1252,7 @@ MonoBehaviour:
   direction: 3
   spawnpoint: {fileID: 0}
   isAlternativeDoor: 0
+  isShopDoor: 0
   porteQuiFautDetruire: 0
 --- !u!1 &8076671442927590715
 GameObject:
@@ -1469,6 +1493,7 @@ MonoBehaviour:
   direction: 0
   spawnpoint: {fileID: 0}
   isAlternativeDoor: 0
+  isShopDoor: 0
   porteQuiFautDetruire: 0
 --- !u!1 &8585533455995034714
 GameObject:
