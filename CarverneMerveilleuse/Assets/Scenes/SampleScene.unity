@@ -2509,7 +2509,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1711514103 stripped
 Transform:
@@ -7574,7 +7574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3004616127518611113, guid: 5d00380600ca079409e25d3137973a67, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3004616127518611113, guid: 5d00380600ca079409e25d3137973a67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7995,7 +7995,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &79625110100545833
 PrefabInstance:
@@ -8004,6 +8004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 353566256, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+      propertyPath: bloodPS
+      value: 
+      objectReference: {fileID: 6772070846781512207, guid: e1f8a9b44a6e37645b9bb39cb01379a0, type: 3}
     - target: {fileID: 79625110420020024, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -8052,10 +8056,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7670618263388233321, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4157092533391857533, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+      propertyPath: bloodPS
+      value: 
+      objectReference: {fileID: 6772070846781512207, guid: e1f8a9b44a6e37645b9bb39cb01379a0, type: 3}
+    - target: {fileID: 4635396579221170849, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+      propertyPath: bloodPS
+      value: 
+      objectReference: {fileID: 6772070846781512207, guid: e1f8a9b44a6e37645b9bb39cb01379a0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
 --- !u!1001 &3700859027840943441
