@@ -12,6 +12,7 @@ public class Room : MonoBehaviour
     public GameObject goldenDoor;
     private int result;
     public bool isGoldenPath;
+    public bool isHub;
     
     public bool isShopRoom;
     
@@ -29,10 +30,14 @@ public class Room : MonoBehaviour
         //FindCameraBorder();
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
-        
-        if (!isShopRoom)
+        if (isHub)
         {
-            if (AlternativeDoor.Count >= 1)
+            CreateGoldenPath();
+        }
+        
+        if (!isShopRoom && !isHub)
+        {
+            if (AlternativeDoor.Count > 1)
             {
                 CreateGoldenPath();
                 RoomManager.instance.roomMemory.Add(this.gameObject);
