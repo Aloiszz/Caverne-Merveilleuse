@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField]private float distance;
     [SerializeField]private LineRenderer lineRender;
     [SerializeField]private LayerMask mask;
-    public bool is_F_Pressed;
+    [HideInInspector]public bool is_F_Pressed;
     
     private Quaternion deflectRotation;
     private Vector3 deflectDirection;
@@ -20,13 +21,15 @@ public class PlayerThrowAttack : MonoBehaviour
     public List<Vector3> points = new List<Vector3>();
 
     public bool isThrow;
-    public bool isInGrosProjo;
+    [HideInInspector]public bool isInGrosProjo;
 
-    public List<float> ThrowSpeed;
+    [HideInInspector]public List<float> ThrowSpeed;
     [HideInInspector] public int ThrowSpeedIndex;
 
-    public List<float> ThrowDamage;
+    [HideInInspector]public List<float> ThrowDamage;
     [HideInInspector] public int ThrowDamageIndex;
+
+    [SerializeField] private GameObject FlecheDeVise;
     
     [Header("Cinemachine Schake")] 
     [SerializeField]private float intensityAmplitude;
@@ -49,6 +52,7 @@ public class PlayerThrowAttack : MonoBehaviour
     }
     public void Start()
     {
+        FlecheDeVise.SetActive(false);
         lineRender = GetComponentInChildren<LineRenderer>();
         //lineRender.gameObject.SetActive(false);
         SecureSO();
@@ -91,18 +95,25 @@ public class PlayerThrowAttack : MonoBehaviour
 
         if (isThrow)
         {
+            FlecheDeVise.SetActive(false);
             if(Input.GetKeyDown(KeyCode.Mouse1)) // verif pour faire revenir la faux
             {
                 Debug.Log("return weapon");
                 is_F_Pressed = true;
             }
         }
-
+        
         IsThrow();
     }
-    
+
+    private void FixedUpdate()
+    {
+        FlecheDeVise.transform.rotation = Quaternion.Euler(0f, 0f, PlayerAttackCollision.instance.rotationZ);
+    }
+
     void Aim() // quand on vise
     {
+        FlecheDeVise.SetActive(true);
         IsWeaponDisable(true);
             
         lineRender.gameObject.SetActive(true);
