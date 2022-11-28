@@ -3113,6 +3113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5411604746046171148}
   - component: {fileID: 3208355900943235651}
+  - component: {fileID: 2002676304758667505}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -3214,6 +3215,28 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2002676304758667505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773183702018328634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db762dda236f1a4490070e51ac63295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  CourbeDeFlamme:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Flamme: {fileID: 0}
+  canRunGame: 0
+  verif: 0
 --- !u!1 &8078815593387562031
 GameObject:
   m_ObjectHideFlags: 0
