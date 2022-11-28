@@ -30,13 +30,16 @@ public class PlayerThrowAttack : MonoBehaviour
     [HideInInspector] public int ThrowDamageIndex;
 
     [SerializeField] private GameObject FlecheDeVise;
+    public GameObject PS_eclatDeFaux;
     
     [Header("Cinemachine Schake")] 
     [SerializeField]private float intensityAmplitude;
     [SerializeField]private float intensityFrequency;
     [SerializeField]private float intensityTime;
     
-
+    
+    float lerp = 0f, duration = 2f, score, scoreTo;
+    
     public static PlayerThrowAttack instance;
     
     private void Awake()
@@ -126,6 +129,19 @@ public class PlayerThrowAttack : MonoBehaviour
         lineRender.positionCount = points.Count;
         
         lineRender.SetPositions(points.ToArray());
+
+        //startSubtracting();
+    }
+    
+    void startSubtracting() 
+    {
+ 
+        score = 1;
+        scoreTo = 1.5f;
+        lerp += Time.deltaTime / duration;
+        score = (float)Mathf.Lerp (score, scoreTo, lerp);
+        Debug.Log(score);
+        FlecheDeVise.transform.localScale = new Vector3(score, 1, 1);
     }
     
     void IsThrow()

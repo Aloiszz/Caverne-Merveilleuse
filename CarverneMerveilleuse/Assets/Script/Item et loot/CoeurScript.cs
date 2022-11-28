@@ -7,6 +7,7 @@ public class CoeurScript : MonoBehaviour
 {
     private PlayerController player;
     public float distanceToGet;
+    public int nbPVRendu;
     public float speed = 4;
 
     private void Start()
@@ -26,7 +27,7 @@ public class CoeurScript : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            player.life += 2;
+            player.life += nbPVRendu;
             if (player.life > player.lifeDepard)
             {
                 player.life = player.lifeDepard;

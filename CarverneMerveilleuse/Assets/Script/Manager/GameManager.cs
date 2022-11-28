@@ -10,8 +10,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Image dashbar;
     [SerializeField] private TextMeshProUGUI dashTxt;
-    private bool verif;
+    [SerializeField]private bool verif_dashbar;
     
+    [SerializeField] private Image ChargeBar;
+    [SerializeField] private TextMeshProUGUI Chargetxt;
+    [SerializeField]private bool verif_Chargebar;
+    [SerializeField]private float verif_float;
 
     public static GameManager instance;
     
@@ -34,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (verif)
+        if (verif_dashbar)
         {
             if (PlayerController.instance.isDashing)
             {
@@ -42,12 +46,26 @@ public class GameManager : MonoBehaviour
                 dashbar.DOFillAmount((float)1,PlayerController.instance.playerSO.dashReload).SetEase(Ease.Linear);
             }
         }
+
+        
+        
+        ChargeBar.DOFillAmount(verif_float / PlayerHeavyAttack.instance.loadingCoolDown[PlayerHeavyAttack.instance.loadingCoolDownIndex], 0);
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            verif_float += 1 * Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            verif_float = 0;
+        }
     }
 
     IEnumerator AfficheHealthBar()
     {
         dashbar.DOFillAmount((float)1, 0.5f);
         yield return new WaitForSeconds(0.5f);
-        verif = true;
+        verif_dashbar = true;
     }
 }

@@ -12,6 +12,8 @@ public class PlayerAttackCollision3 : MonoBehaviour
     public float rotationZ;
     [HideInInspector] public Vector3 difference;
 
+    [HideInInspector] public bool Combo_Validate;
+
     [SerializeField]private GameObject bloodPS;
     private int rand;
     
@@ -54,6 +56,8 @@ public class PlayerAttackCollision3 : MonoBehaviour
         {
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             col.GetComponent<Mechant>().ReceiveLightDamage();
+
+            Combo_Validate = true;
             
             rand = Random.Range(1, 3);
             for (int i = 0; i < rand; i++)
