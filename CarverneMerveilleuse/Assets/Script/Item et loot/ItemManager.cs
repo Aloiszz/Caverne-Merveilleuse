@@ -13,59 +13,79 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
     
     [Header("Arme Principal")]
-    [Tooltip("ceci est genila")]
+    [Tooltip("Pourcentage de dégat en plus des l'attaque de base")]
     public float degatsAP = 20;
     [HideInInspector] public float buffATK;
+    [Tooltip("Puissance de push en plus sur les attaques de base")]
     public float pushAP = 50;
     [HideInInspector] public float puissancePush;
+    [Tooltip("Temps en moins pour pouvoir réattaquer après un combo (en seconde)")]
     public float cooldownAP = 0.5f;
     [HideInInspector] public float endComboSoustracteur;
+    [Tooltip("Nombre de points de vie récupéré après une attaque rapide (entier)")]
     public int recupereVieAP = 1;
     [HideInInspector] public int regenVie;
     public GameObject fente;
+    [Tooltip("Nombre de coup de la fente (entier)")]
     public int nbCoupFente = 5;
     [HideInInspector] public bool isFenteAPGet;
 
     [Header("Arme Beyblade")] 
+    [Tooltip("Pourcentage en plus de la range de l'attaque circulaire (%)")]
     public float pourcentagePortéeEnPlus = 20;
     [HideInInspector] public float valeurNouvelleRange;
+    [Tooltip("Pourcentage de push en plus en fonction du push de base (%)")]
     public float pourcentagePushABEnPlus = 40;
     [HideInInspector] public float buffPushAB;
     [HideInInspector] public bool canMoveWhileBeyblade;
     [HideInInspector] public bool beybladeInvinsible;
 
     [Header("Arme lancé de faux")] 
+    [Tooltip("Pourcentage en plus de la range du lancé de la faux (%)")]
     public float pourcentagePortéeEnPlusALF = 20;
+    [Tooltip("Nombre de rebond en plus (entier)")]
     public int nbRebondEnPlusALF = 1;
     public GameObject explosion;
+    [Tooltip("Taille de la hit box de l'explosion")]
     public float tailleExplosion = 4;
     [HideInInspector] public bool isExplosfALFGet;
     
     [Header("PV")]
+    [Tooltip("Point de vie en plus du perso (entier)")]
     public int MaxPV = 2;
+    [Tooltip("Pourcentage de vie pour passer en mode rage (entier %)")]
     public int pourcentageVieForSeuilPV = 10;
+    [Tooltip("Pourcentage d'attaque en plus lorsque le personnage passe le seuil de pv")]
     public float pourcentageBuffATKDuSeuilPV;
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int nbVieEnPlus;
     
     [Header("Dash")] 
+    [Tooltip("Puissance du push du dash")]
     public float puissancePushDash;
     [HideInInspector] public bool isPushDashGet;
     [HideInInspector] public bool isDegatDashGet;
+    [Tooltip("Pourcentage d'attaque en plus après un dash (%)")]
     public float pourcentageAttaqueEnPlusPostDash = 10;
     [HideInInspector] public float dashBuff;
+    [Tooltip("Pourcentage de vitesse en plus après un dash (%)")]
     public float pourcentageSpeedEnPlusPostDash = 20;
     [HideInInspector] public float initialSpeed;
     public GameObject petrole;
+    [Tooltip("Nombre de tache de pétrole laissé derrière le perso après un dash (entier)")]
     public int nbTachePetrole;
+    [Tooltip("Temps avant que les taches disparaissent")]
     public float secondAvantDisparitionPetrole;
     [HideInInspector] public bool isPetroleDashGet;
 
     [Header("Drop")] 
+    [Tooltip("Nombre en plus du max de dent qui peuvent être drop par les ennemis (entier)")]
     public int nombreDentDropEnPlus = 2;
     [HideInInspector] public int dropSupp;
+    [Tooltip("Pourcentage en plus de la proba de drop une dent en or (entier %)")]
     public int pourcentageDropOrEnPlus;
     [HideInInspector] public int dropOrSupp;
+    [Tooltip("Pourcentage en plus de la proba de drop un coeur (entier %)")]
     public int pourcentageDropCoeurEnPlus = 10;
     [HideInInspector] public int dropCoeurSupp;
 

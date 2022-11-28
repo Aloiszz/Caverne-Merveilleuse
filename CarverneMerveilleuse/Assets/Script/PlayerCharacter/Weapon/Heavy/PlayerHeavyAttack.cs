@@ -178,11 +178,11 @@ public class PlayerHeavyAttack : MonoBehaviour
             PlayerController.instance.enabled = false;
         }
 
-        /*if (ItemManager.instance.beybladeInvinsible)
+        if (ItemManager.instance.beybladeInvinsible)
         {
             Physics2D.IgnoreLayerCollision(0,6, true);
             Physics2D.IgnoreLayerCollision(0,7, true);
-        }*/
+        }
         
         isCoolDown = true;
         isKeyUp = false;
