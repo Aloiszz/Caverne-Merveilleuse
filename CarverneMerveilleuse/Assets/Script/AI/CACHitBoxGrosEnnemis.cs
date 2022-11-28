@@ -10,6 +10,7 @@ public class CACHitBoxGrosEnnemis : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             PlayerController.instance.LoseLife();
+            PlayerController.instance.rb.AddForce((PlayerController.instance.transform.position - transform.position).normalized * 100,ForceMode2D.Impulse);
         }
     }
 }
