@@ -20,11 +20,14 @@ public class BossScript : MonoBehaviour
     public GameObject TypeEnnemi2;
     public GameObject TypeEnnemi3;
     public int nbEnnemi;
-    
-    
+    public List<GameObject> listEnnemis;
+
+
     [Header("Attaques Phase 2")] 
     public GameObject vague1;
+    private Rigidbody2D vague1RB;
     public GameObject vague2;
+    private Rigidbody2D vague2RB;
     public GameObject attaqueAvant1;
     public GameObject attaqueAvant2;
     public GameObject zone;
@@ -59,7 +62,13 @@ public class BossScript : MonoBehaviour
     {
         vague1Pos = vague1.transform.position;
         vague2Pos = vague2.transform.position;
+        vague2RB = vague2.GetComponent<Rigidbody2D>();
+        vague1RB = vague1.GetComponent<Rigidbody2D>();
         player = PlayerController.instance.gameObject;
+        while (listEnnemis.Count < 4)
+        {
+            listEnnemis.Add(null);
+        }
     }
 
     void Update()
@@ -73,10 +82,25 @@ public class BossScript : MonoBehaviour
 
         if (mechantScript.life <= mechantScript.lifeDepart / 2 && phaseTransition)
         {
-            Destroy(Ennemi1);
-            Destroy(Ennemi2);
-            Destroy(Ennemi3);
-            Destroy(Ennemi4);
+
+            for (int y = 0; y < listEnnemis.Count; y++)
+            {
+                if (listEnnemis[y] != null)
+                {
+                    if (listEnnemis[y].CompareTag("Gros"))
+                    {
+                        List<GameObject> projolist = listEnnemis[y].GetComponent<GrosEnnemiScript>().projoList;
+                        for (int i = 0; i < projolist.Count; i++)
+                        {
+                            Destroy(projolist[i]);
+                            projolist.Clear();
+                        }
+                    }
+                }
+                
+
+                Destroy(listEnnemis[y]);
+            }
             player.transform.position = transitionPoint.transform.position;
             phaseTransition = false;
         }
@@ -128,6 +152,7 @@ public class BossScript : MonoBehaviour
                 }
 
                 Ennemi1 = Instantiate(spawnEnnemi, spawner1.transform.position, Quaternion.identity);
+                listEnnemis[0] = Ennemi1;
                 Ennemi1.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
                 ennemi1Vivant = true;
@@ -146,6 +171,7 @@ public class BossScript : MonoBehaviour
                 }
 
                 Ennemi2 = Instantiate(spawnEnnemi, spawner2.transform.position, Quaternion.identity);
+                listEnnemis[1] = Ennemi2;
                 Ennemi2.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
                 ennemi2Vivant = true;
@@ -164,6 +190,7 @@ public class BossScript : MonoBehaviour
                 }
 
                 Ennemi3 = Instantiate(spawnEnnemi, spawner3.transform.position, Quaternion.identity);
+                listEnnemis[2] = Ennemi3;
                 Ennemi3.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
                 ennemi3Vivant = true;
@@ -182,6 +209,7 @@ public class BossScript : MonoBehaviour
                 }
 
                 Ennemi4 = Instantiate(spawnEnnemi, spawner4.transform.position, Quaternion.identity);
+                listEnnemis[3] = Ennemi4;
                 Ennemi4.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
                 ennemi4Vivant = true;
@@ -225,18 +253,44 @@ public class BossScript : MonoBehaviour
             if (posXJoueur <= 0)
             {
                 vague1.SetActive(true);
-                vague1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
+                for (int j = 0; j < 5; j++)
+                {
+                    if (i%2 == 0)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        vague1.transform.position = new Vector3(vague1.transform.position.x + 1.5f, vague1.transform.position.y);
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        vague1.transform.position = new Vector3(vague1.transform.position.x - 1.5f, vague1.transform.position.y);
+                    }
+                }
+                vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
-                vague1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                vague1RB.velocity = Vector2.zero;
                 vague1.SetActive(false);
                 vague1.transform.position = vague1Pos;
             }
             else
             {
                 vague2.SetActive(true);
-                vague2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1) * vaguesSpeed);
+                for (int j = 0; j < 5; j++)
+                {
+                    if (i%2 == 0)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        vague2.transform.position = new Vector3(vague2.transform.position.x + 0.2f, vague2.transform.position.y);
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        vague2.transform.position = new Vector3(vague2.transform.position.x - 0.2f, vague2.transform.position.y);
+                    }
+                }
+                vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
-                vague2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                vague2RB.velocity = Vector2.zero;
                 vague2.SetActive(false);
                 vague2.transform.position = vague2Pos;
             }
