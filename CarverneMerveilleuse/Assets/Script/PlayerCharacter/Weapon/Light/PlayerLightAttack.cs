@@ -106,16 +106,24 @@ public class PlayerLightAttack : MonoBehaviour
                 activate = false;
                 countInput++;
                 timerRemainingStored = timerRemaining ; // recupération du timer
+                
                 if (countInput <= combo)
                 {
                     StartCoroutine(CoolDown(countInput));
                     if (countInput == combo)
                     {
-                        CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
-                        CinemachineShake.instance.ShakeCamera(3,3,0.5f);
+                        if (PlayerAttackCollision3.instance.Combo_Validate) // si touche ennemis combo 3 alors shake et zoom camera
+                        {
+                            CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
+                            CinemachineShake.instance.ShakeCamera(3,3,0.5f);
+                            PlayerAttackCollision3.instance.Combo_Validate = false;
+                        }
+                        
                         Vector3 direction = (Vector3)(Input.mousePosition-mouseWorldPosition);
                         direction.Normalize();
+                        
                         PlayerController.instance.rb.AddForce(direction * 1200);
+                        
                         if (ItemManager.instance.isFenteAPGet)
                         {
                             StartCoroutine(FenteAP());
@@ -156,11 +164,15 @@ public class PlayerLightAttack : MonoBehaviour
         {
             PlayerAttackCollision.instance.sprite.enabled = true;
             PlayerAttackCollision.instance.coll.enabled = true;
+            
             isCoolDown = true;
             strikkingCombo1 = true;
+            
             yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            
             strikkingCombo1 = false;
             isCoolDown = false;
+            
             PlayerAttackCollision.instance.sprite.enabled = false;
             PlayerAttackCollision.instance.coll.enabled = false;    
             activate = true;
@@ -169,24 +181,33 @@ public class PlayerLightAttack : MonoBehaviour
         {
             PlayerAttackCollision2.instance.sprite.enabled = true;
             PlayerAttackCollision2.instance.coll.enabled = true;
+            
             isCoolDown = true;
             strikkingCombo2 = true;
+            
             yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            
             strikkingCombo2 = false;
             isCoolDown = false;
+            
             PlayerAttackCollision2.instance.sprite.enabled = false;
             PlayerAttackCollision2.instance.coll.enabled = false;    
+            
             activate = true;
         }
         else
         {
             PlayerAttackCollision3.instance.sprite.enabled = true;
             PlayerAttackCollision3.instance.coll.enabled = true;
+            
             isCoolDown = true;
             strikkingCombo3 = true;
+            
             yield return new WaitForSeconds(coolDown[coolDownIndex]);
+            
             strikkingCombo3 = false;
             isCoolDown = false;
+            
             PlayerAttackCollision3.instance.sprite.enabled = false;
             PlayerAttackCollision3.instance.coll.enabled = false;    
             activate = true;
