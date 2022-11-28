@@ -36,7 +36,7 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public float valeurNouvelleRange;
     [Tooltip("Pourcentage de push en plus en fonction du push de base (%)")]
     public float pourcentagePushABEnPlus = 40;
-    [HideInInspector] public float buffPushAB;
+    [HideInInspector] public float buffPushAB = 1;
     [HideInInspector] public bool canMoveWhileBeyblade;
     [HideInInspector] public bool beybladeInvinsible;
 
@@ -104,6 +104,7 @@ public class ItemManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         initialSpeed = player.speedMovement;
+        buffPushAB = 1;
     }
 
     public void OnBuy(string itemName)

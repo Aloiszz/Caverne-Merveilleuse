@@ -153,8 +153,17 @@ public class Mechant : MonoBehaviour
     {
         DebutHitStop();
         life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex];
-        forcelightDamage += 1000 * itemManager.buffPushAB;
+        if (PlayerHeavyAttack.instance.coolDownIndex == 2)
+        {
+            forcelightDamage += 100 * itemManager.buffPushAB * 2;
+        }
+        else
+        {
+            forcelightDamage += 100 * itemManager.buffPushAB;
+        }
+        
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
+        forcelightDamage = initialforcelightDamage;
         StartCoroutine(FinHitStop());
     }
 
