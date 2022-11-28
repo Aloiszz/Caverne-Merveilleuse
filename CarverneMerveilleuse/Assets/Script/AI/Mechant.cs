@@ -172,6 +172,7 @@ public class Mechant : MonoBehaviour
 
     void DebutHitStop()
     {
+        StopCoroutine(FinHitStop());
         switch (gameObject.tag)
         {
             case "CAC":
