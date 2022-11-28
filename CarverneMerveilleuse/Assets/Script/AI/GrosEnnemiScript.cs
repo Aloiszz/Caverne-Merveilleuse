@@ -126,6 +126,7 @@ public class GrosEnnemiScript : MonoBehaviour
         cacHitBox.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         cacHitBox.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
         canCaC = true;
     }
 
