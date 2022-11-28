@@ -454,6 +454,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: speedX
     m_EventTreshold: 0.3
+  - m_ConditionMode: 1
+    m_ConditionEvent: Profile
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4555715453947483913}
   m_Solo: 0
@@ -747,14 +750,17 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: Profile
     m_EventTreshold: 0
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: isFaceRunning
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isLightAttacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isProfileRunning
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1813699273623979473}
