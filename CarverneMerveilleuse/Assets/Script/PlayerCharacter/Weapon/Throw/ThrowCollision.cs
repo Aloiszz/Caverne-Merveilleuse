@@ -95,12 +95,12 @@ public class ThrowCollision : MonoBehaviour
     {
         if (verif)
         {
-            sprite.enabled = true;
+            //sprite.enabled = true;
             coll.enabled = true;
         }
         else
         {
-            sprite.enabled = false;
+            //sprite.enabled = false;
             coll.enabled = false;
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PointCollission : MonoBehaviour
@@ -55,6 +56,9 @@ public class PointCollission : MonoBehaviour
             verif = true;
             verifPremierTouch = true;
             bounceInt++;
+
+            Instantiate(PlayerThrowAttack.instance.PS_eclatDeFaux, transform.position, quaternion.identity,
+                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         }
         
     }

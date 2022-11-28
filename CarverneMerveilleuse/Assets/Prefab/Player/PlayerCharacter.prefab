@@ -159,6 +159,11 @@ MonoBehaviour:
   timeToComeBack: 0.1
   heavyDamage: []
   heavyDamageIndex: 0
+  loadingCoolDown: []
+  loadingCoolDownIndex: 0
+  coolDown: []
+  coolDownIndex: 0
+  timerRemaining: 0
   numberOfTurn: 
   numberOfTurnIndex: 0
 --- !u!114 &5367627528932333836
@@ -189,6 +194,10 @@ MonoBehaviour:
   ThrowDamage: []
   ThrowDamageIndex: 0
   FlecheDeVise: {fileID: 5527887024296422326}
+  PS_eclatDeFaux: {fileID: 2254975150420665114, guid: 3ca3dbc0e2e523b42bbc5c0b8f707cc8, type: 3}
+  duration: 2
+  fauxScaleBase: 1
+  fauxScaleMax: 1.5
   intensityAmplitude: 2
   intensityFrequency: 3
   intensityTime: 0.15
@@ -1289,6 +1298,7 @@ MonoBehaviour:
   pivot: {fileID: 0}
   rotationZ: 0
   difference: {x: 0, y: 0, z: 0}
+  Combo_Validate: 0
   bloodPS: {fileID: 6772070846781512207, guid: e1f8a9b44a6e37645b9bb39cb01379a0, type: 3}
 --- !u!60 &5025029365203874056
 PolygonCollider2D:

@@ -30,13 +30,22 @@ public class PlayerThrowAttack : MonoBehaviour
     [HideInInspector] public int ThrowDamageIndex;
 
     [SerializeField] private GameObject FlecheDeVise;
+    public GameObject PS_eclatDeFaux;
+
+    
+    private float lerp = 0f;
+    [SerializeField] private float duration = 2f;
+    private float fauxScaleActual = 1;
+    [SerializeField] private float fauxScaleBase = 1;
+    [SerializeField] private float fauxScaleMax = 1.5f;
+    
     
     [Header("Cinemachine Schake")] 
     [SerializeField]private float intensityAmplitude;
     [SerializeField]private float intensityFrequency;
     [SerializeField]private float intensityTime;
     
-
+    
     public static PlayerThrowAttack instance;
     
     private void Awake()
@@ -126,6 +135,16 @@ public class PlayerThrowAttack : MonoBehaviour
         lineRender.positionCount = points.Count;
         
         lineRender.SetPositions(points.ToArray());
+
+        Fleche();
+    }
+    
+    void Fleche() 
+    {
+        lerp += Time.deltaTime / duration;
+        fauxScaleActual = (float)Mathf.Lerp (fauxScaleBase, fauxScaleMax, lerp);
+        
+        FlecheDeVise.transform.localScale = new Vector3(fauxScaleActual, 1, 1);
     }
     
     void IsThrow()
@@ -244,6 +263,9 @@ public class PlayerThrowAttack : MonoBehaviour
             is_F_Pressed = false;
             PointCollission.instance.verifPremierTouch = false;
             ThrowCollision.instance.laFaux.SetActive(false);
+
+            fauxScaleActual = fauxScaleBase;
+            lerp = 0;
             
             CinemachineShake.instance.ShakeCamera(intensityAmplitude,intensityFrequency,intensityTime);
         }

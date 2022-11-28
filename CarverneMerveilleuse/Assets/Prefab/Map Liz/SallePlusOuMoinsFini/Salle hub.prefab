@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152941779}
   - component: {fileID: 1152941780}
+  - component: {fileID: 2353891176128462296}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.845
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_LightVolumeIntensity: 0.81
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -196,6 +197,91 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2353891176128462296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152941778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db762dda236f1a4490070e51ac63295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  CourbeDeFlamme:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.010988425
+      value: 0.40636867
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.34630364
+      value: 0.8037115
+      inSlope: 1.2273741
+      outSlope: 1.2273741
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.355681
+      value: 0.6954894
+      inSlope: 0.4387681
+      outSlope: 0.4387681
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.8953989
+      value: 0.880989
+      inSlope: 0.6295939
+      outSlope: 0.6295939
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.16491415
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3.4910522
+      value: 0.5903308
+      inSlope: 0.7361249
+      outSlope: 0.7361249
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.3150591
+    - serializedVersion: 3
+      time: 3.8272905
+      value: 0.61264706
+      inSlope: -0.12735811
+      outSlope: -0.12735811
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 4
+      value: 0.4070754
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  Flamme: {fileID: 0}
+  canRunGame: 0
+  verif: 0
 --- !u!1 &22903196734831213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,7 +3308,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7773183702018328634}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2db762dda236f1a4490070e51ac63295, type: 3}
   m_Name: 
@@ -3230,9 +3316,36 @@ MonoBehaviour:
   time: 0
   CourbeDeFlamme:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.6
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2.0716138
+      value: 1.0163813
+      inSlope: 0.028623039
+      outSlope: 0.028623039
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.3312363
+    - serializedVersion: 3
+      time: 4
+      value: 0.6
+      inSlope: -0.43229264
+      outSlope: -0.43229264
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6032293
+      outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 1
     m_RotationOrder: 4
   Flamme: {fileID: 0}
   canRunGame: 0
