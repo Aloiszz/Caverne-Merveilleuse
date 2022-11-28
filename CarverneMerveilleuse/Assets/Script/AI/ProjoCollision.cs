@@ -37,7 +37,7 @@ public class ProjoCollision : MonoBehaviour
             }
         }
 
-        if (shooter.activeInHierarchy == false)
+        if (shooter.activeInHierarchy == false || shooter == null)
         {
             if (isProjoGros)
             {
