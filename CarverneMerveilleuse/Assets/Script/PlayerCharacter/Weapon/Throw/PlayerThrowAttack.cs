@@ -30,6 +30,7 @@ public class PlayerThrowAttack : MonoBehaviour
     [HideInInspector] public int ThrowDamageIndex;
 
     [SerializeField] private GameObject FlecheDeVise;
+    public GameObject PS_eclatDeFaux;
     
     [Header("Cinemachine Schake")] 
     [SerializeField]private float intensityAmplitude;

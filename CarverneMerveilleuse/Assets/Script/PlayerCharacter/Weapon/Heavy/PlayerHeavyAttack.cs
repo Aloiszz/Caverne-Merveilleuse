@@ -30,14 +30,14 @@ public class PlayerHeavyAttack : MonoBehaviour
     
     [Header("Damage")]
     [HideInInspector] public List<float> heavyDamage;
-    [HideInInspector]public int heavyDamageIndex;
+    [HideInInspector] public int heavyDamageIndex;
 
-    [Header("Combo")]
-    private List<float> loadingCoolDown; // Préparation de l'attaque
-    private int loadingCoolDownIndex;
-    private List<float> coolDown; // temps entre chaque coups
-    private int coolDownIndex;
-    private float timerRemaining; // temps restant entre chaque coup pour arriver au combo
+    [Header("Tourne ")]
+    public List<float> loadingCoolDown; // Préparation de l'attaque
+    public int loadingCoolDownIndex;
+    public List<float> coolDown; // temps entre chaque coups
+    public int coolDownIndex;
+    public float timerRemaining; // temps restant entre chaque coup pour arriver au combo
     [HideInInspector] public List<int> numberOfTurn; //nombre de tour que peut faire l'attaque
     [HideInInspector] public int numberOfTurnIndex;
 
