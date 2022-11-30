@@ -704,6 +704,9 @@ MonoBehaviour:
   AlternativeDoor: []
   goldenDoor: {fileID: 0}
   isGoldenPath: 0
+  isHub: 0
+  isShopRoom: 0
+  DoorEnnemy: []
 --- !u!114 &2026593170259234906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +722,9 @@ MonoBehaviour:
   SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
   childSlot: {fileID: 7088323000226178381}
   spawnPointPosition: []
-  nbrEnnemySpawned: 030000000200000001000000
+  ennemyAlive: []
+  actualNumberOfWave: 0
+  numberOfWave: 0
 --- !u!1 &1700925426953489722
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700925426953489722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.81, y: -21.75, z: 0}
+  m_LocalPosition: {x: -0.18, y: 13.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1393,7 +1398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2467369668128443862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.63, y: -8.7, z: 0}
+  m_LocalPosition: {x: -15.59, y: 8.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2677,7 +2682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5728835294253063013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.23, y: -21.39, z: 0}
+  m_LocalPosition: {x: 3.99, y: -15.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2708,7 +2713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5828513710878250134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.77, y: -20.26, z: 0}
+  m_LocalPosition: {x: -14.66, y: -1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3183,7 +3188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6256733584408000758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.64, y: -7.72, z: 0}
+  m_LocalPosition: {x: 16.3, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
