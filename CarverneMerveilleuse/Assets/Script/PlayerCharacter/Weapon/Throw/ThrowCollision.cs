@@ -5,6 +5,8 @@ using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core.Easing;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
+
 
 public class ThrowCollision : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class ThrowCollision : MonoBehaviour
     public SpriteRenderer sprite;
     public Collider2D coll;
     public Rigidbody2D rb;
+    public GameObject bloodPS;
 
     public GameObject laFaux;
 
@@ -69,7 +72,11 @@ public class ThrowCollision : MonoBehaviour
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             
             col.GetComponent<Mechant>().ReceiveThrowDamage();
-    // Mettre pour les degat  ==>  PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
+            int rand = Random.Range(1, 3);
+            for (int i = 0; i < rand; i++)
+            {
+                Instantiate(bloodPS, col.transform.position, Quaternion.identity, RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+            }
             if (ItemManager.instance.isExplosfALFGet)
             {
                 StartCoroutine(ExplosionColl());

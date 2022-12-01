@@ -6,7 +6,7 @@ public class HeavyAttackCollision : MonoBehaviour
 {
     public SpriteRenderer sprite;
     public Collider2D coll;
-
+    public GameObject bloodPS;
     [Header("Singleton")]
     public static HeavyAttackCollision instance;
     
@@ -36,6 +36,11 @@ public class HeavyAttackCollision : MonoBehaviour
         {
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             col.GetComponent<Mechant>().ReceiveAOEDamage();
+             int rand = Random.Range(1, 3);
+            for (int i = 0; i < rand; i++)
+            {
+                Instantiate(bloodPS, col.transform.position, Quaternion.identity, RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+            }
         }
     }
 }
