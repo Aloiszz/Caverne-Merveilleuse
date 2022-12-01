@@ -57,7 +57,8 @@ public class PlayerAttackCollision3 : MonoBehaviour
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             col.GetComponent<Mechant>().ReceiveLightDamage();
 
-            Combo_Validate = true;
+            CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
+            CinemachineShake.instance.ShakeCamera(3,3,0.5f);
             
             rand = Random.Range(1, 3);
             for (int i = 0; i < rand; i++)

@@ -4,6 +4,7 @@ using System.Linq;
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour
 {
