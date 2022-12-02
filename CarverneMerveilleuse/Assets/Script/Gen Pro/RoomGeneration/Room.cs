@@ -5,6 +5,7 @@ using System.Linq;
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
@@ -21,7 +22,10 @@ public class Room : MonoBehaviour
     
     public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent 
 
-    private Tilemap[] tiles;
+
+    [SerializeField] private SpriteRenderer[] sprite;
+    [SerializeField] private Tilemap[] tiles;
+    public Light2D[] light;
 
     private void Start()
     {
@@ -69,9 +73,9 @@ public class Room : MonoBehaviour
     void FadeInRoom()
     {
         gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-        var sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        sprite = gameObject.GetComponentsInChildren<SpriteRenderer>();
         
-        foreach (var k in sprites)
+        foreach (var k in sprite)
         {
             k.DOFade(0, 0);
             k.DOFade(0.9f, 0.7f);
@@ -84,6 +88,13 @@ public class Room : MonoBehaviour
         {
             k.DOTilemapFade(0, 0);
             k.DOTilemapFade(1, 0.7f);
+        }
+        
+        light = gameObject.GetComponentsInChildren<Light2D>();
+        foreach (var l in light)
+        {
+            l.DOLight2DIntensity(0, 0);
+            l.DOLight2DIntensity(1, 0.7f);
         }
     }
     
