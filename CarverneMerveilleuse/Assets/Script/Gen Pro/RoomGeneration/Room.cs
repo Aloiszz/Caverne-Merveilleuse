@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,6 +6,7 @@ using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class Room : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class Room : MonoBehaviour
     public bool isShopRoom;
     
     public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent 
+
+    private Tilemap[] tiles;
 
     private void Start()
     {
@@ -56,7 +60,6 @@ public class Room : MonoBehaviour
         }
     }
 
-
     public void FindCameraBorder()
     {
         Collider2D col = gameObject.transform.Find("CameraCollision").GetComponent<Collider2D>();
@@ -66,16 +69,26 @@ public class Room : MonoBehaviour
     void FadeInRoom()
     {
         gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var k in i)
+        var sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        
+        foreach (var k in sprites)
         {
             k.DOFade(0, 0);
             k.DOFade(0.9f, 0.7f);
         }
-        
         gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
-        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+        //gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+        
+        tiles = gameObject.GetComponentsInChildren<Tilemap>();
+        foreach (var k in tiles)
+        {
+            k.DOTilemapFade(0, 0);
+            k.DOTilemapFade(1, 0.7f);
+        }
     }
+    
+    
+    
     public void CreateGoldenPath()
     {
         isGoldenPath = true;
@@ -114,6 +127,7 @@ public class Room : MonoBehaviour
     }
     public void CreateAlternativePath()
     {
+        
         foreach (GameObject x in AlternativeDoor)
         {
             if (x.CompareTag("Door"))

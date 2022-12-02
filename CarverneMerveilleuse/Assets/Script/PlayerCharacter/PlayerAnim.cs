@@ -214,7 +214,7 @@ public class PlayerAnim : MonoBehaviour
         animator[0].SetBool("Profile", false);
         
         FaceLightAttack();
-
+        FaceHeavyAttack();
         FaceThrowAttack();
     }
     
@@ -248,6 +248,18 @@ public class PlayerAnim : MonoBehaviour
             }
         }
         
+    }
+
+    void FaceHeavyAttack()
+    {
+        if (PlayerHeavyAttack.instance.isCharge)
+        {
+            animator[0].SetBool("isChargeAttack", true);
+        }
+        else
+        {
+            animator[0].SetBool("isChargeAttack", false);
+        }
     }
 
     void FaceThrowAttack()
