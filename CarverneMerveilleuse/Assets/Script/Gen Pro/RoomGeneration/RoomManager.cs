@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    
+    public SO_RoomManager SO_RoomManager;
+    
     [Header("----------Golden Path----------")]
     public List<GameObject> roomMemory;
     public int roomMemoryIndex;
@@ -14,17 +17,17 @@ public class RoomManager : MonoBehaviour
     [SerializeField]public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
     public int roomMemoryDirectionIndex;
 
-    public List<GameObject> roomTemplateTop;    
-    public int roomTemplateTopIndex;
+    [HideInInspector]public List<GameObject> roomTemplateTop;    
+    [HideInInspector]public int roomTemplateTopIndex;
     
-    public List<GameObject> roomTemplateDown;
-    public int roomTemplateDownIndex;
+    [HideInInspector]public List<GameObject> roomTemplateDown;
+    [HideInInspector]public int roomTemplateDownIndex;
     
-    public List<GameObject> roomTemplateRight;
-    public int roomTemplateRightIndex;
+    [HideInInspector]public List<GameObject> roomTemplateRight;
+    [HideInInspector]public int roomTemplateRightIndex;
     
-    public List<GameObject> roomTemplateLeft;
-    public int roomTemplateLeftIndex;
+    [HideInInspector]public List<GameObject> roomTemplateLeft;
+    [HideInInspector]public int roomTemplateLeftIndex;
 
     public int goldenPathCount = 0;
 
@@ -70,7 +73,18 @@ public class RoomManager : MonoBehaviour
         { 
             instance = this; 
         }
+        
+        Secure_SO();
     }
+
+    void Secure_SO()
+    {
+        roomTemplateTop = SO_RoomManager.roomTemplateTop;
+        roomTemplateDown = SO_RoomManager.roomTemplateDown;
+        roomTemplateRight = SO_RoomManager.roomTemplateRight;
+        roomTemplateLeft = SO_RoomManager.roomTemplateLeft;
+    }
+    
 
     private bool verif;
     private void Update()

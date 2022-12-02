@@ -12,7 +12,8 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private GameObject graphFace;
     [SerializeField] private GameObject graphProfile;
     [SerializeField] private GameObject graphDos;
-
+    
+    
     private void Update()
     {
         foreach (var i in animator)

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public List<Vector2> lastMovement;
     private string strMovement;
 
-    [SerializeField] private TrailRenderer dashTrail;
+    [SerializeField] private GameObject dashTrail;
     
     
     [Header("Singleton")]
@@ -66,8 +66,8 @@ public class PlayerController : MonoBehaviour
         SecureSO();
         life = lifeDepard;
         
-        dashTrail = GetComponent<TrailRenderer>();
-        dashTrail.enabled = false;
+        
+        dashTrail.SetActive(false);
     }
 
     public void SecureSO()
@@ -178,12 +178,12 @@ public class PlayerController : MonoBehaviour
             Physics2D.IgnoreLayerCollision(0,6, true);
             Physics2D.IgnoreLayerCollision(0,7, true);
         }
-        dashTrail.enabled = true;
+        dashTrail.SetActive(true);
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
         isDashing = false;
-        dashTrail.enabled = false;
+        dashTrail.SetActive(false);
     }
 
     IEnumerator PetrolDash()

@@ -3075,11 +3075,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2043207533 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1618680985572626704, guid: c93781e2cfedc45418e5e2696d4763d0, type: 3}
-  m_PrefabInstance: {fileID: 409311326}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2056748057
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3181,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393726492, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 79625110420020024, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -3234,6 +3233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4296910212754477881, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
 --- !u!1001 &3700859027840943441
@@ -3243,50 +3246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateTop.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateLeft.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateRight.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateTop.Array.data[5]
-      value: 
-      objectReference: {fileID: 2043207533}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateLeft.Array.data[0]
-      value: 
-      objectReference: {fileID: 1618680985572626704, guid: c93781e2cfedc45418e5e2696d4763d0, type: 3}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateLeft.Array.data[1]
-      value: 
-      objectReference: {fileID: 2952446020552853792, guid: 1bc034a8375bcec42ae0378a3c340b4b, type: 3}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateLeft.Array.data[2]
-      value: 
-      objectReference: {fileID: 7640960116357333514, guid: 228f4e35971384d489f795103752650f, type: 3}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateRight.Array.data[1]
-      value: 
-      objectReference: {fileID: 1618680985572626704, guid: c93781e2cfedc45418e5e2696d4763d0, type: 3}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateRight.Array.data[2]
-      value: 
-      objectReference: {fileID: 2952446020552853792, guid: 1bc034a8375bcec42ae0378a3c340b4b, type: 3}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateRight.Array.data[3]
-      value: 
-      objectReference: {fileID: 7640960116357333514, guid: 228f4e35971384d489f795103752650f, type: 3}
-    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
-      propertyPath: roomTemplateRight.Array.data[4]
-      value: 
-      objectReference: {fileID: 8384527995860193887, guid: 4150ae7d19812ee458b2c798bfc75949, type: 3}
     - target: {fileID: 3700859029623930163, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: m_Name
       value: RoomManager
@@ -3412,6 +3371,10 @@ PrefabInstance:
       propertyPath: Chargetxt
       value: 
       objectReference: {fileID: 1409435255}
+    - target: {fileID: 7768128023171480798, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: timeToAppearEnnemy
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8785446625310703101, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: levelCG_
       value: 
