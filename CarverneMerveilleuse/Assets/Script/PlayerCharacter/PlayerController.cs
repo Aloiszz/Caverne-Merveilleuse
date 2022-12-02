@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                SceneManager.instance.Death();
                 Destroy(gameObject);
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity,
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform); 

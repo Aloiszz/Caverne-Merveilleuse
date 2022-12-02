@@ -729,6 +729,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2136649280, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 178672322}
+    - target: {fileID: 2290772981740450155, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2607591671278577336, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2430,6 +2438,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5230964412810560865, guid: 90a6370cf9f541e49aa64e2bdb9c6e76, type: 3}
   m_PrefabInstance: {fileID: 1370986210}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1481025876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1571907749111512491, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+  m_PrefabInstance: {fileID: 415511561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1481025877 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2290772981740450155, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+  m_PrefabInstance: {fileID: 415511561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1508908298 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7067691155354852775, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
@@ -3375,6 +3393,14 @@ PrefabInstance:
       propertyPath: timeToAppearEnnemy
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8785446625310703101, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: death_
+      value: 
+      objectReference: {fileID: 1481025876}
+    - target: {fileID: 8785446625310703101, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: deathCG_
+      value: 
+      objectReference: {fileID: 1481025877}
     - target: {fileID: 8785446625310703101, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: levelCG_
       value: 
