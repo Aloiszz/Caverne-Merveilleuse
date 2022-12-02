@@ -154,6 +154,11 @@ public class CaCEnnemiScript : MonoBehaviour
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
         }
+
+        if (col.gameObject.CompareTag("LightShield"))
+        {
+            rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
+        }
     }
 }
 

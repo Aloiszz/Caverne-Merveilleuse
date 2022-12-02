@@ -57,6 +57,8 @@ public class ItemManager : MonoBehaviour
     public int pourcentageVieForSeuilPV = 10;
     [Tooltip("Pourcentage d'attaque en plus lorsque le personnage passe le seuil de pv")]
     public float pourcentageBuffATKDuSeuilPV;
+    public GameObject lightShield;
+    private bool canLightShield;
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int nbVieEnPlus;
     
@@ -170,6 +172,7 @@ public class ItemManager : MonoBehaviour
             
             case "BouclierPV(Clone)":
                 Debug.Log("Pendant les première seconde, une lumière vous entours et vous sert de bouclier");
+                canLightShield = true;
                 break;
             
             case "DegatsDash(Clone)":
@@ -272,6 +275,15 @@ public class ItemManager : MonoBehaviour
         {
             dashBuff = 0;
         }
+    }
+
+    public void LightShield()
+    {
+        if (canLightShield)
+        {
+            Instantiate(lightShield, player.transform.position, Quaternion.identity);
+        }
+        
     }
 
     

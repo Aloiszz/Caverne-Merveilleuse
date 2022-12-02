@@ -161,6 +161,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public void TeleportPlayerToNextRoom()
     {
         PlayerController.instance.transform.position = spawnpoint.transform.position;
+        ItemManager.instance.LightShield();
     }
 
     public void InstatiateNewRoom()
