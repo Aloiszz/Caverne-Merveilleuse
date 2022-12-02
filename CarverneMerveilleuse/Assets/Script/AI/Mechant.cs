@@ -179,7 +179,7 @@ public class Mechant : MonoBehaviour
         life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] / 2;
     }
 
-    void DebutHitStop()
+    public void DebutHitStop()
     {
         StopCoroutine(FinHitStop());
         switch (gameObject.tag)
@@ -211,7 +211,7 @@ public class Mechant : MonoBehaviour
         }
     }
 
-    IEnumerator FinHitStop()
+    public IEnumerator FinHitStop()
     {
         yield return new WaitForSeconds(0.2f);
         switch (gameObject.tag)
