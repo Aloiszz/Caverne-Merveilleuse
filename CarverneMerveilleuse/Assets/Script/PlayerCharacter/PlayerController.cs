@@ -142,7 +142,6 @@ public class PlayerController : MonoBehaviour
     public void LoseLife()
     {
         life -= 1;
-        Debug.Log("lose");
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         

@@ -89,6 +89,12 @@ namespace DG.Tweening
             t.SetTarget(target);
             return t;
         }
+        public static TweenerCore<Color, Color, ColorOptions> DOLight2DColor32(this Light2D target, Color32 endValue, float duration)
+        {
+            TweenerCore<Color, Color, ColorOptions> t = DOTween.To(() => target.color, x => target.color = x, endValue, duration);
+            t.SetTarget(target);
+            return t;
+        }
         public static TweenerCore<float, float, FloatOptions> DOLight2DInnerAngle(this Light2D target, float endValue, float duration)
         {
             TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.pointLightInnerAngle, x => target.pointLightInnerAngle = x, endValue, duration);

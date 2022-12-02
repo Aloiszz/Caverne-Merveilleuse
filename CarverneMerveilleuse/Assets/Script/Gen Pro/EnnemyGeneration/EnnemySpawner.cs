@@ -26,7 +26,7 @@ public class EnnemySpawner : MonoBehaviour
         spawnPointPosition.ToList();
         
         Secure_So();
-        SpawnEnnemy();
+        //SpawnEnnemy();
         LookForEnnemyAlive();
         
         actualNumberOfWave = 0;

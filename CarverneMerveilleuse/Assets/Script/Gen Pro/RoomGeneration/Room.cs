@@ -20,8 +20,8 @@ public class Room : MonoBehaviour
     
     public bool isShopRoom;
     
-    public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent 
-
+    public List<GameObject> DoorEnnemyPosition; //Position des portes 
+    public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent
 
     [SerializeField] private SpriteRenderer[] sprite;
     [SerializeField] private Tilemap[] tiles;
@@ -30,11 +30,8 @@ public class Room : MonoBehaviour
     private void Start()
     {
         FadeInRoom();
-
-        /*if (GetComponent<EnnemySpawner>().enabled)
-        {
-            SpawnPointDoorEnnemy();
-        }*/
+        //SpawnPointDoorEnnemy();
+        
         
         //FindCameraBorder();
         
@@ -97,9 +94,9 @@ public class Room : MonoBehaviour
             l.DOLight2DIntensity(1, 0.7f);
         }
     }
-    
-    
-    
+
+
+    #region PathGeneration
     public void CreateGoldenPath()
     {
         isGoldenPath = true;
@@ -159,29 +156,60 @@ public class Room : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         PlayerController.instance.enabled = true;
     }
+
     
-    
-    
+
+    #endregion
+
+    #region Ennemy
     void SpawnPointDoorEnnemy()
     {
+        Debug.Log("Spawn Door");
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
         {
-            DoorEnnemy.Add(go);
-            Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation, transform);
+            DoorEnnemyPosition.Add(go);
+            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation, transform);
+            DoorEnnemy.Add(door);
         }
     }
-
     public void OpenTheDoor()
     {
+        Debug.Log("Open the door");
         foreach (var i in DoorEnnemy)
         {
-            i.SetActive(false);
+            i.GetComponent<SpriteRenderer>().DOFade(0, 2);
+            i.GetComponent<Collider2D>().enabled = false;
+        }
+
+        LightOpenDoor();
+    }
+    public void CloseTheDoor()
+    {
+        Debug.Log("Close the door");
+        foreach (var i in DoorEnnemy)
+        {
+            i.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
+            i.GetComponent<Collider2D>().enabled = true;
+        }
+
+        LightCloseDoor();
+    }
+    #endregion
+
+    void LightOpenDoor()
+    {
+        foreach (var i in light)
+        {
+            i.DOLight2DColor32(new Color32(255, 255, 255, 255), 1);
         }
     }
 
-    public void CloseTheDoor()
+    void LightCloseDoor()
     {
-        EnnemyManager.instance.Door.SetActive(true);
+        foreach (var i in light)
+        {
+            i.DOLight2DColor32(new Color32(168, 33, 33, 255), 1);
+        }
     }
-    
+
 }
