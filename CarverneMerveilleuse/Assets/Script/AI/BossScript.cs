@@ -253,19 +253,7 @@ public class BossScript : MonoBehaviour
             if (posXJoueur <= 0)
             {
                 vague1.SetActive(true);
-                for (int j = 0; j < 5; j++)
-                {
-                    if (i%2 == 0)
-                    {
-                        yield return new WaitForSeconds(0.1f);
-                        vague1.transform.position = new Vector3(vague1.transform.position.x + 1.5f, vague1.transform.position.y);
-                    }
-                    else
-                    {
-                        yield return new WaitForSeconds(0.1f);
-                        vague1.transform.position = new Vector3(vague1.transform.position.x - 1.5f, vague1.transform.position.y);
-                    }
-                }
+                yield return new WaitForSeconds(0.5f);
                 vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
                 vague1RB.velocity = Vector2.zero;
@@ -275,19 +263,7 @@ public class BossScript : MonoBehaviour
             else
             {
                 vague2.SetActive(true);
-                for (int j = 0; j < 5; j++)
-                {
-                    if (i%2 == 0)
-                    {
-                        yield return new WaitForSeconds(0.1f);
-                        vague2.transform.position = new Vector3(vague2.transform.position.x + 0.2f, vague2.transform.position.y);
-                    }
-                    else
-                    {
-                        yield return new WaitForSeconds(0.1f);
-                        vague2.transform.position = new Vector3(vague2.transform.position.x - 0.2f, vague2.transform.position.y);
-                    }
-                }
+                yield return new WaitForSeconds(0.5f);
                 vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
                 vague2RB.velocity = Vector2.zero;
