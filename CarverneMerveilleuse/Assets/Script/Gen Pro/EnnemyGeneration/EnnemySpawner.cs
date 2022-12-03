@@ -26,6 +26,8 @@ public class EnnemySpawner : MonoBehaviour
         spawnPointPosition = GameObject.FindGameObjectsWithTag("SpawnEnnemy");
         spawnPointPosition.ToList();
         
+        
+        RoomManager.instance.canThePotitChatSpawn = false;
         Secure_So();
         Invoke("SpawnEnnemy", EnnemyManager.instance.timeBeforeFighting);
         LookForEnnemyAlive();
@@ -76,10 +78,12 @@ public class EnnemySpawner : MonoBehaviour
                 }
                 LookForEnnemyAlive();
                 GetComponent<Room>().CloseTheDoor(); //Door fermé
+                RoomManager.instance.canThePotitChatSpawn = false;
             }
             else
             {
                 GetComponent<Room>().OpenTheDoor(); // Door Ouverte
+                RoomManager.instance.canThePotitChatSpawn = true;
             }
         }
     }

@@ -14,15 +14,21 @@ public class ChatMarchand : MonoBehaviour
     public bool see;
     public bool isStillActive;
     [HideInInspector] public bool PlayerCameBack;
+
+    public int numberofroom;
+    private List<GameObject> LesChats;
+    public Collider2D coll;
+
     public static ChatMarchand instance;
 
     // Start is called before the first frame update
     
     private void Awake()
     {
+        
         if (instance != null && instance != this) 
-        { 
-            Destroy(this); 
+        {
+            Destroy(this);
         } 
         else 
         { 
@@ -31,9 +37,14 @@ public class ChatMarchand : MonoBehaviour
     }
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        merchantRoom = GameObject.FindGameObjectWithTag("MerchantSecretDoor").GetComponent<MerchantSecretDoor>();
+        enabled = false;
+        coll = GetComponent<Collider2D>();
+        coll.enabled = false;
         
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        //merchantRoom = GameObject.FindGameObjectWithTag("MerchantSecretDoor").GetComponent<MerchantSecretDoor>();
+        
+        numberofroom = RoomManager.instance.roomMemoryIndex;
     }
 
     // Update is called once per frame
@@ -47,10 +58,13 @@ public class ChatMarchand : MonoBehaviour
         if (PlayerCameBack)
         {
             StartCoroutine(PlayerCameback());
-            
+            PlayerCameBack = false;
+            isStillActive = false;
         }
+        
+        
     }
-    
+
 
     private void FindMerchantRoom()
     {
@@ -71,14 +85,26 @@ public class ChatMarchand : MonoBehaviour
         {
             RoomManager.instance.isShopRoom = true;
             
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<SpriteRenderer>().enabled = false;
+            //GetComponent<Collider2D>().enabled = false;
+            //GetComponent<SpriteRenderer>().enabled = false;
             
             isStillActive = true;
             
             Shop();
             
         }
+    }
+
+
+    public void CatDesapear()
+    {
+        ChatMarchand.instance.transform.parent =
+            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform;
+        ChatMarchand.instance.transform.position = new Vector3(74, 0, 0);
+        //ChatMarchand.instance.enabled = false;
+        ChatMarchand.instance.coll.enabled = false;
+            
+        RoomManager.instance.canThePotitChatSpawn = false;
     }
 
     #region Shop Generation
@@ -122,14 +148,15 @@ public class ChatMarchand : MonoBehaviour
     
     IEnumerator PlayerCameback()
     {
+        
         PlayerController.instance.enabled = false;
         //Play Anim 
         //Camera effetc
         
-        yield return new WaitForSeconds(2);   
-        
+        yield return new WaitForSeconds(2);
+
         PlayerController.instance.enabled = true;
-        Destroy(gameObject);
+        
     }
 
     #endregion

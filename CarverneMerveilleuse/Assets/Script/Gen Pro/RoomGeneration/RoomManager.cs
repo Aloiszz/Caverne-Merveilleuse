@@ -59,7 +59,9 @@ public class RoomManager : MonoBehaviour
     public int roomLeftToshopRooIndex = 0; 
     public  bool isShopRoom;
     public List<GameObject> shopRoom;
+    
     public GameObject potitChat;
+    public bool canThePotitChatSpawn;
     
     public static RoomManager instance;
     
@@ -85,8 +87,6 @@ public class RoomManager : MonoBehaviour
         roomTemplateLeft = SO_RoomManager.roomTemplateLeft;
     }
     
-
-    private bool verif;
     private void Update()
     {
         if (goldenPathCount >= roomLeftToBossRoom)
@@ -95,12 +95,25 @@ public class RoomManager : MonoBehaviour
         }
         if (goldenPathCount >= roomLeftToshopRoom[roomLeftToshopRooIndex])
         {
-            if (!verif)
+            if (canThePotitChatSpawn)
             {
-                Instantiate(potitChat, Vector3.zero, quaternion.identity, roomMemory[roomMemoryIndex].transform);
+                //Instantiate(potitChat, Vector3.zero, quaternion.identity, roomMemory[roomMemoryIndex].transform);
+                ChatMarchand.instance.transform.parent =
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform;
+                ChatMarchand.instance.transform.position = new Vector3(0, 0, 0);
+                ChatMarchand.instance.enabled = true;
+                ChatMarchand.instance.coll.enabled = true;
                 roomLeftToshopRooIndex++;
-                //verif = true;
+                canThePotitChatSpawn = false; ;
+            }
+            else
+            {
+                ChatMarchand.instance.CatDesapear();
             }
         }
+        /*if (roomMemoryIndex != ChatMarchand.instance.numberofroom) // faire disparaitre le chat si le joueur change de salle avant d'aller voir le chat
+        {
+            ChatMarchand.instance.enabled = true;
+        }*/
     }
 }
