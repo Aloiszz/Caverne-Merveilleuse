@@ -357,7 +357,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public void TeleportPlayerBackToRoom()
     {
         PlayerController.instance.transform.position = GameObject.FindGameObjectWithTag("Chat").transform.position;
-        
+        ChatMarchand.instance.CatDesapear();
     }
     #endregion
 }
