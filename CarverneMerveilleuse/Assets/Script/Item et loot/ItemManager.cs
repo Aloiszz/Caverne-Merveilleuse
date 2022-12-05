@@ -70,6 +70,7 @@ public class ItemManager : MonoBehaviour
     [Tooltip("Pourcentage d'attaque en plus après un dash (%)")]
     public float pourcentageAttaqueEnPlusPostDash = 10;
     [HideInInspector] public float dashBuff;
+    [HideInInspector] public bool isInBuffDash;
     [Tooltip("Pourcentage de vitesse en plus après un dash (%)")]
     public float pourcentageSpeedEnPlusPostDash = 20;
     [HideInInspector] public float initialSpeed;
@@ -268,11 +269,14 @@ public class ItemManager : MonoBehaviour
 
         if (!player.playerSO.isDash && canDashBuff)
         {
-            player.speedMovement = initialSpeed * (pourcentageSpeedEnPlusPostDash / 100);
+            isInBuffDash = true;
+            Debug.Log("DashBuff");
+            player.speedMovement = initialSpeed * (1 + pourcentageSpeedEnPlusPostDash / 100);
             dashBuff = pourcentageAttaqueEnPlusPostDash / 100;
         }
         else
         {
+            isInBuffDash = false;
             dashBuff = 0;
         }
     }
