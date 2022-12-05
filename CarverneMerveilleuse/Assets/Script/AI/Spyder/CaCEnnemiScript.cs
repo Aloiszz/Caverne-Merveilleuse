@@ -48,6 +48,8 @@ public class CaCEnnemiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed = rb.velocity.x;
+        
         playerDir = player.transform.position - transform.position;
         if (playerDir.magnitude <= distanceToSeePlayer)
         {

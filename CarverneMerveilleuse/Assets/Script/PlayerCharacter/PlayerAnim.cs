@@ -26,8 +26,16 @@ public class PlayerAnim : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        GameAnimation();
-        
+        if (!PlayerController.instance.isDashing)
+        {
+            GameAnimation();
+        }
+        else
+        {
+            graphDos.SetActive(false);
+            graphFace.SetActive(false);
+            graphProfile.SetActive(false);
+        }
     }
     
     private void GameAnimatinon()

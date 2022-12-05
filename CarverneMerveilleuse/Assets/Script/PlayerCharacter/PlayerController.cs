@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float linearDragDeceleration;
     [HideInInspector]public float linearDragMultiplier;
     public int lifeDepard;
-    [HideInInspector] public bool isDashing;
+    public bool isDashing;
     [HideInInspector] public int nbPossibleDash = 1;
     
     
