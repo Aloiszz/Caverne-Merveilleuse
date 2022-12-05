@@ -47,14 +47,14 @@ public class Cac_Anim : MonoBehaviour
         {
             animator[0].SetBool("isWalking", false);
 
-            if (!spyder.canJump) // attack
+            /*if (!spyder.canJump) // attack
             {
                 animator[0].SetBool("isAttacking", true);
             }
             else
             {
                 animator[0].SetBool("isAttacking", false);
-            }
+            }*/
             
             
             if (spyder.speed >= 0.3f)
