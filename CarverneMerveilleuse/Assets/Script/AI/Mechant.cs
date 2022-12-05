@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Net.Cache;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -92,7 +93,7 @@ public class Mechant : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
                 {
-                    Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                    Instantiate(dent, gameObject.transform.position, Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
 
