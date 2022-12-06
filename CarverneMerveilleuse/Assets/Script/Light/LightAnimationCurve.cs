@@ -25,7 +25,7 @@ public class LightAnimationCurve : MonoBehaviour
 
     void Update()
     {
-        if (canRunGame && !MenuManager.instance.verif)
+        if (canRunGame)
         {
             Flamme.intensity = 1;
             increment += Time.deltaTime;

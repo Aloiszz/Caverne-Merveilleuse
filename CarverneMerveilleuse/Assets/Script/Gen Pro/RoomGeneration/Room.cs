@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class Room : MonoBehaviour
 {
@@ -16,17 +20,18 @@ public class Room : MonoBehaviour
     
     public bool isShopRoom;
     
-    public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent 
+    public List<GameObject> DoorEnnemyPosition; //Position des portes 
+    public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent
+
+    [SerializeField] private SpriteRenderer[] sprite;
+    [SerializeField] private Tilemap[] tiles;
+    public Light2D[] light;
 
     private void Start()
     {
         FadeInRoom();
+        Invoke("SpawnPointDoorEnnemy", EnnemyManager.instance.timeBeforeClosingDoor);
 
-        /*if (GetComponent<EnnemySpawner>().enabled)
-        {
-            SpawnPointDoorEnnemy();
-        }*/
-        
         //FindCameraBorder();
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
@@ -55,7 +60,6 @@ public class Room : MonoBehaviour
         }
     }
 
-
     public void FindCameraBorder()
     {
         Collider2D col = gameObject.transform.Find("CameraCollision").GetComponent<Collider2D>();
@@ -65,16 +69,33 @@ public class Room : MonoBehaviour
     void FadeInRoom()
     {
         gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-        var i = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var k in i)
+        sprite = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        
+        foreach (var k in sprite)
         {
             k.DOFade(0, 0);
             k.DOFade(0.9f, 0.7f);
         }
-        
         gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
-        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+        //gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+        
+        tiles = gameObject.GetComponentsInChildren<Tilemap>();
+        foreach (var k in tiles)
+        {
+            k.DOTilemapFade(0, 0);
+            k.DOTilemapFade(1, 0.7f);
+        }
+        
+        light = gameObject.GetComponentsInChildren<Light2D>();
+        foreach (var l in light)
+        {
+            l.DOLight2DIntensity(0, 0);
+            l.DOLight2DIntensity(1, 0.7f);
+        }
     }
+
+
+    #region PathGeneration
     public void CreateGoldenPath()
     {
         isGoldenPath = true;
@@ -113,6 +134,7 @@ public class Room : MonoBehaviour
     }
     public void CreateAlternativePath()
     {
+        
         foreach (GameObject x in AlternativeDoor)
         {
             if (x.CompareTag("Door"))
@@ -133,29 +155,62 @@ public class Room : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         PlayerController.instance.enabled = true;
     }
+
     
-    
-    
+
+    #endregion
+
+    #region Ennemy
     void SpawnPointDoorEnnemy()
     {
+        Debug.Log("Spawn Door");
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
         {
-            DoorEnnemy.Add(go);
-            Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation, transform);
+            DoorEnnemyPosition.Add(go);
+            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation, transform);
+            DoorEnnemy.Add(door);
         }
     }
-
     public void OpenTheDoor()
     {
+        Debug.Log("Open the door");
         foreach (var i in DoorEnnemy)
         {
-            i.SetActive(false);
+            i.GetComponent<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToOpenDoor);
+            i.GetComponent<Collider2D>().enabled = false;
+        }
+
+        Light2D_OpenDoor();
+    }
+    public void CloseTheDoor()
+    {
+        Debug.Log("Close the door");
+        foreach (var i in DoorEnnemy)
+        {
+            i.GetComponent<SpriteRenderer>().DOFade(1, EnnemyManager.instance.timeToCloseDoor);
+            i.GetComponent<Collider2D>().enabled = true;
+        }
+
+        Light2D_CloseDoor();
+    }
+    #endregion
+
+    void Light2D_OpenDoor()
+    {
+        foreach (var i in light)
+        {
+            i.DOLight2DColor32(new Color32(255, 255, 255, 255), 3);
+            i.DOLight2DIntensity(1, 0.5f);
         }
     }
 
-    public void CloseTheDoor()
+    void Light2D_CloseDoor()
     {
-        EnnemyManager.instance.Door.SetActive(true);
+        foreach (var i in light)
+        {
+            i.DOLight2DColor32(new Color32(168, 33, 33, 255), 3);
+            i.DOLight2DIntensity(3, 2f);
+        }
     }
-    
+
 }

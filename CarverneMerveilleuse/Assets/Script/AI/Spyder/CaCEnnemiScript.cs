@@ -48,6 +48,8 @@ public class CaCEnnemiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed = rb.velocity.x;
+        
         playerDir = player.transform.position - transform.position;
         if (playerDir.magnitude <= distanceToSeePlayer)
         {
@@ -153,6 +155,11 @@ public class CaCEnnemiScript : MonoBehaviour
         if (col.gameObject.layer == 4)
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
+        }
+
+        if (col.gameObject.CompareTag("LightShield"))
+        {
+            rb.AddForce(-playerDir.normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
         }
     }
 }

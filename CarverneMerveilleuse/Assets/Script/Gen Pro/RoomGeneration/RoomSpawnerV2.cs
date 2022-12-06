@@ -161,6 +161,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public void TeleportPlayerToNextRoom()
     {
         PlayerController.instance.transform.position = spawnpoint.transform.position;
+        ItemManager.instance.LightShield();
     }
 
     public void InstatiateNewRoom()
@@ -356,7 +357,7 @@ public class RoomSpawnerV2 : MonoBehaviour
     public void TeleportPlayerBackToRoom()
     {
         PlayerController.instance.transform.position = GameObject.FindGameObjectWithTag("Chat").transform.position;
-        
+        ChatMarchand.instance.CatDesapear();
     }
     #endregion
 }

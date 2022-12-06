@@ -37,7 +37,7 @@ public class ProjoCollision : MonoBehaviour
             }
         }
 
-        if (shooter.activeInHierarchy == false)
+        if (shooter.activeInHierarchy == false || shooter == null)
         {
             if (isProjoGros)
             {
@@ -58,7 +58,7 @@ public class ProjoCollision : MonoBehaviour
                 Destroy(gameObject);
                 PlayerController.instance.LoseLife();
             }
-            if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint"))
+            if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint") || col.gameObject.CompareTag("LightShield"))
             {
                 Destroy(gameObject);
             }
@@ -70,7 +70,7 @@ public class ProjoCollision : MonoBehaviour
                 Grossissement(col.gameObject);
                 PlayerController.instance.LoseLife();
             }
-            else if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint"))
+            else if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint") || col.gameObject.CompareTag("LightShield"))
             {
                 for (int i = 0; i < origine.projoList.Count; i++)
                 {

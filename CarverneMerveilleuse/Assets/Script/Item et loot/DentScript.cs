@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Random = UnityEngine.Random;
 
 public class DentScript : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class DentScript : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         ui = GameObject.Find("UIManager").GetComponent<UIManager>();
+        
+        gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
     }
 
     private void Update()

@@ -15,7 +15,8 @@ public class EnnemySpawner : MonoBehaviour
     [SerializeField] private GameObject childSlot;
     [SerializeField] private GameObject[] spawnPointPosition;
     public List<GameObject> ennemyAlive;
-    
+
+    private bool isVerif; // verifie que premier Spawn a eu lieu
     private int rand;
 
     public int actualNumberOfWave;
@@ -25,11 +26,21 @@ public class EnnemySpawner : MonoBehaviour
         spawnPointPosition = GameObject.FindGameObjectsWithTag("SpawnEnnemy");
         spawnPointPosition.ToList();
         
+        
+        RoomManager.instance.canThePotitChatSpawn = false;
         Secure_So();
-        SpawnEnnemy();
+        Invoke("SpawnEnnemy", EnnemyManager.instance.timeBeforeFighting);
         LookForEnnemyAlive();
+        StartCoroutine(Wait());
         
         actualNumberOfWave = 0;
+    }
+
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        isVerif = true;
     }
 
     void LookForEnnemyAlive()
@@ -54,20 +65,25 @@ public class EnnemySpawner : MonoBehaviour
     private void Update()
     {
         
+        
         if(ennemyAlive.Count <= 0)
         {
-            
             if (numberOfWave > actualNumberOfWave)
             {
-                SpawnEnnemy();
-                LookForEnnemyAlive();
-                actualNumberOfWave++;
                 
+                if (isVerif)
+                {
+                    
+                    SpawnEnnemy();
+                }
+                LookForEnnemyAlive();
                 GetComponent<Room>().CloseTheDoor(); //Door fermé
+                RoomManager.instance.canThePotitChatSpawn = false;
             }
             else
             {
                 GetComponent<Room>().OpenTheDoor(); // Door Ouverte
+                RoomManager.instance.canThePotitChatSpawn = true;
             }
         }
     }
@@ -84,7 +100,7 @@ public class EnnemySpawner : MonoBehaviour
     //----------------------- Spawn Ennemy Region-----------------
     public void SpawnEnnemy()
     {
-        
+        actualNumberOfWave++;
         for (int i = 0; i < SO_ennemySpawner.spawn_Spyder[SO_ennemySpawner.difficulty_Index]; i++)
         {
             var apparitionChance = Random.Range(0, 100);
