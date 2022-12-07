@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
 {
     public int score;
     public List<int> listScore;
-    public bool test;
+    public bool addScore;
     [Tooltip("Permet de reset le score dans les playerpref")]
     public bool resetPlayerPrefScore;
 
@@ -35,10 +35,10 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        if (test)
+        if (addScore)
         {
             AddScore();
-            test = false;
+            addScore = false;
         }
 
         if (resetPlayerPrefScore)
