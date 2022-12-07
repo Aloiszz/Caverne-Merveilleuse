@@ -84,7 +84,6 @@ public class Mechant : MonoBehaviour
         Death();
        
     }
-    
     void Death()
     {
         if (life <= 0)
@@ -93,7 +92,8 @@ public class Mechant : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
                 {
-                    Instantiate(dent, gameObject.transform.position, Quaternion.identity,
+                    gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
+                    Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
 

@@ -30,9 +30,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         FadeInRoom();
-        Invoke("SpawnPointDoorEnnemy", EnnemyManager.instance.timeBeforeClosingDoor);
-
-        //FindCameraBorder();
+        //Invoke("SpawnPointDoorEnnemy", EnnemyManager.instance.timeBeforeClosingDoor);
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         if (isHub)
@@ -58,14 +56,20 @@ public class Room : MonoBehaviour
             RoomManager.instance.roomMemory.Add(this.gameObject);
             StartCoroutine(Mini_cinematic_ShopRoom());
         }
+        
+        FindCameraBorder();
     }
 
     public void FindCameraBorder()
     {
-        Collider2D col = gameObject.transform.Find("CameraCollision").GetComponent<Collider2D>();
+        Debug.Log("qsd");
+        //PolygonCollider2D col = gameObject.transform.Find("CameraBorder").GetComponent<PolygonCollider2D>();
+        Collider2D col = gameObject.transform.Find("CameraCollision").GetComponentInChildren<Collider2D>();
         Debug.Log(col);
-        GetComponent<CinemachineConfiner>().m_BoundingShape2D = col;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineConfiner>().m_BoundingShape2D = col;
+        
     }
+    
     void FadeInRoom()
     {
         gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
@@ -195,6 +199,7 @@ public class Room : MonoBehaviour
     }
     #endregion
 
+    
     void Light2D_OpenDoor()
     {
         foreach (var i in light)
@@ -208,7 +213,7 @@ public class Room : MonoBehaviour
     {
         foreach (var i in light)
         {
-            i.DOLight2DColor32(new Color32(168, 33, 33, 255), 3);
+            i.DOLight2DColor32(new Color32(255, 15, 0, 255), 3);
             i.DOLight2DIntensity(3, 2f);
         }
     }

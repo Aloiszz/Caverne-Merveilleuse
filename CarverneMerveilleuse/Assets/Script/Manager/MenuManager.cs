@@ -9,6 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class MenuManager : MonoBehaviour
 {
@@ -59,7 +60,8 @@ public class MenuManager : MonoBehaviour
         go_btn_Option.SetActive(false);
         go_btn_Quit.SetActive(false);
 
-        cam.m_Lens.OrthographicSize = 10;
+        cam.m_Lens.OrthographicSize = 100;
+        cam.DOCinemachineOrthoSize(10, 10).SetEase(Ease.OutQuint);
         cam.m_Lens.Dutch = 0;
         verifDutch = false;
     }
@@ -81,7 +83,7 @@ public class MenuManager : MonoBehaviour
         go_MainMenu.SetActive(true);
         cg_MenuMainMenu.DOFade(1, 2);
             
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         go_btn_Play.SetActive(true);
         cg_btn_Play.DOFade(1, 3);
         
@@ -96,15 +98,22 @@ public class MenuManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        StartCoroutine(PlayAnimQuitGame());
+
+        cg_MenuMainMenu.DOFade(0, 2);
+        cg_btn_Play.DOFade(0, 2);
+        cg_btn_Option.DOFade(0, 2);
+        cg_btn_Quit.DOFade(0, 2);
+        
     }
 
     public void Play()
     {
-        StartCoroutine(PlayAnim());
+        StartCoroutine(PlayAnimStartGame());
         cam.DOCinemachineOrthoSize(0, 2).SetEase(Ease.InQuint);
         globalVolume.DOVignetteIntensity(1, 2f);
         verifDutch = true;
+        cam.m_Lens.Dutch.DOFloat(20, .5f);
     }
 
     public void Option()
@@ -113,7 +122,7 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    IEnumerator PlayAnim()
+    IEnumerator PlayAnimStartGame()
     {
         cg_btn_Option.DOFade(0, 2.5F);
         cg_btn_Quit.DOFade(0, 2);
@@ -130,5 +139,23 @@ public class MenuManager : MonoBehaviour
         
         
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+    }
+
+
+    IEnumerator PlayAnimQuitGame()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        go_MainMenu.SetActive(false);
+        go_btn_Play.SetActive(false);
+        go_btn_Option.SetActive(false);
+        go_btn_Quit.SetActive(false);
+
+        cam.transform.DOMoveY(-50, 3).SetEase(Ease.InQuart);
+        
+        
+        yield return new WaitForSeconds(3f);
+        
+        Application.Quit();
     }
 }
