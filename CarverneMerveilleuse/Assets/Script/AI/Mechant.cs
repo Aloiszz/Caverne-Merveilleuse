@@ -120,7 +120,7 @@ public class Mechant : MonoBehaviour
                 
             }
 
-            GameManager.instance.score += pointScore;
+            Score.instance.score += pointScore;
             Destroy(gameObject);
         }
     }
