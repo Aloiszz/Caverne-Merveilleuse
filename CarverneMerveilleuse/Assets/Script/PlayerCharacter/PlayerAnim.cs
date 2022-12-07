@@ -261,14 +261,14 @@ public class PlayerAnim : MonoBehaviour
 
     void FaceHeavyAttack()
     {
-        if (PlayerHeavyAttack.instance.isCharge)
+        /*if (PlayerHeavyAttack.instance.isCharge)
         {
             animator[0].SetBool("isChargeAttack", true);
         }
         else
         {
             animator[0].SetBool("isChargeAttack", false);
-        }
+        }*/
     }
 
     void FaceThrowAttack()
@@ -276,10 +276,12 @@ public class PlayerAnim : MonoBehaviour
         if (PlayerThrowAttack.instance.isThrow)
         {
             animator[0].SetBool("isThrowAttack", true);
+            animator[0].SetBool("havingFaux", false);
         }
         else
         {
             animator[0].SetBool("isThrowAttack", false);
+            animator[0].SetBool("havingFaux", true);
         }
     }
 
