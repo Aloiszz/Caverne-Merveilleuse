@@ -22,8 +22,9 @@ public class Mechant : MonoBehaviour
     public float linearDragMultiplier;
     public float forcelightDamage;
     private float initialforcelightDamage;
-    
-    [Header("Loot")]
+
+    [Header("Loot")] 
+    public int pointScore;
     public GameObject dent;
     public GameObject goldenDent;
     public GameObject coeur;
@@ -118,6 +119,8 @@ public class Mechant : MonoBehaviour
                 }
                 
             }
+
+            Score.instance.score += pointScore;
             Destroy(gameObject);
         }
     }
