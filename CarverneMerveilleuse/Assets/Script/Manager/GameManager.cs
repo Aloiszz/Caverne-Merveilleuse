@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Chargetxt;
     [SerializeField]private bool verif_Chargebar;
     [SerializeField]private float verif_float;
+    [HideInInspector] public int score;
 
     public static GameManager instance;
     
