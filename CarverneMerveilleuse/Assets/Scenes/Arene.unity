@@ -353,12 +353,32 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8785446625310703101, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
   m_PrefabInstance: {fileID: 167296149}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 167296151}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17156589c7da8084bb8ef3e716b0ff6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &167296151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 393067401662969414, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+  m_PrefabInstance: {fileID: 167296149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &167296152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167296151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fc6e772f9abb841a9c315e042257bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  listScore: 
+  test: 0
 --- !u!1 &247486749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3519732306540978848, guid: 5b09cd2933eeb3a43bf8ca36a21d9a91, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3519732306540978848, guid: 5b09cd2933eeb3a43bf8ca36a21d9a91, type: 3}
       propertyPath: numberOfWave
