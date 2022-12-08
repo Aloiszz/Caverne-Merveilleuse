@@ -30,7 +30,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         FadeInRoom();
-        //Invoke("SpawnPointDoorEnnemy", EnnemyManager.instance.timeBeforeClosingDoor);
+        Invoke("SpawnPointDoorEnnemy", EnnemyManager.instance.timeBeforeClosingDoor);
         
         AlternativeDoor = GameObject.FindGameObjectsWithTag("Door").ToList();
         if (isHub)
@@ -62,11 +62,12 @@ public class Room : MonoBehaviour
 
     public void FindCameraBorder()
     {
+        //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineConfiner>().m_BoundingShape2D = null;
         Debug.Log("qsd");
         //PolygonCollider2D col = gameObject.transform.Find("CameraBorder").GetComponent<PolygonCollider2D>();
         Collider2D col = gameObject.transform.Find("CameraCollision").GetComponentInChildren<Collider2D>();
         Debug.Log(col);
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineConfiner>().m_BoundingShape2D = col;
+        GameObject.FindGameObjectWithTag("Respawn").GetComponent<CinemachineConfiner>().m_BoundingShape2D = col;
         
     }
     
