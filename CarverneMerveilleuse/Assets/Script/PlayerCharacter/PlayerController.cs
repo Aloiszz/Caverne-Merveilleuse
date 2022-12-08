@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using DG.Tweening;
@@ -134,9 +135,14 @@ public class PlayerController : MonoBehaviour
             else
             {
                 SceneManager.instance.Death();
-                Destroy(gameObject);
+                PlayerController.instance.enabled = false;
+                PlayerLightAttack.instance.enabled = false;
+                PlayerHeavyAttack.instance.enabled = false;
+                PlayerThrowAttack.instance.enabled = false;
+                //Destroy(gameObject);
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity,
-                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform); 
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                GameObject.FindGameObjectWithTag("Respawn").GetComponent<CinemachineVirtualCamera>().Follow = null;
             }
         }
     }

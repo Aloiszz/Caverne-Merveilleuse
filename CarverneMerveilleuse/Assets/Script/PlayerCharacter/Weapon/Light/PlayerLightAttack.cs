@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Unity.Mathematics;
+using UnityEngine.VFX;
 
 public class PlayerLightAttack : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class PlayerLightAttack : MonoBehaviour
     public bool strikkingCombo2;
     public bool strikkingCombo3;
 
+    [Header("VFX")] 
+    public VisualEffect Slash;
+    public VisualEffect Slash2;
+    public VisualEffect Slash3;
 
     private Vector3 mouseWorldPosition;
     private void Awake()
@@ -110,8 +115,11 @@ public class PlayerLightAttack : MonoBehaviour
                 if (countInput <= combo)
                 {
                     StartCoroutine(CoolDown(countInput));
+                    
                     if (countInput == combo)
                     {
+                        
+                        
                         if (PlayerAttackCollision3.instance.Combo_Validate) // si touche ennemis combo 3 alors shake et zoom camera
                         {
                             CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
@@ -162,6 +170,7 @@ public class PlayerLightAttack : MonoBehaviour
     {
         if (count == 1)
         {
+            Slash.Play();
             PlayerAttackCollision.instance.sprite.enabled = true;
             PlayerAttackCollision.instance.coll.enabled = true;
             
@@ -179,6 +188,7 @@ public class PlayerLightAttack : MonoBehaviour
         }
         else if (count == 2)
         {
+            Slash2.Play();
             PlayerAttackCollision2.instance.sprite.enabled = true;
             PlayerAttackCollision2.instance.coll.enabled = true;
             
@@ -197,6 +207,7 @@ public class PlayerLightAttack : MonoBehaviour
         }
         else
         {
+            Slash3.Play();
             PlayerAttackCollision3.instance.sprite.enabled = true;
             PlayerAttackCollision3.instance.coll.enabled = true;
             
