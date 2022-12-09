@@ -63,6 +63,11 @@ public class LifeManager : MonoBehaviour
             globalVolume.enabled = false;
         }
 
+        if (Input.GetKey(KeyCode.R))
+        {
+            isInRage = true;
+        }
+
         if (isInRage)
         {
             timeInRage -= 1 * Time.deltaTime;
