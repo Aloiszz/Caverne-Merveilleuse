@@ -37,10 +37,10 @@ public class CoeurScript : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             player.life += nbPVRendu;
-            if (player.life > player.lifeDepard)
+            /*if (player.life > player.lifeDepard)
             {
                 player.life = player.lifeDepard;
-            }
+            }*/
             Destroy(gameObject);
         }
     }

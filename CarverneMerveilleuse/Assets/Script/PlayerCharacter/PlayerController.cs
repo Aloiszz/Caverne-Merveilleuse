@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         Life();
         Dash();
+        Rage();
     }
 
     private void GameMove()
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerSO.isDash)
+        if (Input.GetButtonDown("Dash") && playerSO.isDash)
         {
             rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
@@ -192,6 +193,15 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0,7, false);
         isDashing = false;
         dashTrail.SetActive(false);
+    }
+
+
+    void Rage()
+    {
+        if (LifeManager.instance.isInRage)
+        {
+            speedMovement = 110;
+        }
     }
 
     IEnumerator PetrolDash()
