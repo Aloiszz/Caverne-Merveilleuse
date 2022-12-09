@@ -64,12 +64,12 @@ public class LifeManager : MonoBehaviour
             life_Bar.DOFillAmount((float)PlayerController.instance.life / (float)PlayerController.instance.lifeDepard, 0.15f);
         }
 
-        if (PlayerController.instance.life > PlayerController.instance.lifeDepard)
+        /*if (PlayerController.instance.life > PlayerController.instance.lifeDepard)
         {
             isInRage = true;
-        }
+        }*/
 
-        if (Score.instance.score > Score.instance.listScoreRage[listScoreRageIndex])
+        if (Score.instance.score > Score.instance.listScoreRage[listScoreRageIndex] || PlayerController.instance.life > PlayerController.instance.lifeDepard)
         {
             r_key_img.DOFade(1, .2f);
             
