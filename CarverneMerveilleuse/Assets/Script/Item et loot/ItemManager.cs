@@ -164,6 +164,7 @@ public class ItemManager : MonoBehaviour
             case "MaxPV(Clone)":
                 //Debug.Log("Augmente le max PV");
                 PlayerController.instance.life += MaxPV;
+                PlayerController.instance.lifeDepard += MaxPV;
                 break;
             
             case "SeuilPV(Clone)":
