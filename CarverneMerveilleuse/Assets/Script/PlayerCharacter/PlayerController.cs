@@ -201,6 +201,11 @@ public class PlayerController : MonoBehaviour
         if (LifeManager.instance.isInRage)
         {
             speedMovement = 110;
+            PlayerLightAttack.instance.coolDownEndComboIndex = 1;
+        }
+        else
+        {
+            PlayerLightAttack.instance.coolDownEndComboIndex = 0;
         }
     }
 

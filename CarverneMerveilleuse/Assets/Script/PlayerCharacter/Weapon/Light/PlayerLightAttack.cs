@@ -34,7 +34,7 @@ public class PlayerLightAttack : MonoBehaviour
     private List<float> coolDown; // temps entre chaque coups
     private int coolDownIndex;
     private List<float> coolDownEndCombo; // temps entre chaque combo
-    private int coolDownEndComboIndex;
+    [HideInInspector]public int coolDownEndComboIndex;
     private float timerRemaining; // temps restant entre chaque coup pour arriver au combo
     private int combo; //nombre de coup que peut enchainner le joueur avant le coolDown final
 
