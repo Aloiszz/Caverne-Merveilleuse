@@ -172,7 +172,7 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "BouclierPV(Clone)":
-                Debug.Log("Pendant les première seconde, une lumière vous entours et vous sert de bouclier");
+                //Debug.Log("Pendant les première seconde, une lumière vous entours et vous sert de bouclier");
                 canLightShield = true;
                 break;
             

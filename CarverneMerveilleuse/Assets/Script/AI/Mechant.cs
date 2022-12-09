@@ -120,6 +120,7 @@ public class Mechant : MonoBehaviour
                 
             }
 
+            PlayerController.instance.life += ItemManager.instance.regenVie;
             Score.instance.score += pointScore;
             Destroy(gameObject);
         }
@@ -134,7 +135,6 @@ public class Mechant : MonoBehaviour
             buffAtk = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] + buffAtk + buffCritique + buffByDash;
-            player.life += itemManager.regenVie;
             forcelightDamage += 400 + itemManager.puissancePush;
         }
         else if (PlayerLightAttack.instance.countInput != checkIfSameHitBox)
@@ -143,7 +143,6 @@ public class Mechant : MonoBehaviour
             buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash;
-            player.life += itemManager.regenVie;
             checkIfSameHitBox = PlayerLightAttack.instance.countInput;
         }
         
