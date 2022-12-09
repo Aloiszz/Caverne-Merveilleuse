@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Chargetxt;
     [SerializeField]private bool verif_Chargebar;
     [SerializeField]private float verif_float;
+    
 
     public static GameManager instance;
     
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(AfficheHealthBar());
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
         {
             verif_float = 0;
         }
+
+        
     }
 
     IEnumerator AfficheHealthBar()
@@ -68,4 +72,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         verif_dashbar = true;
     }
+
+    
 }
