@@ -20,7 +20,7 @@ public class Room : MonoBehaviour
     
     public bool isShopRoom;
     
-    public List<GameObject> DoorEnnemyPosition; //Position des portes 
+    [HideInInspector]public List<GameObject> DoorEnnemyPosition; //Position des portes 
     public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent
 
     [SerializeField] private SpriteRenderer[] sprite;

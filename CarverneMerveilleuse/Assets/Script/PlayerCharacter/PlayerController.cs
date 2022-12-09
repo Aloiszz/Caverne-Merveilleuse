@@ -135,11 +135,12 @@ public class PlayerController : MonoBehaviour
             else
             {
                 SceneManager.instance.Death();
-                PlayerController.instance.enabled = false;
+                /*PlayerController.instance.enabled = false;
                 PlayerLightAttack.instance.enabled = false;
                 PlayerHeavyAttack.instance.enabled = false;
-                PlayerThrowAttack.instance.enabled = false;
+                PlayerThrowAttack.instance.enabled = false;*/
                 //Destroy(gameObject);
+                gameObject.SetActive(false);
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity,
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 GameObject.FindGameObjectWithTag("Respawn").GetComponent<CinemachineVirtualCamera>().Follow = null;
