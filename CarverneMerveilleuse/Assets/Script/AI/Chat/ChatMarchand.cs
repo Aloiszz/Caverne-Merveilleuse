@@ -101,7 +101,7 @@ public class ChatMarchand : MonoBehaviour
         ChatMarchand.instance.transform.parent =
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform;
         ChatMarchand.instance.transform.position = new Vector3(74, 0, 0);
-        //ChatMarchand.instance.enabled = false;
+        ChatMarchand.instance.enabled = false;
         ChatMarchand.instance.coll.enabled = false;
             
         RoomManager.instance.canThePotitChatSpawn = false;

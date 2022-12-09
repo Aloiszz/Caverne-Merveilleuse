@@ -69,10 +69,10 @@ public class LifeManager : MonoBehaviour
             isInRage = true;
         }*/
 
+        life_Bar_Rage.DOFillAmount((float)Score.instance.score / (float)Score.instance.listScoreRage[listScoreRageIndex], 0.15f);
         if (Score.instance.score > Score.instance.listScoreRage[listScoreRageIndex] || PlayerController.instance.life > PlayerController.instance.lifeDepard)
         {
             r_key_img.DOFade(1, .2f);
-            
             if (Input.GetKeyDown(KeyCode.R))
             {
                 listScoreRageIndex++;
@@ -81,7 +81,6 @@ public class LifeManager : MonoBehaviour
                 //PlayerController.instance.life++;
             }
         }
-
         
 
         if (isInRage)
@@ -110,7 +109,6 @@ public class LifeManager : MonoBehaviour
             {
                 globalVolume.weight -= 2 * Time.deltaTime;
             }
-            
         }
 
         //lifeTxt.text = current_life + " / " + nextLifeLevel;
