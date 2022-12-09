@@ -32,6 +32,7 @@ public class DistScript : MonoBehaviour
     
     private bool canRandomMove = true;
     private Vector2 playerDir;
+    private bool firstTimeShoot = true;
     [HideInInspector] public bool isHit;
     [HideInInspector] public AIPath AI;
 
@@ -83,6 +84,11 @@ public class DistScript : MonoBehaviour
     IEnumerator Shoot()
     {
         canShoot = false;
+        if (firstTimeShoot)
+        {
+            yield return new WaitForSeconds(0.5f);
+            firstTimeShoot = false;
+        }
         yield return new WaitForSeconds(0.2f);
         
         GameObject projectile = Instantiate(projo, transform.position, Quaternion.identity);

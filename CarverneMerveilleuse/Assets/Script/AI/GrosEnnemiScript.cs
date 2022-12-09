@@ -35,6 +35,7 @@ public class GrosEnnemiScript : MonoBehaviour
     public bool canCaC = true;
     private bool canRandomMove = true;
     private Vector2 playerDir;
+    private bool firstTimeShoot = true;
     [HideInInspector] public AIPath AI;
     private GameObject projectile;
     public GameObject cacHitBox;
@@ -96,6 +97,11 @@ public class GrosEnnemiScript : MonoBehaviour
     IEnumerator GrosShoot()
     {
         canShoot = false;
+        if (firstTimeShoot)
+        {
+            yield return new WaitForSeconds(0.5f);
+            firstTimeShoot = false;
+        }
         AI.enabled = false;
         rb.velocity = Vector2.zero;
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
