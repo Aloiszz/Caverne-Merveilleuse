@@ -141,6 +141,7 @@ public class PlayerLightAttack : MonoBehaviour
                 else
                 {
                     StartCoroutine(CoolDownEndCombo());
+                    
                     countInput = 0;
                 }
             }
@@ -235,8 +236,8 @@ public class PlayerLightAttack : MonoBehaviour
         PlayerAttackCollision2.instance.coll.enabled = false;  
         
         PlayerAttackCollision3.instance.sprite.enabled = false;
-        PlayerAttackCollision3.instance.coll.enabled = false;  
-        
+        PlayerAttackCollision3.instance.coll.enabled = false;
+
         isCoolDown = true;
         yield return new WaitForSeconds(coolDownEndCombo[coolDownEndComboIndex]- ItemManager.instance.endComboSoustracteur); 
         isCoolDown = false;
@@ -244,6 +245,7 @@ public class PlayerLightAttack : MonoBehaviour
 
     IEnumerator FenteAP()
     {
+        yield return new WaitUntil(() => (countInput == 0));
         GameObject fente = Instantiate(ItemManager.instance.fente, PlayerAttackCollision.instance.transform.position, PlayerAttackCollision.instance.transform.rotation);
         yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < ItemManager.instance.nbCoupFente; i++)

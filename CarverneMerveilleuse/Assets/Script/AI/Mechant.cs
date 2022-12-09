@@ -155,7 +155,10 @@ public class Mechant : MonoBehaviour
     public void ReceiveAOEDamage()
     {
         DebutHitStop();
-        life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex];
+        buffByDash = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.dashBuff;
+        buffAtk = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.buffATK;
+        buffCritique = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.buffATKCritique;
+        life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] + buffAtk + buffCritique + buffByDash;
         if (PlayerHeavyAttack.instance.coolDownIndex == 2)
         {
             forcelightDamage += 100 * itemManager.buffPushAB * 2;
@@ -173,13 +176,19 @@ public class Mechant : MonoBehaviour
     public void ReceiveThrowDamage()
     {
         DebutHitStop();
-        life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
+        buffByDash = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.dashBuff;
+        buffAtk = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATK;
+        buffCritique = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATKCritique;
+        life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] + buffAtk + buffCritique + buffByDash;
         StartCoroutine(FinHitStop());
     }
 
     public void OtherHit()
     {
-        life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] / 2;
+        buffByDash = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.dashBuff;
+        buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
+        buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
+        life -= (PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash) / 2;
     }
 
     public void DebutHitStop()
