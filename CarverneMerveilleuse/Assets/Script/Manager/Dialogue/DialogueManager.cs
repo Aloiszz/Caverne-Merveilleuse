@@ -1,15 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 using TMPro;
 public class DialogueManager : MonoBehaviour
 {
+    [Header("cam")]
+    public CinemachineVirtualCamera cam;
+    
     [Header("Canvas")] 
     public GameObject ArchimageGO;
     public CanvasGroup ArchimageCG;
-    
+    public GameObject BtnInteraction;
+    public CanvasGroup btnInteractionCG;
     
     private Queue<string> sentences;
     [Space]
@@ -27,13 +32,21 @@ public class DialogueManager : MonoBehaviour
     {
         if (DialogueCollider.instance.isInRange)
         {
+            cam.DOCinemachineOrthoSize(7, 2);
             ArchimageGO.SetActive(true);
+            BtnInteraction.SetActive(true);
+            
             ArchimageCG.DOFade(1, .2f);
+            btnInteractionCG.DOFade(1, .2f);
         }
         else
         {
+            cam.DOCinemachineOrthoSize(10, 2);
             ArchimageGO.SetActive(false);
-            ArchimageCG.DOFade(1, .2f);
+            BtnInteraction.SetActive(false);
+            
+            ArchimageCG.DOFade(0, .2f);
+            btnInteractionCG.DOFade(0, .2f);
         }
     }
 
