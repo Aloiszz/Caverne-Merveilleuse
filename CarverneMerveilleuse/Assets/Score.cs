@@ -6,6 +6,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public int score;
+    public int scoreRage;
     public List<int> listScore;
     public List<int> listScoreRage;
     public bool addScore;

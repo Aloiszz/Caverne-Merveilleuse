@@ -19,10 +19,13 @@ public class LifeManager : MonoBehaviour
     
     [Space]
     [Header("Rage")]
-    [SerializeField] private Image life_Bar_Rage;
+    [SerializeField] private Image life_Bar_RageScore; // dépend du scoreRage
+    [SerializeField] private Image life_Bar_RageLife; // Dépend de la vie
     [SerializeField] private float timeInRage = 3;
-    [SerializeField] private float timeInRageMax;
+    private float timeInRageMax;
     public bool isInRage;
+    [SerializeField]private bool rageBarScore; // savoir juste quelle bar utilisé entre bar life et bar score
+    [SerializeField]private bool rageBarLife;
     [SerializeField] private Volume globalVolume;
     
     [SerializeField] private Image r_key_img;
@@ -48,59 +51,46 @@ public class LifeManager : MonoBehaviour
         
         StartCoroutine(AfficheHealthBar());
         
-        SecureSO();
         maxLife = PlayerControllerSO.life;
         timeInRageMax = timeInRage;
     }
-    public void SecureSO()
-    {
-        
-    }
-    
+
     private void Update()
     {
+        
         if (verif)
         {
-            life_Bar.DOFillAmount((float)PlayerController.instance.life / (float)PlayerController.instance.lifeDepard, 0.15f);
-        }
-
-        /*if (PlayerController.instance.life > PlayerController.instance.lifeDepard)
-        {
-            isInRage = true;
-        }*/
-
-        life_Bar_Rage.DOFillAmount((float)Score.instance.score / (float)Score.instance.listScoreRage[listScoreRageIndex], 0.15f);
-        if (Score.instance.score > Score.instance.listScoreRage[listScoreRageIndex] || PlayerController.instance.life > PlayerController.instance.lifeDepard)
-        {
-            r_key_img.DOFade(1, .2f);
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                listScoreRageIndex++;
-                r_key_img.DOFade(0, .2f);
-                isInRage = true;
-                //PlayerController.instance.life++;
-            }
+            life_Bar.DOFillAmount((float)PlayerController.instance.life / (float)PlayerController.instance.lifeDepard, 0.3f);
         }
         
+        life_Bar_RageScore.DOFillAmount((float)Score.instance.scoreRage / (float)Score.instance.listScoreRage[listScoreRageIndex], 0.3f);
+
+        RageDueToLife();
+        RageDueToScoreRage();
 
         if (isInRage)
         {
             timeInRage -= 1 * Time.deltaTime;
-            life_Bar_Rage.DOFillAmount(timeInRage / timeInRageMax, 0.15f);
+            if (rageBarScore)
+            {
+                life_Bar_RageScore.DOFillAmount(timeInRage / timeInRageMax, 0);
+                StartCoroutine(WaitForRageScoreBar());
+            }
+            if(rageBarLife)
+            {
+                life_Bar_RageLife.DOFillAmount(timeInRage / timeInRageMax, 0);
+            }
 
             if (globalVolume.weight <= 1)
             {
-                globalVolume.weight += 2 * Time.deltaTime;
+                globalVolume.weight += 4 * Time.deltaTime;
             }
             if (timeInRage <= 0)
             {
                 timeInRage = 3;
                 isInRage = false;
-
-                if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
-                {
-                    PlayerController.instance.life = PlayerController.instance.lifeDepard;
-                }
+                Score.instance.scoreRage = 0;
+                r_key_img.DOFade(0, 0);
             }
         }
         else
@@ -110,10 +100,72 @@ public class LifeManager : MonoBehaviour
                 globalVolume.weight -= 2 * Time.deltaTime;
             }
         }
-
-        //lifeTxt.text = current_life + " / " + nextLifeLevel;
-        //ChargeBar.DOFillAmount(verif_float / PlayerHeavyAttack.instance.loadingCoolDown[PlayerHeavyAttack.instance.loadingCoolDownIndex], 0);
     }
+
+
+
+    void RageDueToLife()
+    {
+        if (PlayerController.instance.life > PlayerController.instance.lifeDepard) // rage quand surplus de vie
+        {
+            life_Bar_RageLife.DOFillAmount((float)1, 1);
+            r_key_img.DOFade(1, .2f);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                r_key_img.DOFade(0, .2f);
+                isInRage = true;
+                rageBarLife = true;
+                if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
+                {
+                    PlayerController.instance.life = PlayerController.instance.lifeDepard;
+                }
+                else
+                {
+                    PlayerController.instance.life++;
+                }
+            }
+        }
+        else
+        {
+            r_key_img.DOFade(0, .2f);
+        }
+
+    }
+
+    void RageDueToScoreRage()
+    {
+        if (Score.instance.scoreRage > Score.instance.listScoreRage[listScoreRageIndex]) // rage quand score de rage atteint
+        {
+            r_key_img.DOFade(1, .2f);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                listScoreRageIndex++;
+                r_key_img.DOFade(0, .2f);
+                isInRage = true;
+                rageBarScore = true;
+                if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
+                {
+                    PlayerController.instance.life = PlayerController.instance.lifeDepard;
+                }
+                else
+                {
+                    PlayerController.instance.life++;
+                }
+            }
+        }
+        else
+        {
+            r_key_img.DOFade(0, .2f);
+        }
+    }
+
+    IEnumerator WaitForRageScoreBar()
+    {
+        yield return new WaitForSeconds(3);
+        rageBarScore = false;
+        rageBarLife = false;
+    }
+
 
     IEnumerator AfficheHealthBar()
     {

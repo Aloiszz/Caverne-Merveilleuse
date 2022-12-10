@@ -122,6 +122,7 @@ public class Mechant : MonoBehaviour
 
             PlayerController.instance.life += ItemManager.instance.regenVie;
             Score.instance.score += pointScore;
+            Score.instance.scoreRage += pointScore;
             Destroy(gameObject);
         }
     }
