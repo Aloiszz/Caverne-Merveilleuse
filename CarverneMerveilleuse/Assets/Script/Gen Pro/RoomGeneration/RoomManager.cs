@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    
+    public SO_RoomManager SO_RoomManager;
+    
     [Header("----------Golden Path----------")]
     public List<GameObject> roomMemory;
     public int roomMemoryIndex;
@@ -14,17 +17,17 @@ public class RoomManager : MonoBehaviour
     [SerializeField]public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
     public int roomMemoryDirectionIndex;
 
-    public List<GameObject> roomTemplateTop;    
-    public int roomTemplateTopIndex;
+    [HideInInspector]public List<GameObject> roomTemplateTop;    
+    [HideInInspector]public int roomTemplateTopIndex;
     
-    public List<GameObject> roomTemplateDown;
-    public int roomTemplateDownIndex;
+    [HideInInspector]public List<GameObject> roomTemplateDown;
+    [HideInInspector]public int roomTemplateDownIndex;
     
-    public List<GameObject> roomTemplateRight;
-    public int roomTemplateRightIndex;
+    [HideInInspector]public List<GameObject> roomTemplateRight;
+    [HideInInspector]public int roomTemplateRightIndex;
     
-    public List<GameObject> roomTemplateLeft;
-    public int roomTemplateLeftIndex;
+    [HideInInspector]public List<GameObject> roomTemplateLeft;
+    [HideInInspector]public int roomTemplateLeftIndex;
 
     public int goldenPathCount = 0;
 
@@ -56,7 +59,9 @@ public class RoomManager : MonoBehaviour
     public int roomLeftToshopRooIndex = 0; 
     public  bool isShopRoom;
     public List<GameObject> shopRoom;
+    
     public GameObject potitChat;
+    public bool canThePotitChatSpawn;
     
     public static RoomManager instance;
     
@@ -70,9 +75,18 @@ public class RoomManager : MonoBehaviour
         { 
             instance = this; 
         }
+        
+        Secure_SO();
     }
 
-    private bool verif;
+    void Secure_SO()
+    {
+        roomTemplateTop = SO_RoomManager.roomTemplateTop;
+        roomTemplateDown = SO_RoomManager.roomTemplateDown;
+        roomTemplateRight = SO_RoomManager.roomTemplateRight;
+        roomTemplateLeft = SO_RoomManager.roomTemplateLeft;
+    }
+    
     private void Update()
     {
         if (goldenPathCount >= roomLeftToBossRoom)
@@ -81,12 +95,25 @@ public class RoomManager : MonoBehaviour
         }
         if (goldenPathCount >= roomLeftToshopRoom[roomLeftToshopRooIndex])
         {
-            if (!verif)
+            if (canThePotitChatSpawn)
             {
-                Instantiate(potitChat, Vector3.zero, quaternion.identity, roomMemory[roomMemoryIndex].transform);
+                //Instantiate(potitChat, Vector3.zero, quaternion.identity, roomMemory[roomMemoryIndex].transform);
+                ChatMarchand.instance.transform.parent =
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform;
+                ChatMarchand.instance.transform.position = new Vector3(0, 0, 0);
+                ChatMarchand.instance.enabled = true;
+                ChatMarchand.instance.coll.enabled = true;
                 roomLeftToshopRooIndex++;
-                //verif = true;
+                canThePotitChatSpawn = false; ;
+            }
+            else
+            {
+                ChatMarchand.instance.CatDesapear();
             }
         }
+        /*if (roomMemoryIndex != ChatMarchand.instance.numberofroom) // faire disparaitre le chat si le joueur change de salle avant d'aller voir le chat
+        {
+            ChatMarchand.instance.enabled = true;
+        }*/
     }
 }

@@ -18,6 +18,7 @@ public class ChatCircleCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        
         if (col.CompareTag("Player"))
         {
             ChatMarchand.instance.see = true;
@@ -26,9 +27,11 @@ public class ChatCircleCollider : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D col)
     {
+        //ChatMarchand chat = col.GetComponent<ChatMarchand>();
         if (col.CompareTag("Player"))
         {
             ChatMarchand.instance.see = false;
+            //chat.see = false;
         }
     }
 }

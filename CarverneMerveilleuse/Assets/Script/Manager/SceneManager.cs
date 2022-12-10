@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,41 @@ public class SceneManager : MonoBehaviour
     [Header("Canvas Group")] 
     public CanvasGroup playModeCG_;
     public CanvasGroup levelCG_;
+    public CanvasGroup deathCG_;
+    public GameObject pauseMenu;
     
     [Header("Panel")] 
     public GameObject playModePanel_;
     public GameObject LevelPanel_;
-
+    public GameObject death_;
     
+    
+    public static SceneManager instance;
+    
+    public void Awake()
+    {
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this; 
+        }
+        //death_.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
+        {
+            Pause();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Unpause();
+        }
+    }
 
     public void PlayMode()
     {
@@ -38,6 +68,15 @@ public class SceneManager : MonoBehaviour
 
         //StartCoroutine(PauseTime());
     }
+
+    public void Death()
+    {
+        playModePanel_.SetActive(false);
+        death_.SetActive(true);
+        
+        playModeCG_.DOFade(0, 0.5f);
+        deathCG_.DOFade(1, 0.5f);
+    }
     
     
     IEnumerator PauseTime()
@@ -55,6 +94,8 @@ public class SceneManager : MonoBehaviour
     public void GenProLevel()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        deathCG_.DOFade(0, 0);
+        death_.SetActive(false);
     }
     
     public void GALevel()
@@ -65,5 +106,21 @@ public class SceneManager : MonoBehaviour
     public void BossFight()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Scene test");
+    }
+    private void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Unpause()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+    
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

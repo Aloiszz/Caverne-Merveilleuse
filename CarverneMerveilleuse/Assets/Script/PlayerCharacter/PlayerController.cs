@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using DG.Tweening;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public List<Vector2> lastMovement;
     private string strMovement;
 
-    [SerializeField] private TrailRenderer dashTrail;
+    [SerializeField] private GameObject dashTrail;
     
     
     [Header("Singleton")]
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public float linearDragDeceleration;
     [HideInInspector]public float linearDragMultiplier;
     public int lifeDepard;
-    [HideInInspector] public bool isDashing;
+    public bool isDashing;
     [HideInInspector] public int nbPossibleDash = 1;
     
     
@@ -66,8 +67,8 @@ public class PlayerController : MonoBehaviour
         SecureSO();
         life = lifeDepard;
         
-        dashTrail = GetComponent<TrailRenderer>();
-        dashTrail.enabled = false;
+        
+        dashTrail.SetActive(false);
     }
 
     public void SecureSO()
@@ -93,6 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         Life();
         Dash();
+        Rage();
     }
 
     private void GameMove()
@@ -133,16 +135,22 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                SceneManager.instance.Death();
+                /*PlayerController.instance.enabled = false;
+                PlayerLightAttack.instance.enabled = false;
+                PlayerHeavyAttack.instance.enabled = false;
+                PlayerThrowAttack.instance.enabled = false;*/
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
                 Instantiate(deathBloodPS, gameObject.transform.position, quaternion.identity,
-                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform); 
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                GameObject.FindGameObjectWithTag("Respawn").GetComponent<CinemachineVirtualCamera>().Follow = null;
             }
         }
     }
     public void LoseLife()
     {
         life -= 1;
-        Debug.Log("lose");
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         
@@ -151,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerSO.isDash)
+        if (Input.GetButtonDown("Dash") && playerSO.isDash)
         {
             rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
@@ -179,12 +187,26 @@ public class PlayerController : MonoBehaviour
             Physics2D.IgnoreLayerCollision(0,6, true);
             Physics2D.IgnoreLayerCollision(0,7, true);
         }
-        dashTrail.enabled = true;
+        dashTrail.SetActive(true);
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
         isDashing = false;
-        dashTrail.enabled = false;
+        dashTrail.SetActive(false);
+    }
+
+
+    void Rage()
+    {
+        if (LifeManager.instance.isInRage)
+        {
+            speedMovement = 110;
+            PlayerLightAttack.instance.coolDownEndComboIndex = 1;
+        }
+        else
+        {
+            PlayerLightAttack.instance.coolDownEndComboIndex = 0;
+        }
     }
 
     IEnumerator PetrolDash()

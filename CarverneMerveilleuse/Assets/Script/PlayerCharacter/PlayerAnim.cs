@@ -12,7 +12,8 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private GameObject graphFace;
     [SerializeField] private GameObject graphProfile;
     [SerializeField] private GameObject graphDos;
-
+    
+    
     private void Update()
     {
         foreach (var i in animator)
@@ -25,8 +26,16 @@ public class PlayerAnim : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        GameAnimation();
-        
+        if (!PlayerController.instance.isDashing)
+        {
+            GameAnimation();
+        }
+        else
+        {
+            graphDos.SetActive(false);
+            graphFace.SetActive(false);
+            graphProfile.SetActive(false);
+        }
     }
     
     private void GameAnimatinon()
@@ -214,7 +223,7 @@ public class PlayerAnim : MonoBehaviour
         animator[0].SetBool("Profile", false);
         
         FaceLightAttack();
-
+        FaceHeavyAttack();
         FaceThrowAttack();
     }
     
@@ -250,15 +259,29 @@ public class PlayerAnim : MonoBehaviour
         
     }
 
+    void FaceHeavyAttack()
+    {
+        /*if (PlayerHeavyAttack.instance.isCharge)
+        {
+            animator[0].SetBool("isChargeAttack", true);
+        }
+        else
+        {
+            animator[0].SetBool("isChargeAttack", false);
+        }*/
+    }
+
     void FaceThrowAttack()
     {
         if (PlayerThrowAttack.instance.isThrow)
         {
             animator[0].SetBool("isThrowAttack", true);
+            animator[0].SetBool("havingFaux", false);
         }
         else
         {
             animator[0].SetBool("isThrowAttack", false);
+            animator[0].SetBool("havingFaux", true);
         }
     }
 

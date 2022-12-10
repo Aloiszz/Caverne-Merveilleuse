@@ -57,6 +57,8 @@ public class ItemManager : MonoBehaviour
     public int pourcentageVieForSeuilPV = 10;
     [Tooltip("Pourcentage d'attaque en plus lorsque le personnage passe le seuil de pv")]
     public float pourcentageBuffATKDuSeuilPV;
+    public GameObject lightShield;
+    private bool canLightShield;
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int nbVieEnPlus;
     
@@ -68,6 +70,7 @@ public class ItemManager : MonoBehaviour
     [Tooltip("Pourcentage d'attaque en plus après un dash (%)")]
     public float pourcentageAttaqueEnPlusPostDash = 10;
     [HideInInspector] public float dashBuff;
+    [HideInInspector] public bool isInBuffDash;
     [Tooltip("Pourcentage de vitesse en plus après un dash (%)")]
     public float pourcentageSpeedEnPlusPostDash = 20;
     [HideInInspector] public float initialSpeed;
@@ -161,6 +164,7 @@ public class ItemManager : MonoBehaviour
             case "MaxPV(Clone)":
                 //Debug.Log("Augmente le max PV");
                 PlayerController.instance.life += MaxPV;
+                PlayerController.instance.lifeDepard += MaxPV;
                 break;
             
             case "SeuilPV(Clone)":
@@ -169,7 +173,8 @@ public class ItemManager : MonoBehaviour
                 break;
             
             case "BouclierPV(Clone)":
-                Debug.Log("Pendant les première seconde, une lumière vous entours et vous sert de bouclier");
+                //Debug.Log("Pendant les première seconde, une lumière vous entours et vous sert de bouclier");
+                canLightShield = true;
                 break;
             
             case "DegatsDash(Clone)":
@@ -265,13 +270,25 @@ public class ItemManager : MonoBehaviour
 
         if (!player.playerSO.isDash && canDashBuff)
         {
-            player.speedMovement = initialSpeed * (pourcentageSpeedEnPlusPostDash / 100);
+            isInBuffDash = true;
+            Debug.Log("DashBuff");
+            player.speedMovement = initialSpeed * (1 + pourcentageSpeedEnPlusPostDash / 100);
             dashBuff = pourcentageAttaqueEnPlusPostDash / 100;
         }
         else
         {
+            isInBuffDash = false;
             dashBuff = 0;
         }
+    }
+
+    public void LightShield()
+    {
+        if (canLightShield)
+        {
+            Instantiate(lightShield, player.transform.position, Quaternion.identity);
+        }
+        
     }
 
     

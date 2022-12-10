@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Net.Cache;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,8 +22,9 @@ public class Mechant : MonoBehaviour
     public float linearDragMultiplier;
     public float forcelightDamage;
     private float initialforcelightDamage;
-    
-    [Header("Loot")]
+
+    [Header("Loot")] 
+    public int pointScore;
     public GameObject dent;
     public GameObject goldenDent;
     public GameObject coeur;
@@ -83,7 +85,6 @@ public class Mechant : MonoBehaviour
         Death();
        
     }
-    
     void Death()
     {
         if (life <= 0)
@@ -92,19 +93,20 @@ public class Mechant : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
                 {
-                    Instantiate(dent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                    gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
+                    Instantiate(dent, gameObject.transform.position, Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
 
                 if (Random.Range(1, 101) >= 100 - (pourcentageDropOr + itemManager.dropOrSupp) && pourcentageDropOr != 0)
                 {
-                    Instantiate(goldenDent, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                    Instantiate(goldenDent, gameObject.transform.position, Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
                 
                 if (Random.Range(1, 101) >= 100 - (pourcentageDropCoeur + itemManager.dropCoeurSupp) && pourcentageDropCoeur != 0)
                 {
-                    Instantiate(coeur, gameObject.transform.position + new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), Quaternion.identity,
+                    Instantiate(coeur, gameObject.transform.position, Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
             }
@@ -117,6 +119,9 @@ public class Mechant : MonoBehaviour
                 }
                 
             }
+
+            PlayerController.instance.life += ItemManager.instance.regenVie;
+            Score.instance.score += pointScore;
             Destroy(gameObject);
         }
     }
@@ -130,7 +135,6 @@ public class Mechant : MonoBehaviour
             buffAtk = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] + buffAtk + buffCritique + buffByDash;
-            player.life += itemManager.regenVie;
             forcelightDamage += 400 + itemManager.puissancePush;
         }
         else if (PlayerLightAttack.instance.countInput != checkIfSameHitBox)
@@ -139,7 +143,6 @@ public class Mechant : MonoBehaviour
             buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash;
-            player.life += itemManager.regenVie;
             checkIfSameHitBox = PlayerLightAttack.instance.countInput;
         }
         
@@ -152,7 +155,10 @@ public class Mechant : MonoBehaviour
     public void ReceiveAOEDamage()
     {
         DebutHitStop();
-        life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex];
+        buffByDash = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.dashBuff;
+        buffAtk = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.buffATK;
+        buffCritique = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.buffATKCritique;
+        life -= PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] + buffAtk + buffCritique + buffByDash;
         if (PlayerHeavyAttack.instance.coolDownIndex == 2)
         {
             forcelightDamage += 100 * itemManager.buffPushAB * 2;
@@ -170,16 +176,22 @@ public class Mechant : MonoBehaviour
     public void ReceiveThrowDamage()
     {
         DebutHitStop();
-        life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex];
+        buffByDash = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.dashBuff;
+        buffAtk = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATK;
+        buffCritique = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATKCritique;
+        life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] + buffAtk + buffCritique + buffByDash;
         StartCoroutine(FinHitStop());
     }
 
     public void OtherHit()
     {
-        life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] / 2;
+        buffByDash = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.dashBuff;
+        buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
+        buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
+        life -= (PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash) / 2;
     }
 
-    void DebutHitStop()
+    public void DebutHitStop()
     {
         StopCoroutine(FinHitStop());
         switch (gameObject.tag)
@@ -211,7 +223,7 @@ public class Mechant : MonoBehaviour
         }
     }
 
-    IEnumerator FinHitStop()
+    public IEnumerator FinHitStop()
     {
         yield return new WaitForSeconds(0.2f);
         switch (gameObject.tag)

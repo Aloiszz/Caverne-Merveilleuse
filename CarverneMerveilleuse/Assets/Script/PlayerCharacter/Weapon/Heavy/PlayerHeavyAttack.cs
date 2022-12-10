@@ -47,6 +47,9 @@ public class PlayerHeavyAttack : MonoBehaviour
     private float timerLightCloseDamage;
 
     private bool isAlreadyScaled;
+
+    [Header("Animator")] 
+    public bool isCharge;
     
     private void Awake()
     {
@@ -122,6 +125,7 @@ public class PlayerHeavyAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 StartCoroutine(WaitPrep());
+                isCharge = true;
             }
 
             if (activate)
@@ -129,6 +133,7 @@ public class PlayerHeavyAttack : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
                     StartCoroutine(Turn());
+                    isCharge = false;
                 }
             }
             else
@@ -137,6 +142,7 @@ public class PlayerHeavyAttack : MonoBehaviour
                 {
                     activate = false;
                     StopAllCoroutines();
+                    isCharge = true;
                 }
             }
         }
