@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player config")]
     public SO_PlayerController playerSO;
     public float speedMovement;
-    [HideInInspector]public float dashForce;
+    public float dashForce;
     [HideInInspector]public float dashReload;
     [HideInInspector]public float dashInvinsibleTime;
     public int life;
@@ -201,11 +201,14 @@ public class PlayerController : MonoBehaviour
         if (LifeManager.instance.isInRage)
         {
             speedMovement = 110;
+            dashForce = 5000;
+            dashReload = 1.2f;
             PlayerLightAttack.instance.coolDownEndComboIndex = 1;
         }
         else
         {
             PlayerLightAttack.instance.coolDownEndComboIndex = 0;
+            SecureSO();
         }
     }
 
