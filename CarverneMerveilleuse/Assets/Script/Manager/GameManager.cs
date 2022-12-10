@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             if (PlayerController.instance.isDashing)
             {
                 dashbar.DOFillAmount((float)0,0);
-                dashbar.DOFillAmount((float)1,PlayerController.instance.playerSO.dashReload).SetEase(Ease.Linear);
+                dashbar.DOFillAmount((float)1,PlayerController.instance.dashReload);
             }
         }
 
