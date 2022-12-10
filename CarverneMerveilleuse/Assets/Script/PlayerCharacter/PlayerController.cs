@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         Life();
         Dash();
-        Rage();
+        //Rage();
     }
 
     private void GameMove()
@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Rage()
+    public void Rage()
     {
         if (LifeManager.instance.isInRage)
         {

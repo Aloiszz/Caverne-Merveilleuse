@@ -89,6 +89,7 @@ public class LifeManager : MonoBehaviour
             {
                 timeInRage = 3;
                 isInRage = false;
+                PlayerController.instance.Rage();
                 Score.instance.scoreRage = 0;
                 r_key_img.DOFade(0, 0);
             }
@@ -115,6 +116,7 @@ public class LifeManager : MonoBehaviour
                 r_key_img.DOFade(0, .2f);
                 isInRage = true;
                 rageBarLife = true;
+                PlayerController.instance.Rage();
                 if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
@@ -143,6 +145,7 @@ public class LifeManager : MonoBehaviour
                 r_key_img.DOFade(0, .2f);
                 isInRage = true;
                 rageBarScore = true;
+                PlayerController.instance.Rage();
                 if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
