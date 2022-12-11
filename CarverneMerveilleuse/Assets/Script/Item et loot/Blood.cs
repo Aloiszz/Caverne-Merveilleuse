@@ -15,6 +15,6 @@ public class Blood : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameObject.transform.DOScale(new Vector3(
             Random.Range(.5f,2), Random.Range(.5f,2)), .2f);
-        rb.AddForce(PlayerController.instance.transform.position + transform.position * speed, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(Random.Range(-3,4), Random.Range(-3,4)) * speed, ForceMode2D.Impulse);
     }
 }
