@@ -58,6 +58,7 @@ public class ItemManager : MonoBehaviour
     [Tooltip("Pourcentage d'attaque en plus lorsque le personnage passe le seuil de pv")]
     public float pourcentageBuffATKDuSeuilPV;
     public GameObject lightShield;
+    public float tempsLightShield = 5;
     private bool canLightShield;
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int nbVieEnPlus;

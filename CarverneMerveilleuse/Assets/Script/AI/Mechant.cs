@@ -39,6 +39,7 @@ public class Mechant : MonoBehaviour
     private float buffCritique;
     private float buffByDash;
     private int checkIfSameHitBox;
+    private bool killedWithLightAtk;
     
 
 
@@ -120,7 +121,10 @@ public class Mechant : MonoBehaviour
                 
             }
 
-            PlayerController.instance.life += ItemManager.instance.regenVie;
+            if (killedWithLightAtk)
+            {
+                PlayerController.instance.life += ItemManager.instance.regenVie;
+            }
             Score.instance.score += pointScore;
             Score.instance.scoreRage += pointScore;
             Destroy(gameObject);
@@ -128,15 +132,17 @@ public class Mechant : MonoBehaviour
     }
     public void ReceiveLightDamage()
     {
-        DebutHitStop();
-        
+
+        killedWithLightAtk = true;
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
         {
+            DebutHitStop();
             buffByDash = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.dashBuff;
             buffAtk = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATK;
             buffCritique = PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] * itemManager.buffATKCritique;
             life -= PlayerLightAttack.instance.lastLightDamage[PlayerLightAttack.instance.lastLightDamageIndex] + buffAtk + buffCritique + buffByDash;
             forcelightDamage += 400 + itemManager.puissancePush;
+            StartCoroutine(FinHitStop());
         }
         else if (PlayerLightAttack.instance.countInput != checkIfSameHitBox)
         {
@@ -150,11 +156,12 @@ public class Mechant : MonoBehaviour
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
         forcelightDamage = initialforcelightDamage;
 
-        StartCoroutine(FinHitStop());
+        
     }
 
     public void ReceiveAOEDamage()
     {
+        killedWithLightAtk = false;
         DebutHitStop();
         buffByDash = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.dashBuff;
         buffAtk = PlayerHeavyAttack.instance.heavyDamage[PlayerHeavyAttack.instance.heavyDamageIndex] * itemManager.buffATK;
@@ -176,6 +183,7 @@ public class Mechant : MonoBehaviour
 
     public void ReceiveThrowDamage()
     {
+        killedWithLightAtk = false;
         DebutHitStop();
         buffByDash = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.dashBuff;
         buffAtk = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATK;
@@ -186,6 +194,7 @@ public class Mechant : MonoBehaviour
 
     public void OtherHit()
     {
+        killedWithLightAtk = false;
         buffByDash = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.dashBuff;
         buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
         buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
