@@ -153,6 +153,8 @@ public class PlayerAnim : MonoBehaviour
     }
 
 
+    #region Profil
+
     void ProfilDroit()
     {
         graphFace.SetActive(false);
@@ -166,6 +168,8 @@ public class PlayerAnim : MonoBehaviour
         //graphProfile.transform.DOScale(new Vector3(0.08f,0.08f,0.08f), .2f);
 
         ProfilLightAttack();
+        ProfileHeavyAttack();
+        ProfilThrowAttack();
     }
 
     void ProfilGauche()
@@ -181,6 +185,8 @@ public class PlayerAnim : MonoBehaviour
         //graphProfile.transform.DOScale(new Vector3(-0.08f,0.08f,0.08f), .2f);
 
         ProfilLightAttack();
+        ProfileHeavyAttack();
+        ProfilThrowAttack();
     }
 
     void ProfilLightAttack()
@@ -212,6 +218,36 @@ public class PlayerAnim : MonoBehaviour
             }
         }
     }
+    
+    void ProfileHeavyAttack()
+    {
+        /*if (PlayerHeavyAttack.instance.isCharge)
+        {
+            animator[1].SetBool("isChargeAttack", true);
+        }
+        else
+        {
+            animator[1].SetBool("isChargeAttack", false);
+        }*/
+    }
+    
+    void ProfilThrowAttack()
+    {
+        if (PlayerThrowAttack.instance.isThrow)
+        {
+            animator[1].SetBool("isThrowAttack", true);
+            animator[1].SetBool("havingFaux", false);
+        }
+        else
+        {
+            animator[1].SetBool("isThrowAttack", false);
+            animator[1].SetBool("havingFaux", true);
+        }
+    }
+
+    #endregion
+
+    #region Face
 
     void Face()
     {
@@ -258,7 +294,6 @@ public class PlayerAnim : MonoBehaviour
         }
         
     }
-
     void FaceHeavyAttack()
     {
         /*if (PlayerHeavyAttack.instance.isCharge)
@@ -285,6 +320,10 @@ public class PlayerAnim : MonoBehaviour
         }
     }
 
+    #endregion
+    
+    #region DOS
+
     void Dos()
     {
         graphFace.SetActive(false);
@@ -295,7 +334,7 @@ public class PlayerAnim : MonoBehaviour
         animator[2].SetBool("Profile", false);
 
         DosLightAttack();
-
+        DosHeavyAttack();
         DosThrowAttack();
     }
     
@@ -329,15 +368,32 @@ public class PlayerAnim : MonoBehaviour
         }
     }
     
+    void DosHeavyAttack()
+    {
+        /*if (PlayerHeavyAttack.instance.isCharge)
+        {
+            animator[2].SetBool("isChargeAttack", true);
+        }
+        else
+        {
+            animator[2].SetBool("isChargeAttack", false);
+        }*/
+    }
+    
     void DosThrowAttack()
     {
         if (PlayerThrowAttack.instance.isThrow)
         {
             animator[2].SetBool("isThrowAttack", true);
+            animator[2].SetBool("havingFaux", false);
         }
         else
         {
             animator[2].SetBool("isThrowAttack", false);
+            animator[2].SetBool("havingFaux", true);
         }
     }
+
+    #endregion
+    
 }
