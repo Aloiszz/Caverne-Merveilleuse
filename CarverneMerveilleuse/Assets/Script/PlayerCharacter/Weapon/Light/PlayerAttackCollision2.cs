@@ -13,6 +13,7 @@ public class PlayerAttackCollision2 : MonoBehaviour
     [HideInInspector] public Vector3 difference;
 
     [SerializeField]private GameObject bloodPS;
+    [SerializeField]private GameObject bloodPSFloor;
     private int rand;
     
     public static PlayerAttackCollision2 instance;
@@ -73,6 +74,8 @@ public class PlayerAttackCollision2 : MonoBehaviour
                 Instantiate(bloodPS, col.transform.position, Quaternion.identity,
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             }
+            Instantiate(bloodPSFloor, col.transform.position, Quaternion.identity, 
+                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         }
     }
 }

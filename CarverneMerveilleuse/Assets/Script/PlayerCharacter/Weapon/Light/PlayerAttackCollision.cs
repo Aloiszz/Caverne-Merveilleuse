@@ -13,6 +13,7 @@ public class PlayerAttackCollision : MonoBehaviour
     [HideInInspector] public Vector3 difference;
     
     [SerializeField]private GameObject bloodPS;
+    [SerializeField]private GameObject bloodPSFloor;
     private int rand;
     
     public static PlayerAttackCollision instance;
@@ -69,10 +70,13 @@ public class PlayerAttackCollision : MonoBehaviour
             CinemachineShake.instance.ShakeCamera(1.3f,2,0.2f);
             rand = Random.Range(1, 3);
             for (int i = 0; i < rand; i++)
-            { 
+            {
                 Instantiate(bloodPS, col.transform.position, Quaternion.identity, 
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                
             }
+            Instantiate(bloodPSFloor, col.transform.position, Quaternion.identity, 
+                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         }
     }
 }

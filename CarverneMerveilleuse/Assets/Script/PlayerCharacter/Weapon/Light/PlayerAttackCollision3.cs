@@ -15,6 +15,7 @@ public class PlayerAttackCollision3 : MonoBehaviour
     [HideInInspector] public bool Combo_Validate;
 
     [SerializeField]private GameObject bloodPS;
+    [SerializeField]private GameObject bloodPSFloor;
     private int rand;
     
     public static PlayerAttackCollision3 instance;
@@ -66,6 +67,8 @@ public class PlayerAttackCollision3 : MonoBehaviour
                 Instantiate(bloodPS, col.transform.position, Quaternion.identity,
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             }
+            Instantiate(bloodPSFloor, col.transform.position, Quaternion.identity, 
+                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         }
     }
 }
