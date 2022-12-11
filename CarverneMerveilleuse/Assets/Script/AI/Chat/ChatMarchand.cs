@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class ChatMarchand : MonoBehaviour
 {
+    [Header("Fonctionnement du potit chat")]
     public PlayerController player;
     public float speed;
     public MerchantSecretDoor merchantRoom;
@@ -18,10 +20,14 @@ public class ChatMarchand : MonoBehaviour
     public int numberofroom;
     private List<GameObject> LesChats;
     public Collider2D coll;
+    private Rigidbody2D rb;
 
     public static ChatMarchand instance;
 
-    // Start is called before the first frame update
+    [Header("Animator")] 
+    public Animator Animator;
+    public GameObject graph;
+    
     
     private void Awake()
     {
@@ -40,6 +46,7 @@ public class ChatMarchand : MonoBehaviour
         enabled = false;
         coll = GetComponent<Collider2D>();
         coll.enabled = false;
+        rb = GetComponent<Rigidbody2D>();
         
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         //merchantRoom = GameObject.FindGameObjectWithTag("MerchantSecretDoor").GetComponent<MerchantSecretDoor>();
@@ -71,10 +78,25 @@ public class ChatMarchand : MonoBehaviour
         if (see)
         {
             //gameObject.transform.position = Vector3.MoveTowards(transform.position, merchantRoom.transform.position, speed * Time.deltaTime);
+            Animator.SetBool("Found", true);
+            Animator.SetBool("isRunning", false);
         }
         else
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            Animator.SetBool("Found", false);
+            Animator.SetBool("isRunning", true);
+            /*gameObject.transform.position =
+                Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);*/
+
+            rb.AddForce((PlayerController.instance.transform.position - transform.position).normalized * 6);
+            if (rb.velocity.x > 0.3f)
+            {
+                graph.transform.DOScale(new Vector3(-0.1f,0.1f,0.1f), .2f);
+            }
+            else if (rb.velocity.x < -0.3f)
+            {
+                graph.transform.DOScale(new Vector3(0.1f,0.1f,0.1f), .2f);
+            }
         }
     }
 
