@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -115,7 +116,8 @@ public class ProjoCollision : MonoBehaviour
     public void Grossissement(GameObject player)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        gameObject.transform.localScale = new Vector3(5, 5);
+        //gameObject.transform.localScale = new Vector3(5, 5);
+        gameObject.transform.DOScale(new Vector3(5, 5), .2f);
         mode2 = true;
         check = true;
     }
