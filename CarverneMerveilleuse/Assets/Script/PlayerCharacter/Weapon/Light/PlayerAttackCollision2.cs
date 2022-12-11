@@ -73,9 +73,11 @@ public class PlayerAttackCollision2 : MonoBehaviour
             {
                 Instantiate(bloodPS, col.transform.position, Quaternion.identity,
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                
+                Instantiate(bloodPSFloor, col.transform.position, Quaternion.identity, 
+                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             }
-            Instantiate(bloodPSFloor, col.transform.position, Quaternion.identity, 
-                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+            
         }
     }
 }

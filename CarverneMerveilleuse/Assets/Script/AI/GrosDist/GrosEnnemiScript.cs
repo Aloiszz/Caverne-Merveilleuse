@@ -41,6 +41,9 @@ public class GrosEnnemiScript : MonoBehaviour
     public GameObject cacHitBox;
     [HideInInspector] public List<GameObject> projoList;
 
+    [Header("Animator")] 
+    [HideInInspector] public bool isDefending;
+    [HideInInspector] public bool isAttacking;
     void Start()
     {
         if (gameObject.GetComponent<Mechant>().invokeByBoss)
@@ -77,6 +80,7 @@ public class GrosEnnemiScript : MonoBehaviour
             if (canShoot)
             {
                 AI.enabled = true;
+                isAttacking = false;
                 if (playerDir.magnitude < spaceFromPlayer)
                 {
                     StartCoroutine(GrosShoot());
@@ -104,6 +108,7 @@ public class GrosEnnemiScript : MonoBehaviour
         }
         AI.enabled = false;
         rb.velocity = Vector2.zero;
+        isAttacking = true;
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
         projectile.GetComponent<ProjoCollision>().shooter = gameObject;
         projoList.Add(projectile);
@@ -111,6 +116,7 @@ public class GrosEnnemiScript : MonoBehaviour
         projectile.GetComponent<ProjoCollision>().origine = this;
         yield return new WaitUntil(() => (projectile.transform.position - transform.position).magnitude >= maxRangeProjo);
         projectile.GetComponent<ProjoCollision>().Grossissement(player.gameObject);
+        isAttacking = false;
     }
 
     public IEnumerator CaC()
@@ -129,8 +135,10 @@ public class GrosEnnemiScript : MonoBehaviour
                 transform.position = new Vector2(transform.position.x - 0.2f, transform.localPosition.y);
             }
         }
+        isDefending = true;
         cacHitBox.SetActive(true);
         yield return new WaitForSeconds(0.1f);
+        isDefending = false;
         cacHitBox.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canCaC = true;
