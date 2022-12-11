@@ -17,8 +17,8 @@ public class DentScript : MonoBehaviour
 
     private void Start()
     {
+        
         coll = GetComponent<Collider2D>();
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         ui = GameObject.Find("UIManager").GetComponent<UIManager>();
         rb = GetComponent<Rigidbody2D>();
         
@@ -32,10 +32,11 @@ public class DentScript : MonoBehaviour
 
     private void Update()
     {
-        if ((player.transform.position - transform.position).magnitude <= distanceToGet)
+        if ((PlayerController.instance.gameObject.transform.position - transform.position).magnitude <= distanceToGet)
         {
+            Debug.Log("OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIS");
             coll.isTrigger = true;
-            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed);
+            transform.position = Vector2.MoveTowards(gameObject.transform.position, PlayerController.instance.gameObject.transform.position, speed);
         }
     }
 

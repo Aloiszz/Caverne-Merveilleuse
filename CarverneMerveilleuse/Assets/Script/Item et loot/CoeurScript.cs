@@ -16,7 +16,6 @@ public class CoeurScript : MonoBehaviour
     private void Start()
     {
         coll = GetComponent<Collider2D>();
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(Random.Range(-3,4), Random.Range(-3,4)) * 2, ForceMode2D.Impulse);
     }
@@ -28,10 +27,10 @@ public class CoeurScript : MonoBehaviour
 
     private void Update()
     {
-        if ((player.transform.position - transform.position).magnitude <= distanceToGet)
+        if ((PlayerController.instance.gameObject.transform.position - transform.position).magnitude <= distanceToGet)
         {
             coll.isTrigger = true;
-            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed);
+            transform.position = Vector2.MoveTowards(gameObject.transform.position, PlayerController.instance.gameObject.transform.position, speed);
         }
     }
 
@@ -39,7 +38,7 @@ public class CoeurScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            player.life += nbPVRendu;
+            PlayerController.instance.life += nbPVRendu;
             /*if (player.life > player.lifeDepard)
             {
                 player.life = player.lifeDepard;
