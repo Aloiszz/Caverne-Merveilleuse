@@ -25224,7 +25224,7 @@ GameObject:
   - component: {fileID: 170310234257035884}
   - component: {fileID: 8928865383159014878}
   - component: {fileID: 3093984609497046351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25299,7 +25299,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 22
+      m_TileSpriteIndex: 26
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -25369,7 +25369,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 22
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -27709,7 +27709,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 20
+      m_TileSpriteIndex: 21
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -27856,20 +27856,20 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 9
     m_Data: {fileID: -31182397, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1306989228, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1804021458, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -60477052, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
   - m_RefCount: 16
     m_Data: {fileID: 21300000, guid: 687e60ffcc07b2a4b9a2b6f7186f1722, type: 3}
   - m_RefCount: 32
     m_Data: {fileID: 21300000, guid: d9b7936d5be300540b630cb93f74df88, type: 3}
   - m_RefCount: 18
     m_Data: {fileID: 21300000, guid: e2510f3818f13a14a8305e6621b3d47e, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -60477052, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 2049563861, guid: ad65c9de06060d64289785c43151a55b, type: 3}
   - m_RefCount: 7
@@ -32841,6 +32841,67 @@ MonoBehaviour:
   isAlternativeDoor: 0
   isShopDoor: 0
   porteQuiFautDetruire: 0
+--- !u!1 &7670873818064758963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5831006334962107199}
+  - component: {fileID: 6277322181289697443}
+  m_Layer: 0
+  m_Name: CameraCollision
+  m_TagString: CameraBorder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5831006334962107199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670873818064758963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.84, y: 17.61, z: 0}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3249640008314692303}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &6277322181289697443
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670873818064758963}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 31.09001, y: 2.0652788}
+      - {x: 31.77404, y: -47.844894}
+      - {x: -20.802288, y: -46.870014}
+      - {x: -21.008974, y: 0.57685995}
 --- !u!1 &7711853897516464739
 GameObject:
   m_ObjectHideFlags: 0
@@ -34086,6 +34147,7 @@ Transform:
   - {fileID: 1814877828247287756}
   - {fileID: 2212960261674190947}
   - {fileID: 3884988651564425236}
+  - {fileID: 5831006334962107199}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

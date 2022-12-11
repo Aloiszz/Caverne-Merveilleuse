@@ -88,7 +88,7 @@ public class ChatMarchand : MonoBehaviour
             /*gameObject.transform.position =
                 Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);*/
 
-            rb.AddForce((PlayerController.instance.transform.position - transform.position).normalized * 6);
+            rb.AddForce((PlayerController.instance.transform.position - transform.position).normalized * 15);
             if (rb.velocity.x > 0.3f)
             {
                 graph.transform.DOScale(new Vector3(-0.1f,0.1f,0.1f), .2f);
