@@ -48,7 +48,7 @@ public class LightShieldScript : MonoBehaviour
 
     IEnumerator TimeBeforeDestroy()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(ItemManager.instance.tempsLightShield);
         for (int i = 0; i < 10; i++)
         {
             if (i%2 == 0)
