@@ -93,6 +93,10 @@ public class ItemManager : MonoBehaviour
     public int pourcentageDropCoeurEnPlus = 10;
     [HideInInspector] public int dropCoeurSupp;
 
+    [Header("Rage")] 
+    [Tooltip("Nouveau temps de duration de la rage (en seconde >3")]
+    public float newRageTime = 5;
+
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -213,9 +217,10 @@ public class ItemManager : MonoBehaviour
                 isFenteAPGet = true;
                 break;
             
-            case "RecupereVieAP(Clone)":
+            case "NewRageTime(Clone)":
                 //Debug.Log("A chaque fois que vous attaquez avec cette attaque, vous récupérez un pourcentage de vie en fonction des dégâts infligé");
-                regenVie = recupereVieAP;
+                LifeManager.instance.timeInRage = newRageTime;
+                LifeManager.instance.timeInRageMax = newRageTime;
                 break;
             
             case "InvincibleAB(Clone)":
