@@ -90,7 +90,7 @@ public class Mechant : MonoBehaviour
     {
         if (life <= 0)
         {
-            if (!invokeByBoss || !CompareTag("Boss"))
+            if (!invokeByBoss && !CompareTag("Boss"))
             {
                 for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
                 {
