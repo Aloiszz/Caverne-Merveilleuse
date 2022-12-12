@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GrosEnnemiScript : MonoBehaviour
 {
@@ -44,6 +46,13 @@ public class GrosEnnemiScript : MonoBehaviour
     [Header("Animator")] 
     [HideInInspector] public bool isDefending;
     [HideInInspector] public bool isAttacking;
+
+    [Space] 
+    [SerializeField] private GameObject vfxFlaquePetrol;
+    [SerializeField] private GameObject[] flaquePetrolList;
+    private bool doOnce = true;
+    
+    
     void Start()
     {
         if (gameObject.GetComponent<Mechant>().invokeByBoss)
@@ -69,6 +78,7 @@ public class GrosEnnemiScript : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+        VfxFlaque();
     }
 
 
@@ -116,7 +126,6 @@ public class GrosEnnemiScript : MonoBehaviour
         projectile.GetComponent<ProjoCollision>().origine = this;
         yield return new WaitUntil(() => (projectile.transform.position - transform.position).magnitude >= maxRangeProjo);
         projectile.GetComponent<ProjoCollision>().Grossissement(player.gameObject);
-        isAttacking = false;
     }
 
     public IEnumerator CaC()
@@ -181,6 +190,26 @@ public class GrosEnnemiScript : MonoBehaviour
         if (col.gameObject.layer == 4)
         {
             rb.AddForce(new Vector2(-playerDir.normalized.x,-playerDir.normalized.y) * 400);
+        }
+    }
+
+
+
+    void VfxFlaque()
+    {
+        if (isAttacking)
+        {
+            foreach (var i in flaquePetrolList)
+            {
+                i.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var i in flaquePetrolList)
+            {
+                i.SetActive(false);
+            }
         }
     }
 }

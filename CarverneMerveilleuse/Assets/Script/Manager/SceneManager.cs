@@ -12,12 +12,13 @@ public class SceneManager : MonoBehaviour
     public CanvasGroup playModeCG_;
     public CanvasGroup levelCG_;
     public CanvasGroup deathCG_;
-    public GameObject pauseMenu;
+    public CanvasGroup pauseCG_;
     
     [Header("Panel")] 
     public GameObject playModePanel_;
     public GameObject LevelPanel_;
     public GameObject death_;
+    public GameObject pauseMenu_;
     
     
     public static SceneManager instance;
@@ -77,19 +78,6 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(0, 0.5f);
         deathCG_.DOFade(1, 0.5f);
     }
-    
-    
-    IEnumerator PauseTime()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Time.timeScale = 0f;
-    }
-    IEnumerator UnPauseTime()
-    {
-        Time.timeScale = 1;
-        yield return new WaitForSeconds(0.5f);
-    }
-
 
     public void GenProLevel()
     {
@@ -109,16 +97,31 @@ public class SceneManager : MonoBehaviour
     }
     private void Pause()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        StopCoroutine(UnPauseTime());
+        playModeCG_.DOFade(0, 0.5f);
+        pauseCG_.DOFade(1, 0.5f);
+        pauseMenu_.SetActive(true);
+        StartCoroutine(PauseTime());
     }
-
     public void Unpause()
     {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        StopCoroutine(PauseTime());
+        playModeCG_.DOFade(1, 0.5f);
+        pauseCG_.DOFade(0, 0.5f);
+        pauseMenu_.SetActive(false);
+        StartCoroutine(UnPauseTime());
     }
     
+    IEnumerator PauseTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = 0f;
+    }
+    IEnumerator UnPauseTime()
+    {
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(0.5f);
+    }
     public void Quit()
     {
         Application.Quit();
