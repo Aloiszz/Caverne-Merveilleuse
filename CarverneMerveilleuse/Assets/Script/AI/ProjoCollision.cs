@@ -23,6 +23,14 @@ public class ProjoCollision : MonoBehaviour
 
     private void Start()
     {
+        if (isProjoGros)
+        {
+            transform.parent = origine.transform;
+        }
+        else
+        {
+            transform.parent = shooter.transform;
+        }
         initialSpeed = PlayerController.instance.playerSO.speedMovement;
         speed = initialSpeed / 2;
     }
