@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
             cam.DOCinemachineOrthoSize(7, 2);
             ArchimageGO.SetActive(true);
             BtnInteraction.SetActive(true);
-            
+
             ArchimageCG.DOFade(1, .2f);
             btnInteractionCG.DOFade(1, .2f);
         }
@@ -57,6 +57,8 @@ public class DialogueManager : MonoBehaviour
         PlayerLightAttack.instance.enabled = false;
         PlayerHeavyAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
+        
+        SceneManager.instance.playModeCG_.DOFade(0, 0.5f);
 
         Animator.SetBool("isOpen", true);
         nameTxt.text = dialogue.name;
@@ -103,7 +105,10 @@ public class DialogueManager : MonoBehaviour
             PlayerController.instance.enabled = true;
             PlayerLightAttack.instance.enabled = true;
             PlayerHeavyAttack.instance.enabled = true;
+            PlayerHeavyAttack.instance.activate = false;
             PlayerThrowAttack.instance.enabled = true;
+            
+            SceneManager.instance.playModeCG_.DOFade(1,0.5f);
         }
         else
         {

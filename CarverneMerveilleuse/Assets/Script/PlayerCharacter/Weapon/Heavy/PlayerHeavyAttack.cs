@@ -181,7 +181,8 @@ public class PlayerHeavyAttack : MonoBehaviour
         
         if (!ItemManager.instance.canMoveWhileBeyblade)
         {
-            PlayerController.instance.enabled = false;
+            //PlayerController.instance.enabled = false;
+            PlayerController.instance.speedMovement = 50;
         }
 
         if (ItemManager.instance.beybladeInvinsible)
