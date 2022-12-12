@@ -10,7 +10,9 @@ public class EnnemyManager : MonoBehaviour
     public GameObject spider;
     public GameObject bat;
     public GameObject petrol;
-
+    public GameObject SpawningVFX;
+    
+    [Space]
     public float timeBeforeFighting = 2; // temps avant le combats
     public float timeToAppearEnnemy = 0.7f; // temps pour activer les ennemis (d'abors le cercle puis activer les ennemies)
     

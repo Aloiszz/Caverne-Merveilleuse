@@ -59,7 +59,6 @@ public class Cac_Anim : MonoBehaviour
             
             if (spyder.speed >= 0.3f)
             {
-                Debug.Log("qsd");
                 graph.transform.localScale = new Vector3(0.102338f,0.102338f,102338f);
             }
             else if (spyder.speed <= -0.3f)

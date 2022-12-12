@@ -21,6 +21,11 @@ public class EnnemySpawner : MonoBehaviour
 
     public int actualNumberOfWave;
     public int numberOfWave;
+
+    [SerializeField] private int randPosSpyder; //position de spawn de l'ennemi
+    private int randPosBat;
+    private int randPosPetrol;
+    
     private void Start()
     {
         spawnPointPosition = GameObject.FindGameObjectsWithTag("SpawnEnnemy");
@@ -106,8 +111,10 @@ public class EnnemySpawner : MonoBehaviour
             var apparitionChance = Random.Range(0, 100);
             if (apparitionChance < SO_ennemySpawner.difficulty_Spyder[SO_ennemySpawner.difficulty_Index])
             {
-                rand = Random.Range(0, spawnPointPosition.Length);
-                Instantiate(EnnemyManager.instance.spider, spawnPointPosition[rand].transform.position, quaternion.identity, transform);
+                //rand = Random.Range(0, spawnPointPosition.Length);
+                ChooseRandomPosition(1);
+                Instantiate(EnnemyManager.instance.SpawningVFX, spawnPointPosition[randPosSpyder].transform.position, quaternion.identity, transform);
+                Instantiate(EnnemyManager.instance.spider, spawnPointPosition[randPosSpyder].transform.position, quaternion.identity, transform);
             }
         }
         
@@ -116,8 +123,10 @@ public class EnnemySpawner : MonoBehaviour
             var apparitionChance = Random.Range(0, 100);
             if (apparitionChance < SO_ennemySpawner.difficulty_Bat[SO_ennemySpawner.difficulty_Index])
             {
-                rand = Random.Range(0, spawnPointPosition.Length);
-                Instantiate(EnnemyManager.instance.bat, spawnPointPosition[rand].transform.position, quaternion.identity, transform); 
+                //rand = Random.Range(0, spawnPointPosition.Length);
+                ChooseRandomPosition(2);
+                Instantiate(EnnemyManager.instance.SpawningVFX, spawnPointPosition[randPosBat].transform.position, quaternion.identity, transform);
+                Instantiate(EnnemyManager.instance.bat, spawnPointPosition[randPosBat].transform.position, quaternion.identity, transform); 
             }
         }
         
@@ -126,10 +135,30 @@ public class EnnemySpawner : MonoBehaviour
             var apparitionChance = Random.Range(0, 100);
             if (apparitionChance < SO_ennemySpawner.difficulty_Petrol[SO_ennemySpawner.difficulty_Index])
             {
-                rand = Random.Range(0, spawnPointPosition.Length);
-                Instantiate(EnnemyManager.instance.petrol, spawnPointPosition[rand].transform.position, quaternion.identity, transform);
+                //rand = Random.Range(0, spawnPointPosition.Length);
+                ChooseRandomPosition(3);
+                Instantiate(EnnemyManager.instance.SpawningVFX, spawnPointPosition[randPosPetrol].transform.position, quaternion.identity, transform);
+                Instantiate(EnnemyManager.instance.petrol, spawnPointPosition[randPosPetrol].transform.position, quaternion.identity, transform);
             }
-                
+        }
+    }
+    
+
+    void ChooseRandomPosition(int TypeEnnemi)
+    {
+        switch (TypeEnnemi)
+        {
+            case 1: // Spyder
+                randPosSpyder = Random.Range(0, spawnPointPosition.Length);
+                break;
+            
+            case 2: // Bat
+                randPosBat = Random.Range(0, spawnPointPosition.Length);
+                break;
+            
+            case 3: // Petrol
+                randPosPetrol = Random.Range(0, spawnPointPosition.Length);
+                break;
         }
     }
 }

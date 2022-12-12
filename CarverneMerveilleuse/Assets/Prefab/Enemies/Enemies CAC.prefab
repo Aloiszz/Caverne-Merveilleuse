@@ -637,6 +637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5904098094530398249}
+  - component: {fileID: 1509874127094416158}
   - component: {fileID: 5904098094530398254}
   - component: {fileID: 5904098094530398252}
   - component: {fileID: 2670320833063829144}
@@ -681,6 +682,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1509874127094416158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904098094530398242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f700949f336f2b43ba571e1c315453d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 4012145387654875278}
+  healthBar: {fileID: 1268570029348340258}
+  eye1: {fileID: 1138714296639208957}
+  eye2: {fileID: 4841883948712118159}
 --- !u!212 &5904098094530398254
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1399,6 +1416,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 166e71249f678f347a06d60bf91bd063, type: 3}
       propertyPath: m_Name
       value: new spider
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 166e71249f678f347a06d60bf91bd063, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8274252375779896477, guid: 166e71249f678f347a06d60bf91bd063, type: 3}
       propertyPath: m_Bounds.m_Center.x
