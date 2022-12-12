@@ -1106,6 +1106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8470151544048026664}
+  - component: {fileID: 768482236009059171}
   m_Layer: 0
   m_Name: SalleBoss
   m_TagString: Untagged
@@ -1139,6 +1140,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &768482236009059171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470151544048026665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd48ad302ba35454daa480a2923e7c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlternativeDoor: []
+  goldenDoor: {fileID: 0}
+  isGoldenPath: 0
+  isHub: 0
+  isShopRoom: 0
+  DoorEnnemyPosition: []
+  DoorEnnemy: []
+  sprite: []
+  tiles: []
+  light: []
 --- !u!1 &8470151544635747684
 GameObject:
   m_ObjectHideFlags: 0
