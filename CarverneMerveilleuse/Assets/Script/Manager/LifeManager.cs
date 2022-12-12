@@ -21,8 +21,8 @@ public class LifeManager : MonoBehaviour
     [Header("Rage")]
     [SerializeField] private Image life_Bar_RageScore; // dépend du scoreRage
     [SerializeField] private Image life_Bar_RageLife; // Dépend de la vie
-    [SerializeField] private float timeInRage = 3;
-    private float timeInRageMax;
+    public float timeInRage = 3;
+    [HideInInspector] public float timeInRageMax;
     public bool isInRage;
     [SerializeField]private bool rageBarScore; // savoir juste quelle bar utilisé entre bar life et bar score
     [SerializeField]private bool rageBarLife;
@@ -87,7 +87,7 @@ public class LifeManager : MonoBehaviour
             }
             if (timeInRage <= 0)
             {
-                timeInRage = 3;
+                timeInRage = timeInRageMax;
                 isInRage = false;
                 PlayerController.instance.Rage();
                 Score.instance.scoreRage = 0;
