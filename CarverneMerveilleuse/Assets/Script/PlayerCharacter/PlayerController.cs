@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour
     public void LoseLife()
     {
         life -= 1;
+        StartCoroutine(InvinsibleTime());
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         
@@ -212,6 +213,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator InvinsibleTime()
+    {
+        Physics2D.IgnoreLayerCollision(0,6, true);
+        Physics2D.IgnoreLayerCollision(0,7, true);
+        yield return new WaitForSeconds(2f);
+        Physics2D.IgnoreLayerCollision(0,6, false);
+        Physics2D.IgnoreLayerCollision(0,7, false);
+    }
     IEnumerator PetrolDash()
     {
         

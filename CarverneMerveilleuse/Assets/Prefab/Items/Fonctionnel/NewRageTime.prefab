@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 659820544013695858}
   - component: {fileID: 659820544013695857}
   m_Layer: 0
-  m_Name: RecupereVieAP
+  m_Name: NewRageTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7882353, g: 0.45922768, b: 0.06274507, a: 1}
+  m_SortingOrder: 140
+  m_Sprite: {fileID: 21300000, guid: 25306d265af37f744a6aeb65e547f81d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,9 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasItem: {fileID: 0}
-  nomItem: Sangsue de coeur
-  descriptionItem: "A chaque fois que vous tuez avec l'attaque principale, vous r\xE9cup\xE9rez
-    un pourcentage de vie "
-  prix: 0
-  goldenPrix: 2
-  isMerveilleux: 1
+  nomItem: Lettre maudite
+  descriptionItem: Augmente votre temps en rage
+  prix: 33
+  goldenPrix: 0
+  isMerveilleux: 0
