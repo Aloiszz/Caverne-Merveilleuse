@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public List<Vector2> lastMovement;
     private string strMovement;
 
-    [SerializeField] private GameObject dashTrail;
+    public GameObject dashTrail;
     
     
     [Header("Singleton")]
@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
     public int lifeDepard;
     public bool isDashing;
     [HideInInspector] public int nbPossibleDash = 1;
-    
+    [HideInInspector] public bool isInHole;
+    [HideInInspector] public Vector2 actualVelocity;
     
     [Header("Camera Zoom")] 
     public float zoomSize;
@@ -160,7 +161,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetButtonDown("Dash") && playerSO.isDash)
+        if (Input.GetButtonDown("Dash") && playerSO.isDash && !isInHole)
         {
             rb.AddForce(new Vector2(lastMovement[^1].x, lastMovement[^1].y) * dashForce);
             StartCoroutine(DashReload());
@@ -192,8 +193,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
-        isDashing = false;
-        dashTrail.SetActive(false);
+        if (!isInHole)
+        {
+            isDashing = false;
+            dashTrail.SetActive(false);
+        }
+        
     }
 
 
@@ -241,5 +246,12 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == 9 && isInHole)
+        {
+            actualVelocity = -actualVelocity;
+        }
+    }
 }
