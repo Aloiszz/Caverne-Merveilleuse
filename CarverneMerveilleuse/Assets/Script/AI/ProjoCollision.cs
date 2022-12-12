@@ -125,7 +125,7 @@ public class ProjoCollision : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         //gameObject.transform.localScale = new Vector3(5, 5);
-        gameObject.transform.DOScale(new Vector3(5, 1), .2f);
+        gameObject.transform.DOScale(new Vector3(5, 5), .2f);
         mode2 = true;
         check = true;
     }

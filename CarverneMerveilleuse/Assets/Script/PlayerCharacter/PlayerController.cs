@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
         {
             speedMovement = 110;
             dashForce = 5000;
-            dashReload = 1.2f;
+            dashReload = .8f;
             PlayerLightAttack.instance.coolDownEndComboIndex = 1;
         }
         else
