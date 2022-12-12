@@ -8,6 +8,7 @@ public class trouScript : MonoBehaviour
     private Vector2 actualVelocity;
     private Rigidbody2D playerRB;
     private Collider2D coll;
+    private bool test = true;
 
     private void Start()
     {
@@ -41,9 +42,18 @@ public class trouScript : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            Debug.Log("je rentre");
             PlayerController.instance.isInHole = true;
             PlayerController.instance.actualVelocity = playerRB.velocity.normalized * new Vector2(50, 50);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && test)
+        {
+            PlayerController.instance.isInHole = true;
+            PlayerController.instance.actualVelocity = playerRB.velocity.normalized * new Vector2(50, 50);
+            test = false;
         }
     }
 
@@ -51,11 +61,11 @@ public class trouScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("je sors");
             PlayerController.instance.dashTrail.SetActive(false);
             PlayerController.instance.isInHole = false;
             PlayerController.instance.dashTrail.SetActive(false);
             PlayerController.instance.isDashing = false;
+            test = true;
         }
     }
 }
