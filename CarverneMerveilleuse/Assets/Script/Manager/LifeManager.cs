@@ -67,10 +67,10 @@ public class LifeManager : MonoBehaviour
 
         RageDueToLife();
         RageDueToScoreRage();
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             isInRage = true;
-        }
+        }*/
 
         if (isInRage)
         {
