@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> roomMemory;
     public int roomMemoryIndex;
     
-    [SerializeField]public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
+    public List<RoomSpawnerV2.Direction> roomMemoryDirection = new ();
     public int roomMemoryDirectionIndex;
 
     [HideInInspector]public List<GameObject> roomTemplateTop;    
