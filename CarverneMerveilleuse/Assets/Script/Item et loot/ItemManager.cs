@@ -94,7 +94,7 @@ public class ItemManager : MonoBehaviour
     [HideInInspector] public int dropCoeurSupp;
 
     [Header("Rage")] 
-    [Tooltip("Nouveau temps de duration de la rage (en seconde >3")]
+    [Tooltip("Nouveau temps de duration de la rage (en seconde >4.5")]
     public float newRageTime = 5;
 
     private void Awake()
