@@ -206,6 +206,11 @@ public class PlayerController : MonoBehaviour
     {
         if (LifeManager.instance.isInRage)
         {
+            if (PlayerThrowAttack.instance.isThrow)
+            {
+                PlayerThrowAttack.instance.ReturnWeaponImmediate();
+            }
+            
             speedMovement = 110;
             dashForce = 5000;
             dashReload = .8f;

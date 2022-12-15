@@ -65,6 +65,10 @@ public class RoomSpawnerV2 : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             ProceduralGeneration(); //Entre en contact avec une porte
+            if (PlayerThrowAttack.instance.isThrow)
+            {
+                PlayerThrowAttack.instance.ReturnWeaponImmediate();
+            }
         } 
     }
     

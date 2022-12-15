@@ -272,10 +272,25 @@ public class PlayerThrowAttack : MonoBehaviour
         }
     }
 
+
+    public void ReturnWeaponImmediate()
+    {
+        is_F_Pressed = true;
+        points.Clear();
+
+        PointCollission.instance.transform.position = PlayerController.instance.transform.position;
+        isThrow = false;
+        is_F_Pressed = false;
+        PointCollission.instance.verifPremierTouch = false;
+        ThrowCollision.instance.laFaux.SetActive(false);
+
+        fauxScaleActual = fauxScaleBase;
+        lerp = 0;
+    }
+
     IEnumerator WaitForReturnWeapon()
     {
         yield return new WaitForSeconds(0.2f);
-        
     }
 
 
