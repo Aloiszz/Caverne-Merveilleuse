@@ -39,7 +39,7 @@ public class PointCollission : MonoBehaviour
             BounceWeapon();
         }
 
-        if (transform.position == PlayerThrowAttack.instance.points[bounceInt+1])
+        if (transform.position == PlayerThrowAttack.instance.points[^1])
         {
             verif = false;
         }

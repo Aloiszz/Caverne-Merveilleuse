@@ -105,10 +105,13 @@ public class PlayerThrowAttack : MonoBehaviour
         if (isThrow)
         {
             FlecheDeVise.SetActive(false);
-            if(Input.GetKeyDown(KeyCode.Mouse1)) // verif pour faire revenir la faux
+            if (PointCollission.instance.bounceInt >= 2)
             {
-                Debug.Log("return weapon");
-                is_F_Pressed = true;
+                if(Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Mouse0)) // verif pour faire revenir la faux
+                {
+                    Debug.Log("return weapon");
+                    is_F_Pressed = true;
+                }
             }
         }
         

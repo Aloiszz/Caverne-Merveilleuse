@@ -52,9 +52,10 @@ public class ThrowCollision : MonoBehaviour
         }
         else
         {
-            if (PlayerThrowAttack.instance.points[PointCollission.instance.bounceInt] == PlayerThrowAttack.instance.points[^1])
+            if (PlayerThrowAttack.instance.points[PointCollission.instance.bounceInt-1] == PlayerThrowAttack.instance.points[^1])
             {
                 laFaux.transform.Rotate (0, 0, 0);
+                PlayerThrowAttack.instance.ReturnWeapon();
             }
             else
             {
