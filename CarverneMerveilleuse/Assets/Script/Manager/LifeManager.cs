@@ -29,6 +29,7 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private Volume globalVolume;
     
     [SerializeField] private Image r_key_img;
+    [SerializeField] private TextMeshProUGUI rageTxt;
     [SerializeField] private int listScoreRageIndex = 0;
 
     public static LifeManager instance;
@@ -48,6 +49,7 @@ public class LifeManager : MonoBehaviour
     private void Start()
     {
         r_key_img.DOFade(0, 0);
+        rageTxt.DOFade(0, 0);
         
         StartCoroutine(AfficheHealthBar());
         
@@ -67,10 +69,10 @@ public class LifeManager : MonoBehaviour
 
         RageDueToLife();
         RageDueToScoreRage();
-        /*if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             isInRage = true;
-        }*/
+        }
 
         if (isInRage)
         {
@@ -115,6 +117,11 @@ public class LifeManager : MonoBehaviour
         {
             life_Bar_RageLife.DOFillAmount((float)1, 1);
             r_key_img.DOFade(1, .2f);
+            rageTxt.DOFade(1, 0.2f);
+            
+            r_key_img.transform.DOShakePosition(0.1f, 5);
+            rageTxt.transform.DOShakePosition(0.1f, 5);
+            
             if (Input.GetKeyDown(KeyCode.R))
             {
                 r_key_img.DOFade(0, .2f);
@@ -134,6 +141,7 @@ public class LifeManager : MonoBehaviour
         else
         {
             r_key_img.DOFade(0, .2f);
+            rageTxt.DOFade(0, .2f);
         }
 
     }

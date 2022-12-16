@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5608431743497421185}
   - component: {fileID: 7874213635429005976}
-  - component: {fileID: -2808586914153069535}
+  - component: {fileID: 2003915445574239809}
   - component: {fileID: 3891297086571840957}
   - component: {fileID: 5808281457317299206}
   m_Layer: 7
@@ -88,8 +88,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-2808586914153069535
-CircleCollider2D:
+--- !u!68 &2003915445574239809
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,8 +102,19 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.6637044, y: -0.02741909}
+  - {x: -0.34940958, y: 0.19194007}
+  - {x: 0.36823082, y: 0.19383025}
+  - {x: 0.7208395, y: -0.056513548}
+  - {x: 0.3765936, y: -0.26459813}
+  - {x: -0.38469887, y: -0.25587034}
+  - {x: -0.6577463, y: -0.024497986}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!50 &3891297086571840957
 Rigidbody2D:
   serializedVersion: 4
