@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class CinemachineCameraZoom : MonoBehaviour
 {
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [HideInInspector]public CinemachineVirtualCamera cinemachineVirtualCamera;
     public static CinemachineCameraZoom instance;
 
     private float initialZoom = 10f;

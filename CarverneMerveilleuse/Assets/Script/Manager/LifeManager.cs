@@ -72,10 +72,13 @@ public class LifeManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             isInRage = true;
+            PlayerController.instance.Rage();
         }
 
         if (isInRage)
         {
+            CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
+            CinemachineShake.instance.ShakeCamera(3,3,0.5f);
             timeInRage -= 1 * Time.deltaTime;
             if (rageBarScore)
             {
