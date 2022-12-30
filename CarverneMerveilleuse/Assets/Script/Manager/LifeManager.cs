@@ -31,7 +31,12 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private Image r_key_img;
     [SerializeField] private TextMeshProUGUI rageTxt;
     [SerializeField] private int listScoreRageIndex = 0;
+    
 
+    [Space] [Header("VFX")] 
+    public GameObject RageWave;
+    
+    
     public static LifeManager instance;
     
     private void Awake()
@@ -69,16 +74,18 @@ public class LifeManager : MonoBehaviour
 
         RageDueToLife();
         RageDueToScoreRage();
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             isInRage = true;
             PlayerController.instance.Rage();
+            CameraZoom();
         }
-
+        
         if (isInRage)
         {
-            CinemachineCameraZoom.instance.CameraZoom(8f, 0.05f, 0.6f);
-            CinemachineShake.instance.ShakeCamera(3,3,0.5f);
+            
+            
             timeInRage -= 1 * Time.deltaTime;
             if (rageBarScore)
             {
@@ -131,6 +138,7 @@ public class LifeManager : MonoBehaviour
                 isInRage = true;
                 rageBarLife = true;
                 PlayerController.instance.Rage();
+                CameraZoom();
                 if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
@@ -161,6 +169,7 @@ public class LifeManager : MonoBehaviour
                 isInRage = true;
                 rageBarScore = true;
                 PlayerController.instance.Rage();
+                CameraZoom();
                 if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
@@ -175,6 +184,21 @@ public class LifeManager : MonoBehaviour
         {
             r_key_img.DOFade(0, .2f);
         }
+    }
+
+
+    void CameraZoom()
+    {
+        CinemachineCameraZoom.instance.CameraZoom(5f, 0.05f, 2f);
+        //CinemachineCameraZoom.instance.cinemachineVirtualCamera.DOCinemachineOrthoSize(5, 0.05f).OnComplete((() => cameraEnd()));
+        CinemachineShake.instance.ShakeCamera(4,4,1f);
+        Instantiate(RageWave, PlayerController.instance.transform.position, Quaternion.identity,
+            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+    }
+
+    void cameraEnd()
+    {
+        CinemachineCameraZoom.instance.cinemachineVirtualCamera.DOCinemachineOrthoSize(10, .5f);
     }
 
     IEnumerator WaitForRageScoreBar()
