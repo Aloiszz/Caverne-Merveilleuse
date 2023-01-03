@@ -133,7 +133,7 @@ public class LifeManager : MonoBehaviour
             rageTxt.DOFade(1, 0.2f);
             
             CinemachineShake.instance.ShakeCamera(2,2,10f);
-            r_key_img.transform.DOShakePosition(0.1f, 5);
+            //r_key_img.transform.DOShakePosition(0.1f, 5);
             rageTxt.transform.DOShakePosition(0.1f, 5);
             
             if (Input.GetKeyDown(KeyCode.R))
@@ -171,7 +171,7 @@ public class LifeManager : MonoBehaviour
             rageTxt.DOFade(1, 0.2f);
             
             CinemachineShake.instance.ShakeCamera(2,2,10f);
-            r_key_img.transform.DOShakePosition(0.1f, 5);
+            //r_key_img.transform.DOShakePosition(0.1f, 5);
             rageTxt.transform.DOShakePosition(0.1f, 5);
             if (Input.GetKeyDown(KeyCode.R))
             {
