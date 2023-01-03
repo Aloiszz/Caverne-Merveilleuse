@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
 {
     
     public SO_RoomManager SO_RoomManager;
+    public SO_AlternativeRoom SO_AlternativeRoom;
     
     [Header("----------Golden Path----------")]
     public List<GameObject> roomMemory;
@@ -40,13 +41,13 @@ public class RoomManager : MonoBehaviour
     
     [Range(0, 100)]
     public int maxAlternativeRoomDepth; 
-    public List<GameObject> roomTemplateTopEND;    
+    [HideInInspector]public List<GameObject> roomTemplateTopEND;    
     
-    public List<GameObject> roomTemplateDownEND;
+    [HideInInspector]public List<GameObject> roomTemplateDownEND;
     
-    public List<GameObject> roomTemplateRightEND;
+    [HideInInspector]public List<GameObject> roomTemplateRightEND;
     
-    public List<GameObject> roomTemplateLeftEND;
+    [HideInInspector]public List<GameObject> roomTemplateLeftEND;
     
     [Header("----------Boss Room----------")]
     public List<GameObject> bossRoom;
@@ -85,6 +86,11 @@ public class RoomManager : MonoBehaviour
         roomTemplateDown = SO_RoomManager.roomTemplateDown;
         roomTemplateRight = SO_RoomManager.roomTemplateRight;
         roomTemplateLeft = SO_RoomManager.roomTemplateLeft;
+
+        roomTemplateTopEND = SO_AlternativeRoom.roomTemplateTop;
+        roomTemplateDownEND = SO_AlternativeRoom.roomTemplateDown;
+        roomTemplateRightEND = SO_AlternativeRoom.roomTemplateRight;
+        roomTemplateLeftEND = SO_AlternativeRoom.roomTemplateLeft;
     }
     
     private void Update()

@@ -6,6 +6,7 @@ using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class LifeManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class LifeManager : MonoBehaviour
     [SerializeField]private bool rageBarScore; // savoir juste quelle bar utilisé entre bar life et bar score
     [SerializeField]private bool rageBarLife;
     [SerializeField] private Volume globalVolume;
+    [SerializeField] private Renderer2DData blit; // eye blood
     
     [SerializeField] private Image r_key_img;
     [SerializeField] private TextMeshProUGUI rageTxt;
@@ -84,8 +86,8 @@ public class LifeManager : MonoBehaviour
         
         if (isInRage)
         {
-            
-            
+            blit.rendererFeatures[0].SetActive(true);
+
             timeInRage -= 1 * Time.deltaTime;
             if (rageBarScore)
             {
@@ -112,6 +114,7 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
+            blit.rendererFeatures[0].SetActive(false);
             if (globalVolume.weight >= 0)
             {
                 globalVolume.weight -= 2 * Time.deltaTime;
