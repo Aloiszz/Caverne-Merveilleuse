@@ -47,6 +47,7 @@ public class Room : MonoBehaviour
             }
             else
             {
+                Debug.Log("ICICICICICIC");
                 RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
             }
             CreateAlternativePath();

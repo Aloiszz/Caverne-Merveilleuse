@@ -10,9 +10,13 @@ public class Cac_Anim : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private List<Animator>  animator;
     [SerializeField] private GameObject  graph;
-
+    [SerializeField] private GameObject  eye1;
+    [SerializeField] private GameObject  eye2;
+    
+    
     private Rigidbody2D rb;
     private CaCEnnemiScript spyder;
+    private CACRigidbody spyderRigidBody;
     
     private void Update()
     {
@@ -27,6 +31,7 @@ public class Cac_Anim : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spyder = GetComponent<CaCEnnemiScript>();
+        spyderRigidBody = GetComponentInChildren<CACRigidbody>();
     }
 
     // Update is called once per frame
@@ -40,8 +45,6 @@ public class Cac_Anim : MonoBehaviour
         if (spyder._aiPath.enabled)
         {
             animator[0].SetBool("isWalking", true);
-            
-            
         }
         else
         {
@@ -57,14 +60,17 @@ public class Cac_Anim : MonoBehaviour
             }*/
             
             
-            if (spyder.speed >= 0.3f)
+            if (spyderRigidBody.speed >= 0.3f)
             {
                 graph.transform.localScale = new Vector3(0.102338f,0.102338f,102338f);
+                eye1.transform.localPosition = new Vector3(0.069f,-0.238f,0);
+                eye2.transform.localPosition = new Vector3(0.436f,-0.232f,0);
             }
-            else if (spyder.speed <= -0.3f)
+            else if (spyderRigidBody.speed <= -0.3f)
             {
-                Debug.Log("qsd");
                 graph.transform.localScale = new Vector3(-0.102338f,0.102338f,102338f);
+                eye1.transform.localPosition = new Vector3(-0.179f,-0.238f,0);
+                eye2.transform.localPosition = new Vector3(-0.538f,-0.232f,0);
             }
         }
         
