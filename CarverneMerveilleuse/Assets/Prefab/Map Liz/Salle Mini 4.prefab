@@ -3284,6 +3284,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8887977928995669298}
+  - component: {fileID: 3372205246589872369}
+  - component: {fileID: 19747529897400708}
   m_Layer: 0
   m_Name: Salle Mini 4
   m_TagString: Untagged
@@ -3315,6 +3317,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3372205246589872369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964136281625493472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd48ad302ba35454daa480a2923e7c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlternativeDoor: []
+  goldenDoor: {fileID: 0}
+  isGoldenPath: 0
+  isHub: 0
+  isShopRoom: 0
+  DoorEnnemyPosition: []
+  DoorEnnemy: []
+  sprite: []
+  tiles: []
+  light: []
+--- !u!114 &19747529897400708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964136281625493472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41dac80e25b0634fb4b63cf73713b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderVierge: 0
+  direction: 3
+  spawnpoint: {fileID: 0}
+  isAlternativeDoor: 0
+  isShopDoor: 0
+  porteQuiFautDetruire: 0
 --- !u!1 &8709795907528639801
 GameObject:
   m_ObjectHideFlags: 0

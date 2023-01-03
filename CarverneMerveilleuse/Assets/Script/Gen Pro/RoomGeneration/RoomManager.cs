@@ -32,6 +32,7 @@ public class RoomManager : MonoBehaviour
 
     public int goldenPathCount = 0;
 
+    [Space][Space]
     [Header("----------Alternative Path----------")]
     public List<GameObject> roomMemoryAlternativePath;
     public int roomMemoryAlternativePathIndex;
@@ -49,12 +50,13 @@ public class RoomManager : MonoBehaviour
     
     [HideInInspector]public List<GameObject> roomTemplateLeftEND;
     
+    [Space][Space]
     [Header("----------Boss Room----------")]
     public List<GameObject> bossRoom;
     public int roomLeftToBossRoom; 
     public  bool isBossRoom;
-
-
+    
+    [Space][Space]
     [Header("----------Shop Room----------")]
     public List<int> roomLeftToshopRoom;
     public int roomLeftToshopRooIndex = 0; 
@@ -87,10 +89,10 @@ public class RoomManager : MonoBehaviour
         roomTemplateRight = SO_RoomManager.roomTemplateRight;
         roomTemplateLeft = SO_RoomManager.roomTemplateLeft;
 
-        roomTemplateTopEND = SO_AlternativeRoom.roomTemplateTop;
-        roomTemplateDownEND = SO_AlternativeRoom.roomTemplateDown;
-        roomTemplateRightEND = SO_AlternativeRoom.roomTemplateRight;
-        roomTemplateLeftEND = SO_AlternativeRoom.roomTemplateLeft;
+        roomTemplateTopEND = SO_AlternativeRoom.roomTemplateDown;
+        roomTemplateDownEND = SO_AlternativeRoom.roomTemplateTop;
+        roomTemplateRightEND = SO_AlternativeRoom.roomTemplateLeft;
+        roomTemplateLeftEND = SO_AlternativeRoom.roomTemplateRight;
     }
     
     private void Update()

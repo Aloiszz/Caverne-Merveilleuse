@@ -16,6 +16,8 @@ public class CaCEnnemiScript : MonoBehaviour
     public float distToJumpOnPlayer;
     [HideInInspector] public AIPath _aiPath;
 
+    private Vector2 direction;
+
     [Header("AI Physics")]
     public Rigidbody2D rb;
     
@@ -49,7 +51,7 @@ public class CaCEnnemiScript : MonoBehaviour
     void Update()
     {
         speed = rb.velocity.x;
-        
+
         playerDir = player.transform.position - transform.position;
         if (playerDir.magnitude <= distanceToSeePlayer)
         {
@@ -63,7 +65,7 @@ public class CaCEnnemiScript : MonoBehaviour
         }
         OnSeePlayer();
     }
-
+    
 
     private void OnSeePlayer()
     {
