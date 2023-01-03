@@ -263,25 +263,25 @@ public class RoomSpawnerV2 : MonoBehaviour
             case Direction.Top :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateDownEND.Count);
                 Instantiate(RoomManager.instance.roomTemplateDownEND[rand], new Vector3(0,0,0),
-                    transform.rotation).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;  
             
             case Direction.Down :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateTopEND.Count);
                 Instantiate(RoomManager.instance.roomTemplateTopEND[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Right :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateLeftEND.Count);
                 Instantiate(RoomManager.instance.roomTemplateLeftEND[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                    Quaternion.identity).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
                 break;
             
             case Direction.Left :
                 rand = Random.Range(0, RoomManager.instance.roomTemplateRightEND.Count);
                 Instantiate(RoomManager.instance.roomTemplateRightEND[rand], new Vector3(0,0,0), 
-                    transform.rotation).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
+                    Quaternion.identity).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;;
                 break;
         }
     }

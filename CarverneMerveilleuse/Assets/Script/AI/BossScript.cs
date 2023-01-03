@@ -43,6 +43,7 @@ public class BossScript : MonoBehaviour
     private Vector2 vague1Pos;
     private Vector2 vague2Pos;
     private bool canAttack = true;
+    private bool canZone = true;
     private bool isCAC = false;
     private bool startCAC = false;
     private bool startVague = true;
@@ -137,6 +138,10 @@ public class BossScript : MonoBehaviour
             }
             else
             {
+                if ((player.transform.position - transform.position).magnitude <= 10 && canZone)
+                {
+                    StartCoroutine(ZoneCac());
+                }
                 int nb = Random.Range(1, 4);
                 if (nb == 2)
                 {
@@ -332,18 +337,34 @@ public class BossScript : MonoBehaviour
 
             if (isCAC)
             {
-                zone.SetActive(true);
-                zone.GameObject().GetComponent<Collider2D>().enabled = false;
-                zone.GetComponent<SpriteRenderer>().color = Color.green;
-                yield return new WaitForSeconds(tempsPrevention + 0.5f);
-                zone.GetComponent<SpriteRenderer>().color = Color.red;
-                zone.GameObject().GetComponent<Collider2D>().enabled = true;
-                yield return new WaitForSeconds(0.2f);
-                zone.SetActive(false);
-                yield return new WaitForSeconds(1f);
+                StartCoroutine(ZoneCac());
+            }
+            else
+            {
+                startCAC = false;
+                canAttack = true;
             }
             
+        }
+    }
+
+    IEnumerator ZoneCac()
+    {
+        if (canZone)
+        {
+            canAttack = false;
+            canZone = false;
+            zone.SetActive(true);
+            zone.GameObject().GetComponent<Collider2D>().enabled = false;
+            zone.GetComponent<SpriteRenderer>().color = Color.green;
+            yield return new WaitForSeconds(tempsPrevention + 0.5f);
+            zone.GetComponent<SpriteRenderer>().color = Color.red;
+            zone.GameObject().GetComponent<Collider2D>().enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            zone.SetActive(false);
+            yield return new WaitForSeconds(1f);
             startCAC = false;
+            canZone = true;
             canAttack = true;
         }
     }
