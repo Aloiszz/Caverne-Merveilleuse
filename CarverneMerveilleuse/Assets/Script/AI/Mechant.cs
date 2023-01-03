@@ -201,6 +201,11 @@ public class Mechant : MonoBehaviour
         life -= (PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash) / 2;
     }
 
+    public void RageArea()
+    {
+        rb.AddForce((transform.position - player.transform.position) * 200);
+    }
+
     public void DebutHitStop()
     {
         StopCoroutine(FinHitStop());
