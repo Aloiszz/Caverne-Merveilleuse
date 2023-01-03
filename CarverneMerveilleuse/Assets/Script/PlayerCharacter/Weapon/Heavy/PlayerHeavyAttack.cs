@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.VFX;
 
 public class PlayerHeavyAttack : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class PlayerHeavyAttack : MonoBehaviour
     [Header("Animator")] 
     public bool isCharge;
     
+    [Header("VFX")] 
+    public VisualEffect Slash;
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -176,6 +179,7 @@ public class PlayerHeavyAttack : MonoBehaviour
     
     void Tourne()
     {
+        Slash.Play();
         PlayerLightAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
         

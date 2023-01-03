@@ -32,13 +32,16 @@ public class BossScript : MonoBehaviour
     public GameObject attaqueAvant2;
     public GameObject zone;
     public GameObject chute;
+    public GameObject part2Room;
     public GameObject transitionPoint;
+    public float bossSpeed = 5;
     public float vaguesSpeed;
     public float tempsPrevention = 0.2f;
 
     [Header("Info")] 
     public GameObject player;
     public Mechant mechantScript;
+    private Rigidbody2D rb;
 
     private Vector2 vague1Pos;
     private Vector2 vague2Pos;
@@ -58,14 +61,18 @@ public class BossScript : MonoBehaviour
     private bool ennemi4Vivant;
     private bool phaseTransition = true;
     private float posXJoueur;
+    private float posYJoueur;
+    private Mechant lifeScript;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         vague1Pos = vague1.transform.position;
         vague2Pos = vague2.transform.position;
         vague2RB = vague2.GetComponent<Rigidbody2D>();
         vague1RB = vague1.GetComponent<Rigidbody2D>();
         player = PlayerController.instance.gameObject;
+        lifeScript = GetComponent<Mechant>();
         while (listEnnemis.Count < 4)
         {
             listEnnemis.Add(null);
@@ -75,11 +82,24 @@ public class BossScript : MonoBehaviour
     void Update()
     {
         posXJoueur = (player.transform.position - transform.position).normalized.x;
+        posYJoueur = (player.transform.position - transform.position).normalized.y;
         lifeBarre.fillAmount = mechantScript.life / mechantScript.lifeDepart;
         if (mechantScript.life > mechantScript.lifeDepart / 2 && startVague)
         {
             StartCoroutine(Vague());
         }
+        Debug.Log(lifeScript.canTakeDamage);
+        if ((PlayerThrowAttack.instance.isThrow || PlayerThrowAttack.instance.isAiming) && PointCollission.instance.bounceInt == 1)
+        {
+            lifeScript.canTakeDamage = false;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        if (PlayerThrowAttack.instance.is_F_Pressed || PointCollission.instance.bounceInt > 1)
+        {
+            lifeScript.canTakeDamage = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        
 
         if (mechantScript.life <= mechantScript.lifeDepart / 2 && phaseTransition)
         {
@@ -103,9 +123,23 @@ public class BossScript : MonoBehaviour
                 Destroy(listEnnemis[y]);
             }
             player.transform.position = transitionPoint.transform.position;
+            part2Room.SetActive(true);
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             phaseTransition = false;
         }
-        
+
+        if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur < 0)
+        {
+            rb.velocity = new Vector2(0, -bossSpeed);
+        }
+        else if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur > 0)
+        {
+            rb.velocity = new Vector2(0, bossSpeed);
+        }
+        else if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur == 0)
+        {
+            rb.velocity = Vector2.zero;
+        }
         if (mechantScript.life <= mechantScript.lifeDepart / 2 && canAttack && !isCAC)
         {
             StartCoroutine(Dist());
@@ -305,6 +339,7 @@ public class BossScript : MonoBehaviour
     {
         if (canAttack)
         {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             startCAC = true;
             canAttack = false;
             for (int i = 0; i < 2; i++)
@@ -343,6 +378,7 @@ public class BossScript : MonoBehaviour
             {
                 startCAC = false;
                 canAttack = true;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             }
             
         }

@@ -132,12 +132,15 @@ public class LifeManager : MonoBehaviour
             r_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);
             
-            r_key_img.transform.DOShakePosition(0.1f, 5);
+            CinemachineShake.instance.ShakeCamera(2,2,10f);
+            //r_key_img.transform.DOShakePosition(0.1f, 5);
             rageTxt.transform.DOShakePosition(0.1f, 5);
             
             if (Input.GetKeyDown(KeyCode.R))
             {
+                CinemachineShake.instance.StopAllCoroutines();
                 r_key_img.DOFade(0, .2f);
+                rageTxt.DOFade(0, 0.2f);
                 isInRage = true;
                 rageBarLife = true;
                 PlayerController.instance.Rage();
@@ -165,10 +168,16 @@ public class LifeManager : MonoBehaviour
         if (Score.instance.scoreRage > Score.instance.listScoreRage[listScoreRageIndex]) // rage quand score de rage atteint
         {
             r_key_img.DOFade(1, .2f);
+            rageTxt.DOFade(1, 0.2f);
+            
+            CinemachineShake.instance.ShakeCamera(2,2,10f);
+            //r_key_img.transform.DOShakePosition(0.1f, 5);
+            rageTxt.transform.DOShakePosition(0.1f, 5);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 listScoreRageIndex++;
                 r_key_img.DOFade(0, .2f);
+                rageTxt.DOFade(0, 0.2f);
                 isInRage = true;
                 rageBarScore = true;
                 PlayerController.instance.Rage();
@@ -192,11 +201,25 @@ public class LifeManager : MonoBehaviour
 
     void CameraZoom()
     {
-        CinemachineCameraZoom.instance.CameraZoom(5f, 0.05f, 2f);
+        CinemachineCameraZoom.instance.CameraZoom(5f, 0.05f, 1.5f);
         //CinemachineCameraZoom.instance.cinemachineVirtualCamera.DOCinemachineOrthoSize(5, 0.05f).OnComplete((() => cameraEnd()));
         CinemachineShake.instance.ShakeCamera(4,4,1f);
         Instantiate(RageWave, PlayerController.instance.transform.position, Quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+        
+        StartCoroutine(RageZoom());
+    }
+
+    IEnumerator RageZoom()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        for (int i = 0; i < 6; i++)
+        {
+            CinemachineCameraZoom.instance.CameraZoom(9.5f, 0.2f, .2f);
+            yield return new WaitForSeconds(.4f);
+        }
+        
     }
 
     void cameraEnd()
