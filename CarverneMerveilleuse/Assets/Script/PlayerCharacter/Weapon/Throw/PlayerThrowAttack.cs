@@ -38,6 +38,7 @@ public class PlayerThrowAttack : MonoBehaviour
     private float fauxScaleActual = 1;
     [SerializeField] private float fauxScaleBase = 1;
     [SerializeField] private float fauxScaleMax = 1.5f;
+    [HideInInspector] public bool isAiming;
     
     
     [Header("Cinemachine Schake")] 
@@ -94,12 +95,14 @@ public class PlayerThrowAttack : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1) && !isThrow)
         {
             Aim();
+            isAiming = true;
         }
         
         if (Input.GetKeyUp(KeyCode.Mouse1) && !isThrow)
         {
             Debug.Log("Throw Weapon");
             isThrow = true;
+            isAiming = false;
         }
 
         if (isThrow)

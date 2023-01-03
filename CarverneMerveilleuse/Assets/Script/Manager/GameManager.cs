@@ -16,8 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Chargetxt;
     [SerializeField]private bool verif_Chargebar;
     [SerializeField]private float verif_float;
-    
 
+
+    [Space] [Space] [Space] [Space] [Header("Intro du jeu")]
+    public bool playIntro;
+    
+    
+    
+    
     public static GameManager instance;
     
     private void Awake()
@@ -36,6 +42,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(AfficheHealthBar());
         Time.timeScale = 1;
+
+        if (playIntro)
+        {
+            Introduction();
+        }
     }
 
     private void Update()
@@ -49,8 +60,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
-        
         ChargeBar.DOFillAmount(verif_float / PlayerHeavyAttack.instance.loadingCoolDown[PlayerHeavyAttack.instance.loadingCoolDownIndex], 0);
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -62,8 +71,6 @@ public class GameManager : MonoBehaviour
         {
             verif_float = 0;
         }
-
-        
     }
 
     IEnumerator AfficheHealthBar()
@@ -73,5 +80,8 @@ public class GameManager : MonoBehaviour
         verif_dashbar = true;
     }
 
-    
+    void Introduction()
+    {
+        
+    }
 }
