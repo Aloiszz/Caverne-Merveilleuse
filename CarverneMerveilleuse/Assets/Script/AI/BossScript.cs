@@ -62,6 +62,7 @@ public class BossScript : MonoBehaviour
     private bool phaseTransition = true;
     private float posXJoueur;
     private float posYJoueur;
+    private Mechant lifeScript;
 
     private void Start()
     {
@@ -71,6 +72,7 @@ public class BossScript : MonoBehaviour
         vague2RB = vague2.GetComponent<Rigidbody2D>();
         vague1RB = vague1.GetComponent<Rigidbody2D>();
         player = PlayerController.instance.gameObject;
+        lifeScript = GetComponent<Mechant>();
         while (listEnnemis.Count < 4)
         {
             listEnnemis.Add(null);
@@ -86,16 +88,18 @@ public class BossScript : MonoBehaviour
         {
             StartCoroutine(Vague());
         }
-        
-        if ((PlayerThrowAttack.instance.isThrow || (Input.GetKey(KeyCode.Mouse1) && !PlayerThrowAttack.instance.isThrow)) && PointCollission.instance.bounceInt == 1)
+        Debug.Log(lifeScript.canTakeDamage);
+        if ((PlayerThrowAttack.instance.isThrow || PlayerThrowAttack.instance.isAiming) && PointCollission.instance.bounceInt == 1)
         {
-            Debug.Log(PlayerThrowAttack.instance.isThrow);
+            lifeScript.canTakeDamage = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
-        else 
+        if (PlayerThrowAttack.instance.is_F_Pressed || PointCollission.instance.bounceInt > 1)
         {
+            lifeScript.canTakeDamage = true;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
+        
 
         if (mechantScript.life <= mechantScript.lifeDepart / 2 && phaseTransition)
         {

@@ -40,7 +40,7 @@ public class Mechant : MonoBehaviour
     private float buffByDash;
     private int checkIfSameHitBox;
     private bool killedWithLightAtk;
-    
+    [HideInInspector] public bool canTakeDamage = true;
 
 
     void Start()
@@ -132,7 +132,6 @@ public class Mechant : MonoBehaviour
     }
     public void ReceiveLightDamage()
     {
-
         killedWithLightAtk = true;
         if (PlayerLightAttack.instance.countInput == PlayerLightAttack.instance.playerLightAttack.combo)
         {
@@ -183,13 +182,20 @@ public class Mechant : MonoBehaviour
 
     public void ReceiveThrowDamage()
     {
-        killedWithLightAtk = false;
-        DebutHitStop();
-        buffByDash = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.dashBuff;
-        buffAtk = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATK;
-        buffCritique = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] * itemManager.buffATKCritique;
-        life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] + buffAtk + buffCritique + buffByDash;
-        StartCoroutine(FinHitStop());
+        if (canTakeDamage)
+        {
+            killedWithLightAtk = false;
+            DebutHitStop();
+            buffByDash = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] *
+                         itemManager.dashBuff;
+            buffAtk = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] *
+                      itemManager.buffATK;
+            buffCritique = PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] *
+                           itemManager.buffATKCritique;
+            life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] + buffAtk +
+                    buffCritique + buffByDash;
+            StartCoroutine(FinHitStop());
+        }
     }
 
     public void OtherHit()
