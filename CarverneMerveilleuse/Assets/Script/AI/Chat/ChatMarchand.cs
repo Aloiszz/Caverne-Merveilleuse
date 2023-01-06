@@ -101,9 +101,9 @@ public class ChatMarchand : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D col)
+    /*private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (col.CompareTag("Player"))
+        if (coll.CompareTag("Player"))
         {
             RoomManager.instance.isShopRoom = true;
             
@@ -112,10 +112,10 @@ public class ChatMarchand : MonoBehaviour
             
             isStillActive = true;
             
-            Shop();
+            //Shop();
             
         }
-    }
+    }*/
 
 
     public void CatDesapear()
@@ -132,7 +132,7 @@ public class ChatMarchand : MonoBehaviour
     #region Shop Generation
 
 
-    void Shop()
+    public void Shop()
     {
         StartCoroutine(Mini_cinematic());
         
