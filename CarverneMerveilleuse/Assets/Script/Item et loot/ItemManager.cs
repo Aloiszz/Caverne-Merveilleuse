@@ -115,148 +115,149 @@ public class ItemManager : MonoBehaviour
         buffPushAB = 1;
     }
 
-    public void OnBuy(string itemName)
+    public void OnBuy(int ID)
     {
-        switch (itemName)
+        switch (ID)
         {
-            case "DegatsAP(Clone)":
+            
+            case 1: //"DegatsAP(Clone)":
                 buffATK = degatsAP / 100;
                 //Debug.Log("augmenter attaque");
                 break;
             
-            case "CooldownAP(Clone)":
+            case 2: //"CooldownAP(Clone)":
                 //Debug.Log("Baisse le cooldown");
                 endComboSoustracteur = cooldownAP;
                 break;
             
-            case "PushAP(Clone)":
+            case 3: //"PushAP(Clone)":
                 //Debug.Log("Le 3ème coup push les ennemis");
                 puissancePush = pushAP;
                 break;
             
-            case "PortéeAB(Clone)":
+            case 4 : //"PortéeAB(Clone)":
                 //Debug.Log("Augmente la portée du coup");
                 valeurNouvelleRange = pourcentagePortéeEnPlus / 100 + 1;
                 HeavyAttackCollision.instance.transform.localScale *= valeurNouvelleRange;
                 break;
             
-            case "TourAB(Clone)":
+            case 5: //"TourAB(Clone)":
                 //Debug.Log("Permet de faire un tour en plus");
                 PlayerHeavyAttack.instance.numberOfTurn[PlayerHeavyAttack.instance.numberOfTurnIndex] += 1;
                 break;
             
-            case "PushAB(Clone)":
+            case 6://"PushAB(Clone)":
                 //Debug.Log("Push plus loins les ennemis");
                 buffPushAB = pourcentagePushABEnPlus / 100 + 1;
                 break;
             
-            case "RebondALF(Clone)":
+            case 7://"RebondALF(Clone)":
                 //Debug.Log("Augmente le nombre de rebond");
                 PlayerThrowAttack.instance.maxBounce += nbRebondEnPlusALF;
                 break;
             
-            case "ChargementALF(Clone)":
+            case 8://"ChargementALF(Clone)":
                 Debug.Log("éduit le temps de chargement");
                 break;
             
-            case "TailleALF(Clone)":
+            case 9://"TailleALF(Clone)":
                 //Debug.Log("Augmente la taille de l'AOE");
                 ThrowCollision.instance.transform.localScale = new Vector2(
                     ThrowCollision.instance.transform.localScale.x * (pourcentagePortéeEnPlusALF / 100 + 1),
                     ThrowCollision.instance.transform.localScale.y * (pourcentagePortéeEnPlusALF / 100 + 1));
                 break;
             
-            case "MaxPV(Clone)":
+            case 10://"MaxPV(Clone)":
                 //Debug.Log("Augmente le max PV");
                 PlayerController.instance.life += MaxPV;
                 PlayerController.instance.lifeDepard += MaxPV;
                 break;
             
-            case "SeuilPV(Clone)":
+            case 11://"SeuilPV(Clone)":
                 //Debug.Log("Augmente les dégâts quand les PV passent en dessous d'un certain seuil");
                 canCrit = true;
                 break;
             
-            case "BouclierPV(Clone)":
+            case 12://"BouclierPV(Clone)":
                 //Debug.Log("Pendant les première seconde, une lumière vous entours et vous sert de bouclier");
                 canLightShield = true;
                 break;
             
-            case "DegatsDash(Clone)":
+            case 13://"DegatsDash(Clone)":
                 //Debug.Log("Inflige des dégâts aux ennemis sur la trajectoire du dash");
                 isDegatDashGet = true;
                 break;
             
-            case "NombreDash(Clone)":
+            case 14://"NombreDash(Clone)":
                 //Debug.Log("Permet de faire un dash en plus");
                 PlayerController.instance.nbPossibleDash += 1;
                 break;
             
-            case "PushDash(Clone)":
+            case 15://"PushDash(Clone)":
                 //Debug.Log("Push les ennemis sur la trajectoire du dash");
                 isPushDashGet = true;
                 break;
             
-            case "PVDrop(Clone)":
+            case 16://"PVDrop(Clone)":
                 //Debug.Log("Augmente le taux de drop de PV");
                 dropCoeurSupp = pourcentageDropCoeurEnPlus;
                 break;
             
-            case "ArgentDrop(Clone)":
+            case 17://"ArgentDrop(Clone)":
                 //Debug.Log("Augmente le taux de drop des dents en argent");
                 dropOrSupp = pourcentageDropOrEnPlus;
                 break;
             
-            case "CommuneDrop(Clone)":
+            case 18://"CommuneDrop(Clone)":
                 //Debug.Log("Augmente le taux de drop des dents communes");
                 dropSupp = nombreDentDropEnPlus;
                 break;
             
-            case "FenteAP(Clone)":
+            case 19://"FenteAP(Clone)":
                 //Debug.Log("Votre 3ème coup créer une fente devant vous qui inflige des dégâts");
                 isFenteAPGet = true;
                 break;
             
-            case "NewRageTime(Clone)":
+            case 20://"NewRageTime(Clone)":
                 //Debug.Log("A chaque fois que vous attaquez avec cette attaque, vous récupérez un pourcentage de vie en fonction des dégâts infligé");
                 LifeManager.instance.timeInRage = newRageTime;
                 LifeManager.instance.timeInRageMax = newRageTime;
                 break;
             
-            case "InvincibleAB(Clone)":
+            case 21://"InvincibleAB(Clone)":
                 //Debug.Log("Vous ne subissez pas de dégâts quand vous tournez");
                 beybladeInvinsible = true;
                 break;
             
-            case "DeplacerAB(Clone)":
+            case 22://"DeplacerAB(Clone)":
                 //Debug.Log("Vous pouvez vous déplacer quand vous tournez");
                 canMoveWhileBeyblade = true;
                 break;
             
-            case "ExplosifALF(Clone)":
+            case 23://"ExplosifALF(Clone)":
                 //Debug.Log("Vos projectiles deviennent explosifs, ils infligent plus de dégâts et font des dégâts de zones quand ils touchent un ennemi");
                 isExplosfALFGet = true;
                 break;
             
-            case "DiviseALF(Clone)":
+            case 24://"DiviseALF(Clone)":
                 Debug.Log("Votre faux se divise maintenant en 2, la taille est aussi divisée en 2");
                 break;
             
-            case "RegenPV(Clone)":
+            case 25://"RegenPV(Clone)":
                 Debug.Log("Votre vie se régénère au fur et à mesure du temps pendant un combat");
                 break;
             
-            case "SecondeviePV(Clone)":
+            case 26://"SecondeviePV(Clone)":
                 //Debug.Log("Quand votre vie tombe à zéro, elle remonte jusqu'à la moitié de la jauge de vie (une seule fois par game)");
                 nbVieEnPlus += 1;
                 break;
             
-            case "PetroleDash(Clone)":
+            case 27://"PetroleDash(Clone)":
                 Debug.Log("Vous laissez un trait de pétrole derrière vous, les ennemis subissent des dégâts et sont ralentis quand ils se trouvent dessus");
                 isPetroleDashGet = true;
                 break;
             
-            case "VitesseDegatsDash(Clone)":
+            case 28://"VitesseDegatsDash(Clone)":
                 //Debug.Log("Votre vitesse de déplacement et vos dégâts sont augmentés après un dash");
                 canDashBuff = true;
                 break;
