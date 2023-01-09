@@ -7,13 +7,13 @@ public class trouScript : MonoBehaviour
 {
     private Vector2 actualVelocity;
     private Rigidbody2D playerRB;
-    private Collider2D coll;
+    private CompositeCollider2D coll;
     private bool test = true;
 
     private void Start()
     {
         playerRB = PlayerController.instance.gameObject.GetComponent<Rigidbody2D>();
-        coll = GetComponent<Collider2D>();
+        coll = GetComponent<CompositeCollider2D>();
     }
 
     private void Update()
