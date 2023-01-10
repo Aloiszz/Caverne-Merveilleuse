@@ -118,7 +118,7 @@ public class GrosEnnemiScript : MonoBehaviour
             firstTimeShoot = false;
         }
         AI.enabled = false;
-        rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         isAttacking = true;
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
         projectile.GetComponent<ProjoCollision>().shooter = gameObject;
