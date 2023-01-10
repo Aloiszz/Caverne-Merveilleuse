@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     public string descriptionItem;
     public int prix;
     public int goldenPrix;
-    public float newPosY;
+    
 
 
     [Header("Info")] 
@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
     private void Start()
     {
         spawnPos = transform.position;
-        newPos = transform.position + new Vector3(0, newPosY, 0);
+        newPos = transform.position + new Vector3(0, 0.4f, 0);
         player = GameObject.FindWithTag("Player");
         ui = GameObject.Find("UIManager").GetComponent<UIManager>();
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -76,7 +76,7 @@ public class Item : MonoBehaviour
 
             if (transform.position.y <= newPos.y)
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y + 0.02f);
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.05f);
             }
             
         }
@@ -88,7 +88,7 @@ public class Item : MonoBehaviour
         }
         else if (transform.position.y >= spawnPos.y)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y - 0.02f);
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.05f);
         }
     }
 }

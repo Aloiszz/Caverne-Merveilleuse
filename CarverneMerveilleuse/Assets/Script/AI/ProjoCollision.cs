@@ -88,6 +88,7 @@ public class ProjoCollision : MonoBehaviour
                 origine.projoList.Clear();
                 origine.canShoot = true;
                 PlayerController.instance.speedMovement = initialSpeed;
+                origine.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 Destroy(gameObject);
             }
         }
@@ -155,7 +156,9 @@ public class ProjoCollision : MonoBehaviour
             }
             origine.projoList.Clear();
             origine.canShoot = true;
+            origine.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             PlayerController.instance.speedMovement = initialSpeed;
+            
 
         }
     }
