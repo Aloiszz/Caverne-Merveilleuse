@@ -48,11 +48,11 @@ public class DialogueManager : MonoBehaviour
             cam.DOCinemachineOrthoSize(10, 2);
             ArchimageGO.SetActive(false);
             BtnInteraction.SetActive(false);
-            //BtnScore.SetActive(false);
+            BtnScore.SetActive(false);
             
             ArchimageCG.DOFade(0, .2f);
             btnInteractionCG.DOFade(0, .2f);
-            //btnScoreCG.DOFade(0, .2f);
+            btnScoreCG.DOFade(0, .2f);
         }
     }
 
