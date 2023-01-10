@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
@@ -8,10 +9,12 @@ public class Score : MonoBehaviour
     public int score;
     public int scoreRage;
     public List<int> listScore;
+    public int lastScore;
     public List<int> listScoreRage;
     public bool addScore;
     [Tooltip("Permet de reset le score dans les playerpref")]
     public bool resetPlayerPrefScore;
+    private TMP_Text affichage;
 
     public static Score instance;
 
@@ -27,12 +30,13 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        
+        affichage = GameObject.Find("ScoreAffichage").GetComponent<TMP_Text>();
         listScore.Add(PlayerPrefs.GetInt("Score1"));
         listScore.Add(PlayerPrefs.GetInt("Score2"));
         listScore.Add(PlayerPrefs.GetInt("Score3"));
         listScore.Add(PlayerPrefs.GetInt("Score4"));
         listScore.Add(PlayerPrefs.GetInt("Score5"));
+        lastScore = PlayerPrefs.GetInt("LastScore");
     }
 
     private void Update()
@@ -50,11 +54,15 @@ public class Score : MonoBehaviour
             PlayerPrefs.SetInt("Score3", 0);
             PlayerPrefs.SetInt("Score4", 0);
             PlayerPrefs.SetInt("Score5", 0);
+            resetPlayerPrefScore = false;
         }
+
+        affichage.text = score.ToString();
     }
 
     public void AddScore()
     {
+        PlayerPrefs.SetInt("LastScore", score);
         if (listScore.Count == 0)
         {
             listScore.Add(score);
@@ -87,7 +95,13 @@ public class Score : MonoBehaviour
         PlayerPrefs.SetInt("Score3", listScore[2]);
         PlayerPrefs.SetInt("Score4", listScore[3]);
         PlayerPrefs.SetInt("Score5", listScore[4]);
-        
+
+        ScoreBoard.instance.score1.text = PlayerPrefs.GetInt("Score1").ToString();
+        ScoreBoard.instance.score2.text = PlayerPrefs.GetInt("Score2").ToString();
+        ScoreBoard.instance.score3.text = PlayerPrefs.GetInt("Score3").ToString();
+        ScoreBoard.instance.score4.text = PlayerPrefs.GetInt("Score4").ToString();
+        ScoreBoard.instance.score5.text = PlayerPrefs.GetInt("Score5").ToString();
+        ScoreBoard.instance.lastScore.text = PlayerPrefs.GetInt("LastScore").ToString();
 
     }
     

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6464395272761645495}
   - component: {fileID: 8579536777242821429}
-  - component: {fileID: 8107034920342267720}
   - component: {fileID: 5965977800767009972}
+  - component: {fileID: 6080313781821319156}
   m_Layer: 8
   m_Name: Fente
   m_TagString: AttackCollision
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5728894679914257437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.9, y: -2.82, z: 0}
-  m_LocalScale: {x: 6.002222, y: 1.2730571, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: b53fcc88d174957469b183db7408a559, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f972477be938f324dbf6fcf0b94ca952, type: 3}
   m_Color: {r: 0.9622642, g: 0.077162705, b: 0.077162705, a: 0.39607844}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,32 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &8107034920342267720
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5728894679914257437}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.49, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.0078125, y: 0.015625, z: 0.015625, w: 0.015625}
-    pivot: {x: 0, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &5965977800767009972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +98,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972b880a66268da4eb21289bd0fc259a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &6080313781821319156
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728894679914257437}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.34391114, y: 0.51131475}
+    oldSize: {x: 18.9, y: 14.17}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.4600793, y: -1.1253302}
+      - {x: 1.5500793, y: -1.1053302}
+      - {x: 1.7200793, y: -1.0653301}
+      - {x: 1.8600793, y: -1.0353302}
+      - {x: 2.0400794, y: -0.99533015}
+      - {x: 2.0800793, y: -0.98533016}
+      - {x: 2.2800794, y: -0.9453302}
+      - {x: 2.4100792, y: -0.92533016}
+      - {x: 2.5000794, y: -0.8953302}
+      - {x: 2.7100792, y: -0.8453302}
+      - {x: 2.8200793, y: -0.8253302}
+      - {x: 3.0000794, y: -0.79533017}
+      - {x: 3.0900793, y: -0.7653302}
+      - {x: 3.2300792, y: -0.73533016}
+      - {x: 3.6700792, y: -0.6353302}
+      - {x: 3.8500793, y: -0.5953302}
+      - {x: 3.8900793, y: -0.5853302}
+      - {x: 3.9900792, y: -0.5653302}
+      - {x: 4.1800795, y: -0.5353302}
+      - {x: 4.270079, y: -0.5053302}
+      - {x: 4.4300795, y: -0.46533018}
+      - {x: 4.540079, y: -0.4453302}
+      - {x: 4.6300793, y: -0.4253302}
+      - {x: 5.0300794, y: -0.3353302}
+      - {x: 5.1300793, y: -0.3153302}
+      - {x: 5.2200794, y: -0.2953302}
+      - {x: 5.350079, y: -0.2653302}
+      - {x: 5.890079, y: -0.14533019}
+      - {x: 6.560079, y: 0.0046697995}
+      - {x: 6.850079, y: 0.064669795}
+      - {x: 6.930079, y: 0.0846698}
+      - {x: 7.250079, y: 0.15466979}
+      - {x: 7.600079, y: 0.23466979}
+      - {x: 7.710079, y: 0.2546698}
+      - {x: 7.8000793, y: 0.2746698}
+      - {x: 8.110079, y: 0.3446698}
+      - {x: 8.340079, y: 0.3946698}
+      - {x: 8.430079, y: 0.41466978}
+      - {x: 8.56008, y: 0.44466978}
+      - {x: 8.660079, y: 0.4646698}
+      - {x: 8.750079, y: 0.48466977}
+      - {x: 8.960079, y: 0.5346698}
+      - {x: 9.050079, y: 0.5546698}
+      - {x: 9.110079, y: 0.59466976}
+      - {x: 9.110079, y: 0.6346698}
+      - {x: 9.10008, y: 0.6646698}
+      - {x: 8.920079, y: 0.6846698}
+      - {x: 8.840079, y: 0.6946698}
+      - {x: 8.740079, y: 0.7046698}
+      - {x: 7.420079, y: 0.8146698}
+      - {x: 7.310079, y: 0.8246698}
+      - {x: 5.5100794, y: 0.97466975}
+      - {x: 5.4000793, y: 0.9846698}
+      - {x: 3.4800792, y: 1.1446698}
+      - {x: 3.3700793, y: 1.1546698}
+      - {x: 1.3300793, y: 1.3246697}
+      - {x: 1.1000793, y: 1.3446698}
+      - {x: 0.94007933, y: 1.3446698}
+      - {x: 0.8900793, y: 1.3246697}
+      - {x: 0.80007935, y: 1.2646698}
+      - {x: 0.60007936, y: 0.9846698}
+      - {x: 0.54007936, y: 0.91466975}
+      - {x: 0.5100793, y: 0.8546698}
+      - {x: 0.40007934, y: 0.7446698}
+      - {x: 0.35007933, y: 0.6646698}
+      - {x: 0.32007933, y: 0.6046698}
+      - {x: 0.21007934, y: 0.4946698}
+      - {x: 0.16007935, y: 0.4046698}
+      - {x: 0.090079345, y: 0.32466978}
+      - {x: 0.0000793457, y: 0.20466979}
+      - {x: -0.019920655, y: 0.15466979}
+      - {x: -0.019920655, y: -0.2553302}
+      - {x: 0.08007935, y: -0.37533018}
+      - {x: 0.17007934, y: -0.4753302}
+      - {x: 0.29007933, y: -0.5953302}
+      - {x: 0.35007933, y: -0.6853302}
+      - {x: 0.5100793, y: -0.85533017}
+      - {x: 0.61007935, y: -0.9453302}
+      - {x: 0.68007934, y: -1.0353302}
+      - {x: 0.8300793, y: -1.2053301}
+      - {x: 0.9100793, y: -1.2353302}
+      - {x: 1.0000793, y: -1.2253301}
+      - {x: 1.1000793, y: -1.2053301}
+      - {x: 1.1900793, y: -1.1853302}
+      - {x: 1.3500793, y: -1.1453302}

@@ -31,6 +31,7 @@ public class ChatCircleCollider : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             ChatMarchand.instance.see = false;
+            ChatMarchand.instance.isStillActive = false;
             //chat.see = false;
         }
     }

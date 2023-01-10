@@ -29,6 +29,7 @@ public class LifeManager : MonoBehaviour
     [SerializeField]private bool rageBarLife;
     [SerializeField] private Volume globalVolume;
     [SerializeField] private Renderer2DData blit; // eye blood
+    [SerializeField] private GameObject _rageArea;
     
     [SerializeField] private Image r_key_img;
     [SerializeField] private TextMeshProUGUI rageTxt;
@@ -82,6 +83,7 @@ public class LifeManager : MonoBehaviour
             isInRage = true;
             PlayerController.instance.Rage();
             CameraZoom();
+            RageShockWave();
         }
         
         if (isInRage)
@@ -145,6 +147,7 @@ public class LifeManager : MonoBehaviour
                 rageBarLife = true;
                 PlayerController.instance.Rage();
                 CameraZoom();
+                RageShockWave();
                 if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
@@ -182,6 +185,7 @@ public class LifeManager : MonoBehaviour
                 rageBarScore = true;
                 PlayerController.instance.Rage();
                 CameraZoom();
+                RageShockWave();
                 if (PlayerController.instance.life >= PlayerController.instance.lifeDepard)
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
@@ -198,6 +202,17 @@ public class LifeManager : MonoBehaviour
         }
     }
 
+    void RageShockWave()
+    {
+        _rageArea.SetActive(true);
+        StartCoroutine(RageAreaTime());
+    }
+
+    IEnumerator RageAreaTime()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _rageArea.SetActive(false);
+    }
 
     void CameraZoom()
     {

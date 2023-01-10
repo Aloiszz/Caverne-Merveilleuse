@@ -110,6 +110,7 @@ public class Mechant : MonoBehaviour
                     Instantiate(coeur, gameObject.transform.position, Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
+                Score.instance.score += pointScore;
             }
 
             if (CompareTag("Gros"))
@@ -125,8 +126,12 @@ public class Mechant : MonoBehaviour
             {
                 PlayerController.instance.life += ItemManager.instance.regenVie;
             }
-            Score.instance.score += pointScore;
+            
             Score.instance.scoreRage += pointScore;
+            /*if (CompareTag("Boss"))
+            {
+                Score.instance.AddScore();
+            }*/
             Destroy(gameObject);
         }
     }
@@ -205,6 +210,11 @@ public class Mechant : MonoBehaviour
         buffAtk = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATK;
         buffCritique = PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] * itemManager.buffATKCritique;
         life -= (PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash) / 2;
+    }
+
+    public void RageArea()
+    {
+        rb.AddForce((transform.position - player.transform.position) * 200);
     }
 
     public void DebutHitStop()

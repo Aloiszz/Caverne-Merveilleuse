@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +22,27 @@ public class GameManager : MonoBehaviour
 
     [Space] [Space] [Space] [Space] [Header("Intro du jeu")]
     public bool playIntro;
+
+    [Space]
+    [SerializeField] private GameObject _flecheDirection; // Player viseur
+    [SerializeField] private GameObject _ligneViser; // Player viseur
+
+    [Space]
+    [SerializeField] private GameObject _archimage; // Player viseur
+    [SerializeField] private GameObject _Player; // Player viseur
+    
+    [Space] 
+    public Light2D GlobalLight;
+    [SerializeField] private DialogueTrigger _dialogueTrigger;
+
+    [Space] 
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+    [SerializeField] private CinemachineTargetGroup _targetMain;
+    [SerializeField] private CinemachineTargetGroup _targetIntro;
+    
+    [Space]
+    [SerializeField] private GameObject _lightEclairage;
+    [SerializeField]private float _globalLigthFloat;
     
     
     
@@ -70,7 +93,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             verif_float = 0;
-        }
+        } ;
     }
 
     IEnumerator AfficheHealthBar()
@@ -82,6 +105,36 @@ public class GameManager : MonoBehaviour
 
     void Introduction()
     {
+        //Controller
+        PlayerLightAttack.instance.enabled = false;
+        PlayerHeavyAttack.instance.enabled = false;
+        PlayerThrowAttack.instance.enabled = false;
+        PlayerController.instance.enabled = false;
+        _flecheDirection.SetActive(false);
+        _ligneViser.SetActive(false);
         
+        
+        //Camera
+        _virtualCamera.Follow = _Player.transform;
+        //_virtualCamera.m_Lens.OrthographicSize = 5f;
+
+        //Light
+        _lightEclairage.SetActive(true);
+        GlobalLight.intensity = 0.15f;
+        
+        
+        //dialogue
+        _dialogueTrigger.TriggerDialogue();
+
+    }
+
+
+    public void EndIntro()
+    {
+        _virtualCamera.Follow = _targetMain.GetComponent<Transform>();
+        GlobalLight.intensity = 0.6f;
+        
+        _flecheDirection.SetActive(true);
+        _ligneViser.SetActive(true);
     }
 }

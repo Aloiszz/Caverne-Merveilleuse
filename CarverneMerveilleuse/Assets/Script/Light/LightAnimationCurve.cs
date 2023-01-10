@@ -10,10 +10,13 @@ public class LightAnimationCurve : MonoBehaviour
     
     [Header("Animation Curve")]
     public AnimationCurve CourbeDeFlamme;
+    
+    public AnimationCurve CreditFlamme;
     public Light2D Flamme;
     private float graph, increment;
     public bool canRunGame;
     public bool verif;
+    private bool ischecked;
 
 
     private void Start()
@@ -36,9 +39,15 @@ public class LightAnimationCurve : MonoBehaviour
         if (MenuManager.instance.verif)
         {
             canRunGame = false;
+            ischecked = true;
+            //Flamme.intensity = 0;
             increment -= Time.deltaTime;
             graph = CourbeDeFlamme.Evaluate(increment);
             Flamme.intensity = graph;
+        }
+        else if (ischecked)
+        {
+            canRunGame = true;
         }
     }
 

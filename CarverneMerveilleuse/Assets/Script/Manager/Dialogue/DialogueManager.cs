@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public CanvasGroup ArchimageCG;
     public GameObject BtnInteraction;
     public CanvasGroup btnInteractionCG;
+    public GameObject BtnScore;
+    public CanvasGroup btnScoreCG;
     
     private Queue<string> sentences;
     [Space]
@@ -35,18 +37,22 @@ public class DialogueManager : MonoBehaviour
             cam.DOCinemachineOrthoSize(7, 2);
             ArchimageGO.SetActive(true);
             BtnInteraction.SetActive(true);
+            BtnScore.SetActive(true);
 
             ArchimageCG.DOFade(1, .2f);
             btnInteractionCG.DOFade(1, .2f);
+            btnScoreCG.DOFade(1, .2f);
         }
         else
         {
             cam.DOCinemachineOrthoSize(10, 2);
             ArchimageGO.SetActive(false);
             BtnInteraction.SetActive(false);
+            BtnScore.SetActive(false);
             
             ArchimageCG.DOFade(0, .2f);
             btnInteractionCG.DOFade(0, .2f);
+            btnScoreCG.DOFade(0, .2f);
         }
     }
 
@@ -109,6 +115,11 @@ public class DialogueManager : MonoBehaviour
             PlayerThrowAttack.instance.enabled = true;
             
             SceneManager.instance.playModeCG_.DOFade(1,0.5f);
+
+            if (GameManager.instance.playIntro)
+            {
+                GameManager.instance.EndIntro();
+            }
         }
         else
         {
