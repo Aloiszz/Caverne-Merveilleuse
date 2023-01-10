@@ -151,6 +151,9 @@ public class MenuManager : MonoBehaviour
     {
         StartCoroutine(PlayAnimQuitGame());
 
+        animator.enabled = true;
+        animator.SetTrigger("Quit");
+        
         cg_MenuMainMenu.DOFade(0, 2);
         cg_btn_Play.DOFade(0, 2);
         cg_btn_Option.DOFade(0, 2);
@@ -319,7 +322,7 @@ public class MenuManager : MonoBehaviour
         go_btn_Option.SetActive(false);
         go_btn_Quit.SetActive(false);
 
-        cam.transform.DOMoveY(-50, 3).SetEase(Ease.InQuart);
+        //cam.transform.DOMoveY(-50, 3).SetEase(Ease.InQuart);
         
         
         yield return new WaitForSeconds(3f);
