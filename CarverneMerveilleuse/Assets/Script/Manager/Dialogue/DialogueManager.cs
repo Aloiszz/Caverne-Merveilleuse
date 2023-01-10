@@ -109,6 +109,11 @@ public class DialogueManager : MonoBehaviour
             PlayerThrowAttack.instance.enabled = true;
             
             SceneManager.instance.playModeCG_.DOFade(1,0.5f);
+
+            if (GameManager.instance.playIntro)
+            {
+                GameManager.instance.EndIntro();
+            }
         }
         else
         {

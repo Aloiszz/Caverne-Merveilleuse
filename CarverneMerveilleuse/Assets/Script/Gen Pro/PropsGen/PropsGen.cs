@@ -31,7 +31,7 @@ public class PropsGen : MonoBehaviour
         rand = Random.Range(0, propsList.Count);
         propsList[rand].SetActive(true);
         
-        
+        AstarPath.active.Scan();
         /*for(int u = 0; u < props.Length; u++)
         {
             props[u].SetActive(true);
