@@ -48,6 +48,7 @@ public class GrosEnnemiScript : MonoBehaviour
     [HideInInspector] public bool isAttacking;
 
     [Space] 
+    [SerializeField] private GameObject _shockZoneBlob;
     [SerializeField] private GameObject vfxFlaquePetrol;
     [SerializeField] private GameObject[] flaquePetrolList;
     private bool doOnce = true;
@@ -146,6 +147,8 @@ public class GrosEnnemiScript : MonoBehaviour
         }
         isDefending = true;
         cacHitBox.SetActive(true);
+        Instantiate(_shockZoneBlob, gameObject.transform.position, Quaternion.identity,
+            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
         yield return new WaitForSeconds(0.1f);
         isDefending = false;
         cacHitBox.SetActive(false);

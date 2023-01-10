@@ -157,6 +157,7 @@ public class RoomSpawnerV2 : MonoBehaviour
             InstatiateBossRoom();
             SpawnPointLocation();
             TeleportPlayerToNextRoom();
+            AstarPath.active.Scan();
         }
         AstarPath.active.Scan();
     }
@@ -338,7 +339,7 @@ public class RoomSpawnerV2 : MonoBehaviour
         
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
         Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
-            new Quaternion(0,0,0,0)).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+            Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
     }
     #endregion
     

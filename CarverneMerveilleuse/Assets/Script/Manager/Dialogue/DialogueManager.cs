@@ -34,7 +34,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (DialogueCollider.instance.isInRange)
         {
-            cam.DOCinemachineOrthoSize(7, 2);
+            if (!Introduction.instance.playIntro)
+            {
+                cam.DOCinemachineOrthoSize(7, 2);
+            }
+            
             ArchimageGO.SetActive(true);
             BtnInteraction.SetActive(true);
             BtnScore.SetActive(true);
@@ -45,7 +49,11 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            cam.DOCinemachineOrthoSize(10, 2);
+            if (!Introduction.instance.playIntro)
+            {
+                cam.DOCinemachineOrthoSize(10, 2);
+            }
+            
             ArchimageGO.SetActive(false);
             BtnInteraction.SetActive(false);
             BtnScore.SetActive(false);
@@ -116,9 +124,9 @@ public class DialogueManager : MonoBehaviour
             
             SceneManager.instance.playModeCG_.DOFade(1,0.5f);
 
-            if (GameManager.instance.playIntro)
+            if (Introduction.instance.playIntro)
             {
-                GameManager.instance.EndIntro();
+                Introduction.instance.EndIntro();
             }
         }
         else
