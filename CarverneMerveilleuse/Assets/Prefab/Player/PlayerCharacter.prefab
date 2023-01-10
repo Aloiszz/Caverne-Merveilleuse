@@ -209,6 +209,7 @@ MonoBehaviour:
   duration: 2
   fauxScaleBase: 1
   fauxScaleMax: 1.5
+  isAiming: 0
   intensityAmplitude: 2
   intensityFrequency: 3
   intensityTime: 0.15
@@ -2196,6 +2197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DASH
       objectReference: {fileID: 0}
+    - target: {fileID: 5092337503067212029, guid: 5a3aa27105e3ff24f905946d79be6c37, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a3aa27105e3ff24f905946d79be6c37, type: 3}
 --- !u!4 &248725731220301364 stripped
@@ -2482,7 +2487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: fd22553956ee0e04eae379320f82f567, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: fd22553956ee0e04eae379320f82f567, type: 3}
       propertyPath: m_RootOrder

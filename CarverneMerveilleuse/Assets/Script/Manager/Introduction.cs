@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -30,6 +31,9 @@ public class Introduction : MonoBehaviour
     [Space]
     [SerializeField] private GameObject _lightEclairage;
     [SerializeField]private float _globalLigthFloat;
+
+    [Space] 
+    [SerializeField] private CanvasGroup _IntroBD;
 
     [Space] 
     [Header("Effet Camera")] [SerializeField]
@@ -67,10 +71,60 @@ public class Introduction : MonoBehaviour
             switch (_dialogueTrigger.indexDialogue)
             {
                 case 1 :
-                    _virtualCamera.m_Lens.OrthographicSize = 12f;
+                    _virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
                     break;
-                case 3:
-                    _virtualCamera.m_Lens.OrthographicSize = 50f;
+                case 4:
+                    _lightEclairage.GetComponent<Light2D>().enabled = true;
+                    _lightEclairage.GetComponent<LightAnimationCurve>().enabled = true;
+                    _virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 5 : 
+                    _virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 6 :
+                    _virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 7 : 
+                    _virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 8 :
+                    _virtualCamera.Follow = _targetIntro.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 7f;
+                    break;
+                case 9:
+                    _virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 10 : 
+                    _virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 11 : 
+                    _virtualCamera.Follow = _targetIntro.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 7f;
+                    break;
+                case 12 :
+                    _virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 13 : 
+                    _virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 14 :
+                    _virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    break;
+                case 15 :
+                    _IntroBD.DOFade(1, 4);
+                    break;
+                case 21 : 
+                    _IntroBD.DOFade(0, 4);
                     break;
             }
         }
@@ -92,14 +146,15 @@ public class Introduction : MonoBehaviour
         _virtualCamera.m_Lens.OrthographicSize = 5f;
 
         //Light
-        _lightEclairage.SetActive(true);
+        _lightEclairage.GetComponent<Light2D>().enabled = false;
+        _lightEclairage.GetComponent<LightAnimationCurve>().enabled = false;
         GlobalLight.intensity = 0.15f;
         Debug.Log(_dialogueTrigger.dialogue.Count);
         
         
         //dialogue
         _dialogueTrigger.TriggerDialogue();
-
+        
     }
 
 

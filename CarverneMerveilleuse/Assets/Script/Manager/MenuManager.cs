@@ -227,7 +227,7 @@ public class MenuManager : MonoBehaviour
 
     public void Credit()
     {
-        verif = true;
+        //verif = true;
         
         cg_OptionMenu.DOFade(0, 2);
         cg_btn_Score.DOFade(0, 2);
@@ -252,7 +252,7 @@ public class MenuManager : MonoBehaviour
 
     public void BackToOption()
     {
-        verif = false;
+        //verif = false;
         
         go_btn_MainMenu.SetActive(true);
         cg_CreditMenu.DOFade(0, 2);
