@@ -124,6 +124,6 @@ public class SceneManager : MonoBehaviour
     }
     public void Quit()
     {
-        Application.Quit();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
