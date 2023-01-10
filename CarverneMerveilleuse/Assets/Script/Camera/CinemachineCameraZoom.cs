@@ -30,7 +30,10 @@ public class CinemachineCameraZoom : MonoBehaviour
 
     private void Start()
     {
-        cinemachineVirtualCamera.m_Lens.OrthographicSize = initialZoom;
+        if (!Introduction.instance.playIntro)
+        {
+            cinemachineVirtualCamera.m_Lens.OrthographicSize = initialZoom;
+        }
     }
 
     public void CameraZoom(float targetZoom, float timeToArrive, float timeToComeBack)

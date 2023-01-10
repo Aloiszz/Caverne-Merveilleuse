@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     public string descriptionItem;
     public int prix;
     public int goldenPrix;
+    public float newPosY;
 
 
     [Header("Info")] 
@@ -23,9 +24,13 @@ public class Item : MonoBehaviour
     private GameObject player;
     private UIManager ui;
     private ItemManager itemManager;
+    private Vector3 spawnPos;
+    private Vector3 newPos;
 
     private void Start()
     {
+        spawnPos = transform.position;
+        newPos = transform.position + new Vector3(0, newPosY, 0);
         player = GameObject.FindWithTag("Player");
         ui = GameObject.Find("UIManager").GetComponent<UIManager>();
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -33,10 +38,10 @@ public class Item : MonoBehaviour
     }
     private void Update()
     {
-        if ((player.transform.position - transform.position).magnitude <= 2)
+        if ((player.transform.position - spawnPos).magnitude <= 2)
         {
             canvasItem.itemCanvas.transform.parent = transform;
-            canvasItem.itemCanvas.transform.position = transform.position;
+            canvasItem.itemCanvas.transform.position = spawnPos;
             canvasItem.itemCanvas.SetActive(true); 
             canvasItem.tmpDescriptionItem.SetText(descriptionItem);
             if (isMerveilleux)
@@ -68,13 +73,22 @@ public class Item : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            
+
+            if (transform.position.y <= newPos.y)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.02f);
+            }
             
         }
         else if (canvasItem.itemCanvas.transform.parent == transform)
         {
             canvasItem.itemCanvas.transform.parent = null;
             canvasItem.itemCanvas.SetActive(false);
+            
+        }
+        else if (transform.position.y >= spawnPos.y)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.02f);
         }
     }
 }
