@@ -17,6 +17,7 @@ public class Item : MonoBehaviour
 
 
     [Header("Info")] 
+    public int ID;
     [SerializeField] public bool isMerveilleux;
     
     private GameObject player;
@@ -49,7 +50,7 @@ public class Item : MonoBehaviour
                     ui.goldenMoney -= goldenPrix;
                     canvasItem.itemCanvas.transform.parent = null;
                     canvasItem.itemCanvas.SetActive(false);
-                    itemManager.OnBuy(gameObject.name);
+                    itemManager.OnBuy(ID);
                     Destroy(gameObject);
                 }
             }
@@ -63,7 +64,7 @@ public class Item : MonoBehaviour
                     ui.money -= prix;
                     canvasItem.itemCanvas.transform.parent = null;
                     canvasItem.itemCanvas.SetActive(false);
-                    itemManager.OnBuy(gameObject.name);
+                    itemManager.OnBuy(ID);
                     Destroy(gameObject);
                 }
             }

@@ -110,6 +110,7 @@ public class Mechant : MonoBehaviour
                     Instantiate(coeur, gameObject.transform.position, Quaternion.identity,
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
+                Score.instance.score += pointScore;
             }
 
             if (CompareTag("Gros"))
@@ -125,8 +126,12 @@ public class Mechant : MonoBehaviour
             {
                 PlayerController.instance.life += ItemManager.instance.regenVie;
             }
-            Score.instance.score += pointScore;
+            
             Score.instance.scoreRage += pointScore;
+            /*if (CompareTag("Boss"))
+            {
+                Score.instance.AddScore();
+            }*/
             Destroy(gameObject);
         }
     }
