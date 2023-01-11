@@ -39,13 +39,13 @@ public class DialogueManager : MonoBehaviour
                 cam.DOCinemachineOrthoSize(7, 2);
             }
             
-            /*ArchimageGO.SetActive(true);
+            ArchimageGO.SetActive(true);
             BtnInteraction.SetActive(true);
-            BtnScore.SetActive(true);*/
+            BtnScore.SetActive(true);
 
             ArchimageCG.DOFade(1, .2f);
-            btnInteractionCG.DOFade(0, .2f);
-            btnScoreCG.DOFade(0, .2f);
+            btnInteractionCG.DOFade(1, .2f);
+            btnScoreCG.DOFade(1, .2f);
         }
         else
         {

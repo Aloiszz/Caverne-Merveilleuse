@@ -1013,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2607591671278577337, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2607591671278577339, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1267,7 +1271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452388070
 GameObject:
@@ -1567,7 +1571,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7.489444
+  orthographic size: 7.017505
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1788,7 +1792,7 @@ Transform:
   - {fileID: 1711514103}
   - {fileID: 739662518}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
@@ -2265,7 +2269,7 @@ Transform:
   - {fileID: 116190455}
   - {fileID: 535664332}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &874804151 stripped
 MonoBehaviour:
@@ -2308,7 +2312,7 @@ Transform:
   m_Children:
   - {fileID: 310321363}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &922248844 stripped
 MonoBehaviour:
@@ -2599,7 +2603,7 @@ MonoBehaviour:
   m_Follow: {fileID: 987894817}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 7.489444
+    OrthographicSize: 7.017505
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -3575,7 +3579,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2117945635
 GameObject:
@@ -3637,7 +3641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6247aee2ba66f47aadfa63656d6d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playIntro: 1
+  playIntro: 0
   _flecheDirection: {fileID: 1129696397}
   _ligneViser: {fileID: 544734278}
   _archimage: {fileID: 32426586}
@@ -3742,6 +3746,10 @@ PrefabInstance:
       propertyPath: bossRoom.Array.data[0]
       value: 
       objectReference: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+    - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
+      propertyPath: roomLeftToshopRoom.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3700859029623930163, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: m_Name
       value: RoomManager
