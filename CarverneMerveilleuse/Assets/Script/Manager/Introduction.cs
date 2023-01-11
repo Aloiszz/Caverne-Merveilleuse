@@ -43,6 +43,11 @@ public class Introduction : MonoBehaviour
     [Header("Effet Camera")] [SerializeField]
     private List<int> _effetCamera;
 
+    [Space] 
+    [Header("Animator")] 
+    [SerializeField]private Animator _animator;
+    [SerializeField]private Animator _animatorIllustration;
+    
     public static Introduction instance;
     
     private void Awake()
@@ -67,6 +72,8 @@ public class Introduction : MonoBehaviour
             _Introduction();
         }
     }
+
+    private bool verifIllu;
     private void Update()
     {
         if (playIntro)
@@ -152,15 +159,51 @@ public class Introduction : MonoBehaviour
                     break;
                 case 16 :
                     _IntroBD.DOFade(1, 4);
+                    _animator.SetBool("isOpen", false);
+                    _animatorIllustration.SetTrigger("Play");
+
+                    if (!verifIllu)
+                    {
+                        verifIllu = true;
+                        StartCoroutine(AfterIllustration());
+                    }
                     break;
-                case 22 : 
-                    _IntroBD.DOFade(0, 4);
+                
+                case 17:
+                    _IntroBD.DOFade(0, 2);
+                    _animator.SetBool("isOpen", true);
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
+                    break;
+                case 18:
+                    _virtualCameraPlayer.Priority = 10; 
+                    _virtualCameraArchimage.Priority = 8; 
+                    break;
+                case 19 : 
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
+                    break;
+                case 20 : 
+                    _virtualCameraPlayer.Priority = 10;
+                    _virtualCameraEnsemble.Priority = 8;
+                    break;
+                case 21 :
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
+                    break;
+                case 22 :
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 8;
                     _virtualCamera.Priority = 10;
                     break;
             }
         }
+    }
+
+    IEnumerator AfterIllustration()
+    {
+        yield return new WaitForSeconds(22);
+        _dialogueTrigger.TriggerDialogue();
     }
 
     void _Introduction()
@@ -182,8 +225,6 @@ public class Introduction : MonoBehaviour
         _lightEclairage.GetComponent<Light2D>().enabled = false;
         _lightEclairage.GetComponent<LightAnimationCurve>().enabled = false;
         GlobalLight.intensity = 0.15f;
-
-        Debug.Log(_dialogueTrigger.indexDialogue);
 
         //dialogue
         StartCoroutine(StartDialogue());
