@@ -25,6 +25,8 @@ public class Introduction : MonoBehaviour
 
     [Space] 
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+    [SerializeField] private CinemachineVirtualCamera _virtualCameraPlayer;
+    [SerializeField] private CinemachineVirtualCamera _virtualCameraArchimage;
     [SerializeField] private CinemachineTargetGroup _targetMain;
     [SerializeField] private CinemachineTargetGroup _targetIntro;
     
@@ -63,7 +65,6 @@ public class Introduction : MonoBehaviour
             _Introduction();
         }
     }
-
     private void Update()
     {
         if (playIntro)
@@ -104,26 +105,30 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.Follow = _archimage.transform;
                     _virtualCamera.m_Lens.OrthographicSize = 2f;
                     break;
-                case 11 : 
+                case 11 : //Elu !!
                     _virtualCamera.Follow = _targetIntro.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 7f;
+                    if (_virtualCamera.m_Lens.OrthographicSize < 15)
+                    {
+                        _virtualCamera.m_Lens.OrthographicSize += 3.5f * Time.deltaTime;
+                    }
+                    
                     break;
-                case 12 :
-                    _virtualCamera.Follow = _archimage.transform;
+                case 13 :
                     _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    _virtualCamera.Follow = _archimage.transform;
                     break;
-                case 13 : 
+                case 14 : 
                     _virtualCamera.Follow = _Player.transform;
                     _virtualCamera.m_Lens.OrthographicSize = 2f;
                     break;
-                case 14 :
+                case 15 :
                     _virtualCamera.Follow = _archimage.transform;
                     _virtualCamera.m_Lens.OrthographicSize = 2f;
                     break;
-                case 15 :
+                case 16 :
                     _IntroBD.DOFade(1, 4);
                     break;
-                case 21 : 
+                case 22 : 
                     _IntroBD.DOFade(0, 4);
                     break;
             }
@@ -149,12 +154,17 @@ public class Introduction : MonoBehaviour
         _lightEclairage.GetComponent<Light2D>().enabled = false;
         _lightEclairage.GetComponent<LightAnimationCurve>().enabled = false;
         GlobalLight.intensity = 0.15f;
-        Debug.Log(_dialogueTrigger.dialogue.Count);
-        
-        
+
+        Debug.Log(_dialogueTrigger.indexDialogue);
+
         //dialogue
+        StartCoroutine(StartDialogue());
+    }
+
+    IEnumerator StartDialogue()
+    {
+        yield return new WaitForSeconds(0);
         _dialogueTrigger.TriggerDialogue();
-        
     }
 
 
