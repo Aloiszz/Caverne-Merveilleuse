@@ -41,12 +41,12 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 ArchimageGO.SetActive(true);
-                BtnInteraction.SetActive(true);
-                BtnScore.SetActive(true);
+                /*BtnInteraction.SetActive(true);
+                BtnScore.SetActive(true);*/
                 
                 ArchimageCG.DOFade(1, .2f);
-                btnInteractionCG.DOFade(1, .2f);
-                btnScoreCG.DOFade(1, .2f);
+                /*btnInteractionCG.DOFade(1, .2f);
+                btnScoreCG.DOFade(1, .2f);*/
             }
         }
         else

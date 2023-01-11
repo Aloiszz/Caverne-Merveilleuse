@@ -10,6 +10,7 @@ public class Introduction : MonoBehaviour
 {
     [Header("Intro du jeu")]
     public bool playIntro;
+    
 
     [Space]
     [SerializeField] private GameObject _flecheDirection; // Player viseur

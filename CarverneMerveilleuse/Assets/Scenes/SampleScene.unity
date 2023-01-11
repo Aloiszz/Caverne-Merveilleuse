@@ -195,6 +195,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c50fbaae88bb88c4e8b1021a70e4a1e0, type: 2}
+    - target: {fileID: 3577498191499975115, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577498192322755898, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
       value: 
@@ -250,6 +258,10 @@ PrefabInstance:
     - target: {fileID: 4588781653752077688, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154177881403994821, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915925812471191837, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -421,6 +433,14 @@ PrefabInstance:
       propertyPath: dialogue.Array.data[21].sentences.Array.data[0]
       value: "Mais tu n\u2019es pas encore pr\xEAte, \xE9lue. Laisse moi t'entra\xEEner
         avant"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216766157664580931, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216766157664580931, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
@@ -1868,7 +1888,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.999993
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3262,7 +3282,7 @@ MonoBehaviour:
   m_Follow: {fileID: 987894817}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 7.000029
+    OrthographicSize: 6.999993
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
