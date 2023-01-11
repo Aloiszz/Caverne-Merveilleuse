@@ -27,6 +27,8 @@ public class Introduction : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private CinemachineVirtualCamera _virtualCameraPlayer;
     [SerializeField] private CinemachineVirtualCamera _virtualCameraArchimage;
+    [SerializeField] private CinemachineVirtualCamera _virtualCameraEnsemble;
+    [SerializeField] private CinemachineVirtualCamera _virtualCameraElue;
     [SerializeField] private CinemachineTargetGroup _targetMain;
     [SerializeField] private CinemachineTargetGroup _targetIntro;
     
@@ -72,64 +74,90 @@ public class Introduction : MonoBehaviour
             switch (_dialogueTrigger.indexDialogue)
             {
                 case 1 :
-                    _virtualCamera.Follow = _Player.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCamera.Priority = 8;
+                    _virtualCameraPlayer.Priority = 10;
                     break;
                 case 4:
                     _lightEclairage.GetComponent<Light2D>().enabled = true;
                     _lightEclairage.GetComponent<LightAnimationCurve>().enabled = true;
-                    _virtualCamera.Follow = _archimage.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
                     break;
                 case 5 : 
-                    _virtualCamera.Follow = _Player.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 10;
+                    _virtualCameraArchimage.Priority = 8;
                     break;
                 case 6 :
-                    _virtualCamera.Follow = _archimage.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
                     break;
                 case 7 : 
-                    _virtualCamera.Follow = _Player.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 10;
+                    _virtualCameraArchimage.Priority = 8;
                     break;
                 case 8 :
-                    _virtualCamera.Follow = _targetIntro.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 7f;
+                    /*_virtualCamera.Follow = _targetIntro.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 7f;*/
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraEnsemble.Priority = 10;
                     break;
                 case 9:
-                    _virtualCamera.Follow = _Player.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 10;
+                    _virtualCameraEnsemble.Priority = 8;
                     break;
                 case 10 : 
-                    _virtualCamera.Follow = _archimage.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
                     break;
                 case 11 : //Elu !!
-                    _virtualCamera.Follow = _targetIntro.transform;
+                    /*_virtualCamera.Follow = _targetIntro.transform;
                     if (_virtualCamera.m_Lens.OrthographicSize < 15)
                     {
                         _virtualCamera.m_Lens.OrthographicSize += 3.5f * Time.deltaTime;
-                    }
-                    
+                    }*/
+                    _virtualCameraArchimage.Priority = 8;
+                    _virtualCameraElue.Priority = 10;
                     break;
                 case 13 :
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
-                    _virtualCamera.Follow = _archimage.transform;
+                    /*_virtualCamera.m_Lens.OrthographicSize = 2f;
+                    _virtualCamera.Follow = _archimage.transform;*/
+                    _virtualCameraArchimage.Priority = 10;
+                    _virtualCameraElue.Priority = 8;
                     break;
                 case 14 : 
-                    _virtualCamera.Follow = _Player.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _Player.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 10;
+                    _virtualCameraEnsemble.Priority = 8;
                     break;
                 case 15 :
-                    _virtualCamera.Follow = _archimage.transform;
-                    _virtualCamera.m_Lens.OrthographicSize = 2f;
+                    /*_virtualCamera.Follow = _archimage.transform;
+                    _virtualCamera.m_Lens.OrthographicSize = 2f;*/
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 10;
                     break;
                 case 16 :
                     _IntroBD.DOFade(1, 4);
                     break;
                 case 22 : 
                     _IntroBD.DOFade(0, 4);
+                    _virtualCameraPlayer.Priority = 8;
+                    _virtualCameraArchimage.Priority = 8;
+                    _virtualCamera.Priority = 10;
                     break;
             }
         }
