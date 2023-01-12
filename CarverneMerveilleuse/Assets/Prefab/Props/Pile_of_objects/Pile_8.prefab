@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8001330912085165602}
   - component: {fileID: 8444624894238896661}
+  - component: {fileID: 3293068960459930292}
   m_Layer: 9
   m_Name: Tas de tombes (1)
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538686997478668290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.725, y: -0.868, z: 0}
+  m_LocalPosition: {x: 0.725, y: -1.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,6 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3293068960459930292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538686997478668290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObjet: -0.2
 --- !u!1 &1718005514676815143
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2418645742337309937}
   - component: {fileID: 4290527595496450422}
+  - component: {fileID: 8588189645385804126}
   m_Layer: 9
   m_Name: "Pile de pi\xE8ces 3 (1)"
   m_TagString: Untagged
@@ -168,6 +183,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8588189645385804126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718005514676815143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObjet: 0.5
 --- !u!1 &5621519969588866514
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082757704936902949}
   - component: {fileID: 8358815373669721687}
+  - component: {fileID: 578202151037709381}
   m_Layer: 9
   m_Name: Pots (1)
   m_TagString: Untagged
@@ -286,3 +315,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &578202151037709381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7701560899790075112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObjet: 0.1
