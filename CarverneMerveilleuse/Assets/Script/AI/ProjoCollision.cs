@@ -139,8 +139,7 @@ public class ProjoCollision : MonoBehaviour
         if (origine.projoList.Count < origine.maxProjo)
         {
             yield return new WaitUntil(() => PlayerThrowAttack.instance.isInGrosProjo == false);
-            newProjo = Instantiate(projo, transform.position, Quaternion.identity,
-                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+            newProjo = Instantiate(projo, transform.position, Quaternion.identity,RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             newProjo.GetComponent<ProjoCollision>().mode2 = false;
             newProjo.transform.localScale = new Vector2(1, 1);
             origine.projoList.Add(newProjo);
