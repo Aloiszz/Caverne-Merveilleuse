@@ -18,7 +18,6 @@ public class trouScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(PlayerController.instance.isInHole);
         if (PlayerController.instance.isDashing)
         {
             coll.isTrigger = true;

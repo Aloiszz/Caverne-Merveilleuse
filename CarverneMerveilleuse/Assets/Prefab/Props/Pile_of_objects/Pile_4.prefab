@@ -92,12 +92,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2900265963571363512}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseObjet: 0
+  isGroup: 0
+  objets: []
 --- !u!1 &3307674660926727889
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,12 +192,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3307674660926727889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseObjet: 0.1
+  isGroup: 0
+  objets: []
 --- !u!1 &4707624993356650752
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,12 +292,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4707624993356650752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseObjet: -0.27
+  isGroup: 0
+  objets: []
 --- !u!1 &5932349784892767565
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041743121932886516}
+  - component: {fileID: 5535375832190286758}
   m_Layer: 9
   m_Name: Pile_4
   m_TagString: Untagged
@@ -328,3 +335,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5535375832190286758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932349784892767565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObjet: 0
+  isGroup: 1
+  objets:
+  - {fileID: 2900265963571363512}
+  - {fileID: 3307674660926727889}
+  - {fileID: 4707624993356650752}

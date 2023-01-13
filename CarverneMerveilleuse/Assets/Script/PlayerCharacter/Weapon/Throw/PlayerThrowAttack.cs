@@ -182,7 +182,6 @@ public class PlayerThrowAttack : MonoBehaviour
         {
             if (!isInGrosProjo && !ItemManager.instance.isInBuffDash)
             {
-                Debug.Log("La speed quoi");
                 PlayerController.instance.speedMovement = PlayerController.instance.playerSO.speedMovement;
             }
             
