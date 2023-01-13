@@ -136,6 +136,10 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                if (Score.instance.activateScore)
+                {
+                    Score.instance.AddScore();
+                }
                 SceneManager.instance.Death();
                 /*PlayerController.instance.enabled = false;
                 PlayerLightAttack.instance.enabled = false;
