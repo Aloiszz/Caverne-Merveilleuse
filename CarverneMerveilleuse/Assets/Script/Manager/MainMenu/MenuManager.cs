@@ -56,6 +56,8 @@ public class MenuManager : MonoBehaviour
 
     private bool BackToOptionFromCredit;
 
+    [Space] [Header("Panel Advanced")] public CanvasGroup cg_Advanced;
+
     [Space]
 
     public CinemachineVirtualCamera cam;
@@ -69,6 +71,7 @@ public class MenuManager : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
     public Animator animator_Canvas;
+    public Animator animator_GlobalVOlume;
     public static MenuManager instance;
     
     public void Awake()
@@ -119,6 +122,9 @@ public class MenuManager : MonoBehaviour
         go_btn_BackToOption.SetActive(false);
         
         cg_btn_BackToOption.GetComponent<Button>().interactable = false;
+        
+        //----- Advanced -----
+        cg_Advanced.DOFade(0, 0);
     }
 
     private void Update()
@@ -299,6 +305,45 @@ public class MenuManager : MonoBehaviour
     }
 
 
+    public void OptionToAdvanced()
+    {
+        animator_Canvas.SetTrigger("OptionToAdvanced");
+        cg_Advanced.DOFade(1, 2);
+    }
+
+    public void AdvancedToOption()
+    {
+        
+        animator_Canvas.SetTrigger("AdvancedToOption");
+    }
+
+    public void AdvancedToGraphism()
+    {
+        go_OptionMenu.SetActive(false);
+        animator_Canvas.SetTrigger("AdvancedToGraphism");
+    }
+    
+    public void GraphismToAdvanced()
+    {
+        go_OptionMenu.SetActive(true);
+        animator_Canvas.SetTrigger("GraphismToAdvanced");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     IEnumerator PlayAnimStartGame()
     {
         go_btn_Play.GetComponent<Button>().interactable = false;

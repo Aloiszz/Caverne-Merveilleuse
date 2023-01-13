@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 
 public class SceneManager : MonoBehaviour
@@ -101,7 +102,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(0, 0.5f);
         pauseCG_.DOFade(1, 0.5f);
         pauseMenu_.SetActive(true);
-        StartCoroutine(PauseTime());
+        //StartCoroutine(PauseTime());
     }
     public void Unpause()
     {
@@ -109,7 +110,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(1, 0.5f);
         pauseCG_.DOFade(0, 0.5f);
         pauseMenu_.SetActive(false);
-        StartCoroutine(UnPauseTime());
+        //StartCoroutine(UnPauseTime());
     }
     
     IEnumerator PauseTime()
@@ -124,6 +125,8 @@ public class SceneManager : MonoBehaviour
     }
     public void Quit()
     {
+        Debug.Log("quit");
+        Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
