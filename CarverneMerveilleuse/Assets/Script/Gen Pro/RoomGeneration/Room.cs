@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
     private int result;
     public bool isGoldenPath;
     public bool isHub;
-    
+    public bool isBossRoom;
     public bool isShopRoom;
     
     [HideInInspector]public List<GameObject> DoorEnnemyPosition; //Position des portes 
@@ -43,6 +43,10 @@ public class Room : MonoBehaviour
             if (AlternativeDoor.Count > 1)
             {
                 CreateGoldenPath();
+                RoomManager.instance.roomMemory.Add(this.gameObject);
+            }
+            else if(isBossRoom)
+            {
                 RoomManager.instance.roomMemory.Add(this.gameObject);
             }
             else

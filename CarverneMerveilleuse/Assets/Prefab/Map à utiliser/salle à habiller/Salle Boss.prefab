@@ -167,7 +167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519794380821890463}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 14.973089, y: 20.970716, z: 5.037429}
+  m_LocalPosition: {x: 14.973089, y: 20.970716, z: 0}
   m_LocalScale: {x: 20, y: 53.000027, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -253,7 +253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781628795102545047}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -61.6, y: -27.3, z: 2.412689}
+  m_LocalPosition: {x: 53.14, y: -78.92999, z: 2.412689}
   m_LocalScale: {x: 2.7726197, y: 0.72220993, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3063782418427310422}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 14.973089, y: -18.929285, z: 5.037429}
+  m_LocalPosition: {x: 14.973089, y: -18.929285, z: 0}
   m_LocalScale: {x: 20, y: 53.000027, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -948,7 +948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3260388220605749652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.07309, y: 1.2292836, z: -1.2893496}
+  m_LocalPosition: {x: -15.07309, y: 1.2292836, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1298,7 +1298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4741892863037173320}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 14.973089, y: 0.9707165, z: 5.037429}
+  m_LocalPosition: {x: 14.973089, y: 0.9707165, z: 0}
   m_LocalScale: {x: 20, y: 53.000027, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1684,10 +1684,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd48ad302ba35454daa480a2923e7c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AlternativeDoor: []
+  AlternativeDoor:
+  - {fileID: 6938996774003340865}
+  - {fileID: 1781628795102545047}
+  - {fileID: 8706242877134688754}
   goldenDoor: {fileID: 0}
   isGoldenPath: 0
   isHub: 0
+  isBossRoom: 1
   isShopRoom: 0
   DoorEnnemyPosition: []
   DoorEnnemy: []
@@ -1721,7 +1725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6938996774003340865}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -35.36, y: -3.909996, z: 2.412689}
+  m_LocalPosition: {x: 79.38, y: -55.539993, z: 2.412689}
   m_LocalScale: {x: 0.46820998, y: 2.8173196, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2234,7 +2238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8706242877134688754}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -20, y: -13.5, z: 2.412689}
+  m_LocalPosition: {x: 94.74, y: -65.13, z: 2.412689}
   m_LocalScale: {x: 2.7726197, y: 0.72220993, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
