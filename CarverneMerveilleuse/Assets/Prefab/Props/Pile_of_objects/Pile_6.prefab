@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8582037900819126667}
+  - component: {fileID: 4179200125374329579}
   m_Layer: 9
   m_Name: Pile_6
   m_TagString: Untagged
@@ -34,6 +35,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4179200125374329579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843850487662429119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObjet: 0
+  isGroup: 1
+  objets:
+  - {fileID: 7072113538107216569}
+  - {fileID: 3148053158731714975}
+  - {fileID: 5508484317813122851}
 --- !u!1 &3148053158731714975
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,12 +145,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3148053158731714975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseObjet: -0.1
+  isGroup: 0
+  objets: []
 --- !u!1 &5508484317813122851
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,12 +245,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5508484317813122851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseObjet: 0
+  isGroup: 0
+  objets: []
 --- !u!1 &7072113538107216569
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,9 +345,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7072113538107216569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseObjet: 0
+  isGroup: 0
+  objets: []
