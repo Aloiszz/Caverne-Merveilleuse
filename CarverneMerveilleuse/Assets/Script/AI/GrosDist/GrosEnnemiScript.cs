@@ -10,7 +10,10 @@ public class GrosEnnemiScript : MonoBehaviour
 {
     private PlayerController player;
 
-    [Header("AI Config")]
+    [Header("AI Config")] 
+    public int damage;
+    public int physicalDamage;
+    public int CacDamage;
     public float spaceFromPlayer = 5;
     public float distForCAC = 3;
     public GameObject grosProjo;
@@ -185,7 +188,7 @@ public class GrosEnnemiScript : MonoBehaviour
             else
             {
                 col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
-                PlayerController.instance.LoseLife();
+                PlayerController.instance.LoseLife(physicalDamage);
                 CinemachineShake.instance.ShakeCamera(intensity, frequency ,timer);
             }
             

@@ -9,7 +9,8 @@ public class DistScript : MonoBehaviour
 
     [Header("AI Config")]
     public float speed;
-
+    public int damage;
+    public int physicalDamage;
     public float spaceFromPlayer = 5;
     public GameObject projo;
     public float shootForce = 3f;
@@ -128,7 +129,7 @@ public class DistScript : MonoBehaviour
             else
             {
                 col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
-                PlayerController.instance.LoseLife();
+                PlayerController.instance.LoseLife(physicalDamage);
                 CinemachineShake.instance.ShakeCamera(intensity, frequency, timer);
             }
         }

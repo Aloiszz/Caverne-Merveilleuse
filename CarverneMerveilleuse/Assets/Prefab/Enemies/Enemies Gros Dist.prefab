@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdc1c13627ab8f478357b175e0cdfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
 --- !u!1 &811942589903022784
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c593eda4a662444bb4044e5e762ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
+  physicalDamage: 1
+  CacDamage: 2
   spaceFromPlayer: 10
   distForCAC: 5
   grosProjo: {fileID: 4828584988822855267, guid: f4bb6262fe7afad4ca9540adda9bddae, type: 3}

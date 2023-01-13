@@ -10,6 +10,8 @@ public class BossScript : MonoBehaviour
 {
     [Header("Boss Stats")]
     public Image lifeBarre;
+    public int damage;
+    public int chuteDamage;
 
     [Header("Phase 1")] 
     public GameObject spawner1;
@@ -63,6 +65,18 @@ public class BossScript : MonoBehaviour
     private float posXJoueur;
     private float posYJoueur;
     private Mechant lifeScript;
+    
+    public static BossScript instance;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(instance);
+        }
+
+        instance = this;
+    }
 
     private void Start()
     {
