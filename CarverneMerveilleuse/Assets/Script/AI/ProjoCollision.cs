@@ -17,6 +17,7 @@ public class ProjoCollision : MonoBehaviour
     private Vector2 playerDir;
     [HideInInspector] public GrosEnnemiScript origine;
     [HideInInspector] public GameObject shooter;
+    [HideInInspector] public DistScript shootScript;
     private bool check;
     public GameObject projo;
     private bool playerInProjo;
@@ -30,6 +31,7 @@ public class ProjoCollision : MonoBehaviour
         else
         {
             transform.parent = shooter.transform;
+            shootScript = shooter.GetComponent<DistScript>();
         }
         initialSpeed = PlayerController.instance.playerSO.speedMovement;
         speed = initialSpeed / 2;
@@ -65,7 +67,7 @@ public class ProjoCollision : MonoBehaviour
             {
                 col.gameObject.GetComponent<Rigidbody2D>().AddForce((col.transform.position - transform.position) * 500);
                 Destroy(gameObject);
-                PlayerController.instance.LoseLife();
+                PlayerController.instance.LoseLife(shootScript.damage);
             }
             if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint") || col.gameObject.CompareTag("LightShield"))
             {
@@ -77,7 +79,7 @@ public class ProjoCollision : MonoBehaviour
             if (col.gameObject.CompareTag("Player"))
             {
                 Grossissement(col.gameObject);
-                PlayerController.instance.LoseLife();
+                PlayerController.instance.LoseLife(origine.damage);
             }
             else if (col.gameObject.layer == 4 || col.gameObject.layer == 9 || col.gameObject.CompareTag("HeavyAttackPoint") || col.gameObject.CompareTag("LightShield"))
             {

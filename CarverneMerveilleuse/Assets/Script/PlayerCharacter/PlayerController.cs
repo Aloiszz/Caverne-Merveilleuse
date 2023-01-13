@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
     void Life()
     {
-        if (life == 0)
+        if (life <= 0)
         {
             if (ItemManager.instance.nbVieEnPlus >= 1)
             {
@@ -136,6 +136,10 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                if (Score.instance.activateScore)
+                {
+                    Score.instance.AddScore();
+                }
                 SceneManager.instance.Death();
                 /*PlayerController.instance.enabled = false;
                 PlayerLightAttack.instance.enabled = false;
@@ -149,9 +153,9 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void LoseLife()
+    public void LoseLife(int damage)
     {
-        life -= 1;
+        life -= damage;
         StartCoroutine(InvinsibleTime());
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
@@ -227,7 +231,7 @@ public class PlayerController : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(0,6, true);
         Physics2D.IgnoreLayerCollision(0,7, true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(playerSO.invinsibleTimer);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
     }

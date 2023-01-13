@@ -9,7 +9,15 @@ public class BossAttackScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            PlayerController.instance.LoseLife();
+            if (gameObject.name == "Chute(Clone)")
+            {
+                PlayerController.instance.LoseLife(BossScript.instance.chuteDamage);
+            }
+            else
+            {
+                PlayerController.instance.LoseLife(BossScript.instance.damage);
+            }
+            
         }
     }
 

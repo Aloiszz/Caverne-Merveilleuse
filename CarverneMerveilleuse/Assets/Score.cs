@@ -15,6 +15,7 @@ public class Score : MonoBehaviour
     [Tooltip("Permet de reset le score dans les playerpref")]
     public bool resetPlayerPrefScore;
     private TMP_Text affichage;
+    public bool activateScore;
 
     public static Score instance;
 

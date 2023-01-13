@@ -128,10 +128,10 @@ public class Mechant : MonoBehaviour
             }
             
             Score.instance.scoreRage += pointScore;
-            /*if (CompareTag("Boss"))
+            if (CompareTag("Boss") && Score.instance.activateScore)
             {
                 Score.instance.AddScore();
-            }*/
+            }
             Destroy(gameObject);
         }
     }
