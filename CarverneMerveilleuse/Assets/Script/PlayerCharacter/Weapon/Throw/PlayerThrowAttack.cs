@@ -150,7 +150,7 @@ public class PlayerThrowAttack : MonoBehaviour
         lerp += Time.deltaTime / duration;
         fauxScaleActual = (float)Mathf.Lerp (fauxScaleBase, fauxScaleMax, lerp);
         
-        FlecheDeVise.transform.localScale = new Vector3(fauxScaleActual, 1, 1);
+        FlecheDeVise.transform.localScale = new Vector3(fauxScaleActual, fauxScaleActual, fauxScaleActual);
     }
     
     void IsThrow()
