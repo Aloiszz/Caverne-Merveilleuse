@@ -45,6 +45,7 @@ public class MenuManager : MonoBehaviour
     [Space]
     [Header("Panel Credit")]
     public CanvasGroup cg_CreditMenu;
+    public CanvasGroup cg_CreditTitle;
     public CanvasGroup cg_Credit;
     public CanvasGroup cg_btn_BackToOption;
     
@@ -52,6 +53,8 @@ public class MenuManager : MonoBehaviour
     public GameObject go_CreditMenu;
     public GameObject goCredit;
     public GameObject go_btn_BackToOption;
+
+    private bool BackToOptionFromCredit;
 
     [Space]
 
@@ -65,6 +68,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Animator")]
     public Animator animator;
+    public Animator animator_Canvas;
     public static MenuManager instance;
     
     public void Awake()
@@ -122,7 +126,15 @@ public class MenuManager : MonoBehaviour
         if (verifDutch)
         {
             //cam.m_Lens.Dutch += 25 * Time.deltaTime;
-            
+        }
+
+        if (BackToOptionFromCredit)
+        {
+            if (Input.anyKeyDown)
+            {
+                cg_btn_BackToOption.DOFade(1, 2);
+                cg_btn_BackToOption.GetComponent<Button>().interactable = true;
+            }
         }
     }
 
@@ -231,6 +243,7 @@ public class MenuManager : MonoBehaviour
     public void Credit()
     {
         //verif = true;
+        BackToOptionFromCredit = true;
         
         cg_OptionMenu.DOFade(0, 2);
         cg_btn_Score.DOFade(0, 2);
@@ -247,15 +260,23 @@ public class MenuManager : MonoBehaviour
         go_btn_BackToOption.SetActive(true);
         cg_CreditMenu.DOFade(1, 2);
         cg_Credit.DOFade(1, 2);
-        cg_btn_BackToOption.DOFade(1, 2);
+        cg_CreditTitle.DOFade(1, 2);
         
-        cg_btn_BackToOption.GetComponent<Button>().interactable = true;
-        
+        animator_Canvas.SetTrigger("Credit");
+        StartCoroutine(CreditTitle());
+    }
+
+    IEnumerator CreditTitle()
+    {
+        yield return new WaitForSeconds(3);
+        cg_CreditTitle.DOFade(0, 2);
     }
 
     public void BackToOption()
     {
         //verif = false;
+        BackToOptionFromCredit = false;
+        animator_Canvas.SetTrigger("CreditToOption");
         
         go_btn_MainMenu.SetActive(true);
         cg_CreditMenu.DOFade(0, 2);

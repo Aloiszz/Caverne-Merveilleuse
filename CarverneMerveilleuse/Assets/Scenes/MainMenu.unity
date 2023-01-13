@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 46541365}
   - component: {fileID: 46541364}
   - component: {fileID: 46541363}
+  - component: {fileID: 46541367}
   m_Layer: 5
   m_Name: Canvas MainMenu
   m_TagString: Untagged
@@ -858,6 +859,26 @@ RectTransform:
   m_AnchoredPosition: {x: -2.62, y: -1.26}
   m_SizeDelta: {x: 1920.0001, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &46541367
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46541362}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6ef15dbd6ec47c4b82d1b504c6cae94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &54443756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1721,7 @@ GameObject:
   - component: {fileID: 223247188}
   - component: {fileID: 223247190}
   - component: {fileID: 223247189}
+  - component: {fileID: 223247191}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1824,6 +1846,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223247187}
   m_CullTransparentMesh: 1
+--- !u!225 &223247191
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223247187}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &272575041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2356,7 @@ MonoBehaviour:
   go_btn_Advanced: {fileID: 0}
   go_btn_MainMenu: {fileID: 150878456}
   cg_CreditMenu: {fileID: 1856840955}
+  cg_CreditTitle: {fileID: 223247191}
   cg_Credit: {fileID: 1885481860}
   cg_btn_BackToOption: {fileID: 372797614}
   go_CreditMenu: {fileID: 0}
@@ -2333,6 +2368,7 @@ MonoBehaviour:
   Flaque: {fileID: 1955765379}
   verif: 0
   animator: {fileID: 748687047}
+  animator_Canvas: {fileID: 46541367}
 --- !u!1 &482603579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3673,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 100
+    OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -8534,7 +8570,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856840953}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8708,7 +8744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -292.99988, y: -119}
+  m_AnchoredPosition: {x: -292.99988, y: -743}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885481858
@@ -8731,7 +8767,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thanks to all
+  m_text: "\nBloody Mary\n\nUn pti jeu inde hihi\n\n\n\nune equipe de warrioir booomm\n\n\n\n\nGA
+    \ntess\nLeontine\nAlexis\nThais\n\n\n\n\nGD\nMaxime\nLiz\nAlois\n\n\n\n\nUn grand
+    merci a jacques et clements pour leurs aides precieuse\n\n\net mathieu aussi
+    biensur\n\n\n\n\nun jeu de rubika\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51eb7b69b7dd05e4b9b80d0ce6bcc58f, type: 2}
   m_sharedMaterial: {fileID: -7909933060675805491, guid: 51eb7b69b7dd05e4b9b80d0ce6bcc58f, type: 2}
@@ -9048,7 +9087,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 100
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
