@@ -55,6 +55,7 @@ public class Score : MonoBehaviour
             PlayerPrefs.SetInt("Score3", 0);
             PlayerPrefs.SetInt("Score4", 0);
             PlayerPrefs.SetInt("Score5", 0);
+            PlayerPrefs.SetInt("LastScore", 0);
             resetPlayerPrefScore = false;
         }
 
