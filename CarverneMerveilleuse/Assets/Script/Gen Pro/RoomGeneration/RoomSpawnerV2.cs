@@ -333,8 +333,8 @@ public class RoomSpawnerV2 : MonoBehaviour
     #region Boss Room
     public void InstatiateBossRoom()
     {
-        //RoomManager.instance.roomMemoryIndex++;
-        //RoomManager.instance.roomMemoryDirectionIndex++;
+        RoomManager.instance.roomMemoryIndex++;
+        RoomManager.instance.roomMemoryDirectionIndex++;
         transform.parent.gameObject.SetActive(false);
         
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
