@@ -10,6 +10,7 @@ public class CaCEnnemiScript : MonoBehaviour
 
     [Header("AI Config")]
     public float speed;
+    public int damage;
     [HideInInspector] public bool canJump = true;
     public float secondsBeforeJump = 1;
     public float jumpForce;
@@ -149,7 +150,7 @@ public class CaCEnnemiScript : MonoBehaviour
             else
             {
                 col.gameObject.GetComponent<Rigidbody2D>().AddForce(playerDir * 2000);
-                PlayerController.instance.LoseLife();
+                PlayerController.instance.LoseLife(damage);
                 CinemachineShake.instance.ShakeCamera(intensity, frequency, timer);
             }
         }

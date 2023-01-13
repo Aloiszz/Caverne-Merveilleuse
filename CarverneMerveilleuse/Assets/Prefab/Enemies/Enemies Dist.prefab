@@ -636,7 +636,6 @@ MonoBehaviour:
   sprite: {fileID: 5166514760355395829}
   healthBar: {fileID: 811942589903022784}
   eye1: {fileID: 3898073400582957537}
-  eye2: {fileID: 0}
 --- !u!61 &2101363264773630884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -712,6 +711,7 @@ MonoBehaviour:
   pourcentageDropCoeur: 10
   invokeByBoss: 0
   isInPetrole: 0
+  canTakeDamage: 1
 --- !u!114 &2237594888207679577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,6 +725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  damage: 1
+  physicalDamage: 1
   spaceFromPlayer: 8
   projo: {fileID: 4828584988822855267, guid: 7570cc8005a99c64d80b2fbc6ac78cd4, type: 3}
   shootForce: 50
