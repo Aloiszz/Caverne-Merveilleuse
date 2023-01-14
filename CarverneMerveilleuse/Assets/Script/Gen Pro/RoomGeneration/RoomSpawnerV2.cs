@@ -88,12 +88,35 @@ public class RoomSpawnerV2 : MonoBehaviour
             
             if (!colliderVierge && !isAlternativeDoor)
             {
-                KeepMemoryDirection();
-                InstatiateNewRoom();
-                SpawnPointLocation();
-                TeleportPlayerToNextRoom(); 
-                Debug.Log("Nouvelle Room");
-                colliderVierge = true;
+
+                if(RoomManager.instance.goldenPathCount >= RoomManager.instance.roomLeftToBossRoom && RoomManager.instance.roomMemoryDirection[^1] == Direction.Down)
+                {
+                    KeepMemoryDirection();
+                    InstatiatePreBossRoom();
+                    SpawnPointLocation();
+                    TeleportPlayerToNextRoom(); 
+                    RoomManager.instance.isBossRoom = true;
+                }
+                else if (RoomManager.instance.goldenPathCount >= RoomManager.instance.roomLeftToBossRoom)
+                {
+                    KeepMemoryDirection();
+                    InstatiateNewRoom();
+                    SpawnPointLocation();
+                    TeleportPlayerToNextRoom();
+                    Debug.Log("PreBossRoom");
+                    colliderVierge = true;
+                    RoomManager.instance.PreBoss();
+                }
+                else
+                {
+                    KeepMemoryDirection();
+                    InstatiateNewRoom();
+                    SpawnPointLocation();
+                    TeleportPlayerToNextRoom(); 
+                    Debug.Log("Nouvelle Room");
+                    colliderVierge = true;
+                }
+                
             }
             else if(!isAlternativeDoor && !isShopDoor)
             {
@@ -340,6 +363,58 @@ public class RoomSpawnerV2 : MonoBehaviour
         rand = Random.Range(0, RoomManager.instance.bossRoom.Count);
         Instantiate(RoomManager.instance.bossRoom[rand], new Vector3(0,0,0),
             Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+    }
+    
+    public void InstatiatePreBossRoom()
+    {
+        RoomManager.instance.roomMemoryIndex++;
+        RoomManager.instance.roomMemoryDirectionIndex++;
+        transform.parent.gameObject.SetActive(false);
+
+        switch (direction)
+        {
+            case Direction.Top :
+                Instantiate(RoomManager.instance.PreBossRoom, new Vector3(0,0,0),
+                    Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;  
+            
+            case Direction.Down :
+                Instantiate(RoomManager.instance.PreBossRoom, new Vector3(0,0,0), 
+                    Quaternion.identity).transform.GetChild(1).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+            
+            case Direction.Right : ;
+                Instantiate(RoomManager.instance.PreBossRoom, new Vector3(0,0,0), 
+                    Quaternion.identity).transform.GetChild(2).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+            
+            case Direction.Left :
+                Instantiate(RoomManager.instance.PreBossRoom, new Vector3(0,0,0), 
+                    Quaternion.identity).transform.GetChild(3).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+                break;
+        }
+    }
+    
+    public void KeepMemoryDirectionPreBoss()
+    {
+        switch (direction)
+        {
+            case Direction.Top:
+                RoomManager.instance.roomMemoryDirection.Add(Direction.Down);
+                break;
+            
+            case Direction.Down:
+                RoomManager.instance.roomMemoryDirection.Add(Direction.Down);
+                break; 
+            
+            case Direction.Right:
+                RoomManager.instance.roomMemoryDirection.Add(Direction.Down);
+                break;
+            
+            case Direction.Left:
+                RoomManager.instance.roomMemoryDirection.Add(Direction.Down);
+                break;
+        }
     }
     #endregion
     

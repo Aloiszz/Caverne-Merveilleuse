@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviour
     
     public SO_RoomManager SO_RoomManager;
     public SO_AlternativeRoom SO_AlternativeRoom;
+    public SO_RoomManager So_PreBossRoom;
     
     [Header("----------Golden Path----------")]
     public List<GameObject> roomMemory;
@@ -49,9 +50,9 @@ public class RoomManager : MonoBehaviour
     [HideInInspector]public List<GameObject> roomTemplateRightEND;
     
     [HideInInspector]public List<GameObject> roomTemplateLeftEND;
-    
-    [Space][Space]
-    [Header("----------Boss Room----------")]
+
+    [Space] [Space] [Header("----------Boss Room----------")]
+    public GameObject PreBossRoom;
     public List<GameObject> bossRoom;
     public int roomLeftToBossRoom; 
     public  bool isBossRoom;
@@ -94,13 +95,26 @@ public class RoomManager : MonoBehaviour
         roomTemplateRightEND = SO_AlternativeRoom.roomTemplateLeft;
         roomTemplateLeftEND = SO_AlternativeRoom.roomTemplateRight;
     }
+
+    public void PreBoss()
+    {
+        roomTemplateTop = So_PreBossRoom.roomTemplateTop;
+        roomTemplateDown = So_PreBossRoom.roomTemplateDown;
+        roomTemplateRight = So_PreBossRoom.roomTemplateRight;
+        roomTemplateLeft = So_PreBossRoom.roomTemplateLeft;
+        
+        roomTemplateTopEND = SO_AlternativeRoom.roomTemplateDown;
+        roomTemplateDownEND = SO_AlternativeRoom.roomTemplateTop;
+        roomTemplateRightEND = SO_AlternativeRoom.roomTemplateLeft;
+        roomTemplateLeftEND = SO_AlternativeRoom.roomTemplateRight;
+    }
     
     private void Update()
     {
-        if (goldenPathCount >= roomLeftToBossRoom)
+        /*if (goldenPathCount >= roomLeftToBossRoom+1)
         {
             isBossRoom = true;
-        }
+        }*/
         if (goldenPathCount >= roomLeftToshopRoom[roomLeftToshopRooIndex])
         {
             if (canThePotitChatSpawn)

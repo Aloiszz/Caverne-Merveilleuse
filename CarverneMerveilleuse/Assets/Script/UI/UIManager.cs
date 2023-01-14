@@ -30,5 +30,10 @@ public class UIManager : MonoBehaviour
         {
             goldenMoney += 1;
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerController.instance.life = 100000;
+        }
     }
 }

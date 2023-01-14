@@ -210,7 +210,7 @@ public class Room : MonoBehaviour
     {
         foreach (var i in light)
         {
-            i.DOLight2DColor32(new Color32(255, 255, 255, 255), 3);
+            i.DOLight2DColor32(new Color32(255, 226, 158, 255), 3);
             i.DOLight2DIntensity(1, 0.5f);
         }
     }
@@ -220,7 +220,7 @@ public class Room : MonoBehaviour
         foreach (var i in light)
         {
             i.DOLight2DColor32(new Color32(255, 15, 0, 255), 3);
-            i.DOLight2DIntensity(3, 2f);
+            i.DOLight2DIntensity(2, 2f);
         }
     }
 
