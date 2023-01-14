@@ -56,7 +56,13 @@ public class MenuManager : MonoBehaviour
 
     private bool BackToOptionFromCredit;
 
-    [Space] [Header("Panel Advanced")] public CanvasGroup cg_Advanced;
+    [Space] 
+    [Header("Panel Advanced")] 
+    public CanvasGroup cg_Advanced;
+    [Header("Panel Graphism")] 
+    public CanvasGroup cg_Graphism;
+    [Header("Panel Sound")] 
+    public CanvasGroup cg_Sound;
 
     [Space]
 
@@ -125,6 +131,8 @@ public class MenuManager : MonoBehaviour
         
         //----- Advanced -----
         cg_Advanced.DOFade(0, 0);
+        cg_Graphism.DOFade(0, 0);
+        cg_Sound.DOFade(0, 0);
     }
 
     private void Update()
@@ -317,18 +325,35 @@ public class MenuManager : MonoBehaviour
         animator_Canvas.SetTrigger("AdvancedToOption");
     }
 
+    //---------------------------------------------
     public void AdvancedToGraphism()
     {
         go_OptionMenu.SetActive(false);
+        cg_Graphism.DOFade(1,2);
         animator_Canvas.SetTrigger("AdvancedToGraphism");
     }
     
     public void GraphismToAdvanced()
     {
         go_OptionMenu.SetActive(true);
+        cg_Graphism.DOFade(0,2);
         animator_Canvas.SetTrigger("GraphismToAdvanced");
     }
+    //---------------------------------------------
+    public void AdvancedToSound()
+    {
+        go_OptionMenu.SetActive(false);
+        cg_Sound.DOFade(1,2);
+        animator_Canvas.SetTrigger("AdvancedToSound");
+    }
     
+    public void SoundToAdvanced()
+    {
+        go_OptionMenu.SetActive(true);
+        cg_Sound.DOFade(0,2);
+        animator_Canvas.SetTrigger("SoundToAdvanced");
+    }
+    //---------------------------------------------
     
     
     

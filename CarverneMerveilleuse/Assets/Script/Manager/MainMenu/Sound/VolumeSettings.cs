@@ -13,15 +13,29 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
-    private const string MIXER_MAIN = "MainVolume";
-    private const string MIXER_MUSIC = "MusicVolume";
-    private const string MIXER_SFX = "SfxVolume";
+    public const string MIXER_MAIN = "MainVolume";
+    public const string MIXER_MUSIC = "MusicVolume";
+    public const string MIXER_SFX = "SfxVolume";
 
     private void Awake()
     {
         MainSlider.onValueChanged.AddListener(setMainVolume);
         musicSlider.onValueChanged.AddListener(setMusicVolume);
         sfxSlider.onValueChanged.AddListener(setSfxVolume);
+    }
+
+    private void Start()
+    {
+        MainSlider.value = PlayerPrefs.GetFloat(AudioManager.MAIN_KEY, 1f);
+        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 1f);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat(AudioManager.MAIN_KEY, MainSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, musicSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.SFX_KEY, sfxSlider.value);
     }
 
     void setMainVolume(float value)
