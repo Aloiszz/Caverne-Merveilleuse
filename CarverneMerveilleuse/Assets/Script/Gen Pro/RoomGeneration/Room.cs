@@ -186,8 +186,8 @@ public class Room : MonoBehaviour
         Debug.Log("Open the door");
         foreach (var i in DoorEnnemy)
         {
-            i.GetComponent<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToOpenDoor);
-            i.GetComponent<Collider2D>().enabled = false;
+            i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToOpenDoor);
+            i.GetComponentInChildren<Collider2D>().enabled = false;
         }
 
         Light2D_OpenDoor();
@@ -197,8 +197,8 @@ public class Room : MonoBehaviour
         Debug.Log("Close the door");
         foreach (var i in DoorEnnemy)
         {
-            i.GetComponent<SpriteRenderer>().DOFade(1, EnnemyManager.instance.timeToCloseDoor);
-            i.GetComponent<Collider2D>().enabled = true;
+            i.GetComponentInChildren<SpriteRenderer>().DOFade(1, EnnemyManager.instance.timeToCloseDoor);
+            i.GetComponentInChildren<Collider2D>().enabled = true;
         }
 
         Light2D_CloseDoor();

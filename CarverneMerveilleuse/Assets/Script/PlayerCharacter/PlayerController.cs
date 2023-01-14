@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         Life();
         Dash();
-        //Rage();
+        Rage();
     }
 
     private void GameMove()
@@ -218,6 +218,8 @@ public class PlayerController : MonoBehaviour
             speedMovement = 110;
             dashForce = 5000;
             dashReload = .8f;
+            //linearDragDeceleration = 4.2f;
+            
             PlayerLightAttack.instance.coolDownEndComboIndex = 1;
         }
         else

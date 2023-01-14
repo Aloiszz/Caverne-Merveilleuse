@@ -22,7 +22,7 @@ public class EnnemySpawner : MonoBehaviour
     public int actualNumberOfWave;
     public int numberOfWave;
 
-    [SerializeField] private int randPosSpyder; //position de spawn de l'ennemi
+    private int randPosSpyder; //position de spawn de l'ennemi
     private int randPosBat;
     private int randPosPetrol;
     
@@ -44,7 +44,7 @@ public class EnnemySpawner : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(EnnemyManager.instance.timeBeforeFighting+1);
         isVerif = true;
     }
 
@@ -77,9 +77,10 @@ public class EnnemySpawner : MonoBehaviour
             {
                 
                 if (isVerif)
-                {
-                    
+                {   
                     SpawnEnnemy();
+                    isVerif = false;
+                    StartCoroutine(Wait());
                 }
                 LookForEnnemyAlive();
                 GetComponent<Room>().CloseTheDoor(); //Door fermé

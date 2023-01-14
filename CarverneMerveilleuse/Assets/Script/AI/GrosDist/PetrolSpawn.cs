@@ -36,7 +36,7 @@ public class PetrolSpawn : MonoBehaviour
         eye1.SetActive(false);
         eye2.SetActive(false);
         
-        Invoke("Activate", EnnemyManager.instance.timeBeforeFighting);
+        Invoke("Activate", EnnemyManager.instance.timeToAppearEnnemy);
     }
 
     void Activate()

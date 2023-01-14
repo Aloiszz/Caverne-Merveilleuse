@@ -134,9 +134,9 @@ public class LifeManager : MonoBehaviour
             r_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);
             
-            CinemachineShake.instance.ShakeCamera(2,2,10f);
+            //CinemachineShake.instance.ShakeCamera(2,2,10f);
             //r_key_img.transform.DOShakePosition(0.1f, 5);
-            rageTxt.transform.DOShakePosition(0.1f, 5);
+            //rageTxt.transform.DOShakePosition(0.1f, 5);
             
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -173,9 +173,10 @@ public class LifeManager : MonoBehaviour
             r_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);
             
-            CinemachineShake.instance.ShakeCamera(2,2,10f);
+            //CinemachineShake.instance.ShakeCamera(2,2,10f);
             //r_key_img.transform.DOShakePosition(0.1f, 5);
-            rageTxt.transform.DOShakePosition(0.1f, 5);
+            //rageTxt.transform.DOShakePosition(0.1f, 5);
+            
             if (Input.GetKeyDown(KeyCode.R))
             {
                 listScoreRageIndex++;

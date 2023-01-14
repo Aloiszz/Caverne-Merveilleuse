@@ -46,6 +46,9 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField]private float intensityFrequency;
     [SerializeField]private float intensityTime;
     
+    [Header("Renseignement")] 
+    [SerializeField]private GameObject ligneVisée;
+    [SerializeField]private GameObject aideViseur;
     
     public static PlayerThrowAttack instance;
     
@@ -96,6 +99,8 @@ public class PlayerThrowAttack : MonoBehaviour
         {
             Aim();
             isAiming = true;
+            aideViseur.GetComponent<SpriteRenderer>().DOFade(0, 1);
+            ligneVisée.GetComponent<SpriteRenderer>().DOFade(1, 1);
         }
         
         if (Input.GetKeyUp(KeyCode.Mouse1) && !isThrow)
@@ -103,6 +108,8 @@ public class PlayerThrowAttack : MonoBehaviour
             Debug.Log("Throw Weapon");
             isThrow = true;
             isAiming = false;
+            aideViseur.GetComponent<SpriteRenderer>().DOFade(1, 1);
+            ligneVisée.GetComponent<SpriteRenderer>().DOFade(0, 1);
         }
 
         if (isThrow)

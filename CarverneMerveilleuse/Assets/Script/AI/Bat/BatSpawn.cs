@@ -34,7 +34,7 @@ public class BatSpawn : MonoBehaviour
         healthBar.SetActive(false);
         eye1.SetActive(false);
 
-        Invoke("Activate", EnnemyManager.instance.timeBeforeFighting);
+        Invoke("Activate", EnnemyManager.instance.timeToAppearEnnemy);
     }
 
     void Activate()
