@@ -48,7 +48,7 @@ public class Introduction : MonoBehaviour
     [Header("Animator")] 
     [SerializeField]private Animator _animator;
     [SerializeField]private Animator _animatorIllustration;
-    
+    [SerializeField]private Animator _animatorPlayer;
     
     [Space] 
     [Header("Audio")] 
@@ -80,6 +80,10 @@ public class Introduction : MonoBehaviour
         if (playIntro)
         {
             _Introduction();
+        }
+        else
+        {
+            _animatorPlayer.enabled = false;
         }
     }
 
@@ -229,6 +233,7 @@ public class Introduction : MonoBehaviour
 
     void _Introduction()
     {
+        _animatorPlayer.enabled = true;
         SceneManager.instance.playModeCG_.DOFade(0, 0);
         
         //Controller
@@ -236,10 +241,10 @@ public class Introduction : MonoBehaviour
         PlayerController.instance.transform.DORotate(new Vector3(0,0,-1170), 10);
         PlayerController.instance.transform.DOMove(new Vector3(-2.52f, 22.77f, 0), 10);*/
         
+        PlayerController.instance.enabled = false;
         PlayerLightAttack.instance.enabled = false;
         PlayerHeavyAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
-        PlayerController.instance.enabled = false;
         _flecheDirection.SetActive(false);
         _ligneViser.SetActive(false);
         
@@ -254,19 +259,27 @@ public class Introduction : MonoBehaviour
         GlobalLight.intensity = 0.15f;
 
         //dialogue
-        //StartCoroutine(StartDialogue());
+        StartCoroutine(ScreenShake());
+        StartCoroutine(StartDialogue());
         //Dialogue();
     }
 
     IEnumerator StartDialogue()
     {
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(7);
         _dialogueTrigger.TriggerDialogue();
+        _virtualCamera.Follow = _Player.transform;
+    }
+    IEnumerator ScreenShake()
+    {
+        yield return new WaitForSeconds(3.47f);
+        CinemachineShake.instance.ShakeCamera(2f,2f,.3f);
     }
 
 
     public void EndIntro()
     {
+        _animatorPlayer.enabled = false;
         playIntro = false;
         
         _virtualCamera.Follow = _targetMain.GetComponent<Transform>();

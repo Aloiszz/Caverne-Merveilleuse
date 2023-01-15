@@ -5,6 +5,7 @@ using System.Linq;
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -174,10 +175,11 @@ public class Room : MonoBehaviour
     void SpawnPointDoorEnnemy()
     {
         Debug.Log("Spawn Door");
+        int rotationZ = 0;
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
         {
             DoorEnnemyPosition.Add(go);
-            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, go.transform.rotation, transform);
+            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, Quaternion.identity, transform);
             DoorEnnemy.Add(door);
         }
     }
