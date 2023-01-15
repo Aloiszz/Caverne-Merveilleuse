@@ -84,6 +84,7 @@ public class LifeManager : MonoBehaviour
             PlayerController.instance.Rage();
             CameraZoom();
             RageShockWave();
+            PlayerController.instance.isPlayed = false;
         }
         
         if (isInRage)
@@ -140,6 +141,7 @@ public class LifeManager : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.R))
             {
+                PlayerController.instance.isPlayed = false;
                 CinemachineShake.instance.StopAllCoroutines();
                 r_key_img.DOFade(0, .2f);
                 rageTxt.DOFade(0, 0.2f);
@@ -179,6 +181,7 @@ public class LifeManager : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.R))
             {
+                PlayerController.instance.isPlayed = false;
                 listScoreRageIndex++;
                 r_key_img.DOFade(0, .2f);
                 rageTxt.DOFade(0, 0.2f);

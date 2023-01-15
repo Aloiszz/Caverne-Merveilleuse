@@ -52,7 +52,11 @@ public class PlayerLightAttack : MonoBehaviour
     public VisualEffect Slash;
     public VisualEffect Slash2;
     public VisualEffect Slash3;
-
+    
+    [Header("Audio")]
+    public AudioClip audioSlashNoHit;
+    public AudioClip audioSlashHit;
+        
     private Vector3 mouseWorldPosition;
     private void Awake()
     {

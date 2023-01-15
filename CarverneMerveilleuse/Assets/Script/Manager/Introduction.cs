@@ -49,6 +49,15 @@ public class Introduction : MonoBehaviour
     [SerializeField]private Animator _animator;
     [SerializeField]private Animator _animatorIllustration;
     
+    
+    [Space] 
+    [Header("Audio")] 
+    [SerializeField]private AudioSource source;
+    [SerializeField]private AudioClip ArchimageAudioEtouffe;
+    [SerializeField]private AudioClip ArchimageAudioFier;
+    [SerializeField]private AudioClip ArchimageAudioNormal;
+    [SerializeField]private AudioClip ArchimageAudioNormalBis;
+    
     public static Introduction instance;
     
     private void Awake()
@@ -75,7 +84,8 @@ public class Introduction : MonoBehaviour
     }
 
     private bool verifIllu;
-    private void Update()
+    
+    public void Dialogue()
     {
         if (playIntro)
         {
@@ -94,6 +104,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioEtouffe, 0.5f);
                     break;
                 case 5 : 
                     /*_virtualCamera.Follow = _Player.transform;
@@ -106,6 +117,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioNormal, 0.5f);
                     break;
                 case 7 : 
                     /*_virtualCamera.Follow = _Player.transform;
@@ -118,6 +130,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 7f;*/
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraEnsemble.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioEtouffe, 0.5f);
                     break;
                 case 9:
                     /*_virtualCamera.Follow = _Player.transform;
@@ -130,6 +143,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioNormalBis, 0.5f);
                     break;
                 case 11 : //Elu !!
                     /*_virtualCamera.Follow = _targetIntro.transform;
@@ -139,12 +153,14 @@ public class Introduction : MonoBehaviour
                     }*/
                     _virtualCameraArchimage.Priority = 8;
                     _virtualCameraElue.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioFier, 0.5f);
                     break;
                 case 13 :
                     /*_virtualCamera.m_Lens.OrthographicSize = 2f;
                     _virtualCamera.Follow = _archimage.transform;*/
                     _virtualCameraArchimage.Priority = 10;
                     _virtualCameraElue.Priority = 8;
+                    source.PlayOneShot(ArchimageAudioEtouffe, 0.5f);
                     break;
                 case 14 : 
                     /*_virtualCamera.Follow = _Player.transform;
@@ -157,12 +173,13 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioNormal, 0.5f);
                     break;
                 case 16 :
                     _IntroBD.DOFade(1, 4);
                     _animator.SetBool("isOpen", false);
                     _animatorIllustration.SetTrigger("Play");
-
+                    source.PlayOneShot(ArchimageAudioNormalBis, 0.5f);
                     if (!verifIllu)
                     {
                         verifIllu = true;
@@ -175,6 +192,7 @@ public class Introduction : MonoBehaviour
                     _animator.SetBool("isOpen", true);
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioFier, 0.5f);
                     break;
                 case 18:
                     _virtualCameraPlayer.Priority = 10; 
@@ -183,6 +201,7 @@ public class Introduction : MonoBehaviour
                 case 19 : 
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioNormal, 0.5f);
                     break;
                 case 20 : 
                     _virtualCameraPlayer.Priority = 10;
@@ -191,6 +210,7 @@ public class Introduction : MonoBehaviour
                 case 21 :
                     _virtualCameraPlayer.Priority = 8;
                     _virtualCameraArchimage.Priority = 10;
+                    source.PlayOneShot(ArchimageAudioNormal, 0.5f);
                     break;
                 case 22 :
                     _virtualCameraPlayer.Priority = 8;
@@ -209,7 +229,13 @@ public class Introduction : MonoBehaviour
 
     void _Introduction()
     {
+        SceneManager.instance.playModeCG_.DOFade(0, 0);
+        
         //Controller
+        /*PlayerController.instance.transform.position = transform.position;
+        PlayerController.instance.transform.DORotate(new Vector3(0,0,-1170), 10);
+        PlayerController.instance.transform.DOMove(new Vector3(-2.52f, 22.77f, 0), 10);*/
+        
         PlayerLightAttack.instance.enabled = false;
         PlayerHeavyAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
@@ -219,7 +245,7 @@ public class Introduction : MonoBehaviour
         
         
         //Camera
-        _virtualCamera.Follow = _Player.transform;
+        //_virtualCamera.Follow = _Player.transform;
         _virtualCamera.m_Lens.OrthographicSize = 5f;
 
         //Light
@@ -228,7 +254,8 @@ public class Introduction : MonoBehaviour
         GlobalLight.intensity = 0.15f;
 
         //dialogue
-        StartCoroutine(StartDialogue());
+        //StartCoroutine(StartDialogue());
+        //Dialogue();
     }
 
     IEnumerator StartDialogue()

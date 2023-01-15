@@ -50,6 +50,12 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField]private GameObject ligneVisée;
     [SerializeField]private GameObject aideViseur;
     
+    [Header("Audio")]
+    public AudioClip audioRebond;
+    public AudioClip audioReturn;
+    public AudioClip audioSlashHit;
+    public AudioClip audioThrow;
+    
     public static PlayerThrowAttack instance;
     
     private void Awake()
@@ -110,6 +116,7 @@ public class PlayerThrowAttack : MonoBehaviour
             isAiming = false;
             aideViseur.GetComponent<SpriteRenderer>().DOFade(1, 1);
             ligneVisée.GetComponent<SpriteRenderer>().DOFade(0, 1);
+            PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioThrow, 0.5f);
         }
 
         if (isThrow)
@@ -281,6 +288,8 @@ public class PlayerThrowAttack : MonoBehaviour
             lerp = 0;
             
             CinemachineShake.instance.ShakeCamera(intensityAmplitude,intensityFrequency,intensityTime);
+            
+            PlayerController.instance.Source.PlayOneShot(audioReturn, 0.5f); // sound
         }
     }
 

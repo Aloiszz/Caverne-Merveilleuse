@@ -55,6 +55,7 @@ public class PlayerAttackCollision3 : MonoBehaviour
     {
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
+            PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashHit,0.5f);
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             col.GetComponent<Mechant>().ReceiveLightDamage();
 
@@ -71,6 +72,10 @@ public class PlayerAttackCollision3 : MonoBehaviour
                     RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             }
             
+        }
+        else
+        {
+            PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashNoHit,0.5f);
         }
     }
 }

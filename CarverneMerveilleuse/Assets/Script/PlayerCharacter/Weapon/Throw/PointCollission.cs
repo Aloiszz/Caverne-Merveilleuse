@@ -58,6 +58,8 @@ public class PointCollission : MonoBehaviour
 
             Instantiate(PlayerThrowAttack.instance.PS_eclatDeFaux, transform.position, quaternion.identity,
                 RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+            
+            PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioRebond, 0.5f);
         }
         
     }
@@ -76,6 +78,7 @@ public class PointCollission : MonoBehaviour
     public void ThrowWeapon()
     {
         //rb.AddForce((PlayerAttackCollision.instance.difference) * 20, ForceMode2D.Impulse);
+        
         
         transform.position = Vector3.MoveTowards(transform.position,
             PlayerThrowAttack.instance.points[1], Time.deltaTime * 

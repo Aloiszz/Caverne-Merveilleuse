@@ -70,6 +70,8 @@ public class ThrowCollision : MonoBehaviour
     {
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
+            PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioSlashHit, 0.5f);
+            
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             
             col.GetComponent<Mechant>().ReceiveThrowDamage();

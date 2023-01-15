@@ -46,6 +46,13 @@ public class PlayerController : MonoBehaviour
     public float timeToArrive;
     public float timeToComeBack;
     
+    [Header("Audio")] 
+    public AudioSource Source;
+    [Space]
+    public AudioClip audioWalk;
+    public AudioClip audioRage;
+    public AudioClip audioRageHeart;
+    
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -205,15 +212,24 @@ public class PlayerController : MonoBehaviour
         
     }
 
-
+    [HideInInspector]public bool isPlayed;
     public void Rage()
     {
+        
         if (LifeManager.instance.isInRage)
         {
             if (PlayerThrowAttack.instance.isThrow)
             {
                 PlayerThrowAttack.instance.ReturnWeaponImmediate();
             }
+
+            if (!isPlayed)
+            {
+                Source.PlayOneShot(audioRage, 1);
+                StartCoroutine(HeartBeat());
+                isPlayed = true;
+            }
+            
             
             speedMovement = 110;
             dashForce = 5000;
@@ -226,7 +242,18 @@ public class PlayerController : MonoBehaviour
         {
             PlayerLightAttack.instance.coolDownEndComboIndex = 0;
             SecureSO();
+            isPlayed = false;
         }
+    }
+
+    IEnumerator HeartBeat()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Source.PlayOneShot(audioRageHeart, 0.5f);
+            yield return new WaitForSeconds(1);
+        }
+        
     }
 
     IEnumerator InvinsibleTime()
