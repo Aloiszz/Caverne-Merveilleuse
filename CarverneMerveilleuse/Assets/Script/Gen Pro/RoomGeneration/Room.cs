@@ -175,11 +175,12 @@ public class Room : MonoBehaviour
     void SpawnPointDoorEnnemy()
     {
         Debug.Log("Spawn Door");
-        int rotationZ = 0;
+        float rotationZ = -90;
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
         {
             DoorEnnemyPosition.Add(go);
-            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, Quaternion.identity, transform);
+            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, transform.rotation * Quaternion.Euler (0f, 0, rotationZ), transform);
+            rotationZ += 90;
             DoorEnnemy.Add(door);
         }
     }
