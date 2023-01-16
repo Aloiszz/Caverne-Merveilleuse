@@ -33,6 +33,8 @@ public class Introduction : MonoBehaviour
     [SerializeField] private CinemachineTargetGroup _targetMain;
     [SerializeField] private CinemachineTargetGroup _targetIntro;
     
+    [SerializeField] private GameObject archimage;
+    [SerializeField] private GameObject _localisationOfArchimage;
     [Space]
     [SerializeField] private GameObject _lightEclairage;
     [SerializeField]private float _globalLigthFloat;
@@ -84,6 +86,8 @@ public class Introduction : MonoBehaviour
         else
         {
             _animatorPlayer.enabled = false;
+            archimage.transform.position = _localisationOfArchimage.transform.position;
+            //archimage.GetComponent<Collider2D>().enabled = false;
         }
     }
 
@@ -287,5 +291,8 @@ public class Introduction : MonoBehaviour
         
         _flecheDirection.SetActive(true);
         _ligneViser.SetActive(true);
+
+        archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
+        //archimage.GetComponent<Collider2D>().enabled = false;
     }
 }

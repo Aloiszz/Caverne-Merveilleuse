@@ -285,6 +285,68 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1067441770570773867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2914602105596379610}
+  m_Layer: 0
+  m_Name: Vague2Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2914602105596379610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067441770570773867}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.62, y: 0.747, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5543817834103062027}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2725070499834929968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8834498034043103641}
+  m_Layer: 0
+  m_Name: Vague1Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8834498034043103641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725070499834929968}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6100001, y: 0.747, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5543817834103062027}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5543817833626099144
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +360,7 @@ GameObject:
   - component: {fileID: 5543817833626099142}
   - component: {fileID: 5543817833626099145}
   - component: {fileID: 5543817833626099141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vague2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +422,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.50980395}
   m_FlipX: 0
@@ -614,6 +676,8 @@ Transform:
   - {fileID: 5543817834798326663}
   - {fileID: 5543817834563901229}
   - {fileID: 5543817835675150970}
+  - {fileID: 8834498034043103641}
+  - {fileID: 2914602105596379610}
   m_Father: {fileID: 5543817835539957421}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -661,7 +725,7 @@ GameObject:
   - component: {fileID: 5543817834563901227}
   - component: {fileID: 5543817834563901226}
   - component: {fileID: 5543817834563901225}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttaqueDroite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +787,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.50980395}
   m_FlipX: 0
@@ -837,7 +901,7 @@ GameObject:
   - component: {fileID: 5543817834798326660}
   - component: {fileID: 5543817834798326661}
   - component: {fileID: 5543817834798326658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ZoneAOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1078,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.50980395}
   m_FlipX: 0
@@ -1502,7 +1566,7 @@ GameObject:
   - component: {fileID: 5543817835539957418}
   - component: {fileID: 5543817835539957416}
   - component: {fileID: 5543817835539957419}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -1595,7 +1659,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.006360233, y: 0}
+  m_Offset: {x: -0.006360233, y: -0.12216382}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1606,7 +1670,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.318015, y: 1}
+  m_Size: {x: 1.318015, y: 0.75567234}
   m_EdgeRadius: 0
 --- !u!114 &5543817835539957418
 MonoBehaviour:
@@ -1633,15 +1697,19 @@ MonoBehaviour:
   nbEnnemi: 0
   listEnnemis: []
   vague1: {fileID: 5543817834802212250}
+  vague1Point: {fileID: 8834498034043103641}
   vague2: {fileID: 5543817833626099144}
+  vague2Point: {fileID: 2914602105596379610}
   attaqueAvant1: {fileID: 5543817834563901228}
   attaqueAvant2: {fileID: 5543817835675150973}
   zone: {fileID: 5543817834798326662}
+  puissancePushAOE: 10
   rangeCac: 12
   chute: {fileID: 7184246990048684619, guid: e71f2357effdc5b47bf8dfa60c1dd38d, type: 3}
+  part1Room: {fileID: 0}
   part2Room: {fileID: 0}
   transitionPoint: {fileID: 709402125}
-  bossSpeed: 5
+  bossSpeed: 3
   vaguesSpeed: 700
   tempsPrevention: 0.5
   player: {fileID: 0}
@@ -1709,7 +1777,7 @@ GameObject:
   - component: {fileID: 5543817835675150968}
   - component: {fileID: 5543817835675150971}
   - component: {fileID: 5543817835675150966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttaqueGauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1771,7 +1839,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.50980395}
   m_FlipX: 0

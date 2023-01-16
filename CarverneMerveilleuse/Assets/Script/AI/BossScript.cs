@@ -28,8 +28,10 @@ public class BossScript : MonoBehaviour
 
     [Header("Attaques Phase 2")] 
     public GameObject vague1;
+    public Transform vague1Point;
     private Rigidbody2D vague1RB;
     public GameObject vague2;
+    public Transform vague2Point;
     private Rigidbody2D vague2RB;
     public GameObject attaqueAvant1;
     public GameObject attaqueAvant2;
@@ -37,6 +39,7 @@ public class BossScript : MonoBehaviour
     public float puissancePushAOE = 5;
     public float rangeCac = 10;
     public GameObject chute;
+    public GameObject part1Room;
     public GameObject part2Room;
     public GameObject transitionPoint;
     public float bossSpeed = 5;
@@ -68,6 +71,7 @@ public class BossScript : MonoBehaviour
     private float posXJoueur;
     private float posYJoueur;
     private Mechant lifeScript;
+    private Coroutine actualZoneCac;
     
     public static BossScript instance;
 
@@ -84,8 +88,6 @@ public class BossScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        vague1Pos = vague1.transform.position;
-        vague2Pos = vague2.transform.position;
         vague2RB = vague2.GetComponent<Rigidbody2D>();
         vague1RB = vague1.GetComponent<Rigidbody2D>();
         player = PlayerController.instance.gameObject;
@@ -105,7 +107,6 @@ public class BossScript : MonoBehaviour
         {
             StartCoroutine(Vague());
         }
-        Debug.Log(lifeScript.canTakeDamage);
         if ((PlayerThrowAttack.instance.isThrow || PlayerThrowAttack.instance.isAiming) && PointCollission.instance.bounceInt == 1)
         {
             lifeScript.canTakeDamage = false;
@@ -140,6 +141,14 @@ public class BossScript : MonoBehaviour
                 Destroy(listEnnemis[y]);
             }
             player.transform.position = transitionPoint.transform.position;
+            if (actualZoneCac != null)
+            {
+                StopCoroutine(actualZoneCac);
+                zone.SetActive(false);
+                canAttack = true;
+                canZone = true;
+            }
+            part1Room.SetActive(false);
             part2Room.SetActive(true);
             rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             phaseTransition = false;
@@ -171,9 +180,25 @@ public class BossScript : MonoBehaviour
             }
             
         }
-        else
+        else if ((player.transform.position - transform.position).magnitude <= rangeCac && mechantScript.life >= mechantScript.lifeDepart / 2)
+        {
+            isCAC = true;
+            if (canZone)
+            {
+                 actualZoneCac = StartCoroutine(nameof(ZoneCac));
+            }
+            
+        }
+        else 
         {
             isCAC = false;
+            if (mechantScript.life >= mechantScript.lifeDepart / 2 && zone.activeInHierarchy == false && actualZoneCac != null)
+            {
+                StopCoroutine(actualZoneCac);
+                zone.SetActive(false);
+                canAttack = true;
+                canZone = true;
+            }
         }
     }
 
@@ -183,16 +208,16 @@ public class BossScript : MonoBehaviour
         if (nbEnnemi == 0)
         {
             yield return new WaitForSeconds(3f);
-            if (!canAttack)
+            if (!phaseTransition)
             {
                 StopCoroutine(Vague());
             }
             else
             {
-                if ((player.transform.position - transform.position).magnitude <= rangeCac && canZone)
-                {
-                    StartCoroutine(ZoneCac());
-                }
+                // if ((player.transform.position - transform.position).magnitude <= rangeCac && canZone)
+                // {
+                //     StartCoroutine(ZoneCac());
+                // }
                 int nb = Random.Range(1, numTypeEnnemi);
                 if (nb == 2)
                 {
@@ -313,23 +338,23 @@ public class BossScript : MonoBehaviour
         {
             if (posXJoueur <= 0)
             {
+                vague1.transform.position = vague1Point.position;
                 vague1.SetActive(true);
                 yield return new WaitForSeconds(0.5f);
                 vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
                 vague1RB.velocity = Vector2.zero;
                 vague1.SetActive(false);
-                vague1.transform.position = vague1Pos;
             }
             else
             {
+                vague2.transform.position = vague2Point.position;
                 vague2.SetActive(true);
                 yield return new WaitForSeconds(0.5f);
                 vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
                 vague2RB.velocity = Vector2.zero;
                 vague2.SetActive(false);
-                vague2.transform.position = vague2Pos;
             }
         }
 
@@ -412,6 +437,11 @@ public class BossScript : MonoBehaviour
         {
             canAttack = false;
             canZone = false;
+            if (mechantScript.life > mechantScript.lifeDepart / 2)
+            {
+                yield return new WaitForSeconds(4);
+                Debug.Log("Go hein");
+            }
             zone.SetActive(true);
             zone.GameObject().GetComponent<Collider2D>().enabled = false;
             zone.GetComponent<SpriteRenderer>().color = Color.green;
@@ -431,4 +461,5 @@ public class BossScript : MonoBehaviour
             
         }
     }
+    
 }
