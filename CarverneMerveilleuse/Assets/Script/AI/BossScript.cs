@@ -192,8 +192,9 @@ public class BossScript : MonoBehaviour
         else 
         {
             isCAC = false;
-            if (mechantScript.life >= mechantScript.lifeDepart / 2 && zone.activeInHierarchy == false && actualZoneCac != null)
+            if (mechantScript.life > mechantScript.lifeDepart / 2 && zone.activeInHierarchy == false && actualZoneCac != null)
             {
+                Debug.Log("c'est là ?");
                 StopCoroutine(actualZoneCac);
                 zone.SetActive(false);
                 canAttack = true;
