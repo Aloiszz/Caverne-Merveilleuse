@@ -34,19 +34,22 @@ public class DialogueManager : MonoBehaviour
     {
         if (DialogueCollider.instance.isInRange)
         {
-            if (!Introduction.instance.playIntro)
+            if (Introduction.instance.playIntro)
             {
-                cam.DOCinemachineOrthoSize(7, 2);
+                //cam.DOCinemachineOrthoSize(7, 2);
+                ArchimageGO.SetActive(true);
+                //BtnScore.SetActive(false);
+                ArchimageCG.DOFade(1, .2f);
             }
             else
             {
                 ArchimageGO.SetActive(true);
                 /*BtnInteraction.SetActive(true);*/
-                //BtnScore.SetActive(true);
+                BtnScore.SetActive(true);
                 
                 ArchimageCG.DOFade(1, .2f);
                 /*btnInteractionCG.DOFade(1, .2f);*/
-                //btnScoreCG.DOFade(1, .2f);
+                btnScoreCG.DOFade(1, .2f);
             }
         }
         else
