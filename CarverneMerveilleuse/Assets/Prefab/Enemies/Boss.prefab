@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 5543817833626099142}
   - component: {fileID: 5543817833626099145}
   - component: {fileID: 5543817833626099141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vague2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 5543817834563901227}
   - component: {fileID: 5543817834563901226}
   - component: {fileID: 5543817834563901225}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttaqueDroite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 5543817834798326660}
   - component: {fileID: 5543817834798326661}
   - component: {fileID: 5543817834798326658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ZoneAOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1502,7 +1502,7 @@ GameObject:
   - component: {fileID: 5543817835539957418}
   - component: {fileID: 5543817835539957416}
   - component: {fileID: 5543817835539957419}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -1595,7 +1595,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.006360233, y: 0}
+  m_Offset: {x: -0.006360233, y: -0.12216382}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1606,7 +1606,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.318015, y: 1}
+  m_Size: {x: 1.318015, y: 0.75567234}
   m_EdgeRadius: 0
 --- !u!114 &5543817835539957418
 MonoBehaviour:
@@ -1637,11 +1637,13 @@ MonoBehaviour:
   attaqueAvant1: {fileID: 5543817834563901228}
   attaqueAvant2: {fileID: 5543817835675150973}
   zone: {fileID: 5543817834798326662}
+  puissancePushAOE: 10
   rangeCac: 12
   chute: {fileID: 7184246990048684619, guid: e71f2357effdc5b47bf8dfa60c1dd38d, type: 3}
+  part1Room: {fileID: 0}
   part2Room: {fileID: 0}
   transitionPoint: {fileID: 709402125}
-  bossSpeed: 5
+  bossSpeed: 3
   vaguesSpeed: 700
   tempsPrevention: 0.5
   player: {fileID: 0}
@@ -1709,7 +1711,7 @@ GameObject:
   - component: {fileID: 5543817835675150968}
   - component: {fileID: 5543817835675150971}
   - component: {fileID: 5543817835675150966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttaqueGauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
