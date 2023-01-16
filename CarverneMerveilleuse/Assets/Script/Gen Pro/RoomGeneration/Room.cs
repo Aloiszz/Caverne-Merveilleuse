@@ -186,6 +186,7 @@ public class Room : MonoBehaviour
     }
     public void OpenTheDoor()
     {
+        AudioManager.instance.PlayNoCombatMusic();
         Debug.Log("Open the door");
         foreach (var i in DoorEnnemy)
         {
@@ -197,6 +198,7 @@ public class Room : MonoBehaviour
     }
     public void CloseTheDoor()
     {
+        AudioManager.instance.PlayCombatMusic();
         Debug.Log("Close the door");
         foreach (var i in DoorEnnemy)
         {

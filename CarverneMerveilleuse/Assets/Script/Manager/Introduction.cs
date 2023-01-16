@@ -85,6 +85,7 @@ public class Introduction : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlayNoCombatMusic();
             _animatorPlayer.enabled = false;
             archimage.transform.position = _localisationOfArchimage.transform.position;
             //archimage.GetComponent<Collider2D>().enabled = false;
@@ -237,6 +238,8 @@ public class Introduction : MonoBehaviour
 
     void _Introduction()
     {
+        
+        AudioManager.instance.PlayNoCombatMusic();
         _animatorPlayer.enabled = true;
         SceneManager.instance.playModeCG_.DOFade(0, 0);
         

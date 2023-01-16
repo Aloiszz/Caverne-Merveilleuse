@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Image dashbar;
+    [SerializeField] private Image dashbarUI;
     [SerializeField] private TextMeshProUGUI dashTxt;
     [SerializeField]private bool verif_dashbar;
     
     [SerializeField] private Image ChargeBar;
+    [SerializeField] private Image ChargeBarUI;
     [SerializeField] private TextMeshProUGUI Chargetxt;
     [SerializeField]private bool verif_Chargebar;
     [SerializeField]private float verif_float;
@@ -52,6 +54,12 @@ public class GameManager : MonoBehaviour
 
         ChargeBar.DOFillAmount(verif_float / PlayerHeavyAttack.instance.loadingCoolDown[PlayerHeavyAttack.instance.loadingCoolDownIndex], 0);
 
+        if (verif_float / PlayerHeavyAttack.instance.loadingCoolDown[PlayerHeavyAttack.instance.loadingCoolDownIndex] < .9)
+        {
+            ChargeBar.rectTransform.DOScale(new Vector3(verif_float+1.3536f,verif_float+1.3536f,verif_float+1.3536f), 0.2f);
+            ChargeBarUI.rectTransform.DOScale(new Vector3(verif_float+1.3536f,verif_float+1.3536f,verif_float+1.3536f), 0.2f);
+        }
+        
         if (Input.GetKey(KeyCode.Mouse0))
         {
             verif_float += 1 * Time.deltaTime;
