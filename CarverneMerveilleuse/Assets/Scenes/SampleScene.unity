@@ -487,6 +487,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1471412231585620296, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1624582008243366780, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -499,6 +503,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1329582022}
+    - target: {fileID: 3577498193123720059, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4268596153375949181, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -549,11 +557,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844648135187852372, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572695900326563892, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7275830984081090839, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852909689694937196, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
@@ -2494,7 +2510,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 9.99999
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3925,7 +3941,7 @@ MonoBehaviour:
   m_Follow: {fileID: 987894817}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 9.99999
+    OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -4637,6 +4653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
+--- !u!1 &1816922485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6424808003791728431, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1860599199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5096,6 +5117,8 @@ MonoBehaviour:
   _virtualCameraElue: {fileID: 211007979}
   _targetMain: {fileID: 987894816}
   _targetIntro: {fileID: 1545639210}
+  archimage: {fileID: 61902686}
+  _localisationOfArchimage: {fileID: 1816922485}
   _lightEclairage: {fileID: 372952786}
   _globalLigthFloat: 0
   _IntroBD: {fileID: 415511564}
