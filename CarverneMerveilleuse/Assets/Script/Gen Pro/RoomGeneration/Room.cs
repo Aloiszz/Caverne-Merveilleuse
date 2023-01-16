@@ -52,7 +52,6 @@ public class Room : MonoBehaviour
             }
             else
             {
-                Debug.Log("ICICICICICIC");
                 RoomManager.instance.roomMemoryAlternativePath.Add(this.gameObject);
             }
             CreateAlternativePath();
@@ -69,7 +68,6 @@ public class Room : MonoBehaviour
     public void FindCameraBorder()
     {
         //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineConfiner>().m_BoundingShape2D = null;
-        Debug.Log("qsd");
         //PolygonCollider2D col = gameObject.transform.Find("CameraBorder").GetComponent<PolygonCollider2D>();
         Collider2D col = gameObject.transform.Find("CameraCollision").GetComponentInChildren<Collider2D>();
         Debug.Log(col);
@@ -181,6 +179,7 @@ public class Room : MonoBehaviour
             DoorEnnemyPosition.Add(go);
             GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, transform.rotation * Quaternion.Euler (0f, 0, rotationZ), transform);
             rotationZ += 90;
+            Debug.LogError(rotationZ);
             DoorEnnemy.Add(door);
         }
     }
