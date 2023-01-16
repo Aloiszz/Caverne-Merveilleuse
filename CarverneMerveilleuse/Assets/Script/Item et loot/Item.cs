@@ -46,7 +46,10 @@ public class Item : MonoBehaviour
             canvasItem.tmpDescriptionItem.SetText(descriptionItem);
             if (isMerveilleux)
             {
-                canvasItem.tmpNomItem.SetText(nomItem+" "+goldenPrix+"G");
+                canvasItem.tmpNomItem.SetText(nomItem);
+                canvasItem.tmpPrixItem.SetText(goldenPrix.ToString());
+                canvasItem.tmpPrixItem.color = Color.yellow;
+                canvasItem.dentAffichage.color = Color.yellow;
                 canvasItem.tmpNomItem.color = Color.yellow;
                 canvasItem.tmpDescriptionItem.color = Color.yellow;
                 if (Input.GetKeyDown(KeyCode.E) && ui.goldenMoney >= goldenPrix)
@@ -61,7 +64,10 @@ public class Item : MonoBehaviour
             }
             else
             {
-                canvasItem.tmpNomItem.SetText(nomItem+" "+prix+"$");
+                canvasItem.tmpNomItem.SetText(nomItem);
+                canvasItem.tmpPrixItem.SetText(prix.ToString());
+                canvasItem.tmpPrixItem.color = Color.white;
+                canvasItem.dentAffichage.color = Color.white;
                 canvasItem.tmpNomItem.color = Color.white;
                 canvasItem.tmpDescriptionItem.color = Color.white;
                 if (Input.GetKeyDown(KeyCode.E) && ui.money >= prix)
