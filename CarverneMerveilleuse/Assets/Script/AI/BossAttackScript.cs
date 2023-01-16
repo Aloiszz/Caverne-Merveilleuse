@@ -13,6 +13,11 @@ public class BossAttackScript : MonoBehaviour
             {
                 PlayerController.instance.LoseLife(BossScript.instance.chuteDamage);
             }
+            else if(gameObject.name == "ZoneAOE")
+            {
+                PlayerController.instance.LoseLife(BossScript.instance.damage);
+                PlayerController.instance.rb.AddForce((PlayerController.instance.transform.position-BossScript.instance.transform.position).normalized * BossScript.instance.puissancePushAOE *10, ForceMode2D.Impulse);
+            }
             else
             {
                 PlayerController.instance.LoseLife(BossScript.instance.damage);
