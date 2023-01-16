@@ -28,8 +28,10 @@ public class BossScript : MonoBehaviour
 
     [Header("Attaques Phase 2")] 
     public GameObject vague1;
+    public Transform vague1Point;
     private Rigidbody2D vague1RB;
     public GameObject vague2;
+    public Transform vague2Point;
     private Rigidbody2D vague2RB;
     public GameObject attaqueAvant1;
     public GameObject attaqueAvant2;
@@ -86,8 +88,6 @@ public class BossScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        vague1Pos = vague1.transform.position;
-        vague2Pos = vague2.transform.position;
         vague2RB = vague2.GetComponent<Rigidbody2D>();
         vague1RB = vague1.GetComponent<Rigidbody2D>();
         player = PlayerController.instance.gameObject;
@@ -141,6 +141,13 @@ public class BossScript : MonoBehaviour
                 Destroy(listEnnemis[y]);
             }
             player.transform.position = transitionPoint.transform.position;
+            if (actualZoneCac != null)
+            {
+                StopCoroutine(actualZoneCac);
+                zone.SetActive(false);
+                canAttack = true;
+                canZone = true;
+            }
             part1Room.SetActive(false);
             part2Room.SetActive(true);
             rb.constraints = RigidbodyConstraints2D.FreezePositionX;
@@ -201,12 +208,12 @@ public class BossScript : MonoBehaviour
         if (nbEnnemi == 0)
         {
             yield return new WaitForSeconds(3f);
-            // if (!canAttack)
-            // {
-            //     StopCoroutine(Vague());
-            // }
-            // else
-            // {
+            if (!phaseTransition)
+            {
+                StopCoroutine(Vague());
+            }
+            else
+            {
                 // if ((player.transform.position - transform.position).magnitude <= rangeCac && canZone)
                 // {
                 //     StartCoroutine(ZoneCac());
@@ -292,7 +299,7 @@ public class BossScript : MonoBehaviour
                 nbEnnemi += 1;
                 numTypeEnnemi = 4;
                 ennemi4Vivant = true;
-            //}
+            }
         }
 
         else
@@ -331,23 +338,23 @@ public class BossScript : MonoBehaviour
         {
             if (posXJoueur <= 0)
             {
+                vague1.transform.position = vague1Point.position;
                 vague1.SetActive(true);
                 yield return new WaitForSeconds(0.5f);
                 vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
                 vague1RB.velocity = Vector2.zero;
                 vague1.SetActive(false);
-                vague1.transform.position = vague1Pos;
             }
             else
             {
+                vague2.transform.position = vague2Point.position;
                 vague2.SetActive(true);
                 yield return new WaitForSeconds(0.5f);
                 vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                 yield return new WaitForSeconds(2f);
                 vague2RB.velocity = Vector2.zero;
                 vague2.SetActive(false);
-                vague2.transform.position = vague2Pos;
             }
         }
 
