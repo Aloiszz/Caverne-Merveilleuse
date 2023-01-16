@@ -63,6 +63,10 @@ public class MenuManager : MonoBehaviour
     public CanvasGroup cg_Graphism;
     [Header("Panel Sound")] 
     public CanvasGroup cg_Sound;
+    [Header("Panel Sound")] 
+    public CanvasGroup cg_Touche;
+    [Header("Panel Sound")] 
+    public CanvasGroup cg_Score;
 
     [Space]
 
@@ -95,6 +99,9 @@ public class MenuManager : MonoBehaviour
     
     void Start()
     {
+        //Music
+        AudioManager.instance.PlayIntroMusic();
+        
         //sceneProps = GetComponentsInChildren<SpriteRenderer>;
         StartCoroutine(MainMenu());
         go_MainMenu.SetActive(false);
@@ -133,6 +140,9 @@ public class MenuManager : MonoBehaviour
         cg_Advanced.DOFade(0, 0);
         cg_Graphism.DOFade(0, 0);
         cg_Sound.DOFade(0, 0);
+        cg_Touche.DOFade(0, 0);
+        
+        cg_Score.DOFade(0,0);
     }
 
     private void Update()
@@ -354,11 +364,34 @@ public class MenuManager : MonoBehaviour
         animator_Canvas.SetTrigger("SoundToAdvanced");
     }
     //---------------------------------------------
+    public void AdvancedToTouche()
+    {
+        go_OptionMenu.SetActive(false);
+        cg_Touche.DOFade(1,2);
+        animator_Canvas.SetTrigger("AdvancedToTouche");
+    }
     
+    public void ToucheToAdvanced()
+    {
+        go_OptionMenu.SetActive(true);
+        cg_Touche.DOFade(0,2);
+        animator_Canvas.SetTrigger("ToucheToAdvanced");
+    }
+    //---------------------------------------------
+    public void OptionToScore()
+    {
+        //go_OptionMenu.SetActive(false);
+        cg_Score.DOFade(1,2);
+        animator_Canvas.SetTrigger("OptionToScore");
+    }
     
-    
-    
-    
+    public void ScoreToOption()
+    {
+        //go_OptionMenu.SetActive(true);
+        cg_Score.DOFade(0,2);
+        animator_Canvas.SetTrigger("ScoreToOption");
+    }
+    //---------------------------------------------
     
     
     

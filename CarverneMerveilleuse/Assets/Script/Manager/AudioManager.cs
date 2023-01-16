@@ -6,16 +6,24 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Music")] 
+    [SerializeField] private AudioSource Source;
+    [SerializeField] private AudioClip mainMenuClip;
+    [SerializeField] private AudioClip combatClip;
+    [SerializeField] private AudioClip noCombatClip;
+    [SerializeField] private AudioClip preBossClip;
 
-
+    
     public static AudioManager instance;
-
+    
+    [Space]
     [SerializeField] private AudioMixer mixer;
     
     public const string MAIN_KEY = "mainVolume";
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
-    
+
+
     private void Awake()
     {
         if (instance == null)
@@ -42,5 +50,35 @@ public class AudioManager : MonoBehaviour
         
         float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY,1f);
         mixer.SetFloat(VolumeSettings.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
+    }
+
+
+    public void StopMusic()
+    {
+        Source.Stop();
+    }
+
+    public void PlayIntroMusic()
+    {
+        StopMusic();
+        Source.PlayOneShot(mainMenuClip);
+    }
+    
+    public void PlayCombatMusic()
+    {
+        StopMusic();
+        Source.PlayOneShot(combatClip);
+    }
+    
+    public void PlayNoCombatMusic()
+    {
+        StopMusic();
+        Source.PlayOneShot(noCombatClip);
+    }
+    
+    public void PlayPreBossMusic()
+    {
+        StopMusic();
+        Source.PlayOneShot(preBossClip);
     }
 }
