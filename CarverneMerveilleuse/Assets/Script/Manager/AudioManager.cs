@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip noCombatClip;
     [SerializeField] private AudioClip preBossClip;
 
+    [Space]
+    [SerializeField] private List<AudioClip> ClocheClip;
+    private int rand;
     
     public static AudioManager instance;
     
@@ -80,5 +84,11 @@ public class AudioManager : MonoBehaviour
     {
         StopMusic();
         Source.PlayOneShot(preBossClip);
+    }
+
+    public void PlayCloche()
+    {
+        rand = Random.Range(0, ClocheClip.Count);
+        Source.PlayOneShot(ClocheClip[rand]);
     }
 }
