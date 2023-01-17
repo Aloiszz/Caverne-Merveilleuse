@@ -150,7 +150,7 @@ public class BossScript : MonoBehaviour
             }
             part1Room.SetActive(false);
             part2Room.SetActive(true);
-            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             phaseTransition = false;
         }
 
@@ -194,7 +194,6 @@ public class BossScript : MonoBehaviour
             isCAC = false;
             if (mechantScript.life > mechantScript.lifeDepart / 2 && zone.activeInHierarchy == false && actualZoneCac != null)
             {
-                Debug.Log("c'est là ?");
                 StopCoroutine(actualZoneCac);
                 zone.SetActive(false);
                 canAttack = true;
@@ -339,23 +338,50 @@ public class BossScript : MonoBehaviour
         {
             if (posXJoueur <= 0)
             {
-                vague1.transform.position = vague1Point.position;
-                vague1.SetActive(true);
-                yield return new WaitForSeconds(0.5f);
-                vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
-                yield return new WaitForSeconds(2f);
-                vague1RB.velocity = Vector2.zero;
-                vague1.SetActive(false);
+                if (posYJoueur <= 0)
+                {
+                    vague1.transform.position = vague1Point.position;
+                    vague1.SetActive(true);
+                    yield return new WaitForSeconds(0.5f);
+                    vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
+                    yield return new WaitForSeconds(2f);
+                    vague1RB.velocity = Vector2.zero;
+                    vague1.SetActive(false);
+                }
+                else
+                {
+                    vague1.transform.localPosition = new Vector2(vague1Point.localPosition.x, -vague1Point.localPosition.y);
+                    vague1.SetActive(true);
+                    yield return new WaitForSeconds(0.5f);
+                    vague1RB.AddForce(new Vector2(0, -1) * -vaguesSpeed);
+                    yield return new WaitForSeconds(2f);
+                    vague1RB.velocity = Vector2.zero;
+                    vague1.SetActive(false);
+                }
             }
             else
             {
-                vague2.transform.position = vague2Point.position;
-                vague2.SetActive(true);
-                yield return new WaitForSeconds(0.5f);
-                vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
-                yield return new WaitForSeconds(2f);
-                vague2RB.velocity = Vector2.zero;
-                vague2.SetActive(false);
+                if (posYJoueur <= 0)
+                {
+                    vague2.transform.position = vague2Point.position;
+                    vague2.SetActive(true);
+                    yield return new WaitForSeconds(0.5f);
+                    vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
+                    yield return new WaitForSeconds(2f);
+                    vague2RB.velocity = Vector2.zero;
+                    vague2.SetActive(false);
+                }
+                else
+                {
+                    vague2.transform.localPosition = new Vector2(vague2Point.localPosition.x, -vague2Point.localPosition.y);
+                    vague2.SetActive(true);
+                    yield return new WaitForSeconds(0.5f);
+                    vague2RB.AddForce(new Vector2(0, -1) * -vaguesSpeed);
+                    yield return new WaitForSeconds(2f);
+                    vague2RB.velocity = Vector2.zero;
+                    vague2.SetActive(false);
+                }
+                
             }
         }
 
@@ -441,7 +467,6 @@ public class BossScript : MonoBehaviour
             if (mechantScript.life > mechantScript.lifeDepart / 2)
             {
                 yield return new WaitForSeconds(4);
-                Debug.Log("Go hein");
             }
             zone.SetActive(true);
             zone.GameObject().GetComponent<Collider2D>().enabled = false;
