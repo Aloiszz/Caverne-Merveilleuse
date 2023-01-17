@@ -21,7 +21,8 @@ public class Room : MonoBehaviour
     public bool isBossRoom;
     public bool isShopRoom;
     
-    [HideInInspector]public List<GameObject> DoorEnnemyPosition; //Position des portes 
+    public List<GameObject> DoorEnnemyPosition; //Position des portes 
+    public int DoorEnnemyPositionIndex;
     public List<GameObject> DoorEnnemy; //Porte qui se ferme quand ennemi présent
 
     [SerializeField] private SpriteRenderer[] sprite;
@@ -173,16 +174,53 @@ public class Room : MonoBehaviour
     void SpawnPointDoorEnnemy()
     {
         Debug.Log("Spawn Door");
-        float rotationZ = -90;
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemy"))
         {
             DoorEnnemyPosition.Add(go);
-            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, transform.rotation * Quaternion.Euler (0f, 0, rotationZ), transform);
+            DoorEnnemyPositionIndex += 1;
+            StartCoroutine(SpawnDoor());
+        }
+    }
+
+    IEnumerator SpawnDoor()
+    {
+        //float rotationZ = -90;
+        /*foreach (var go in DoorEnnemyPosition)
+        {
+            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, Quaternion.Euler (0f, 0, rotationZ), transform);
             rotationZ += 90;
             Debug.LogError(rotationZ);
             DoorEnnemy.Add(door);
+            yield return null;
+        */
+
+        switch (DoorEnnemyPositionIndex)
+        {
+            case 1 :
+                GameObject door = Instantiate(EnnemyManager.instance.Door, DoorEnnemyPosition[0].transform.position, Quaternion.Euler (0f, 0, -90), transform);
+                DoorEnnemy.Add(door);
+                yield return null;
+                break;
+            case 2 :
+                GameObject door1 = Instantiate(EnnemyManager.instance.Door, DoorEnnemyPosition[1].transform.position, Quaternion.Euler (0f, 0, 0), transform);
+                DoorEnnemy.Add(door1);
+                yield return null;
+                break;
+            case 3 :
+                GameObject door2 = Instantiate(EnnemyManager.instance.Door, DoorEnnemyPosition[2].transform.position, Quaternion.Euler (0f, 0, 90), transform);
+                DoorEnnemy.Add(door2);
+                yield return null;
+                break;
+            case 4 :
+                GameObject door3 = Instantiate(EnnemyManager.instance.Door, DoorEnnemyPosition[3].transform.position, Quaternion.Euler (0f, 0, 180), transform);
+                DoorEnnemy.Add(door3);
+                yield return null;
+                break;
+                
+            
         }
     }
+    
     public void OpenTheDoor()
     {
         AudioManager.instance.PlayNoCombatMusic();
