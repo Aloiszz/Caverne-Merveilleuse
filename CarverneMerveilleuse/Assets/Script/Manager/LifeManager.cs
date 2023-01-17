@@ -112,7 +112,7 @@ public class LifeManager : MonoBehaviour
                 isInRage = false;
                 PlayerController.instance.Rage();
                 Score.instance.scoreRage = 0;
-                r_key_img.DOFade(0, 0);
+                //r_key_img.DOFade(0, 0);
             }
         }
         else
@@ -126,25 +126,29 @@ public class LifeManager : MonoBehaviour
     }
 
 
-
+    private bool once;
     void RageDueToLife()
     {
         if (PlayerController.instance.life > PlayerController.instance.lifeDepard) // rage quand surplus de vie
         {
             life_Bar_RageLife.DOFillAmount((float)1, 1);
-            r_key_img.DOFade(1, .2f);
-            rageTxt.DOFade(1, 0.2f);
             
+            /*r_key_img.DOFade(1, .2f);
+            rageTxt.DOFade(1, 0.2f);*/
+
             //CinemachineShake.instance.ShakeCamera(2,2,10f);
             //r_key_img.transform.DOShakePosition(0.1f, 5);
             //rageTxt.transform.DOShakePosition(0.1f, 5);
             
             if (Input.GetKeyDown(KeyCode.R))
             {
+                once = false;
                 PlayerController.instance.isPlayed = false;
                 CinemachineShake.instance.StopAllCoroutines();
-                r_key_img.DOFade(0, .2f);
-                rageTxt.DOFade(0, 0.2f);
+                
+                /*r_key_img.DOFade(0, .2f);
+                rageTxt.DOFade(0, 0.2f);*/
+                
                 isInRage = true;
                 rageBarLife = true;
                 PlayerController.instance.Rage();
@@ -162,8 +166,8 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
-            r_key_img.DOFade(0, .2f);
-            rageTxt.DOFade(0, .2f);
+            /*r_key_img.DOFade(0, .2f);
+            rageTxt.DOFade(0, .2f);*/
         }
 
     }
@@ -172,8 +176,8 @@ public class LifeManager : MonoBehaviour
     {
         if (Score.instance.scoreRage > Score.instance.listScoreRage[listScoreRageIndex]) // rage quand score de rage atteint
         {
-            r_key_img.DOFade(1, .2f);
-            rageTxt.DOFade(1, 0.2f);
+            /*_key_img.DOFade(1, .2f);
+            rageTxt.DOFade(1, 0.2f);*/
             
             //CinemachineShake.instance.ShakeCamera(2,2,10f);
             //r_key_img.transform.DOShakePosition(0.1f, 5);
@@ -183,8 +187,10 @@ public class LifeManager : MonoBehaviour
             {
                 PlayerController.instance.isPlayed = false;
                 listScoreRageIndex++;
-                r_key_img.DOFade(0, .2f);
-                rageTxt.DOFade(0, 0.2f);
+                
+                /*r_key_img.DOFade(0, .2f);
+                rageTxt.DOFade(0, 0.2f);*/
+                
                 isInRage = true;
                 rageBarScore = true;
                 PlayerController.instance.Rage();
@@ -202,7 +208,7 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
-            r_key_img.DOFade(0, .2f);
+            /*r_key_img.DOFade(0, .2f);*/
         }
     }
 
