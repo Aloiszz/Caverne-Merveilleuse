@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7151188278945488803}
   - component: {fileID: 5133922296897750333}
-  - component: {fileID: 3853838987744971925}
   m_Layer: 9
   m_Name: Pots (1)
   m_TagString: Untagged
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 993b380fbc2ea564695cb8d1ef09f4f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -85,23 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3853838987744971925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315356674902976063}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseObjet: 0.1
-  isGroup: 0
-  objets: []
-  renList: []
-  ordList: 
 --- !u!1 &3766445326511295003
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7905072864709539572}
   - component: {fileID: 379885973098355261}
-  - component: {fileID: 1061460043761405033}
   m_Layer: 9
   m_Name: "Vase cass\xE9 (1)"
   m_TagString: Untagged
@@ -175,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b00d2fe98d369c44da49617ba87f537b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -187,23 +168,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1061460043761405033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766445326511295003}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseObjet: -0.27
-  isGroup: 0
-  objets: []
-  renList: []
-  ordList: 
 --- !u!1 &5424146385147919014
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5889244643719607297}
-  - component: {fileID: 2551113624605297887}
   m_Layer: 9
   m_Name: Pile_2
   m_TagString: Untagged
@@ -238,22 +201,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2551113624605297887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5424146385147919014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a2303029ecb9d4fbb1d92a1ffddc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseObjet: 0.5
-  isGroup: 1
-  objets:
-  - {fileID: 3766445326511295003}
-  - {fileID: 315356674902976063}
-  renList: []
-  ordList: 
