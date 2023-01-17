@@ -41,7 +41,7 @@ public class Item : MonoBehaviour
         if ((player.transform.position - spawnPos).magnitude <= 2)
         {
             canvasItem.itemCanvas.transform.parent = transform;
-            canvasItem.itemCanvas.transform.position = spawnPos;
+            canvasItem.itemCanvas.transform.position = new Vector2(spawnPos.x, spawnPos.y +1);
             canvasItem.itemCanvas.SetActive(true); 
             canvasItem.tmpDescriptionItem.SetText(descriptionItem);
             if (isMerveilleux)
@@ -86,15 +86,16 @@ public class Item : MonoBehaviour
             }
             
         }
+        
+        else if (transform.position.y >= spawnPos.y)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.05f);
+        }
         else if (canvasItem.itemCanvas.transform.parent == transform)
         {
             canvasItem.itemCanvas.transform.parent = null;
             canvasItem.itemCanvas.SetActive(false);
             
-        }
-        else if (transform.position.y >= spawnPos.y)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y - 0.05f);
         }
     }
 }
