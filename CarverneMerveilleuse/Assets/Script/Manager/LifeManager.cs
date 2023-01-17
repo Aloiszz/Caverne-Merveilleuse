@@ -110,7 +110,7 @@ public class LifeManager : MonoBehaviour
             {
                 timeInRage = timeInRageMax;
                 isInRage = false;
-                PlayerController.instance.Rage();
+                //PlayerController.instance.Rage();
                 Score.instance.scoreRage = 0;
                 //r_key_img.DOFade(0, 0);
             }

@@ -16,6 +16,9 @@ public class PlayerAttackCollision2 : MonoBehaviour
     [SerializeField]private GameObject bloodPSFloor;
     private int rand;
     
+    private int randAudioHit;
+    private int randAudioNoHit;
+    
     public static PlayerAttackCollision2 instance;
     
     private void Awake()
@@ -63,9 +66,12 @@ public class PlayerAttackCollision2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        randAudioHit = Random.Range(0, PlayerLightAttack.instance.audioSlashHit.Count);
+        randAudioNoHit = Random.Range(0, PlayerLightAttack.instance.audioSlashNoHit.Count);
+        
         if (col.CompareTag("CAC") | col.CompareTag("Boss") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
-            PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashHit,0.5f);
+            PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashHit[randAudioHit],0.5f);
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
             col.GetComponent<Mechant>().ReceiveLightDamage();
             CinemachineShake.instance.ShakeCamera(2f,2,0.2f);
@@ -82,7 +88,7 @@ public class PlayerAttackCollision2 : MonoBehaviour
         }
         else
         {
-            PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashNoHit,0.5f);
+            PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashNoHit[randAudioNoHit],0.5f);
         }
     }
 }

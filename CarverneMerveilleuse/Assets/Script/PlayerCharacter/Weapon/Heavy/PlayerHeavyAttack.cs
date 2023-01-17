@@ -54,6 +54,10 @@ public class PlayerHeavyAttack : MonoBehaviour
     
     [Header("VFX")] 
     public VisualEffect Slash;
+    
+    [Header("Audio")]
+    public List<AudioClip> audioSlashNoHit;
+    public List<AudioClip> audioSlashHit;
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -154,9 +158,10 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     IEnumerator WaitPrep()
     {
-        PlayerController.instance.speedMovement = 50;
+        //PlayerController.instance.speedMovement = 50;
         yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);
         activate = true;
+        AudioManager.instance.PlayCloche();
     }
     
     IEnumerator Turn()
@@ -221,19 +226,21 @@ public class PlayerHeavyAttack : MonoBehaviour
 
     void FinTourne()
     {
-        PlayerController.instance.SecureSO();
         PlayerLightAttack.instance.enabled = true;
         PlayerThrowAttack.instance.enabled = true;
-        PlayerController.instance.enabled = true;
+        //²PlayerController.instance.enabled = true;
         
         isCoolDown = false;
         
         HeavyAttackCollision.instance.sprite.enabled = false;
         HeavyAttackCollision.instance.coll.enabled = false;
-        
+
         activate = false;
         isKeyUp = true;
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
+        Physics2D.IgnoreLayerCollision(0,7, false);
+
+        PlayerController.instance.speedMovement = 90;
     }
 }

@@ -6,6 +6,7 @@ using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine.VFX;
 
+
 public class PlayerLightAttack : MonoBehaviour
 {
     
@@ -54,8 +55,8 @@ public class PlayerLightAttack : MonoBehaviour
     public VisualEffect Slash3;
     
     [Header("Audio")]
-    public AudioClip audioSlashNoHit;
-    public AudioClip audioSlashHit;
+    public List<AudioClip> audioSlashNoHit;
+    public List<AudioClip> audioSlashHit;
         
     private Vector3 mouseWorldPosition;
     private void Awake()

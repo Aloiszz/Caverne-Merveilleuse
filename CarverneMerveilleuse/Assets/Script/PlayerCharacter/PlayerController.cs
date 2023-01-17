@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
         lifeDepard = playerSO.life;
         linearDragDeceleration = playerSO.linearDragDeceleration;
         linearDragMultiplier = playerSO.linearDragMultiplier;
+        
     }
 
     
@@ -213,6 +215,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [HideInInspector]public bool isPlayed;
+    public bool wasInRage;
     public void Rage()
     {
         
@@ -229,8 +232,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(HeartBeat());
                 isPlayed = true;
             }
-            
-            
+
+            StartCoroutine(resetwasInRag());
             speedMovement = 110;
             dashForce = 5000;
             dashReload = .8f;
@@ -240,10 +243,20 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            PlayerLightAttack.instance.coolDownEndComboIndex = 0;
-            SecureSO();
-            isPlayed = false;
+            if (wasInRage)
+            {
+                PlayerLightAttack.instance.coolDownEndComboIndex = 0;
+                SecureSO();
+                isPlayed = false;
+                wasInRage = false;
+            }
         }
+    }
+
+    IEnumerator resetwasInRag()
+    {
+        yield return new WaitForSeconds(LifeManager.instance.timeInRage);
+        wasInRage = true;
     }
 
     IEnumerator HeartBeat()

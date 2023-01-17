@@ -1436,26 +1436,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 79625110420020026, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
   m_PrefabInstance: {fileID: 79625110100545833}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &393726494
+--- !u!95 &393726494 stripped
 Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 393726494, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+  m_PrefabInstance: {fileID: 79625110100545833}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393726481}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8cf34d2b283df2a45b4c8cd04a26cdf6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &409311326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3916,6 +3901,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2683677433464494980, guid: 1c87889e32a6fd54a9b2cea693e6e799, type: 3}
+      propertyPath: ClocheClip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 767eb43a5c32af6458763d66a697ca36, type: 3}
     - target: {fileID: 2683677433464494981, guid: 1c87889e32a6fd54a9b2cea693e6e799, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -5413,6 +5402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393726492, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 79625110420020024, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -5459,22 +5452,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79625110420020026, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007863533091583391, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060846218936231653, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Color.a
-      value: 0.2784314
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189383807867261770, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654063095401726740, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

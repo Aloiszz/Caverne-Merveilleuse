@@ -51,7 +51,7 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField]private GameObject aideViseur;
     
     [Header("Audio")]
-    public AudioClip audioRebond;
+    public List<AudioClip> audioRebond;
     public AudioClip audioReturn;
     public AudioClip audioSlashHit;
     public AudioClip audioThrow;
@@ -117,6 +117,7 @@ public class PlayerThrowAttack : MonoBehaviour
             aideViseur.GetComponent<SpriteRenderer>().DOFade(1, 1);
             ligneVisée.GetComponent<SpriteRenderer>().DOFade(0, 1);
             PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioThrow, 0.5f);
+            throwed = true;
         }
 
         if (isThrow)
@@ -166,7 +167,8 @@ public class PlayerThrowAttack : MonoBehaviour
         
         FlecheDeVise.transform.localScale = new Vector3(fauxScaleActual, fauxScaleActual, fauxScaleActual);
     }
-    
+
+    private bool throwed;
     void IsThrow()
     {
         if (isThrow)
@@ -194,9 +196,10 @@ public class PlayerThrowAttack : MonoBehaviour
         }
         else
         {
-            if (!isInGrosProjo && !ItemManager.instance.isInBuffDash)
+            if (!isInGrosProjo && !ItemManager.instance.isInBuffDash && throwed)
             {
                 PlayerController.instance.speedMovement = PlayerController.instance.playerSO.speedMovement;
+                throwed = false;
             }
             
             //ThrowCollision.instance.gameObject.transform.position = PlayerController.instance.transform.position;

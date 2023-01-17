@@ -13,10 +13,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip combatClip;
     [SerializeField] private AudioClip noCombatClip;
     [SerializeField] private AudioClip preBossClip;
+    [SerializeField] private AudioClip bossPhase2Clip;
+
+    [SerializeField] private float volumeIntensity = 0.8f;
 
     [Space]
     [SerializeField] private List<AudioClip> ClocheClip;
     private int rand;
+    [SerializeField] private AudioClip quitClip;
     
     public static AudioManager instance;
     
@@ -65,30 +69,42 @@ public class AudioManager : MonoBehaviour
     public void PlayIntroMusic()
     {
         StopMusic();
-        Source.PlayOneShot(mainMenuClip);
+        Source.PlayOneShot(mainMenuClip,volumeIntensity);
     }
     
     public void PlayCombatMusic()
     {
         StopMusic();
-        Source.PlayOneShot(combatClip);
+        Source.PlayOneShot(combatClip,volumeIntensity);
     }
     
     public void PlayNoCombatMusic()
     {
         StopMusic();
-        Source.PlayOneShot(noCombatClip);
+        Source.PlayOneShot(noCombatClip,volumeIntensity);
     }
     
     public void PlayPreBossMusic()
     {
         StopMusic();
-        Source.PlayOneShot(preBossClip);
+        Source.PlayOneShot(preBossClip,volumeIntensity);
+    }
+    public void PlayBossPhase2()
+    {
+        StopMusic();
+        Source.PlayOneShot(bossPhase2Clip,volumeIntensity);
     }
 
     public void PlayCloche()
     {
         rand = Random.Range(0, ClocheClip.Count);
         Source.PlayOneShot(ClocheClip[rand]);
+    }
+
+
+    public void Quit()
+    {
+        StopMusic();
+        Source.PlayOneShot(quitClip);
     }
 }

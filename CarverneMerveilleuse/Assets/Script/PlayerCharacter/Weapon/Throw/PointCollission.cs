@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PointCollission : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PointCollission : MonoBehaviour
     public Rigidbody2D rb;
     public int bounceInt = 1;
 
+    private int randAudio;
     public static PointCollission instance;
     
     private void Awake()
@@ -58,8 +60,9 @@ public class PointCollission : MonoBehaviour
 
             Instantiate(PlayerThrowAttack.instance.PS_eclatDeFaux, transform.position, quaternion.identity,
                 RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
-            
-            PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioRebond, 0.5f);
+
+            randAudio = Random.Range(0, PlayerThrowAttack.instance.audioRebond.Count);
+            PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioRebond[randAudio], 0.15f);
         }
         
     }

@@ -439,8 +439,12 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator PlayAnimQuitGame()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.3f);
         
+        AudioManager.instance.Quit();
+        
+        yield return new WaitForSeconds(1.7f);
+
         go_MainMenu.SetActive(false);
         go_btn_Play.SetActive(false);
         go_btn_Option.SetActive(false);
