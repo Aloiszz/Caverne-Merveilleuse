@@ -19,7 +19,7 @@ public class PlayerAttackCollision : MonoBehaviour
     private int randAudioHit;
     private int randAudioNoHit;
 
-    [Space] [SerializeField] private int scoreRagePoint = 1;
+    [Space] [SerializeField] private float scoreRagePoint = 1;
     
     public static PlayerAttackCollision instance;
     

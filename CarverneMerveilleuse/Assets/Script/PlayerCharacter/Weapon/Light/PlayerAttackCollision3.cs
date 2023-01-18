@@ -21,7 +21,7 @@ public class PlayerAttackCollision3 : MonoBehaviour
     private int randAudioHit;
     private int randAudioNoHit;
     
-    [Space] [SerializeField] private int scoreRagePoint = 2;
+    [Space] [SerializeField] private float scoreRagePoint = 2;
     
     public static PlayerAttackCollision3 instance;
     

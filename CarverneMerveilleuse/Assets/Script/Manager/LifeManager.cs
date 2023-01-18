@@ -73,7 +73,7 @@ public class LifeManager : MonoBehaviour
             life_Bar.DOFillAmount((float)PlayerController.instance.life / (float)PlayerController.instance.lifeDepard, 0.3f);
         }
         
-        life_Bar_RageScore.DOFillAmount((float)Score.instance.scoreRage / (float)Score.instance.listScoreRage[listScoreRageIndex], 0.3f);
+        life_Bar_RageScore.DOFillAmount(((float)Score.instance.scoreRage / (float)Score.instance.listScoreRage[listScoreRageIndex]), 0.3f);
 
         RageDueToLife();
         RageDueToScoreRage();

@@ -15,7 +15,7 @@ public class HeavyAttackCollision : MonoBehaviour
     private int randAudioNoHit;
 
     
-    [Space] [SerializeField] private int scoreRagePoint = 1;
+    [Space] [SerializeField] private float scoreRagePoint = 1;
     
     private void Awake()
     {

@@ -18,7 +18,7 @@ public class ThrowCollision : MonoBehaviour
 
     public GameObject laFaux;
 
-    [Space] [SerializeField] private int scoreRagePoint = 1;
+    [Space] [SerializeField] private float scoreRagePoint = 1;
     
     public static ThrowCollision instance;
     

@@ -7,10 +7,10 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public int score;
-    public int scoreRage;
+    public float scoreRage;
     public List<int> listScore;
     public int lastScore;
-    public List<int> listScoreRage;
+    public List<float> listScoreRage;
     public bool addScore;
     [Tooltip("Permet de reset le score dans les playerpref")]
     public bool resetPlayerPrefScore;
