@@ -21,6 +21,8 @@ public class PlayerAttackCollision3 : MonoBehaviour
     private int randAudioHit;
     private int randAudioNoHit;
     
+    [Space] [SerializeField] private int scoreRagePoint = 2;
+    
     public static PlayerAttackCollision3 instance;
     
     private void Awake()
@@ -63,6 +65,9 @@ public class PlayerAttackCollision3 : MonoBehaviour
         {
             PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashHit[randAudioHit],0.5f);
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
+            
+            Score.instance.scoreRage += scoreRagePoint;
+            
             col.GetComponent<Mechant>().ReceiveLightDamage();
 
             CinemachineCameraZoom.instance.CameraZoom(8.5f, 0.05f, 0.4f);

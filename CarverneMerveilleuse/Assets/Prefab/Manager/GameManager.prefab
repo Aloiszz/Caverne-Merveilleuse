@@ -49,9 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashbar: {fileID: 0}
+  dashbarUI: {fileID: 0}
   dashTxt: {fileID: 0}
   verif_dashbar: 0
   ChargeBar: {fileID: 0}
+  ChargeBarUI: {fileID: 0}
   Chargetxt: {fileID: 0}
   verif_Chargebar: 0
   verif_float: 0
@@ -93,7 +95,7 @@ MonoBehaviour:
   SpawningVFX: {fileID: 5941739840801683212, guid: 08d250041c086f94db433ee6c0d8a0a0, type: 3}
   timeBeforeFighting: 2
   timeToAppearEnnemy: 2
-  Door: {fileID: 8992968403294327786, guid: c8ff4fed06c60704d98e1fff60b51bab, type: 3}
+  Door: {fileID: 6702262465706317253, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
   timeBeforeClosingDoor: 0.7
   timeToOpenDoor: 2
   timeToCloseDoor: 1
@@ -121,8 +123,12 @@ MonoBehaviour:
   rageBarScore: 0
   rageBarLife: 0
   globalVolume: {fileID: 0}
+  blit: {fileID: 11400000, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
+  _rageArea: {fileID: 0}
   r_key_img: {fileID: 0}
+  rageTxt: {fileID: 0}
   listScoreRageIndex: 0
+  RageWave: {fileID: 6429919153856389210, guid: be23864a881b5bb44a45372108868199, type: 3}
 --- !u!114 &178592613998863876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +144,8 @@ MonoBehaviour:
   score: 0
   scoreRage: 0
   listScore: 
-  listScoreRage: 0a0000003200000064000000c80000002c01000090010000f4010000
+  lastScore: 0
+  listScoreRage: 0a0000000c0000000f00000012000000120000001200000012000000
   addScore: 0
   resetPlayerPrefScore: 0
+  activateScore: 0

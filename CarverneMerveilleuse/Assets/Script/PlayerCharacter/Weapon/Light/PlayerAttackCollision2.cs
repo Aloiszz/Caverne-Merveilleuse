@@ -19,6 +19,8 @@ public class PlayerAttackCollision2 : MonoBehaviour
     private int randAudioHit;
     private int randAudioNoHit;
     
+    [Space] [SerializeField] private int scoreRagePoint = 1;
+    
     public static PlayerAttackCollision2 instance;
     
     private void Awake()
@@ -73,6 +75,9 @@ public class PlayerAttackCollision2 : MonoBehaviour
         {
             PlayerController.instance.Source.PlayOneShot(PlayerLightAttack.instance.audioSlashHit[randAudioHit],0.5f);
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
+            
+            Score.instance.scoreRage += scoreRagePoint;
+            
             col.GetComponent<Mechant>().ReceiveLightDamage();
             CinemachineShake.instance.ShakeCamera(2f,2,0.2f);
             rand = Random.Range(1, 3);

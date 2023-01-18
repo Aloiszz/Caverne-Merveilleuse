@@ -14,6 +14,9 @@ public class HeavyAttackCollision : MonoBehaviour
     private int randAudioHit;
     private int randAudioNoHit;
 
+    
+    [Space] [SerializeField] private int scoreRagePoint = 1;
+    
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -43,6 +46,9 @@ public class HeavyAttackCollision : MonoBehaviour
         {
             PlayerController.instance.Source.PlayOneShot(PlayerHeavyAttack.instance.audioSlashHit[randAudioHit], 0.3f);
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
+            
+            Score.instance.scoreRage += scoreRagePoint;
+            
             col.GetComponent<Mechant>().ReceiveAOEDamage();
             CinemachineShake.instance.ShakeCamera(2,2,0.1f);
              int rand = Random.Range(1, 3);

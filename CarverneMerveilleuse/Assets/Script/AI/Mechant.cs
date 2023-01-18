@@ -127,7 +127,7 @@ public class Mechant : MonoBehaviour
                 PlayerController.instance.life += ItemManager.instance.regenVie;
             }
             
-            Score.instance.scoreRage += pointScore;
+            //Score.instance.scoreRage += pointScore;
             if (CompareTag("Boss") && Score.instance.activateScore)
             {
                 Score.instance.AddScore();

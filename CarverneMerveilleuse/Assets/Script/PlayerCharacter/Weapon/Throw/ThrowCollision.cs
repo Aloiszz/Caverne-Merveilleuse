@@ -18,6 +18,8 @@ public class ThrowCollision : MonoBehaviour
 
     public GameObject laFaux;
 
+    [Space] [SerializeField] private int scoreRagePoint = 1;
+    
     public static ThrowCollision instance;
     
     private void Awake()
@@ -73,6 +75,8 @@ public class ThrowCollision : MonoBehaviour
             PlayerController.instance.Source.PlayOneShot(PlayerThrowAttack.instance.audioSlashHit, 0.5f);
             
             PlayerLightAttack.instance.playerLightAttack.isStriking = true;
+            
+            Score.instance.scoreRage += scoreRagePoint;
             
             col.GetComponent<Mechant>().ReceiveThrowDamage();
             CinemachineShake.instance.ShakeCamera(1.3f,2,0.2f);
