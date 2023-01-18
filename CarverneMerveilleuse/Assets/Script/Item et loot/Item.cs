@@ -48,10 +48,10 @@ public class Item : MonoBehaviour
             {
                 canvasItem.tmpNomItem.SetText(nomItem);
                 canvasItem.tmpPrixItem.SetText(goldenPrix.ToString());
-                canvasItem.tmpPrixItem.color = Color.yellow;
-                canvasItem.dentAffichage.color = Color.yellow;
-                canvasItem.tmpNomItem.color = Color.yellow;
-                canvasItem.tmpDescriptionItem.color = Color.yellow;
+                canvasItem.tmpPrixItem.color = Color.black;
+                canvasItem.dentAffichage.gameObject.SetActive(false);
+                canvasItem.tmpNomItem.color = Color.black;
+                canvasItem.tmpDescriptionItem.color = Color.black;
                 if (Input.GetKeyDown(KeyCode.E) && ui.goldenMoney >= goldenPrix)
                 {
                     
@@ -67,7 +67,7 @@ public class Item : MonoBehaviour
                 canvasItem.tmpNomItem.SetText(nomItem);
                 canvasItem.tmpPrixItem.SetText(prix.ToString());
                 canvasItem.tmpPrixItem.color = Color.white;
-                canvasItem.dentAffichage.color = Color.white;
+                canvasItem.dentAffichage.gameObject.SetActive(true);
                 canvasItem.tmpNomItem.color = Color.white;
                 canvasItem.tmpDescriptionItem.color = Color.white;
                 if (Input.GetKeyDown(KeyCode.E) && ui.money >= prix)
