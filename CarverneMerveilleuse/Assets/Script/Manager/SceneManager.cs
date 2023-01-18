@@ -20,6 +20,13 @@ public class SceneManager : MonoBehaviour
     public GameObject LevelPanel_;
     public GameObject death_;
     public GameObject pauseMenu_;
+
+
+    [Header("Animator")] 
+    public Animator animator;
+
+    [Header("Panel")] 
+    public CanvasGroup optionPanel;
     
     
     public static SceneManager instance;
@@ -128,5 +135,16 @@ public class SceneManager : MonoBehaviour
         Debug.Log("quit");
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+
+
+    public void Option()
+    {
+        pauseCG_.DOFade(0, 2);
+        optionPanel.DOFade(1, 2);
+        
+        animator.enabled = true;
+        animator.SetBool("IsMain", false);
     }
 }
