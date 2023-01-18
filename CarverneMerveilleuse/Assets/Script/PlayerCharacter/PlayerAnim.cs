@@ -296,14 +296,14 @@ public class PlayerAnim : MonoBehaviour
     }
     void FaceHeavyAttack()
     {
-        /*if (PlayerHeavyAttack.instance.isCharge)
+        if (PlayerHeavyAttack.instance.isCharge)
         {
             animator[0].SetBool("isChargeAttack", true);
         }
         else
         {
             animator[0].SetBool("isChargeAttack", false);
-        }*/
+        }
     }
 
     void FaceThrowAttack()

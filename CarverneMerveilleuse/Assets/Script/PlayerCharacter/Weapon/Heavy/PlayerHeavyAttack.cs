@@ -132,7 +132,6 @@ public class PlayerHeavyAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 StartCoroutine(WaitPrep());
-                isCharge = true;
             }
 
             if (activate)
@@ -149,7 +148,7 @@ public class PlayerHeavyAttack : MonoBehaviour
                 {
                     activate = false;
                     StopAllCoroutines();
-                    isCharge = true;
+                    isCharge = false;
                 }
             }
         }
@@ -161,6 +160,7 @@ public class PlayerHeavyAttack : MonoBehaviour
         //PlayerController.instance.speedMovement = 50;
         yield return new WaitForSeconds(loadingCoolDown[loadingCoolDownIndex]);
         activate = true;
+        isCharge = true;
         AudioManager.instance.PlayCloche();
     }
     
