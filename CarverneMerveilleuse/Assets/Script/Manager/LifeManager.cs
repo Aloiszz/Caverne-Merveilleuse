@@ -78,14 +78,14 @@ public class LifeManager : MonoBehaviour
         RageDueToLife();
         RageDueToScoreRage();
         
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             isInRage = true;
             PlayerController.instance.Rage();
             CameraZoom();
             RageShockWave();
             PlayerController.instance.isPlayed = false;
-        }
+        }*/
         
         if (isInRage)
         {
