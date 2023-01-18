@@ -299,10 +299,17 @@ public class PlayerAnim : MonoBehaviour
         if (PlayerHeavyAttack.instance.isCharge)
         {
             animator[0].SetBool("isChargeAttack", true);
+
+            graphFace.SetActive(false);
+            
+            animator[3].GetComponent<SpriteRenderer>().enabled = true;
+            animator[3].SetTrigger("isHeavyAttack");
         }
         else
         {
+            graphFace.SetActive(true);
             animator[0].SetBool("isChargeAttack", false);
+            animator[3].GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
