@@ -25,8 +25,13 @@ public class SceneManager : MonoBehaviour
     [Header("Animator")] 
     public Animator animator;
 
-    [Header("Panel")] 
+    [Header("option Panel")] 
+    public CanvasGroup img;
     public CanvasGroup optionPanel;
+    
+    [Header("Credit Panel")]
+    public CanvasGroup creditPanel;
+    public CanvasGroup cg_CreditTitle;
     
     
     public static SceneManager instance;
@@ -103,8 +108,11 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Scene test");
     }
-    private void Pause()
+    public void Pause()
     {
+        img.DOFade(0, 0);
+        optionPanel.DOFade(0, 0.5f);
+        
         StopCoroutine(UnPauseTime());
         playModeCG_.DOFade(0, 0.5f);
         pauseCG_.DOFade(1, 0.5f);
@@ -136,15 +144,50 @@ public class SceneManager : MonoBehaviour
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
-
-
-
+    
     public void Option()
     {
+        creditPanel.DOFade(0, 1);
+        img.DOFade(1, 0);
         pauseCG_.DOFade(0, 2);
         optionPanel.DOFade(1, 2);
         
         animator.enabled = true;
         animator.SetBool("IsMain", false);
+    }
+    
+    
+    public void Credit()
+    {
+        optionPanel.DOFade(0, 2);
+        creditPanel.DOFade(1, 2);
+        //verif = true;
+        /*BackToOptionFromCredit = true;
+        
+        cg_OptionMenu.DOFade(0, 2);
+        cg_btn_Score.DOFade(0, 2);
+        cg_btn_Credit.DOFade(0, 2);
+        cg_btn_Advanced.DOFade(0, 2);
+        cg_btn_MainMenu.DOFade(0, 2).OnComplete(() =>
+            go_btn_MainMenu.SetActive(false));
+        
+        cg_btn_Score.GetComponent<Button>().interactable = false;
+        cg_btn_Credit.GetComponent<Button>().interactable = false;
+        cg_btn_Advanced.GetComponent<Button>().interactable = false;
+        cg_btn_MainMenu.GetComponent<Button>().interactable = false;
+
+        go_btn_BackToOption.SetActive(true);
+        cg_CreditMenu.DOFade(1, 2);
+        cg_Credit.DOFade(1, 2);
+        cg_CreditTitle.DOFade(1, 2);*/
+        
+        animator.SetTrigger("Credit");
+        StartCoroutine(CreditTitle());
+    }
+
+    IEnumerator CreditTitle()
+    {
+        yield return new WaitForSeconds(3);
+        cg_CreditTitle.DOFade(0, 2);
     }
 }
