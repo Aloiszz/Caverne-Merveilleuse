@@ -6132,6 +6132,8 @@ GameObject:
   - component: {fileID: 3964994960392556249}
   - component: {fileID: 2395782324217451353}
   - component: {fileID: 6513850308727056303}
+  - component: {fileID: 8981939585084639154}
+  - component: {fileID: 516466762495027525}
   m_Layer: 9
   m_Name: Tilemap
   m_TagString: Untagged
@@ -6399,10 +6401,79 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!50 &8981939585084639154
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967642626037858142}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &516466762495027525
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967642626037858142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 1
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6513850308727056303}
+    m_ColliderPaths:
+    - - X: 30000000
+        Y: 40000000
+      - X: -20000000
+        Y: 40000000
+      - X: -20000000
+        Y: 30000000
+      - X: 30000000
+        Y: 30000000
+    - - X: 30000000
+        Y: -40000000
+      - X: -30000000
+        Y: -40000000
+      - X: -30000000
+        Y: -50000000
+      - X: 30000000
+        Y: -50000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 2.999971, y: 3}
+      - {x: 2.999971, y: 4}
+      - {x: -2, y: 3.999971}
+      - {x: -1.9999708, y: 3}
+    - - {x: 2.999971, y: -5}
+      - {x: 2.999971, y: -4}
+      - {x: -3, y: -4.000029}
+      - {x: -2.999971, y: -5}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
 --- !u!1 &5981509794224805261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6934,8 +7005,12 @@ MonoBehaviour:
   goldenDoor: {fileID: 0}
   isGoldenPath: 0
   isHub: 0
+  isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
