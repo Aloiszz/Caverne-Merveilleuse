@@ -121,6 +121,7 @@ Transform:
   - {fileID: 2861404725636358325}
   - {fileID: 6209318112599739690}
   - {fileID: 6722252069388711502}
+  - {fileID: 2502445921797374120}
   - {fileID: 9032268489728296315}
   - {fileID: 4790550354262691829}
   - {fileID: 5499639476912518787}
@@ -154,7 +155,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -345,7 +349,7 @@ Transform:
   - {fileID: 4947611334273936695}
   - {fileID: 8472393537879607064}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1757132677502096017
 GameObject:
@@ -508,7 +512,7 @@ Transform:
   m_Children:
   - {fileID: 5979347317011016386}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &7798801591059981146
 Grid:
@@ -787,7 +791,38 @@ Transform:
   - {fileID: 2852429612307029214}
   - {fileID: 3889457540674686393}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 7
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2524356531410498641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7422495873429176957}
+  m_Layer: 0
+  m_Name: DoorEnnemy
+  m_TagString: DoorEnnemyRight
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7422495873429176957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524356531410498641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 155.43, y: 16.2, z: 0}
+  m_LocalScale: {x: 10, y: 14.679009, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2502445921797374120}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2855111689070876803
 GameObject:
@@ -1331,7 +1366,7 @@ Transform:
   - {fileID: 2891208233100838269}
   - {fileID: 6143426720966643354}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3734406861055639652
 GameObject:
@@ -1505,6 +1540,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3804189085267174424}
   m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4697110016957953650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4317584677959931259}
+  m_Layer: 0
+  m_Name: DoorEnnemy
+  m_TagString: DoorEnnemyDown
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4317584677959931259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697110016957953650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13, y: -15.49, z: 0}
+  m_LocalScale: {x: 10, y: 14.679009, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2502445921797374120}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4726251676478372107
 GameObject:
@@ -8355,7 +8421,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &4549136739397115231
 PolygonCollider2D:
@@ -8497,6 +8563,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &5424560167278399271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2502445921797374120}
+  m_Layer: 0
+  m_Name: DoorEnnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2502445921797374120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424560167278399271}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 334983321950521202}
+  - {fileID: 4317584677959931259}
+  - {fileID: 7422495873429176957}
+  - {fileID: 7951891566473982947}
+  m_Father: {fileID: 3392631319133114018}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5443043405624094837
 GameObject:
   m_ObjectHideFlags: 0
@@ -8528,7 +8629,7 @@ Transform:
   m_Children:
   - {fileID: 9189217181941313484}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &6241095828228932392
 Grid:
@@ -8604,6 +8705,68 @@ Transform:
   m_Father: {fileID: 3804189085267174424}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6498034454213652093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 334983321950521202}
+  m_Layer: 0
+  m_Name: DoorEnnemy
+  m_TagString: DoorEnnemyLeft
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &334983321950521202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6498034454213652093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 64.5, y: 33.3, z: 0}
+  m_LocalScale: {x: 10, y: 14.679009, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2502445921797374120}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6584942946253703161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7951891566473982947}
+  m_Layer: 0
+  m_Name: DoorEnnemy
+  m_TagString: DoorEnnemyTop
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7951891566473982947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6584942946253703161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.24, y: 15.89, z: 0}
+  m_LocalScale: {x: 10, y: 14.679009, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2502445921797374120}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6666978126579249736
 GameObject:
   m_ObjectHideFlags: 0
@@ -8669,7 +8832,7 @@ Transform:
   - {fileID: 5265716222377558713}
   - {fileID: 3289296116042847523}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6901232415261391856
 GameObject:
@@ -9265,7 +9428,7 @@ Transform:
   - {fileID: 3985885207281092438}
   - {fileID: 2146154936948431420}
   m_Father: {fileID: 3392631319133114018}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8146520449992274449
 GameObject:
@@ -12663,7 +12826,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17287,7 +17450,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18589,7 +18752,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18783,7 +18946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5324533123802037114, guid: 35a0be89408961b42a28520b79d1ec21, type: 3}
       propertyPath: m_LocalPosition.x
