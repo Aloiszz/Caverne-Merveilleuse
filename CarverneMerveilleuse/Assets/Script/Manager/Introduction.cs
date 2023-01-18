@@ -41,6 +41,7 @@ public class Introduction : MonoBehaviour
 
     [Space] 
     [SerializeField] private CanvasGroup _IntroBD;
+    [SerializeField] private CanvasGroup _MoneyPanel;
 
     [Space] 
     [Header("Effet Camera")] [SerializeField]
@@ -242,6 +243,7 @@ public class Introduction : MonoBehaviour
         AudioManager.instance.PlayNoCombatMusic();
         _animatorPlayer.enabled = true;
         SceneManager.instance.playModeCG_.DOFade(0, 0);
+        _MoneyPanel.DOFade(0,0);
         
         //Controller
         /*PlayerController.instance.transform.position = transform.position;
@@ -286,6 +288,7 @@ public class Introduction : MonoBehaviour
 
     public void EndIntro()
     {
+        _MoneyPanel.DOFade(1,2);
         _animatorPlayer.enabled = false;
         playIntro = false;
         

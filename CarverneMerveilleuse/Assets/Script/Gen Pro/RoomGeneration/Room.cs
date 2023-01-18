@@ -201,6 +201,7 @@ public class Room : MonoBehaviour
             GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, Quaternion.Euler (0f, 0, 0), transform);
             DoorEnnemy.Add(door);
         }
+        AstarPath.active.Scan();
     }
 
     public void OpenTheDoor()
