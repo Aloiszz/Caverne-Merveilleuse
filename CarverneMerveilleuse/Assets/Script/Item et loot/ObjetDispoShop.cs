@@ -12,6 +12,8 @@ public class ObjetDispoShop : MonoBehaviour
     public TMP_Text tmpNomItem;
     public TMP_Text tmpPrixItem;
     public Image dentAffichage;
+    public Sprite dent;
+    public Sprite dentNoir;
     public List<GameObject> listItem;
     public List<GameObject> listMerveilleux;
 
