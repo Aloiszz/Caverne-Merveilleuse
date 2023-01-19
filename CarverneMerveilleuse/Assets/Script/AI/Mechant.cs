@@ -111,6 +111,7 @@ public class Mechant : MonoBehaviour
                         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                 }
                 Score.instance.score += pointScore;
+                Destroy(gameObject);
             }
 
             if (CompareTag("Gros"))
@@ -119,6 +120,7 @@ public class Mechant : MonoBehaviour
                 {
                     Destroy(gameObject.GetComponent<GrosEnnemiScript>().projoList[i]);
                 }
+                Destroy(gameObject);
                 
             }
 
@@ -132,7 +134,7 @@ public class Mechant : MonoBehaviour
             {
                 Score.instance.AddScore();
             }
-            Destroy(gameObject);
+            
         }
     }
     public void ReceiveLightDamage()

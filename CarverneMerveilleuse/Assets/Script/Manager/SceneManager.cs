@@ -31,6 +31,7 @@ public class SceneManager : MonoBehaviour
     public CanvasGroup optionPanel;
     
     [Header("Credit Panel")]
+    public GameObject creditGO;
     public CanvasGroup creditPanel;
     public CanvasGroup cg_CreditTitle;
     
@@ -64,6 +65,7 @@ public class SceneManager : MonoBehaviour
         }
         //death_.SetActive(false);
         OptionGO.SetActive(false);
+        creditGO.SetActive(false);
     }
 
     private void Update()
@@ -165,6 +167,7 @@ public class SceneManager : MonoBehaviour
     
     public void Option()
     {
+        creditGO.SetActive(false);
         OptionGO.SetActive(true);
         creditPanel.DOFade(0, 1);
         img.DOFade(1, 0);
@@ -178,6 +181,7 @@ public class SceneManager : MonoBehaviour
     
     public void Credit()
     {
+        creditGO.SetActive(true);
         OptionGO.SetActive(false);
         optionPanel.DOFade(0, 2);
         creditPanel.DOFade(1, 2);

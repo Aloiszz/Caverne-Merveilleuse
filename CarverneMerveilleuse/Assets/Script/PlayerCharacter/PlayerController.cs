@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject deathBloodPS;
     public GameObject bloodPS;
+    public GameObject Hit_Player;
+    public VisualEffect Hit_Player_effect;
     public Image healthBar;
     
     [Header("Player config")]
@@ -168,6 +171,11 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(InvinsibleTime());
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+
+        Instantiate(Hit_Player, gameObject.transform.position, quaternion.identity,
+            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+        
+        Hit_Player_effect.Play();
         
         CinemachineCameraZoom.instance.CameraZoom(zoomSize, timeToArrive, timeToComeBack);
     }

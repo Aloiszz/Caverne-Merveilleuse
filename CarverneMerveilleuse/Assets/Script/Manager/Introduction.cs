@@ -65,9 +65,10 @@ public class Introduction : MonoBehaviour
     
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         if (instance != null && instance != this) 
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         } 
         else 
         { 
@@ -78,7 +79,7 @@ public class Introduction : MonoBehaviour
     
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        
 
         if (playIntro)
         {

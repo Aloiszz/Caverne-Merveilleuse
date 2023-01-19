@@ -54,7 +54,7 @@ public class BossScript : MonoBehaviour
     private Vector2 vague1Pos;
     private Vector2 vague2Pos;
     private bool canAttack = true;
-    private bool canZone = true;
+    [HideInInspector]public bool canZone = true;
     private bool isCAC = false;
     private bool startCAC = false;
     private bool startVague = true;
@@ -74,6 +74,10 @@ public class BossScript : MonoBehaviour
     private Coroutine actualZoneCac;
     
     public static BossScript instance;
+
+
+    [Header("VFX")] 
+    public GameObject VFXDist;
 
     private void Awake()
     {
@@ -395,11 +399,12 @@ public class BossScript : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
+                Instantiate(VFXDist, player.transform.position, Quaternion.identity);
                 attackChute.GameObject().GetComponent<Collider2D>().enabled = false;
-                attackChute.GetComponent<SpriteRenderer>().color = Color.green;
+                //attackChute.GetComponent<SpriteRenderer>().color = Color.green;
                 yield return new WaitForSeconds(tempsPrevention);
                 attackChute.GameObject().GetComponent<Collider2D>().enabled = true;
-                attackChute.GetComponent<SpriteRenderer>().color = Color.red;
+                //attackChute.GetComponent<SpriteRenderer>().color = Color.red;
                 yield return new WaitForSeconds(0.4f);
                 Destroy(attackChute);
             }
@@ -471,6 +476,7 @@ public class BossScript : MonoBehaviour
             zone.SetActive(true);
             zone.GameObject().GetComponent<Collider2D>().enabled = false;
             zone.GetComponent<SpriteRenderer>().color = Color.green;
+            StartCoroutine(ZoneCacAnimator());
             yield return new WaitForSeconds(tempsPrevention + 0.5f);
             zone.GetComponent<SpriteRenderer>().color = Color.red;
             zone.GameObject().GetComponent<Collider2D>().enabled = true;
@@ -486,6 +492,15 @@ public class BossScript : MonoBehaviour
             }
             
         }
+    }
+
+    IEnumerator ZoneCacAnimator()
+    {
+        yield return new WaitForSeconds(tempsPrevention);
+        BossAnim.instance.BossZoneCac = true; // Animator
+        //yield return new WaitForSeconds(.2f);
+        yield return null;
+        BossAnim.instance.BossZoneCac = false; // Animator
     }
     
 }
