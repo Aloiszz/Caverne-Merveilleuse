@@ -205,12 +205,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator DashInvinsibleTimer()
     {
         isDashing = true;
-        if (!ItemManager.instance.isPushDashGet && !ItemManager.instance.isDegatDashGet)
+        if (ItemManager.instance.isPushDashGet || ItemManager.instance.isDegatDashGet)
         {
-            Physics2D.IgnoreLayerCollision(0,6, true);
-            Physics2D.IgnoreLayerCollision(0,13, true);
-            Physics2D.IgnoreLayerCollision(0,7, true);
+            Instantiate(ItemManager.instance.hitBoxDash);
         }
+        Physics2D.IgnoreLayerCollision(0,6, true);
+        Physics2D.IgnoreLayerCollision(0,13, true);
+        Physics2D.IgnoreLayerCollision(0,7, true);
         dashTrail.SetActive(true);
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);

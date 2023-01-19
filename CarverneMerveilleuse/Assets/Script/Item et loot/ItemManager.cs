@@ -62,8 +62,10 @@ public class ItemManager : MonoBehaviour
     private bool canLightShield;
     [HideInInspector] public float buffATKCritique;
     [HideInInspector] public int nbVieEnPlus;
-    
+
     [Header("Dash")] 
+    [Tooltip("Prefab pour la hitbox du dash")]
+    public GameObject hitBoxDash;
     [Tooltip("Puissance du push du dash")]
     public float puissancePushDash;
     [HideInInspector] public bool isPushDashGet;

@@ -158,8 +158,12 @@ public class Mechant : MonoBehaviour
             life -= PlayerLightAttack.instance.lightDamage[PlayerLightAttack.instance.lightDamageIndex] + buffAtk + buffCritique + buffByDash;
             checkIfSameHitBox = PlayerLightAttack.instance.countInput;
         }
+
+        if (!CompareTag("Boss"))
+        {
+            rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
+        }
         
-        rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
         forcelightDamage = initialforcelightDamage;
 
         
