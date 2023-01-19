@@ -18,6 +18,7 @@ public class EnnemyManager : MonoBehaviour
     
     [Header("Door")]
     public GameObject Door;
+    public GameObject DoorAutre;
     public float timeBeforeClosingDoor = 0.7f; // temps avant de fermer les portes
     public float timeToOpenDoor = 2; // temps pour ouvrir les portes
     public float timeToCloseDoor = 1; // temps pour fermer les portes

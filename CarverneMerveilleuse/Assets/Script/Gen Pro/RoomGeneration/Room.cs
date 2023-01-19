@@ -180,13 +180,13 @@ public class Room : MonoBehaviour
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemyLeft"))
         {
             DoorEnnemyPositionLeft = go;
-            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, Quaternion.Euler (0f, 0, -90), transform);
+            GameObject door = Instantiate(EnnemyManager.instance.DoorAutre, go.transform.position, Quaternion.Euler (0f, 0, 180), transform);
             DoorEnnemy.Add(door);
         }
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemyRight"))
         {
             DoorEnnemyPositionRight = go;
-            GameObject door = Instantiate(EnnemyManager.instance.Door, go.transform.position, Quaternion.Euler (0f, 0, 90), transform);
+            GameObject door = Instantiate(EnnemyManager.instance.DoorAutre, go.transform.position, Quaternion.Euler (0f, 0, 0), transform);
             DoorEnnemy.Add(door);
         }
         foreach (var go in GameObject.FindGameObjectsWithTag("DoorEnnemyTop"))
@@ -213,7 +213,6 @@ public class Room : MonoBehaviour
             i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToOpenDoor);
             i.GetComponentInChildren<Collider2D>().enabled = false;
         }
-
         Light2D_OpenDoor();
     }
     public void CloseTheDoor()
@@ -227,6 +226,7 @@ public class Room : MonoBehaviour
         }
 
         Light2D_CloseDoor();
+        
     }
     #endregion
 

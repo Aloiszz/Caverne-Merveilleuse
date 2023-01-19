@@ -239,7 +239,6 @@ public class Introduction : MonoBehaviour
 
     void _Introduction()
     {
-        
         AudioManager.instance.PlayNoCombatMusic();
         _animatorPlayer.enabled = true;
         SceneManager.instance.playModeCG_.DOFade(0, 0);
