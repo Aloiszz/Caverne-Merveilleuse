@@ -109,12 +109,12 @@ public class CaCEnnemiScript : MonoBehaviour
             if (i%2 == 0)
             {
                 yield return new WaitForSeconds(0.1f);
-                transform.position = new Vector2(transform.position.x + 0.2f, transform.localPosition.y);
+                transform.position = new Vector2(transform.position.x + 0.2f, transform.position.y);
             }
             else
             {
                 yield return new WaitForSeconds(0.1f);
-                transform.position = new Vector2(transform.position.x - 0.2f, transform.localPosition.y);
+                transform.position = new Vector2(transform.position.x - 0.2f, transform.position.y);
             }
 
             if (i == secondsBeforeJump * 10 - 3)
