@@ -200,11 +200,13 @@ public class PlayerController : MonoBehaviour
         if (!ItemManager.instance.isPushDashGet && !ItemManager.instance.isDegatDashGet)
         {
             Physics2D.IgnoreLayerCollision(0,6, true);
+            Physics2D.IgnoreLayerCollision(0,13, true);
             Physics2D.IgnoreLayerCollision(0,7, true);
         }
         dashTrail.SetActive(true);
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
+        Physics2D.IgnoreLayerCollision(0,13, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
         if (!isInHole)
         {
@@ -272,9 +274,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator InvinsibleTime()
     {
         Physics2D.IgnoreLayerCollision(0,6, true);
+        Physics2D.IgnoreLayerCollision(0,13, true);
         Physics2D.IgnoreLayerCollision(0,7, true);
         yield return new WaitForSeconds(playerSO.invinsibleTimer);
         Physics2D.IgnoreLayerCollision(0,6, false);
+        Physics2D.IgnoreLayerCollision(0,13, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
     }
     IEnumerator PetrolDash()

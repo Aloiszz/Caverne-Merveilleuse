@@ -600,7 +600,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -18248,10 +18251,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2824986550807190991, guid: 653128013346c2348815e0c202eaa853, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5006493372913682111, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_Name
       value: Skull
@@ -18332,6 +18331,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8319621963965586734}
     m_Modifications:
+    - target: {fileID: 3530814664657472152, guid: 3a9f71d51b140a246a03b67bd4e85827, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4586694344913858549, guid: 3a9f71d51b140a246a03b67bd4e85827, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -18766,10 +18769,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2 (4)
@@ -19190,10 +19189,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2254064479913551641, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2254064479913551643, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
       propertyPath: m_Name
       value: Lanterne (2)
@@ -19379,10 +19374,6 @@ PrefabInstance:
     - target: {fileID: 2254064479913551640, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254064479913551641, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2254064479913551643, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
       propertyPath: m_Name
@@ -19650,10 +19641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2 (1)
@@ -20073,10 +20060,6 @@ PrefabInstance:
     - target: {fileID: 2254064479913551640, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2254064479913551641, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2254064479913551643, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
       propertyPath: m_Name
@@ -21218,10 +21201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2
@@ -21346,10 +21325,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2 (2)
@@ -22480,10 +22455,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5885128393503648637, guid: 686956cf2bda01d4d89d6a7ae6e44426, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 686956cf2bda01d4d89d6a7ae6e44426, type: 3}
 --- !u!4 &7915093219821434862 stripped
@@ -23166,10 +23137,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2824986550807190991, guid: 653128013346c2348815e0c202eaa853, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5006493372913682111, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_Name
       value: Skull (2)
@@ -23564,10 +23531,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2 (5)
@@ -23940,10 +23903,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2 (3)
@@ -24860,10 +24819,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2254064479913551641, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2254064479913551643, guid: 7cd5baca3a0729c4598e674d959d3854, type: 3}
       propertyPath: m_Name
       value: Lanterne (5)
@@ -25187,10 +25142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9035326673036427826}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2 (6)
@@ -25691,10 +25642,6 @@ PrefabInstance:
     - target: {fileID: 1037678213815524556, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824986550807190991, guid: 653128013346c2348815e0c202eaa853, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006493372913682111, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_Name
