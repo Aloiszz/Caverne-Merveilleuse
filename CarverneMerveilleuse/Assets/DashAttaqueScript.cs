@@ -22,7 +22,6 @@ public class DashAttaqueScript : MonoBehaviour
         
         if (col.gameObject.layer == 6 | col.gameObject.layer == 13)
         {
-            Debug.Log("Coucou");
             if (ItemManager.instance.isPushDashGet)
             {
                 col.GetComponent<Rigidbody2D>().AddForce(-(PlayerController.instance.gameObject.transform.position - col.gameObject.transform.position).normalized * ItemManager.instance.puissancePushDash, ForceMode2D.Impulse);
