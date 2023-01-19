@@ -27,11 +27,27 @@ public class SceneManager : MonoBehaviour
 
     [Header("option Panel")] 
     public CanvasGroup img;
+    public GameObject OptionGO;
     public CanvasGroup optionPanel;
     
     [Header("Credit Panel")]
     public CanvasGroup creditPanel;
     public CanvasGroup cg_CreditTitle;
+    
+    
+    [Space] 
+    [Header("Panel Advanced")] 
+    public CanvasGroup cg_Advanced;
+    [Header("Panel Graphism")] 
+    public CanvasGroup cg_Graphism;
+    [Header("Panel Sound")] 
+    public CanvasGroup cg_Sound;
+    [Header("Panel Sound")] 
+    public CanvasGroup cg_Touche;
+    [Header("Panel Sound")] 
+    public CanvasGroup cg_Score;
+
+    [Space]
     
     
     public static SceneManager instance;
@@ -47,6 +63,7 @@ public class SceneManager : MonoBehaviour
             instance = this; 
         }
         //death_.SetActive(false);
+        OptionGO.SetActive(false);
     }
 
     private void Update()
@@ -110,6 +127,7 @@ public class SceneManager : MonoBehaviour
     }
     public void Pause()
     {
+        OptionGO.SetActive(false);
         img.DOFade(0, 0);
         optionPanel.DOFade(0, 0.5f);
         
@@ -147,6 +165,7 @@ public class SceneManager : MonoBehaviour
     
     public void Option()
     {
+        OptionGO.SetActive(true);
         creditPanel.DOFade(0, 1);
         img.DOFade(1, 0);
         pauseCG_.DOFade(0, 2);
@@ -159,6 +178,7 @@ public class SceneManager : MonoBehaviour
     
     public void Credit()
     {
+        OptionGO.SetActive(false);
         optionPanel.DOFade(0, 2);
         creditPanel.DOFade(1, 2);
         //verif = true;
@@ -178,8 +198,8 @@ public class SceneManager : MonoBehaviour
 
         go_btn_BackToOption.SetActive(true);
         cg_CreditMenu.DOFade(1, 2);
-        cg_Credit.DOFade(1, 2);
-        cg_CreditTitle.DOFade(1, 2);*/
+        cg_Credit.DOFade(1, 2);*/
+        cg_CreditTitle.DOFade(1, 2);
         
         animator.SetTrigger("Credit");
         StartCoroutine(CreditTitle());
@@ -190,4 +210,106 @@ public class SceneManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         cg_CreditTitle.DOFade(0, 2);
     }
+    
+    public void BackToOption()
+    {
+        //verif = false;
+        //BackToOptionFromCredit = false;
+        animator.SetTrigger("CreditToOption");
+        
+        /*go_btn_MainMenu.SetActive(true);
+        cg_CreditMenu.DOFade(0, 2);
+        cg_Credit.DOFade(0, 2);
+        cg_btn_BackToOption.DOFade(0, 2).OnComplete(() =>
+            go_btn_BackToOption.SetActive(false));
+        
+        cg_btn_BackToOption.GetComponent<Button>().interactable = false;
+        
+        cg_OptionMenu.DOFade(1, 2);
+        cg_btn_Score.DOFade(1, 2);
+        cg_btn_Credit.DOFade(1, 2);
+        cg_btn_Advanced.DOFade(1, 2);
+        cg_btn_MainMenu.DOFade(1, 2);
+        
+        cg_btn_Score.GetComponent<Button>().interactable = true;
+        cg_btn_Credit.GetComponent<Button>().interactable = true;
+        cg_btn_Advanced.GetComponent<Button>().interactable = true;
+        cg_btn_MainMenu.GetComponent<Button>().interactable = true;*/
+        
+        
+        OptionGO.SetActive(true);
+        optionPanel.DOFade(1, 2);
+        creditPanel.DOFade(0, 2);
+    }
+    
+    
+    public void OptionToAdvanced()
+    {
+        animator.SetTrigger("OptionToAdvanced");
+        cg_Advanced.DOFade(1, 2);
+    }
+
+    public void AdvancedToOption()
+    {
+        
+        animator.SetTrigger("AdvancedToOption");
+    }
+
+    //---------------------------------------------
+    public void AdvancedToGraphism()
+    {
+        OptionGO.SetActive(false);
+        cg_Graphism.DOFade(1,2);
+        animator.SetTrigger("AdvancedToGraphism");
+    }
+    
+    public void GraphismToAdvanced()
+    {
+        OptionGO.SetActive(true);
+        cg_Graphism.DOFade(0,2);
+        animator.SetTrigger("GraphismToAdvanced");
+    }
+    //---------------------------------------------
+    public void AdvancedToSound()
+    {
+        OptionGO.SetActive(false);
+        cg_Sound.DOFade(1,2);
+        animator.SetTrigger("AdvancedToSound");
+    }
+    
+    public void SoundToAdvanced()
+    {
+        OptionGO.SetActive(true);
+        cg_Sound.DOFade(0,2);
+        animator.SetTrigger("SoundToAdvanced");
+    }
+    //---------------------------------------------
+    public void AdvancedToTouche()
+    {
+        OptionGO.SetActive(false);
+        cg_Touche.DOFade(1,2);
+        animator.SetTrigger("AdvancedToTouche");
+    }
+    
+    public void ToucheToAdvanced()
+    {
+        OptionGO.SetActive(true);
+        cg_Touche.DOFade(0,2);
+        animator.SetTrigger("ToucheToAdvanced");
+    }
+    //---------------------------------------------
+    public void OptionToScore()
+    {
+        //go_OptionMenu.SetActive(false);
+        cg_Score.DOFade(1,2);
+        animator.SetTrigger("OptionToScore");
+    }
+    
+    public void ScoreToOption()
+    {
+        //go_OptionMenu.SetActive(true);
+        cg_Score.DOFade(0,2);
+        animator.SetTrigger("ScoreToOption");
+    }
+    //---------------------------------------------
 }
