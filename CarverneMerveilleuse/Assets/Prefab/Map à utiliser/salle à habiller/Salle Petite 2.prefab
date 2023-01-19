@@ -19907,7 +19907,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -26802,10 +26805,6 @@ PrefabInstance:
     - target: {fileID: 5638511798041002906, guid: 49abd02f0324b9f4fac57aeff955077a, type: 3}
       propertyPath: m_Name
       value: Stalagmite 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5638511798041002908, guid: 49abd02f0324b9f4fac57aeff955077a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5638511798041002909, guid: 49abd02f0324b9f4fac57aeff955077a, type: 3}
       propertyPath: m_RootOrder

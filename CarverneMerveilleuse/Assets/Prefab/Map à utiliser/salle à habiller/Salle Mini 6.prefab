@@ -435,7 +435,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -6075,10 +6078,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 819631409381911799}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2
@@ -7362,10 +7361,6 @@ PrefabInstance:
     - target: {fileID: 526731432100564992, guid: 35b4a1cd09dc5e2408e64019289aecb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491566715651499819, guid: 35b4a1cd09dc5e2408e64019289aecb7, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6586615548094823768, guid: 35b4a1cd09dc5e2408e64019289aecb7, type: 3}
       propertyPath: m_Name

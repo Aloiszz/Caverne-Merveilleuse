@@ -8560,7 +8560,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -10405,10 +10408,6 @@ PrefabInstance:
     - target: {fileID: 7308919295759684785, guid: 238c2594d9a8c144a87b9c8ba57dbfc6, type: 3}
       propertyPath: m_Name
       value: Tas de cailloux
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308919295759684787, guid: 238c2594d9a8c144a87b9c8ba57dbfc6, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7308919295759684788, guid: 238c2594d9a8c144a87b9c8ba57dbfc6, type: 3}
       propertyPath: m_RootOrder

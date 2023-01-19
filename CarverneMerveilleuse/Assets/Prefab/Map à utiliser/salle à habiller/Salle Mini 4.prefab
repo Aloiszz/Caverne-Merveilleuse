@@ -3360,7 +3360,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -6016,10 +6019,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8887977928995669298}
     m_Modifications:
-    - target: {fileID: 4586694344913858548, guid: 3a9f71d51b140a246a03b67bd4e85827, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 4586694344913858549, guid: 3a9f71d51b140a246a03b67bd4e85827, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -6148,10 +6147,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8887977928995669298}
     m_Modifications:
-    - target: {fileID: 4586694344913858548, guid: 3a9f71d51b140a246a03b67bd4e85827, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 4586694344913858549, guid: 3a9f71d51b140a246a03b67bd4e85827, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -6342,10 +6337,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8887977928995669298}
     m_Modifications:
-    - target: {fileID: 59996906036161456, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2018055194161583971, guid: c6f8d37a3c8c94a48b576f3ac3a93b9f, type: 3}
       propertyPath: m_Name
       value: Rock_2
@@ -6575,10 +6566,6 @@ PrefabInstance:
     - target: {fileID: 1037678213815524556, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824986550807190991, guid: 653128013346c2348815e0c202eaa853, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006493372913682111, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_Name
@@ -7323,10 +7310,6 @@ PrefabInstance:
     - target: {fileID: 1037678213815524556, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824986550807190991, guid: 653128013346c2348815e0c202eaa853, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006493372913682111, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_Name

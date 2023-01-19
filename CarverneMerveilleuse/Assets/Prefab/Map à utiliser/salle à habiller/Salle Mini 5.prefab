@@ -4911,7 +4911,10 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
-  DoorEnnemyPosition: []
+  DoorEnnemyPositionLeft: {fileID: 0}
+  DoorEnnemyPositionRight: {fileID: 0}
+  DoorEnnemyPositionTop: {fileID: 0}
+  DoorEnnemyPositionDown: {fileID: 0}
   DoorEnnemy: []
   sprite: []
   tiles: []
@@ -5987,10 +5990,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2824986550807190991, guid: 653128013346c2348815e0c202eaa853, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5006493372913682111, guid: 653128013346c2348815e0c202eaa853, type: 3}
       propertyPath: m_Name
       value: Skull
@@ -6056,10 +6055,6 @@ PrefabInstance:
     - target: {fileID: 7811813235369796042, guid: 02f4863b54fa996418ad745698a013ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7811813235369796043, guid: 02f4863b54fa996418ad745698a013ff, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02f4863b54fa996418ad745698a013ff, type: 3}
@@ -6140,10 +6135,6 @@ PrefabInstance:
     - target: {fileID: 3303261330972173679, guid: 883a64dec1f4a7d4a9b1b7ec322c1afb, type: 3}
       propertyPath: m_Name
       value: Pots
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303261330972173681, guid: 883a64dec1f4a7d4a9b1b7ec322c1afb, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3303261330972173682, guid: 883a64dec1f4a7d4a9b1b7ec322c1afb, type: 3}
       propertyPath: m_RootOrder
