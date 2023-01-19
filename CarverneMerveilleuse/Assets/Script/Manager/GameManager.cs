@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]private bool verif_Chargebar;
     [SerializeField]private float verif_float;
     
+    [SerializeField]private bool GodMode;
+    
     public static GameManager instance;
     
     private void Awake()
@@ -68,7 +70,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             verif_float = 0;
-        } ;
+        }
+
+        if (GodMode)
+        {
+            PlayerController.instance.life = PlayerController.instance.lifeDepard;
+        }
     }
 
     IEnumerator AfficheHealthBar()
