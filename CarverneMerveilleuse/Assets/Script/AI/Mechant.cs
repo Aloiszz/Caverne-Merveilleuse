@@ -90,27 +90,34 @@ public class Mechant : MonoBehaviour
     {
         if (life <= 0)
         {
-            if (!invokeByBoss && !CompareTag("Boss"))
+            if (!CompareTag("Boss"))
             {
-                for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
+                if (!invokeByBoss)
                 {
-                    gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
-                    Instantiate(dent, gameObject.transform.position, Quaternion.identity,
-                        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                    for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
+                    {
+                        gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
+                        Instantiate(dent, gameObject.transform.position, Quaternion.identity,
+                            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                    }
+
+                    if (Random.Range(1, 101) >= 100 - (pourcentageDropOr + itemManager.dropOrSupp) &&
+                        pourcentageDropOr != 0)
+                    {
+                        Instantiate(goldenDent, gameObject.transform.position, Quaternion.identity,
+                            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                    }
+
+                    if (Random.Range(1, 101) >= 100 - (pourcentageDropCoeur + itemManager.dropCoeurSupp) &&
+                        pourcentageDropCoeur != 0)
+                    {
+                        Instantiate(coeur, gameObject.transform.position, Quaternion.identity,
+                            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                    }
+
+                    Score.instance.score += pointScore;
                 }
 
-                if (Random.Range(1, 101) >= 100 - (pourcentageDropOr + itemManager.dropOrSupp) && pourcentageDropOr != 0)
-                {
-                    Instantiate(goldenDent, gameObject.transform.position, Quaternion.identity,
-                        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
-                }
-                
-                if (Random.Range(1, 101) >= 100 - (pourcentageDropCoeur + itemManager.dropCoeurSupp) && pourcentageDropCoeur != 0)
-                {
-                    Instantiate(coeur, gameObject.transform.position, Quaternion.identity,
-                        RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
-                }
-                Score.instance.score += pointScore;
                 Destroy(gameObject);
             }
 
