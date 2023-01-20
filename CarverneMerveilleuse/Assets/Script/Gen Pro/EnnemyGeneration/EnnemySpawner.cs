@@ -116,6 +116,7 @@ public class EnnemySpawner : MonoBehaviour
                 ChooseRandomPosition(1);
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawnPointPosition[randPosSpyder].transform.position, quaternion.identity, transform);
                 Instantiate(EnnemyManager.instance.spider, spawnPointPosition[randPosSpyder].transform.position, quaternion.identity, transform);
+                AudioManager.instance.PlaySpawn();
             }
         }
         
@@ -128,6 +129,7 @@ public class EnnemySpawner : MonoBehaviour
                 ChooseRandomPosition(2);
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawnPointPosition[randPosBat].transform.position, quaternion.identity, transform);
                 Instantiate(EnnemyManager.instance.bat, spawnPointPosition[randPosBat].transform.position, quaternion.identity, transform); 
+                AudioManager.instance.PlaySpawn();
             }
         }
         
@@ -140,6 +142,7 @@ public class EnnemySpawner : MonoBehaviour
                 ChooseRandomPosition(3);
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawnPointPosition[randPosPetrol].transform.position, quaternion.identity, transform);
                 Instantiate(EnnemyManager.instance.petrol, spawnPointPosition[randPosPetrol].transform.position, quaternion.identity, transform);
+                AudioManager.instance.PlaySpawn();
             }
         }
     }

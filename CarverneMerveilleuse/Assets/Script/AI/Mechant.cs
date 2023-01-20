@@ -115,6 +115,15 @@ public class Mechant : MonoBehaviour
                             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                     }
 
+                    if (CompareTag("CAC"))
+                    {
+                        AudioManager.instance.PlaySpiderDeath(GetComponent<AudioSource>());
+                    }
+
+                    if (CompareTag("Dist"))
+                    {
+                        AudioManager.instance.PlayBatDeath(GetComponent<AudioSource>());
+                    }
                     Score.instance.score += pointScore;
                 }
 
@@ -127,6 +136,7 @@ public class Mechant : MonoBehaviour
                 {
                     Destroy(gameObject.GetComponent<GrosEnnemiScript>().projoList[i]);
                 }
+                AudioManager.instance.PlayGrosDeath(GetComponent<AudioSource>());
                 Destroy(gameObject);
                 
             }

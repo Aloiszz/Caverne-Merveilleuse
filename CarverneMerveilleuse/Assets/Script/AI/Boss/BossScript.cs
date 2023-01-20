@@ -260,6 +260,7 @@ public class BossScript : MonoBehaviour
                 }
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawner1.transform.position, Quaternion.identity);
                 Ennemi1 = Instantiate(spawnEnnemi, spawner1.transform.position, Quaternion.identity);
+                AudioManager.instance.PlaySpawn();
                 listEnnemis[0] = Ennemi1;
                 Ennemi1.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
@@ -280,6 +281,7 @@ public class BossScript : MonoBehaviour
                 }
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawner2.transform.position, Quaternion.identity);
                 Ennemi2 = Instantiate(spawnEnnemi, spawner2.transform.position, Quaternion.identity);
+                AudioManager.instance.PlaySpawn();
                 listEnnemis[1] = Ennemi2;
                 Ennemi2.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
@@ -300,6 +302,7 @@ public class BossScript : MonoBehaviour
                 }
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawner3.transform.position, Quaternion.identity);
                 Ennemi3 = Instantiate(spawnEnnemi, spawner3.transform.position, Quaternion.identity);
+                AudioManager.instance.PlaySpawn();
                 listEnnemis[2] = Ennemi3;
                 Ennemi3.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;
@@ -320,6 +323,7 @@ public class BossScript : MonoBehaviour
                 }
                 Instantiate(EnnemyManager.instance.SpawningVFX, spawner4.transform.position, Quaternion.identity);
                 Ennemi4 = Instantiate(spawnEnnemi, spawner4.transform.position, Quaternion.identity);
+                AudioManager.instance.PlaySpawn();
                 listEnnemis[3] = Ennemi4;
                 Ennemi4.GetComponent<Mechant>().invokeByBoss = true;
                 nbEnnemi += 1;

@@ -35,6 +35,7 @@ public class CaCEnnemiScript : MonoBehaviour
     private bool canRandomMove = true;
     private Vector2 playerDir;
     private Vector2 playerPos; //Pour le dash
+    private AudioSource audio;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class CaCEnnemiScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -123,7 +125,7 @@ public class CaCEnnemiScript : MonoBehaviour
             }
         }
 
-
+        AudioManager.instance.PlaySpiderAtk(audio);
         rb.AddForce(playerPos.normalized * jumpForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         rb.velocity = Vector2.zero;
