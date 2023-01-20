@@ -48,6 +48,7 @@ public class BatSpawn : MonoBehaviour
         sprite.SetActive(true);
         healthBar.SetActive(true);
         eye1.SetActive(true);
+        AudioManager.instance.onePlay = false;
     }
     
     void Update()

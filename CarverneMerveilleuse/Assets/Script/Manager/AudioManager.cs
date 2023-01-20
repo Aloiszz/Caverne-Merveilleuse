@@ -17,6 +17,17 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private float volumeIntensity = 0.8f;
 
+    [Space] [Header("Ennemis")] 
+    [SerializeField] private AudioSource SFXSource;
+    [SerializeField] private AudioClip apparitionSound;
+    [SerializeField] private AudioClip batAtkClip;
+    [SerializeField] private AudioClip batDeathClip;
+    [SerializeField] private AudioClip spiderAtkClip;
+    [SerializeField] private AudioClip spiderDeathClip;
+    [SerializeField] private AudioClip grosAtkClip;
+    [SerializeField] private AudioClip grosDeathClip;
+    [HideInInspector] public bool onePlay; //C'est pour qu'on destroy pas les oreilles des gens lors du spawn des ennemis
+    
     [Space]
     [SerializeField] private List<AudioClip> ClocheClip;
     private int rand;
@@ -106,5 +117,39 @@ public class AudioManager : MonoBehaviour
     {
         StopMusic();
         Source.PlayOneShot(quitClip);
+    }
+
+    public void PlaySpiderAtk(AudioSource spiderSource)
+    {
+        spiderSource.PlayOneShot(spiderAtkClip);
+    }
+    public void PlaySpiderDeath(AudioSource spiderSource)
+    {
+        spiderSource.PlayOneShot(spiderDeathClip);
+    }
+    public void PlayBatAtk(AudioSource batSource)
+    {
+        batSource.PlayOneShot(batAtkClip);
+    }
+    public void PlayBatDeath(AudioSource batSource)
+    {
+        batSource.PlayOneShot(batDeathClip);
+    }
+    public void PlayGrosAtk(AudioSource grosSource)
+    {
+        grosSource.PlayOneShot(grosAtkClip);
+    }
+    public void PlayGrosDeath(AudioSource grosSource)
+    {
+        grosSource.PlayOneShot(grosDeathClip);
+    }
+
+    public void PlaySpawn()
+    {
+        if (!onePlay)
+        {
+            SFXSource.PlayOneShot(apparitionSound);
+            onePlay = true;
+        }
     }
 }

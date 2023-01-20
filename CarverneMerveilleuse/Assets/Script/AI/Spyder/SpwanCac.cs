@@ -50,6 +50,7 @@ public class SpwanCac : MonoBehaviour
         healthBar.SetActive(true);
         eye1.SetActive(true);
         eye2.SetActive(true);
+        AudioManager.instance.onePlay = false;
     }
     
     void Update()

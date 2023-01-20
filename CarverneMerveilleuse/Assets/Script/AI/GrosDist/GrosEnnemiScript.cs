@@ -55,6 +55,7 @@ public class GrosEnnemiScript : MonoBehaviour
     [SerializeField] private GameObject vfxFlaquePetrol;
     [SerializeField] private GameObject[] flaquePetrolList;
     private bool doOnce = true;
+    private AudioSource audio;
     
     
     void Start()
@@ -67,6 +68,7 @@ public class GrosEnnemiScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         AI = gameObject.GetComponent<AIPath>();
         gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -123,6 +125,7 @@ public class GrosEnnemiScript : MonoBehaviour
         AI.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         isAttacking = true;
+        AudioManager.instance.PlayGrosAtk(audio);
         projectile = Instantiate(grosProjo, transform.position, Quaternion.identity);
         projectile.GetComponent<ProjoCollision>().shooter = gameObject;
         projoList.Add(projectile);
@@ -149,6 +152,7 @@ public class GrosEnnemiScript : MonoBehaviour
             }
         }
         isDefending = true;
+        AudioManager.instance.PlayGrosAtk(audio);
         Instantiate(_shockZoneBlob, gameObject.transform.position, Quaternion.identity,
             gameObject.transform);
         yield return new WaitForSeconds(0.2f);

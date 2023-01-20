@@ -36,6 +36,7 @@ public class DistScript : MonoBehaviour
     private bool firstTimeShoot = true;
     [HideInInspector] public bool isHit;
     [HideInInspector] public AIPath AI;
+    private AudioSource audio;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class DistScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         AI = gameObject.GetComponent<AIPath>();
         gameObject.GetComponent<AIDestinationSetter>().target = player.transform;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -91,7 +93,7 @@ public class DistScript : MonoBehaviour
             firstTimeShoot = false;
         }
         yield return new WaitForSeconds(0.2f);
-        
+        AudioManager.instance.PlayBatAtk(audio);
         GameObject projectile = Instantiate(projo, transform.position, Quaternion.identity);
         projectile.GetComponent<ProjoCollision>().shooter = gameObject;
         projectile.GetComponent<Rigidbody2D>().AddForce(playerDir.normalized * shootForce);
