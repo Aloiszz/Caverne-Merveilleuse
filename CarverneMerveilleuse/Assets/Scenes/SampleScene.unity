@@ -15660,6 +15660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3047218395459163356, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: lifeBarreBlanc
+      value: 
+      objectReference: {fileID: 1691555891}
     - target: {fileID: 3047218395611067248, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -15708,9 +15712,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587156779612064189, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836603136438667215, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
       propertyPath: m_Name
       value: Salle Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892447124139332749, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284118293020177244, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
@@ -15719,6 +15739,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 593639115418045035, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
   m_PrefabInstance: {fileID: 1691555889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1691555891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8594290683094742416, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+  m_PrefabInstance: {fileID: 1691555889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1711514103 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5230964412810560865, guid: 90a6370cf9f541e49aa64e2bdb9c6e76, type: 3}
@@ -20639,6 +20670,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 178592613998863876, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: activateScore
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 178592613998863876, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: listScoreRage.Array.size
       value: 7

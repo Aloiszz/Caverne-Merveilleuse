@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class BossScript : MonoBehaviour
 {
     [Header("Boss Stats")]
     public Image lifeBarre;
+    public Image lifeBarreBlanc;
     public int damage;
     public int chuteDamage;
 
@@ -89,8 +91,13 @@ public class BossScript : MonoBehaviour
         instance = this;
     }
 
+    private bool life;
     private void Start()
     {
+        lifeBarre.DOFillAmount(0, 0);
+        lifeBarre.DOFillAmount(1, 2);
+
+        StartCoroutine(Life());
         rb = GetComponent<Rigidbody2D>();
         vague2RB = vague2.GetComponent<Rigidbody2D>();
         vague1RB = vague1.GetComponent<Rigidbody2D>();
@@ -102,11 +109,23 @@ public class BossScript : MonoBehaviour
         }
     }
 
+    IEnumerator Life()
+    {
+        yield return new WaitForSeconds(2);
+        life = true;
+    }
+
     void Update()
     {
         posXJoueur = (player.transform.position - transform.position).normalized.x;
         posYJoueur = (player.transform.position - transform.position).normalized.y;
-        lifeBarre.fillAmount = mechantScript.life / mechantScript.lifeDepart;
+
+        if (life)
+        {
+            lifeBarre.fillAmount = mechantScript.life / mechantScript.lifeDepart;
+            lifeBarreBlanc.DOFillAmount(mechantScript.life / mechantScript.lifeDepart, 0.2f);
+        }
+        
         if (mechantScript.life > mechantScript.lifeDepart / 2 && startVague)
         {
             StartCoroutine(Vague());
@@ -396,7 +415,8 @@ public class BossScript : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 5; i++)
+            int nbrDexplosion = Random.Range(5, 7+1);
+            for (int i = 0; i < nbrDexplosion; i++)
             {
                 GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
                 Instantiate(VFXDist, player.transform.position, Quaternion.identity);
