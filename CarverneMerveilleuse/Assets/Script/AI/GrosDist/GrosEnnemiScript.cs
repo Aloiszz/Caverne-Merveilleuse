@@ -149,9 +149,10 @@ public class GrosEnnemiScript : MonoBehaviour
             }
         }
         isDefending = true;
-        cacHitBox.SetActive(true);
         Instantiate(_shockZoneBlob, gameObject.transform.position, Quaternion.identity,
-            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+            gameObject.transform);
+        yield return new WaitForSeconds(0.2f);
+        cacHitBox.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         isDefending = false;
         cacHitBox.SetActive(false);
