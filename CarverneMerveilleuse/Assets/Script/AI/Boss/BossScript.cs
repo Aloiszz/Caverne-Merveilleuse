@@ -499,6 +499,7 @@ public class BossScript : MonoBehaviour
             StartCoroutine(ZoneCacAnimator());
             yield return new WaitForSeconds(tempsPrevention + 0.5f);
             zone.GetComponent<SpriteRenderer>().color = Color.red;
+            CinemachineShake.instance.ShakeCamera(1,1,.3f);
             zone.GameObject().GetComponent<Collider2D>().enabled = true;
             yield return new WaitForSeconds(0.2f);
             zone.SetActive(false);
@@ -516,11 +517,24 @@ public class BossScript : MonoBehaviour
 
     IEnumerator ZoneCacAnimator()
     {
-        yield return new WaitForSeconds(tempsPrevention);
-        BossAnim.instance.BossZoneCac = true; // Animator
-        //yield return new WaitForSeconds(.2f);
-        yield return null;
-        BossAnim.instance.BossZoneCac = false; // Animator
+
+        if (BossAnim.instance.BossAnimatorIndex == 0)
+        {
+            yield return new WaitForSeconds(tempsPrevention);
+            BossAnim.instance.BossZoneCac = true; // Animator
+            //yield return new WaitForSeconds(.2f);
+            yield return null;
+            BossAnim.instance.BossZoneCac = false; // Animator
+        }
+        else
+        {
+            yield return null;
+            BossAnim.instance.BossZoneCac = true; // Animator
+            //yield return new WaitForSeconds(.2f);
+            yield return null;
+            BossAnim.instance.BossZoneCac = false; // Animator
+        }
+        
     }
     
 }

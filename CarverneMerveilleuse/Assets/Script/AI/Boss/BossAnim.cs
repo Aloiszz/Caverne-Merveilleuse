@@ -54,6 +54,8 @@ public class BossAnim : MonoBehaviour
 
         vcamMain.Priority = 8;
         vcamBoss.Priority = 10;
+
+        CinemachineShake.instance.cinemachineVirtualCamera = vcamBoss;
     }
 
 
@@ -116,7 +118,7 @@ public class BossAnim : MonoBehaviour
     {
         if (BossZoneCac)
         {
-            BossAnimator[BossAnimatorIndex].SetTrigger("Attaque");
+            BossAnimator[BossAnimatorIndex].SetTrigger("AttaqueDeuxMains");
         }
     }
 

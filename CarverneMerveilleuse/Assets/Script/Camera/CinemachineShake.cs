@@ -6,7 +6,7 @@ using Cinemachine;
 
 public class CinemachineShake : MonoBehaviour
 {
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
+    public CinemachineVirtualCamera cinemachineVirtualCamera;
     private float shakeTimer;
 
     public static CinemachineShake instance;
