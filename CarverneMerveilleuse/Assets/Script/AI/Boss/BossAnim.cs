@@ -24,8 +24,9 @@ public class BossAnim : MonoBehaviour
     public List<Animator> BossAnimator;
     public int BossAnimatorIndex;
 
-    public bool BossZoneCac;
-
+    public bool BossZoneCac; // Attaque de zone
+    public bool BossCacLeft; // Attaque de zone Left
+    public bool BossCacRight; // Attaque de zone Right
 
     public Animator animatorEnding;
     public static BossAnim instance;
@@ -54,6 +55,8 @@ public class BossAnim : MonoBehaviour
 
         vcamMain.Priority = 8;
         vcamBoss.Priority = 10;
+
+        TargetGroup.m_Targets[1].target = CameraPoint.transform;
 
         CinemachineShake.instance.cinemachineVirtualCamera = vcamBoss;
     }
@@ -119,6 +122,16 @@ public class BossAnim : MonoBehaviour
         if (BossZoneCac)
         {
             BossAnimator[BossAnimatorIndex].SetTrigger("AttaqueDeuxMains");
+        }
+
+        if (BossCacLeft)
+        {
+            BossAnimator[BossAnimatorIndex].SetTrigger("AttaqueLeft");
+        }
+        
+        if (BossCacRight)
+        {
+            BossAnimator[BossAnimatorIndex].SetTrigger("AttaqueRight");
         }
     }
 

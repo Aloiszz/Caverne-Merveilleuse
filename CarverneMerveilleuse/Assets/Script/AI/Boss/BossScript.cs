@@ -175,6 +175,9 @@ public class BossScript : MonoBehaviour
             part2Room.SetActive(true);
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             phaseTransition = false;
+            
+            StartCoroutine(AnotherLifeFucker());
+            
         }
 
         if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur < 0)
@@ -446,6 +449,7 @@ public class BossScript : MonoBehaviour
                 if (posXJoueur >= 0)
                 {
                     attaqueAvant1.SetActive(true);
+                    StartCoroutine(CacRightAnimator());
                     attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = false;
                     attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
                     yield return new WaitForSeconds(tempsPrevention);
@@ -458,6 +462,7 @@ public class BossScript : MonoBehaviour
                 else
                 {
                     attaqueAvant2.SetActive(true);
+                    StartCoroutine(CacLeftAnimator());
                     attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
                     attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
                     yield return new WaitForSeconds(tempsPrevention);
@@ -537,4 +542,35 @@ public class BossScript : MonoBehaviour
         
     }
     
+    
+    IEnumerator CacLeftAnimator()
+    {
+        if (BossAnim.instance.BossAnimatorIndex == 1)
+        {
+            yield return null;
+            BossAnim.instance.BossCacLeft = true; // Animator
+            yield return null;
+            BossAnim.instance.BossCacLeft = false; // Animator
+        }
+    }
+    
+    IEnumerator CacRightAnimator()
+    {
+        if (BossAnim.instance.BossAnimatorIndex == 1)
+        {
+            yield return null;
+            BossAnim.instance.BossCacRight = true; // Animator
+            yield return null;
+            BossAnim.instance.BossCacRight = false; // Animator
+        }
+    }
+
+    IEnumerator AnotherLifeFucker()
+    {
+        life = false;
+        GetComponent<Mechant>().life = 1000;
+        lifeBarre.DOFillAmount(1, 3);
+        yield return new WaitForSeconds(2);
+        life = true;
+    }
 }
