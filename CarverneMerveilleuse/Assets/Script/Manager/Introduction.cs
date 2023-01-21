@@ -47,6 +47,17 @@ public class Introduction : MonoBehaviour
     [Header("Effet Camera")] [SerializeField]
     private List<int> _effetCamera;
 
+    [Header("Chara Archimage")] 
+    [SerializeField]
+    public GameObject CHara1;
+    [SerializeField]
+    public GameObject CHara2;
+    [SerializeField]
+    public GameObject eye1;
+    [SerializeField]
+    public GameObject eye2;
+    
+
     [Space] 
     [Header("Animator")] 
     [SerializeField]private Animator _animator;
@@ -87,10 +98,12 @@ public class Introduction : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.PlayNoCombatMusic();
+            AudioManager.instance.PlayCave();
             _animatorPlayer.enabled = false;
             archimage.transform.position = _localisationOfArchimage.transform.position;
             //archimage.GetComponent<Collider2D>().enabled = false;
+            CHara1.SetActive(false);
+            CHara2.SetActive(true);
         }
     }
 
@@ -197,6 +210,8 @@ public class Introduction : MonoBehaviour
                     _animatorIllustration.SetTrigger("Play");
                     source.PlayOneShot(ArchimageAudioNormalBis, 0.5f);
                     PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSurpris);
+                    eye1.transform.DOScale(3, 2f);
+                    eye2.transform.DOScale(3, 2f);
                     if (!verifIllu)
                     {
                         verifIllu = true;
@@ -205,6 +220,8 @@ public class Introduction : MonoBehaviour
                     break;
                 
                 case 17:
+                    CHara1.SetActive(false);
+                    CHara2.SetActive(true);
                     _IntroBD.DOFade(0, 2);
                     _animator.SetBool("isOpen", true);
                     _virtualCameraPlayer.Priority = 8;
@@ -248,6 +265,9 @@ public class Introduction : MonoBehaviour
 
     void _Introduction()
     {
+        CHara1.SetActive(true);
+        CHara2.SetActive(false);
+        
         //AudioManager.instance.PlayNoCombatMusic();
         _animatorPlayer.enabled = true;
         SceneManager.instance.playModeCG_.DOFade(0, 0);
@@ -305,6 +325,7 @@ public class Introduction : MonoBehaviour
         
         _flecheDirection.SetActive(true);
         _ligneViser.SetActive(true);
+        _ligneViser.GetComponent<SpriteRenderer>().DOFade(0, 0);
 
         archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
         //archimage.GetComponent<Collider2D>().enabled = false;

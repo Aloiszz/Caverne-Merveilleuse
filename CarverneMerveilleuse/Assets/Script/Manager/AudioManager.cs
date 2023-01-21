@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip preBossClip;
     [SerializeField] private AudioClip bossPhase2Clip;
 
+    [Header("ambiance")] 
+    [SerializeField] private AudioClip shopClip;
+    [SerializeField] private AudioClip CaveClip;
     [SerializeField] private float volumeIntensity = 0.8f;
 
     [Space] [Header("Ennemis")] 
@@ -104,6 +107,17 @@ public class AudioManager : MonoBehaviour
     {
         StopMusic();
         Source.PlayOneShot(bossPhase2Clip,volumeIntensity);
+    }
+    
+    public void PlayShop()
+    {
+        StopMusic();
+        Source.PlayOneShot(shopClip,volumeIntensity);
+    }
+    public void PlayCave()
+    {
+        StopMusic();
+        Source.PlayOneShot(CaveClip,volumeIntensity);
     }
 
     public void PlayCloche()

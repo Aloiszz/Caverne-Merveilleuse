@@ -29,6 +29,12 @@ public class ChatMarchand : MonoBehaviour
     public GameObject graph;
     public Animator camera;
     
+    [Header("Audio")] 
+    public AudioSource Source;
+    public AudioClip audioEnterTheCat;
+    public AudioClip audioExitTheCat;
+    public AudioClip audioInTheMerchantRoom;
+    
     private void Awake()
     {
         
@@ -162,10 +168,12 @@ public class ChatMarchand : MonoBehaviour
         //Camera effetc
         camera.enabled = true;
         camera.SetTrigger("DutchEnter");
+        Source.PlayOneShot(audioEnterTheCat);
         
         yield return new WaitForSeconds(2);
+        Source.PlayOneShot(audioInTheMerchantRoom);
         
-        
+        AudioManager.instance.PlayShop();
         GenerateShopRoom();
         TeleportPlayerToNextRoom();
         AstarPath.active.Scan();
@@ -174,18 +182,19 @@ public class ChatMarchand : MonoBehaviour
     
     public IEnumerator PlayerCameback()
     {
-        
         PlayerController.instance.enabled = false;
         //Play Anim 
         //Camera effetc
         camera.enabled = true;
         camera.SetTrigger("DutchExit");
+        Source.PlayOneShot(audioExitTheCat);
         
         yield return new WaitForSeconds(2);
         camera.enabled = false;
 
         PlayerController.instance.enabled = true;
         
+        AudioManager.instance.PlayCave();
     }
 
     #endregion
