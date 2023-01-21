@@ -131,6 +131,11 @@ public class PlayerThrowAttack : MonoBehaviour
                     is_F_Pressed = true;
                 }
             }
+
+            if (points.Count == 0)
+            {
+                ReturnWeapon();
+            }
         }
         
         IsThrow();
