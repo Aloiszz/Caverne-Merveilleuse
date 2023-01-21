@@ -129,6 +129,7 @@ public class SceneManager : MonoBehaviour
     }
     public void Pause()
     {
+        pauseMenu_.SetActive(true);
         OptionGO.SetActive(false);
         img.DOFade(0, 0);
         optionPanel.DOFade(0, 0.5f);
@@ -137,7 +138,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(0, 0.5f);
         pauseCG_.DOFade(1, 0.5f);
         pauseMenu_.SetActive(true);
-        StartCoroutine(PauseTime());
+        //StartCoroutine(PauseTime());
     }
     public void Unpause()
     {
@@ -145,7 +146,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(1, 0.5f);
         pauseCG_.DOFade(0, 0.5f);
         pauseMenu_.SetActive(false);
-        StartCoroutine(UnPauseTime());
+        //StartCoroutine(UnPauseTime());
     }
     
     IEnumerator PauseTime()
@@ -167,12 +168,13 @@ public class SceneManager : MonoBehaviour
     
     public void Option()
     {
+        pauseMenu_.SetActive(false);
         creditGO.SetActive(false);
         OptionGO.SetActive(true);
         creditPanel.DOFade(0, 1);
         img.DOFade(1, 0);
-        pauseCG_.DOFade(0, 2);
-        optionPanel.DOFade(1, 2);
+        pauseCG_.DOFade(0, 1.25f);
+        optionPanel.DOFade(1, 1.25f);
         
         animator.enabled = true;
         animator.SetBool("IsMain", false);
@@ -183,8 +185,8 @@ public class SceneManager : MonoBehaviour
     {
         creditGO.SetActive(true);
         OptionGO.SetActive(false);
-        optionPanel.DOFade(0, 2);
-        creditPanel.DOFade(1, 2);
+        optionPanel.DOFade(0, 1.25f);
+        creditPanel.DOFade(1, 1.25f);
         //verif = true;
         /*BackToOptionFromCredit = true;
         
@@ -203,7 +205,7 @@ public class SceneManager : MonoBehaviour
         go_btn_BackToOption.SetActive(true);
         cg_CreditMenu.DOFade(1, 2);
         cg_Credit.DOFade(1, 2);*/
-        cg_CreditTitle.DOFade(1, 2);
+        cg_CreditTitle.DOFade(1, 1.25f);
         
         animator.SetTrigger("Credit");
         StartCoroutine(CreditTitle());
@@ -212,7 +214,7 @@ public class SceneManager : MonoBehaviour
     IEnumerator CreditTitle()
     {
         yield return new WaitForSeconds(3);
-        cg_CreditTitle.DOFade(0, 2);
+        cg_CreditTitle.DOFade(0, 1.25f);
     }
     
     public void BackToOption()

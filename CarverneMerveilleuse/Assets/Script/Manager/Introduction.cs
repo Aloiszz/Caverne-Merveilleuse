@@ -71,6 +71,7 @@ public class Introduction : MonoBehaviour
     [SerializeField]private AudioClip ArchimageAudioFier;
     [SerializeField]private AudioClip ArchimageAudioNormal;
     [SerializeField]private AudioClip ArchimageAudioNormalBis;
+    [SerializeField]private AudioClip MaryTombe;
     
     public static Introduction instance;
     
@@ -300,7 +301,8 @@ public class Introduction : MonoBehaviour
         StartCoroutine(StartDialogue());
         //Dialogue();
     }
-
+    
+    
     IEnumerator StartDialogue()
     {
         yield return new WaitForSeconds(7);
@@ -311,6 +313,7 @@ public class Introduction : MonoBehaviour
     {
         yield return new WaitForSeconds(3.47f);
         CinemachineShake.instance.ShakeCamera(2f,2f,.3f);
+        source.PlayOneShot(MaryTombe);
     }
 
 

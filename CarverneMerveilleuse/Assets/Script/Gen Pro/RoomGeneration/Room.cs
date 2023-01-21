@@ -221,7 +221,7 @@ public class Room : MonoBehaviour
         Debug.Log("Close the door");
         foreach (var i in DoorEnnemy)
         {
-            i.GetComponentInChildren<SpriteRenderer>().DOFade(1, EnnemyManager.instance.timeToCloseDoor);
+            i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
             i.GetComponentInChildren<Collider2D>().enabled = true;
         }
 

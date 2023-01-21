@@ -162,7 +162,8 @@ public class AudioManager : MonoBehaviour
     {
         if (!onePlay)
         {
-            SFXSource.PlayOneShot(apparitionSound);
+            //SFXSource.PlayOneShot(apparitionSound);
+            Source.PlayOneShot(apparitionSound);
             onePlay = true;
         }
     }
