@@ -19,7 +19,8 @@ public class DialogueManager : MonoBehaviour
     public CanvasGroup btnInteractionCG;
     public GameObject BtnScore;
     public CanvasGroup btnScoreCG;
-    
+
+    public GameObject baseArchimage;
     public GameObject Score;
     
     private Queue<string> sentences;
@@ -37,18 +38,19 @@ public class DialogueManager : MonoBehaviour
         Score.GetComponent<CanvasGroup>().DOFade(0, 0);
     }
 
+    private bool hehe;
     private void Update()
     {
         if (DialogueCollider.instance.isInRange)
         {
-            if (Introduction.instance.playIntro)
+            if (Introduction.instance.playIntro )
             {
                 //cam.DOCinemachineOrthoSize(7, 2);
                 ArchimageGO.SetActive(true);
                 //BtnScore.SetActive(false);
                 ArchimageCG.DOFade(1, .2f);
             }
-            else
+            else if(hehe)
             {
                 ArchimageGO.SetActive(true);
                 /*BtnInteraction.SetActive(true);*/
@@ -63,11 +65,17 @@ public class DialogueManager : MonoBehaviour
             {
                 if (OnOff)
                 {
+                    hehe = false;
+                    btnScoreCG.DOFade(0, 1.25f);
+                    baseArchimage.GetComponent<CanvasGroup>().DOFade(0, 1.25f);
                     Score.GetComponent<CanvasGroup>().DOFade(1, 1.25f);
                     OnOff = false;
                 }
                 else
                 {
+                    hehe = true;
+                    btnScoreCG.DOFade(1, 1.25f);
+                    baseArchimage.GetComponent<CanvasGroup>().DOFade(1, 1.25f);
                     Score.GetComponent<CanvasGroup>().DOFade(0, 1.25f);
                     OnOff = true;
                 }
@@ -83,11 +91,10 @@ public class DialogueManager : MonoBehaviour
             
             ArchimageGO.SetActive(false);
             BtnInteraction.SetActive(false);
-            BtnScore.SetActive(false);
-            
+
             ArchimageCG.DOFade(0, .2f);
             btnInteractionCG.DOFade(0, .2f);
-            btnScoreCG.DOFade(0, .2f);
+            //btnScoreCG.DOFade(0, .2f);
             
             Score.GetComponent<CanvasGroup>().DOFade(0, 1.25f);
         }

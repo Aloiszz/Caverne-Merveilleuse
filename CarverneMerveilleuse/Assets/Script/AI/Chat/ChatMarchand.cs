@@ -173,6 +173,7 @@ public class ChatMarchand : MonoBehaviour
         yield return new WaitForSeconds(2);
         Source.PlayOneShot(audioInTheMerchantRoom);
         
+        camera.SetTrigger("InShop");
         AudioManager.instance.PlayShop();
         GenerateShopRoom();
         TeleportPlayerToNextRoom();

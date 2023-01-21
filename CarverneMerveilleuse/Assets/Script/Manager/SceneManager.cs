@@ -137,7 +137,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(0, 0.5f);
         pauseCG_.DOFade(1, 0.5f);
         pauseMenu_.SetActive(true);
-        //StartCoroutine(PauseTime());
+        StartCoroutine(PauseTime());
     }
     public void Unpause()
     {
@@ -145,7 +145,7 @@ public class SceneManager : MonoBehaviour
         playModeCG_.DOFade(1, 0.5f);
         pauseCG_.DOFade(0, 0.5f);
         pauseMenu_.SetActive(false);
-        //StartCoroutine(UnPauseTime());
+        StartCoroutine(UnPauseTime());
     }
     
     IEnumerator PauseTime()
