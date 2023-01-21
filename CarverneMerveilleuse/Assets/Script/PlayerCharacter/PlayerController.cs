@@ -56,7 +56,14 @@ public class PlayerController : MonoBehaviour
     public AudioClip audioWalk;
     public AudioClip audioRage;
     public AudioClip audioRageHeart;
-    
+    [Header("Discussion")]
+    public AudioClip audioSoupir;
+    public AudioClip audioPasDaccord;
+    public AudioClip audioInterest;
+    public AudioClip audioSurpris;
+    public AudioClip audioNanana;
+    [Header("prise de dégat")]
+    public AudioClip audioDegat1;
     private void Awake()
     {
         if (instance != null && instance != this) 

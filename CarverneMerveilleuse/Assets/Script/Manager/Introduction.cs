@@ -107,6 +107,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCamera.Priority = 8;
                     _virtualCameraPlayer.Priority = 10;
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSoupir);
                     break;
                 case 4:
                     _lightEclairage.GetComponent<Light2D>().enabled = true;
@@ -122,6 +123,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 10;
                     _virtualCameraArchimage.Priority = 8;
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSurpris);
                     break;
                 case 6 :
                     /*_virtualCamera.Follow = _archimage.transform;
@@ -135,6 +137,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 10;
                     _virtualCameraArchimage.Priority = 8;
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSurpris);
                     break;
                 case 8 :
                     /*_virtualCamera.Follow = _targetIntro.transform;
@@ -148,6 +151,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 10;
                     _virtualCameraEnsemble.Priority = 8;
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSoupir);
                     break;
                 case 10 : 
                     /*_virtualCamera.Follow = _archimage.transform;
@@ -178,6 +182,7 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.m_Lens.OrthographicSize = 2f;*/
                     _virtualCameraPlayer.Priority = 10;
                     _virtualCameraEnsemble.Priority = 8;
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioNanana);
                     break;
                 case 15 :
                     /*_virtualCamera.Follow = _archimage.transform;
@@ -191,6 +196,7 @@ public class Introduction : MonoBehaviour
                     _animator.SetBool("isOpen", false);
                     _animatorIllustration.SetTrigger("Play");
                     source.PlayOneShot(ArchimageAudioNormalBis, 0.5f);
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSurpris);
                     if (!verifIllu)
                     {
                         verifIllu = true;
@@ -208,6 +214,7 @@ public class Introduction : MonoBehaviour
                 case 18:
                     _virtualCameraPlayer.Priority = 10; 
                     _virtualCameraArchimage.Priority = 8; 
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSoupir);
                     break;
                 case 19 : 
                     _virtualCameraPlayer.Priority = 8;
@@ -217,6 +224,7 @@ public class Introduction : MonoBehaviour
                 case 20 : 
                     _virtualCameraPlayer.Priority = 10;
                     _virtualCameraEnsemble.Priority = 8;
+                    PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioSoupir);
                     break;
                 case 21 :
                     _virtualCameraPlayer.Priority = 8;
@@ -240,7 +248,7 @@ public class Introduction : MonoBehaviour
 
     void _Introduction()
     {
-        AudioManager.instance.PlayNoCombatMusic();
+        //AudioManager.instance.PlayNoCombatMusic();
         _animatorPlayer.enabled = true;
         SceneManager.instance.playModeCG_.DOFade(0, 0);
         _MoneyPanel.DOFade(0,0);

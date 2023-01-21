@@ -4364,18 +4364,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 178672322}
-    - target: {fileID: 563138071, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Option
-      objectReference: {fileID: 0}
-    - target: {fileID: 990871651, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1167677396, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2070329934, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4392,10 +4380,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 2607591671278577339, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2607591671278577340, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4488,37 +4472,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 178672322}
-    - target: {fileID: 5370945459458743834, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+    - target: {fileID: 4939910318110653487, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_text
+      value: "La proph\xE9tie raconte qu'une elfe, en voulant fuir les forces du
+        mal\r\n"
       objectReference: {fileID: 0}
-    - target: {fileID: 5370945459458743834, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+    - target: {fileID: 4939910318110653487, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_margin.x
+      value: -504.4411
       objectReference: {fileID: 0}
-    - target: {fileID: 5370945459458743834, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+    - target: {fileID: 4939910318110653487, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_margin.z
+      value: -639.73175
       objectReference: {fileID: 0}
-    - target: {fileID: 5370945459458743834, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -417
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370945459458743834, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -159
-      objectReference: {fileID: 0}
-    - target: {fileID: 5705529046843269697, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_fontColor.a
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4939910318110653487, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d5d169f2bb7f2b418a93d3d16a4e09e, type: 2}
+    - target: {fileID: 4939910318110653487, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8905390157195775601, guid: 6d5d169f2bb7f2b418a93d3d16a4e09e, type: 2}
     - target: {fileID: 5705529046843269697, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 255
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281259078352144220, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_Alpha
-      value: 0
+      value: 4278190335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
@@ -5236,7 +5213,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11863,7 +11840,7 @@ MonoBehaviour:
   m_Follow: {fileID: 987894817}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -20728,7 +20705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6247aee2ba66f47aadfa63656d6d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playIntro: 0
+  playIntro: 1
   _flecheDirection: {fileID: 1129696397}
   _ligneViser: {fileID: 544734278}
   _archimage: {fileID: 32426586}
@@ -20826,30 +20803,6 @@ PrefabInstance:
     - target: {fileID: 79625110420020026, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 345020455609741996, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1731959299456685313, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2493483446551504599, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5574708814379125205, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8015044185454117241, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8144024432270273807, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
