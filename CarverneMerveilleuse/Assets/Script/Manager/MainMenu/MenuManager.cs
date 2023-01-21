@@ -340,6 +340,9 @@ public class MenuManager : MonoBehaviour
     {
         go_OptionMenu.SetActive(false);
         cg_Graphism.DOFade(1,2);
+        Vignette v;
+        globalVolume.profile.TryGet(out v);
+        
         animator_Canvas.SetTrigger("AdvancedToGraphism");
     }
     

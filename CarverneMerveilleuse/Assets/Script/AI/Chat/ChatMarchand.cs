@@ -27,7 +27,7 @@ public class ChatMarchand : MonoBehaviour
     [Header("Animator")] 
     public Animator Animator;
     public GameObject graph;
-    
+    public Animator camera;
     
     private void Awake()
     {
@@ -64,6 +64,7 @@ public class ChatMarchand : MonoBehaviour
 
         if (PlayerCameBack)
         {
+            Debug.Log("PlayerCameBack");
             StartCoroutine(PlayerCameback());
             PlayerCameBack = false;
             isStillActive = false;
@@ -123,7 +124,7 @@ public class ChatMarchand : MonoBehaviour
         ChatMarchand.instance.transform.parent =
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform;
         ChatMarchand.instance.transform.position = new Vector3(74, 0, 0);
-        ChatMarchand.instance.enabled = false;
+        //ChatMarchand.instance.enabled = false;
         ChatMarchand.instance.coll.enabled = false;
             
         RoomManager.instance.canThePotitChatSpawn = false;
@@ -159,23 +160,29 @@ public class ChatMarchand : MonoBehaviour
         PlayerController.instance.enabled = false;
         //Play Anim 
         //Camera effetc
+        camera.enabled = true;
+        camera.SetTrigger("DutchEnter");
         
         yield return new WaitForSeconds(2);
+        
         
         GenerateShopRoom();
         TeleportPlayerToNextRoom();
         AstarPath.active.Scan();
-        
+
     }
     
-    IEnumerator PlayerCameback()
+    public IEnumerator PlayerCameback()
     {
         
         PlayerController.instance.enabled = false;
         //Play Anim 
         //Camera effetc
+        camera.enabled = true;
+        camera.SetTrigger("DutchExit");
         
         yield return new WaitForSeconds(2);
+        camera.enabled = false;
 
         PlayerController.instance.enabled = true;
         

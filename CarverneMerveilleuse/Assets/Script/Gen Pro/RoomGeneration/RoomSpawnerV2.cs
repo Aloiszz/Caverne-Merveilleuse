@@ -80,10 +80,11 @@ public class RoomSpawnerV2 : MonoBehaviour
         {
             if (isShopDoor)
             {
+                ChatMarchand.instance.PlayerCameBack = true;
+                ChatMarchand.instance.StartCoroutine(ChatMarchand.instance.PlayerCameback());
                 Debug.Log("Come Back From Shop");
                 ReturnShopRoom();
                 TeleportPlayerBackToRoom();
-                ChatMarchand.instance.PlayerCameBack = true;
             }
             
             if (!colliderVierge && !isAlternativeDoor)
@@ -252,9 +253,12 @@ public class RoomSpawnerV2 : MonoBehaviour
     {
         RoomManager.instance.roomMemoryIndex--;
         RoomManager.instance.roomMemoryDirectionIndex--;
-        
-        RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
-        
+
+        if (RoomManager.instance.roomMemoryDirectionIndex != 0)
+        {
+            RoomManager.instance.roomMemoryDirection.RemoveAt(RoomManager.instance.roomMemoryDirectionIndex);
+        }
+
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex+1].SetActive(false);
         RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].SetActive(true);
     }
