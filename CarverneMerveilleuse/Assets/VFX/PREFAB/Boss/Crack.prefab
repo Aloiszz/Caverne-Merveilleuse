@@ -56,7 +56,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 2.2
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -4913,7 +4913,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4230554006704626938}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4921,7 +4921,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -4988,7 +4988,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6177,33 +6177,33 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.5506037, b: 0, a: 0}
+        key0: {r: 1, g: 0.5506037, b: 0, a: 0.15686275}
         key1: {r: 0.990566, g: 0.4899323, b: 0, a: 0.15686275}
-        key2: {r: 0.5764706, g: 0, b: 0, a: 0.15686275}
+        key2: {r: 0.5764706, g: 0, b: 0, a: 1}
         key3: {r: 0.5754717, g: 0, b: 0, a: 1}
-        key4: {r: 0, g: 0, b: 0, a: 1}
-        key5: {r: 0, g: 0, b: 0, a: 1}
+        key4: {r: 0.5754717, g: 0, b: 0, a: 1}
+        key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 14842
-        ctime2: 16384
+        ctime1: 32768
+        ctime2: 34117
         ctime3: 65535
-        ctime4: 0
+        ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 8674
-        atime2: 15613
-        atime3: 17348
-        atime4: 30069
-        atime5: 54163
+        atime1: 32382
+        atime2: 33731
+        atime3: 42983
+        atime4: 54163
+        atime5: 65342
         atime6: 65342
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 4
-        m_NumAlphaKeys: 7
+        m_NumAlphaKeys: 6
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9726,7 +9726,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4230554006856140002}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9734,7 +9734,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -9801,7 +9801,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10990,33 +10990,33 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.5506037, b: 0, a: 0}
-        key1: {r: 0.990566, g: 0.4899323, b: 0, a: 0}
-        key2: {r: 0.5764706, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0.5506037, b: 0, a: 0.15686275}
+        key1: {r: 0.990566, g: 0.4899323, b: 0, a: 0.15686275}
+        key2: {r: 0.5764706, g: 0, b: 0, a: 1}
         key3: {r: 0.5754717, g: 0, b: 0, a: 1}
-        key4: {r: 0, g: 0, b: 0, a: 1}
-        key5: {r: 0, g: 0, b: 0, a: 1}
+        key4: {r: 0.5754717, g: 0, b: 0, a: 1}
+        key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 14842
-        ctime2: 16384
+        ctime1: 31226
+        ctime2: 31804
         ctime3: 65535
-        ctime4: 0
+        ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 8674
-        atime2: 15613
-        atime3: 17348
-        atime4: 30069
-        atime5: 54163
+        atime1: 30262
+        atime2: 31611
+        atime3: 42983
+        atime4: 54163
+        atime5: 65342
         atime6: 65342
-        atime7: 65342
+        atime7: 0
         m_Mode: 0
         m_NumColorKeys: 4
-        m_NumAlphaKeys: 7
+        m_NumAlphaKeys: 6
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14553,7 +14553,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 2.2
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
