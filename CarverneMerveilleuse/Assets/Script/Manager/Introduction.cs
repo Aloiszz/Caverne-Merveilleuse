@@ -95,7 +95,8 @@ public class Introduction : MonoBehaviour
 
         if (playIntro)
         {
-            _Introduction();
+            //_Introduction();
+            Tuto();
         }
         else
         {
@@ -314,6 +315,13 @@ public class Introduction : MonoBehaviour
         yield return new WaitForSeconds(3.47f);
         CinemachineShake.instance.ShakeCamera(2f,2f,.3f);
         source.PlayOneShot(MaryTombe);
+    }
+
+    public void Tuto()
+    {
+        Debug.Log("AHHAHAHAHAH");
+        archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
+        playIntro = false;
     }
 
 

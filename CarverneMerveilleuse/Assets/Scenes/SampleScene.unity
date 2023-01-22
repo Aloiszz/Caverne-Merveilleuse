@@ -364,9 +364,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2065474126, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 36985182393989426, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Name
@@ -374,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
@@ -423,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 4588781653752077688, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504988759012013023, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
@@ -8984,6 +8992,10 @@ PrefabInstance:
     - target: {fileID: 1063673251454230544, guid: 7c72a8dd13d356340b99fbb2a870b328, type: 3}
       propertyPath: m_Name
       value: Boss Circle attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063673251454230544, guid: 7c72a8dd13d356340b99fbb2a870b328, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1063673251454230547, guid: 7c72a8dd13d356340b99fbb2a870b328, type: 3}
       propertyPath: m_RootOrder
@@ -19578,6 +19590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salle Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
 --- !u!114 &2009493024 stripped
@@ -20981,7 +20997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2110569010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21276,7 +21292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6247aee2ba66f47aadfa63656d6d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playIntro: 0
+  playIntro: 1
   _flecheDirection: {fileID: 1129696397}
   _ligneViser: {fileID: 544734278}
   _archimage: {fileID: 32426586}
