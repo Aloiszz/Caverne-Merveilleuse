@@ -5038,7 +5038,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16731,6 +16731,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6380998683799393114, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
   m_PrefabInstance: {fileID: 1790564760}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1738435199 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4189720232028678296, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
+  m_PrefabInstance: {fileID: 1790564760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1743425132
 GameObject:
   m_ObjectHideFlags: 0
@@ -17121,6 +17126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3897608485156674573, guid: 16e39a61d32a2ef43b36a010420d2efe, type: 3}
+      propertyPath: canvasAnim
+      value: 
+      objectReference: {fileID: 1738435199}
     - target: {fileID: 3897608485156674573, guid: 16e39a61d32a2ef43b36a010420d2efe, type: 3}
       propertyPath: itemCanvas
       value: 

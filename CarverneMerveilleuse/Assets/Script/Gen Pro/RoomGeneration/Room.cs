@@ -212,6 +212,7 @@ public class Room : MonoBehaviour
         {
             i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToOpenDoor);
             i.GetComponentInChildren<Collider2D>().enabled = false;
+            Destroy(i);
         }
         Light2D_OpenDoor();
     }
@@ -223,6 +224,7 @@ public class Room : MonoBehaviour
         {
             i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
             i.GetComponentInChildren<Collider2D>().enabled = true;
+            
         }
 
         Light2D_CloseDoor();
