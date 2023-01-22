@@ -8,9 +8,10 @@ public class ChatCircleMerchantWay : MonoBehaviour
     {
         if (coll.CompareTag("Player"))
         {
+            PlayerController.instance.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             RoomManager.instance.isShopRoom = true;
             
-            //GetComponent<Collider2D>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
             //GetComponent<SpriteRenderer>().enabled = false;
             
             ChatMarchand.instance.isStillActive = true;
