@@ -364,26 +364,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2065474126, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 36985182393989426, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Name
       value: Salle hub V2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1329582022}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[15].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[15].sentences.Array.data[0]
+      value: "Passe \xE0 pr\xE9sent la porte ELUE et rapporte les....Mes Gemmes perdue....."
+      objectReference: {fileID: 0}
     - target: {fileID: 4588781653752077688, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -428,7 +428,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5504988759012013023, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+    - target: {fileID: 6572695900326563892, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
@@ -447,6 +447,16 @@ GameObject:
 --- !u!82 &32426588 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8162547687341439528, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &32426589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 351952710118901346, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &32426590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8982565508632324152, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
   m_PrefabInstance: {fileID: 32426585}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &48399902
@@ -3037,6 +3047,11 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &379194726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 379194726, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &379280337
 GameObject:
   m_ObjectHideFlags: 0
@@ -11547,6 +11562,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379ad14101293c849ac9f6fdbc5edf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1267744739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ea6e100681a474786527e8bdd136ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1274263568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11893,6 +11919,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1329484746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1329484746, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329582021
 GameObject:
   m_ObjectHideFlags: 0
@@ -19135,6 +19166,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1946160210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1946160210, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1947004874 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 38260629, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
@@ -19146,6 +19182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1974855447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1974855447, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1981995833
 GameObject:
   m_ObjectHideFlags: 0
@@ -21099,6 +21140,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2118304263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4729219241531760275, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2126551257
 GameObject:
   m_ObjectHideFlags: 0
@@ -21299,6 +21345,7 @@ MonoBehaviour:
   _Player: {fileID: 32426587}
   GlobalLight: {fileID: 619394801}
   _dialogueTrigger: {fileID: 61902688}
+  _discussionTrigger: {fileID: 1267744739}
   _virtualCamera: {fileID: 1329582022}
   _virtualCameraPlayer: {fileID: 1007649859}
   _virtualCameraArchimage: {fileID: 1110454703}
@@ -21308,6 +21355,7 @@ MonoBehaviour:
   _targetIntro: {fileID: 1545639210}
   archimage: {fileID: 61902686}
   _localisationOfArchimage: {fileID: 1816922485}
+  _localisationOfArchimageDash: {fileID: 2118304263}
   _lightEclairage: {fileID: 372952786}
   _globalLigthFloat: 0
   _IntroBD: {fileID: 669593929}
@@ -21326,6 +21374,15 @@ MonoBehaviour:
   ArchimageAudioNormal: {fileID: 8300000, guid: 2254e164e24fded4a9d8f6fea1067e3c, type: 3}
   ArchimageAudioNormalBis: {fileID: 8300000, guid: 44490b5cdfdf3a34c880e0b4ab788365, type: 3}
   MaryTombe: {fileID: 8300000, guid: ccf6082fe8e64634497fa63e5e5904a0, type: 3}
+  ennemyAlive: []
+  posEnnemy1:
+  - {fileID: 32426589}
+  - {fileID: 32426590}
+  posEnnemy2:
+  - {fileID: 1946160210}
+  - {fileID: 379194726}
+  - {fileID: 1974855447}
+  - {fileID: 1329484746}
 --- !u!4 &2140097726
 Transform:
   m_ObjectHideFlags: 0

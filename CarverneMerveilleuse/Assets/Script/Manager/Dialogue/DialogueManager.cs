@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour
         Score.GetComponent<CanvasGroup>().DOFade(0, 0);
     }
 
-    private bool hehe;
+    public bool hehe;
     private void Update()
     {
         if (DialogueCollider.instance.isInRange)
@@ -48,17 +48,17 @@ public class DialogueManager : MonoBehaviour
                 //cam.DOCinemachineOrthoSize(7, 2);
                 //ArchimageGO.SetActive(true);
                 //BtnScore.SetActive(false);
-                ArchimageCG.DOFade(1, .2f);
-                btnScoreCG.DOFade(0, .2f);
+                /*ArchimageCG.DOFade(1, .2f);
+                btnScoreCG.DOFade(0, .2f);*/
             }
-            else if (hehe)
+            else if (!hehe)
             {
                 //ArchimageGO.SetActive(true);
                 /*BtnInteraction.SetActive(true);*/
                 //BtnScore.SetActive(true);
                 
                 ArchimageCG.DOFade(1, .2f);
-                /*btnInteractionCG.DOFade(1, .2f);*/
+                //btnInteractionCG.DOFade(1, .2f);
                 btnScoreCG.DOFade(1, .2f);
             }
 
@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
             {
                 if (OnOff)
                 {
-                    hehe = false;
+                    hehe = true;
                     btnScoreCG.DOFade(0, 1.25f);
                     baseArchimage.GetComponent<CanvasGroup>().DOFade(0, 1.25f);
                     Score.GetComponent<CanvasGroup>().DOFade(1, 1.25f);
@@ -74,9 +74,9 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    hehe = true;
+                    hehe = false;
                     btnScoreCG.DOFade(1, 1.25f);
-                    baseArchimage.GetComponent<CanvasGroup>().DOFade(1, 1.25f);
+                    baseArchimage.GetComponent<CanvasGroup>().DOFade(1, 1.25f); 
                     Score.GetComponent<CanvasGroup>().DOFade(0, 1.25f);
                     OnOff = true;
                 }
@@ -89,13 +89,15 @@ public class DialogueManager : MonoBehaviour
             {
                 cam.DOCinemachineOrthoSize(10, 2);
             }
+            baseArchimage.GetComponent<CanvasGroup>().DOFade(1, 1.25f);
+            btnScoreCG.DOFade(0, 1.25f);
             
             /*ArchimageGO.SetActive(false);
             BtnInteraction.SetActive(false);*/
 
-            ArchimageCG.DOFade(0, .2f);
+            /*ArchimageCG.DOFade(0, .2f);
             btnInteractionCG.DOFade(0, .2f);
-            btnScoreCG.DOFade(0, .2f);
+            btnScoreCG.DOFade(0, .2f);*/
         }
     }
 
