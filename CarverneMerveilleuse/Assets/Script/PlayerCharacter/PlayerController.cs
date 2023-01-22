@@ -63,7 +63,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip audioSurpris;
     public AudioClip audioNanana;
     [Header("prise de dégat")]
-    public AudioClip audioDegat1;
+    public List<AudioClip> audioDegat;
+
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -174,6 +175,7 @@ public class PlayerController : MonoBehaviour
     }
     public void LoseLife(int damage)
     {
+        
         life -= damage;
         StartCoroutine(InvinsibleTime());
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,
@@ -181,6 +183,9 @@ public class PlayerController : MonoBehaviour
 
         Instantiate(Hit_Player, gameObject.transform.position, quaternion.identity,
             RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+
+        int rand = Random.Range(0, audioDegat.Count);
+        Source.PlayOneShot(audioDegat[rand]);
         
         Hit_Player_effect.Play();
         

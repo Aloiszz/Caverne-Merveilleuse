@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 public class DentScript : MonoBehaviour
@@ -15,9 +16,13 @@ public class DentScript : MonoBehaviour
     public float speed = 4;
     [SerializeField] public bool golden;
 
+    [Header("Audio")] 
+    private AudioSource source;
+    public List<AudioClip> DentClips;
+
     private void Start()
     {
-        
+        source = GetComponent<AudioSource>();
         coll = GetComponent<Collider2D>();
         ui = GameObject.Find("UIManager").GetComponent<UIManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -34,7 +39,6 @@ public class DentScript : MonoBehaviour
     {
         if ((PlayerController.instance.gameObject.transform.position - transform.position).magnitude <= distanceToGet)
         {
-            Debug.Log("OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIS");
             coll.isTrigger = true;
             transform.position = Vector2.MoveTowards(gameObject.transform.position, PlayerController.instance.gameObject.transform.position, speed);
         }
@@ -44,16 +48,19 @@ public class DentScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            int rand = Random.Range(0, DentClips.Count);
             if (golden)
             {
                 ui.goldenMoney += 1;
+                
             }
             else
             {
                 ui.money += 1;
+                source.PlayOneShot(DentClips[rand]);
             }
             
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
         }
     }
 }

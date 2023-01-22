@@ -32,6 +32,10 @@ public class Room : MonoBehaviour
     [SerializeField] private Tilemap[] tiles;
     public Light2D[] light;
 
+
+    
+    
+    
     private void Start()
     {
         FadeInRoom();
@@ -204,31 +208,54 @@ public class Room : MonoBehaviour
         AstarPath.active.Scan();
     }
 
+    private bool ouvertureDoor;
+    private bool noCombatMusic;
     public void OpenTheDoor()
     {
-        //AudioManager.instance.PlayNoCombatMusic();
+        if (!noCombatMusic)
+        {
+            noCombatMusic = true;
+            AudioManager.instance.PlayNoCombatMusic();
+        }
+        
         Debug.Log("Open the door");
         foreach (var i in DoorEnnemy)
         {
             i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToOpenDoor);
             i.GetComponentInChildren<Collider2D>().enabled = false;
-            Destroy(i);
+            Destroy(i.gameObject);
         }
+
+        if (!ouvertureDoor)
+        {
+            ouvertureDoor = true;
+            AudioManager.instance.PlayOuvertureDoor();
+        }
+        
         Light2D_OpenDoor();
     }
+    private bool fermetureDoor;
+    private bool CombatMusic;
     public void CloseTheDoor()
     {
-        //AudioManager.instance.PlayCombatMusic();
+        if (!CombatMusic)
+        {
+            CombatMusic = true;
+            AudioManager.instance.PlayCombatMusic();
+        }
         Debug.Log("Close the door");
         foreach (var i in DoorEnnemy)
         {
             i.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
             i.GetComponentInChildren<Collider2D>().enabled = true;
-            
         }
-
-        Light2D_CloseDoor();
+        if (!fermetureDoor)
+        {
+            fermetureDoor = true;
+            AudioManager.instance.PlayFermetureDoor();
+        }
         
+        Light2D_CloseDoor();
     }
     #endregion
 

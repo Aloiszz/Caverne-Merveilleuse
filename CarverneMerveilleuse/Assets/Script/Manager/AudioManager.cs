@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float volumeIntensity = 0.8f;
 
     [Space] [Header("Ennemis")] 
-    [SerializeField] private AudioSource SFXSource;
+    public AudioSource SFXSource;
     [SerializeField] private AudioClip apparitionSound;
     [SerializeField] private AudioClip batAtkClip;
     [SerializeField] private AudioClip batDeathClip;
@@ -30,6 +30,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip grosAtkClip;
     [SerializeField] private AudioClip grosDeathClip;
     [HideInInspector] public bool onePlay; //C'est pour qu'on destroy pas les oreilles des gens lors du spawn des ennemis
+    
+    [Header("Audio")] 
+    public AudioClip FermetureDoorClip;
+    public AudioClip OuvertureDoorClip;
+    
+    [Header("Pots casser")]
+    public List<AudioClip> potsClips;
     
     [Space]
     [SerializeField] private List<AudioClip> ClocheClip;
@@ -158,6 +165,15 @@ public class AudioManager : MonoBehaviour
         grosSource.PlayOneShot(grosDeathClip);
     }
 
+    public void PlayFermetureDoor()
+    {
+        SFXSource.PlayOneShot(AudioManager.instance.FermetureDoorClip);
+    }
+    public void PlayOuvertureDoor()
+    {
+        SFXSource.PlayOneShot(AudioManager.instance.OuvertureDoorClip);
+    }
+    
     public void PlaySpawn()
     {
         if (!onePlay)
