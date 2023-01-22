@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 854730639630652876}
   - component: {fileID: 5004471309105805282}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Lanterne (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3386075191881061683}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Pile_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7619093294394320062}
   - component: {fileID: 3546872621131394997}
-  m_Layer: 9
+  - component: {fileID: 2846960377865532084}
+  - component: {fileID: 3293104527825424195}
+  m_Layer: 0
   m_Name: Pots (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +207,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2846960377865532084
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045846972553646001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.12655675, y: -0.50734043}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.243094, y: 3}
+    newSize: {x: 4.243094, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5743837, y: 0.863284}
+  m_EdgeRadius: 0
+--- !u!114 &3293104527825424195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045846972553646001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
+  eclat: {fileID: 2254975150420665112, guid: 3ca3dbc0e2e523b42bbc5c0b8f707cc8, type: 3}
 --- !u!1 &6514713208003326354
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3784283184963555714}
   - component: {fileID: 7024448925992367991}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Lanterne (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +341,9 @@ GameObject:
   m_Component:
   - component: {fileID: 456006412564185443}
   - component: {fileID: 5178883695204800617}
-  m_Layer: 9
+  - component: {fileID: 7060749959195378185}
+  - component: {fileID: 3630907124707189131}
+  m_Layer: 0
   m_Name: "Vase cass\xE9 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,6 +417,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &7060749959195378185
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852825073263732096}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.48523152, y: 0.07304552}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.400301, y: 3.8181818}
+    newSize: {x: 5.400301, y: 3.8181818}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6940768, y: 1.3137608}
+  m_EdgeRadius: 0
+--- !u!114 &3630907124707189131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852825073263732096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
+  eclat: {fileID: 2254975150420665112, guid: 3ca3dbc0e2e523b42bbc5c0b8f707cc8, type: 3}
 --- !u!1001 &4585568190666756696
 PrefabInstance:
   m_ObjectHideFlags: 0
