@@ -178,7 +178,7 @@ public class ChatMarchand : MonoBehaviour
         GenerateShopRoom();
         TeleportPlayerToNextRoom();
         AstarPath.active.Scan();
-
+        ChatCircleMerchantWay.instance.gameObject.GetComponent<Collider2D>().enabled = true;
     }
     
     public IEnumerator PlayerCameback()
