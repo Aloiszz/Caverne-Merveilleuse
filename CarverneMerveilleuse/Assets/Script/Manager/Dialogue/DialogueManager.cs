@@ -46,15 +46,16 @@ public class DialogueManager : MonoBehaviour
             if (Introduction.instance.playIntro )
             {
                 //cam.DOCinemachineOrthoSize(7, 2);
-                ArchimageGO.SetActive(true);
+                //ArchimageGO.SetActive(true);
                 //BtnScore.SetActive(false);
                 ArchimageCG.DOFade(1, .2f);
+                btnScoreCG.DOFade(0, .2f);
             }
-            else if(hehe)
+            else if (hehe)
             {
-                ArchimageGO.SetActive(true);
+                //ArchimageGO.SetActive(true);
                 /*BtnInteraction.SetActive(true);*/
-                BtnScore.SetActive(true);
+                //BtnScore.SetActive(true);
                 
                 ArchimageCG.DOFade(1, .2f);
                 /*btnInteractionCG.DOFade(1, .2f);*/
@@ -89,14 +90,12 @@ public class DialogueManager : MonoBehaviour
                 cam.DOCinemachineOrthoSize(10, 2);
             }
             
-            ArchimageGO.SetActive(false);
-            BtnInteraction.SetActive(false);
+            /*ArchimageGO.SetActive(false);
+            BtnInteraction.SetActive(false);*/
 
             ArchimageCG.DOFade(0, .2f);
             btnInteractionCG.DOFade(0, .2f);
-            //btnScoreCG.DOFade(0, .2f);
-            
-            Score.GetComponent<CanvasGroup>().DOFade(0, 1.25f);
+            btnScoreCG.DOFade(0, .2f);
         }
     }
 
