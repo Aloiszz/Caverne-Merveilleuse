@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1981018181849308544}
   - component: {fileID: 15497431106632100}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Bokks_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8750628408268757965}
   - component: {fileID: 5274248738481540921}
   - component: {fileID: 4023031083214646825}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Pots (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoke: {fileID: 4802562106166883233, guid: 3c14e28bbe8b5134aa8051354d141565, type: 3}
   dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
+  eclat: {fileID: 2254975150420665112, guid: 3ca3dbc0e2e523b42bbc5c0b8f707cc8, type: 3}
 --- !u!1 &4707624993356650752
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,8 @@ GameObject:
   - component: {fileID: 5645306729206697380}
   - component: {fileID: 981114859099613150}
   - component: {fileID: 64864564726346730}
-  m_Layer: 9
+  - component: {fileID: 6889626535346807897}
+  m_Layer: 0
   m_Name: "Vase cass\xE9 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +322,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6690724, y: 1.2269957}
   m_EdgeRadius: 0
+--- !u!114 &6889626535346807897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707624993356650752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
+  eclat: {fileID: 2254975150420665112, guid: 3ca3dbc0e2e523b42bbc5c0b8f707cc8, type: 3}
 --- !u!1 &5932349784892767565
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041743121932886516}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Pile_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
