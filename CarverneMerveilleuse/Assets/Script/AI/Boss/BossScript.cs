@@ -81,6 +81,9 @@ public class BossScript : MonoBehaviour
     [Header("VFX")] 
     public GameObject VFXDist;
 
+    public GameObject posVFXAOE;
+    public GameObject VFXZoneAOE;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -506,6 +509,7 @@ public class BossScript : MonoBehaviour
             zone.GameObject().GetComponent<Collider2D>().enabled = false;
             zone.GetComponent<SpriteRenderer>().color = Color.green;
             StartCoroutine(ZoneCacAnimator());
+            Instantiate(VFXZoneAOE, posVFXAOE.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(tempsPrevention + 0.5f);
             zone.GetComponent<SpriteRenderer>().color = Color.red;
             CinemachineShake.instance.ShakeCamera(1,1,.3f);
