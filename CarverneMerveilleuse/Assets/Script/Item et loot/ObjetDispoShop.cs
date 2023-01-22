@@ -14,6 +14,7 @@ public class ObjetDispoShop : MonoBehaviour
     public Image dentAffichage;
     public Sprite dent;
     public Sprite dentNoir;
+    public Animator canvasAnim;
     public List<GameObject> listItem;
     public List<GameObject> listMerveilleux;
 
