@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
     private ItemManager itemManager;
     private Vector3 spawnPos;
     private Vector3 newPos;
+    private bool canDoFadeOut;
 
     private void Start()
     {
@@ -40,10 +41,15 @@ public class Item : MonoBehaviour
     {
         if ((player.transform.position - spawnPos).magnitude <= 2)
         {
-            canvasItem.itemCanvas.transform.parent = transform;
-            canvasItem.itemCanvas.transform.position = new Vector2(spawnPos.x, spawnPos.y +1);
+            canvasItem.itemCanvas.transform.position = new Vector2(spawnPos.x, spawnPos.y +2.5f);
             canvasItem.itemCanvas.SetActive(true); 
             canvasItem.tmpDescriptionItem.SetText(descriptionItem);
+            if (!canDoFadeOut)
+            {
+                canvasItem.canvasAnim.SetTrigger("FadeIn");
+                canDoFadeOut = true;
+            }
+            
             if (isMerveilleux)
             {
                 canvasItem.tmpNomItem.SetText(nomItem);
@@ -82,20 +88,19 @@ public class Item : MonoBehaviour
 
             if (transform.position.y <= newPos.y)
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y + 0.05f);
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.02f);
             }
             
         }
-        
+        else if (canDoFadeOut)
+        {
+            canvasItem.canvasAnim.SetTrigger("FadeOut");
+            canDoFadeOut = false;
+        }
         else if (transform.position.y >= spawnPos.y)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - 0.05f);
         }
-        else if (canvasItem.itemCanvas.transform.parent == transform)
-        {
-            canvasItem.itemCanvas.transform.parent = null;
-            canvasItem.itemCanvas.SetActive(false);
-            
-        }
+        
     }
 }
