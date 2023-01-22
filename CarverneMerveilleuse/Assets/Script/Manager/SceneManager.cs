@@ -113,6 +113,7 @@ public class SceneManager : MonoBehaviour
 
     public void GenProLevel()
     {
+        VerifIntro.instance.compte++;
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         deathCG_.DOFade(0, 0);
         death_.SetActive(false);
@@ -161,6 +162,7 @@ public class SceneManager : MonoBehaviour
     }
     public void Quit()
     {
+        VerifIntro.instance.compte++;
         Debug.Log("quit");
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");

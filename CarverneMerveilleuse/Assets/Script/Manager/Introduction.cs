@@ -85,7 +85,7 @@ public class Introduction : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(gameObject);
         if (instance != null && instance != this) 
         {
             Destroy(gameObject);
@@ -95,19 +95,39 @@ public class Introduction : MonoBehaviour
             instance = this; 
         }
     }
-    
+
+    public void Start2()
+    {
+        AudioManager.instance.PlayCave();
+        _animatorPlayer.enabled = false;
+        archimage.transform.position = _localisationOfArchimage.transform.position;
+        //archimage.GetComponent<Collider2D>().enabled = false;
+        CHara1.SetActive(false);
+        CHara2.SetActive(true);
+    }
+
+    public void Start1()
+    {
+        if (playIntro)
+        {
+            _Introduction();
+            //Tuto();
+        }
+        else
+        {
+            AudioManager.instance.PlayCave();
+            _animatorPlayer.enabled = false;
+            archimage.transform.position = _localisationOfArchimage.transform.position;
+            //archimage.GetComponent<Collider2D>().enabled = false;
+            CHara1.SetActive(false);
+            CHara2.SetActive(true);
+        }
+    }
     
     private void Start()
     {
-        /*_localisationOfArchimageDash = GameObject.Find("Localisation Archimage Dash");
-        CHara1 = GameObject.Find("Archi-Mage avec capuche");
-        CHara2 = GameObject.Find("Archi-Mage sans capuche");*/
-        
-        PlayerPrefs.DeleteAll();
-
         if (playIntro)
         {
-
             _Introduction();
             //Tuto();
         }
@@ -508,6 +528,7 @@ public class Introduction : MonoBehaviour
 
     void EndTUTO()
     {
-        playIntro = false;
+        //playIntro = false;
+        VerifIntro.instance.compte++;
     }
 }
