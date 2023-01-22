@@ -48,6 +48,7 @@ public class PlayerHeavyAttack : MonoBehaviour
     private float timerLightCloseDamage;
 
     private bool isAlreadyScaled;
+    [HideInInspector]public bool isTourne;
 
     [Header("Animator")] 
     public bool isCharge;
@@ -187,6 +188,7 @@ public class PlayerHeavyAttack : MonoBehaviour
         Slash.Play();
         PlayerLightAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
+        isTourne = true;
         
         if (!ItemManager.instance.canMoveWhileBeyblade)
         {

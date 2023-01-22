@@ -23,6 +23,7 @@ public class Introduction : MonoBehaviour
     [Space] 
     public Light2D GlobalLight;
     [SerializeField] private DialogueTrigger _dialogueTrigger;
+    [SerializeField] private DiscussionTrigger _discussionTrigger;
 
     [Space] 
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
@@ -35,6 +36,7 @@ public class Introduction : MonoBehaviour
     
     [SerializeField] private GameObject archimage;
     [SerializeField] private GameObject _localisationOfArchimage;
+    [SerializeField] private GameObject _localisationOfArchimageDash;
     [Space]
     [SerializeField] private GameObject _lightEclairage;
     [SerializeField]private float _globalLigthFloat;
@@ -74,7 +76,13 @@ public class Introduction : MonoBehaviour
     [SerializeField]private AudioClip MaryTombe;
     
     public static Introduction instance;
-    
+
+    [Space] 
+    [Header("TUTO Combat 1")] 
+    public List<GameObject> ennemyAlive;
+    public GameObject[] posEnnemy1;
+    public GameObject[] posEnnemy2;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -109,7 +117,56 @@ public class Introduction : MonoBehaviour
         }
     }
 
+    private bool isCombat1began = false;
+    private bool isCombat2began = false;
+    private void Update()
+    {
+        if (ennemyAlive.Count <= 0)
+        {
+            if (isCombat1began)
+            {
+                isCombat1began = false;
+                StartCoroutine(Tutotime(1.5f));
+            }
+
+            if (isCombat2began)
+            {
+                isCombat2began = false;
+                StartCoroutine(Tutotime(2f));
+            }
+        }
+
+        if (lancerDeFaux)
+        {
+            if (PlayerThrowAttack.instance.isThrow)
+            {
+                lancerDeFaux = false;
+                StartCoroutine(Tutotime(2));
+            }
+        }
+
+        if (Tourne)
+        {
+            if (PlayerHeavyAttack.instance.isTourne)
+            {
+                Tourne = false;
+                StartCoroutine(Tutotime(2));
+            }
+        }
+    }
+    private void LateUpdate()
+    {
+        for(var i = ennemyAlive.Count - 1; i > -1; i--)
+        {
+            if (ennemyAlive[i] == null)
+                ennemyAlive.RemoveAt(i);
+        }
+    }
+
     private bool verifIllu;
+    private bool deplacement;
+    private bool lancerDeFaux;
+    private bool Tourne;
     
     public void Dialogue()
     {
@@ -256,6 +313,55 @@ public class Introduction : MonoBehaviour
                     _virtualCamera.Priority = 10;
                     break;
             }
+
+            switch (_discussionTrigger.indexDialogue)
+            {
+                case 2 :
+                    if (!deplacement)
+                    {
+                        
+                        archimage.transform.DOMove(_localisationOfArchimage.transform.position, 3);
+                        deplacement = true;
+                    }
+                    StartCoroutine(Tutotime(1.5f));
+
+                    break;
+                case 3:
+                    StartCoroutine(Tutotime(1.5f));
+                    
+                    break;
+                case 4 :
+                    StartCoroutine(Tutotime(1.25f));
+                    break;
+                case 5:
+                    StartCoroutine(Tutotime(2f));
+                    TutoCombat1();
+                    break;
+                case 7 :
+                    StartCoroutine(Tutotime(2f));
+                    break;
+                case 8 :
+                    StartCoroutine(Tutotime(2f));
+                    break;
+                case 9 :
+                    StartCoroutine(Tutotime(2f));
+                    lancerDeFaux = true;
+                    break;
+                case 11 :
+                    StartCoroutine(Tutotime(2f));
+                    Tourne = true;
+                    break;
+                case 13 :
+                    StartCoroutine(Tutotime(2f));
+                    break;
+                case 14 :
+                    StartCoroutine(Tutotime(3f));
+                    TutoCombat2();
+                    break;
+                case 15:
+                    EndTUTO();
+                    break;
+            }
         }
     }
 
@@ -319,17 +425,61 @@ public class Introduction : MonoBehaviour
 
     public void Tuto()
     {
-        Debug.Log("AHHAHAHAHAH");
-        archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
-        playIntro = false;
+        archimage.transform.DOMove(_localisationOfArchimageDash.transform.position, 3);
+        //playIntro = false;
     }
 
+    IEnumerator Tutotime(float time)
+    {
+        
+        yield return new WaitForSeconds(time);
+        _discussionTrigger.TriggerTuto();
+    }
+    
+    void LookForEnnemyAlive()
+    {
+        addEnnemyToList("CAC");
+        addEnnemyToList("Dist");
+        addEnnemyToList("Gros");
+    }
+    void addEnnemyToList(string tag)
+    {
+        foreach (var go in GameObject.FindGameObjectsWithTag(tag))
+        {
+            ennemyAlive.Add(go);
+        }
+    }
 
+    void TutoCombat1()
+    {
+        foreach (var i in posEnnemy1)
+        {
+            Instantiate(EnnemyManager.instance.SpawningVFX, i.transform.position, Quaternion.identity, transform);
+            Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            AudioManager.instance.PlaySpawn();
+        }
+        LookForEnnemyAlive();
+        isCombat1began = true;
+    }
+    
+    void TutoCombat2()
+    {
+        foreach (var i in posEnnemy2)
+        {
+            Instantiate(EnnemyManager.instance.SpawningVFX, i.transform.position, Quaternion.identity, transform);
+            Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            AudioManager.instance.PlaySpawn();
+        }
+        LookForEnnemyAlive();
+        isCombat2began = true;
+    }
+
+    private bool yakari;
     public void EndIntro()
     {
         _MoneyPanel.DOFade(1,2);
         _animatorPlayer.enabled = false;
-        playIntro = false;
+        //playIntro = false;
         
         _virtualCamera.Follow = _targetMain.GetComponent<Transform>();
         GlobalLight.intensity = 0.6f;
@@ -338,7 +488,19 @@ public class Introduction : MonoBehaviour
         _ligneViser.SetActive(true);
         _ligneViser.GetComponent<SpriteRenderer>().DOFade(0, 0);
 
-        archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
+        Tuto();
+        if (!yakari)
+        {
+            yakari = true;
+            _discussionTrigger.TriggerTuto();
+        }
+        
+        //archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
         //archimage.GetComponent<Collider2D>().enabled = false;
+    }
+
+    void EndTUTO()
+    {
+        playIntro = false;
     }
 }
