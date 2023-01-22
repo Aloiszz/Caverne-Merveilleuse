@@ -88,7 +88,7 @@ public class Introduction : MonoBehaviour
         DontDestroyOnLoad(this);
         if (instance != null && instance != this) 
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         } 
         else 
         { 
@@ -99,12 +99,17 @@ public class Introduction : MonoBehaviour
     
     private void Start()
     {
+        /*_localisationOfArchimageDash = GameObject.Find("Localisation Archimage Dash");
+        CHara1 = GameObject.Find("Archi-Mage avec capuche");
+        CHara2 = GameObject.Find("Archi-Mage sans capuche");*/
         
+        PlayerPrefs.DeleteAll();
 
         if (playIntro)
         {
-            //_Introduction();
-            Tuto();
+
+            _Introduction();
+            //Tuto();
         }
         else
         {
@@ -115,6 +120,7 @@ public class Introduction : MonoBehaviour
             CHara1.SetActive(false);
             CHara2.SetActive(true);
         }
+        
     }
 
     private bool isCombat1began = false;
@@ -482,6 +488,7 @@ public class Introduction : MonoBehaviour
         //playIntro = false;
         
         _virtualCamera.Follow = _targetMain.GetComponent<Transform>();
+        _virtualCamera.m_Lens.OrthographicSize = 10;
         GlobalLight.intensity = 0.6f;
         
         _flecheDirection.SetActive(true);
@@ -489,11 +496,11 @@ public class Introduction : MonoBehaviour
         _ligneViser.GetComponent<SpriteRenderer>().DOFade(0, 0);
 
         Tuto();
-        if (!yakari)
+        /*if (!yakari)
         {
             yakari = true;
             _discussionTrigger.TriggerTuto();
-        }
+        }*/
         
         //archimage.transform.DOMove(_localisationOfArchimage.transform.position, 5);
         //archimage.GetComponent<Collider2D>().enabled = false;
