@@ -15,7 +15,6 @@ public class RoomSpawnerV2 : MonoBehaviour
     public bool isShopDoor;
 
     public int porteQuiFautDetruire;
-    
 
     public enum Direction
     {
@@ -177,11 +176,71 @@ public class RoomSpawnerV2 : MonoBehaviour
         }
         else
         {
-            Debug.Log("Une Salle Boss apparait");
-            InstatiateBossRoom();
-            SpawnPointLocation();
-            TeleportPlayerToNextRoom();
-            AstarPath.active.Scan();
+            if (direction == Direction.Top && RoomManager.instance.roomMemory[^1].gameObject.activeInHierarchy)
+            {
+                Debug.Log("Une Salle Boss apparait");
+                InstatiateBossRoom();
+                SpawnPointLocation();
+                TeleportPlayerToNextRoom();
+                AstarPath.active.Scan();
+            }
+            else
+            {
+                if (isShopDoor)
+                {
+                    ChatMarchand.instance.PlayerCameBack = true;
+                    ChatMarchand.instance.StartCoroutine(ChatMarchand.instance.PlayerCameback());
+                    Debug.Log("Come Back From Shop");
+                    ReturnShopRoom();
+                    TeleportPlayerBackToRoom();
+                }
+                else if(!isAlternativeDoor && !isShopDoor)
+                {
+                    if (direction == RoomManager.instance.roomMemoryDirection[^1])
+                    {
+                        //KeepMemoryDirection();
+                        Return();
+                        SpawnPointLocation();
+                        TeleportPlayerToNextRoom();
+                        Debug.Log("On Revient en arrire");
+                    }
+                    else
+                    {
+                        Debug.Log("Ok jsuis perdo");
+                        ChangeDavis();
+                        SpawnPointLocation();
+                        TeleportPlayerToNextRoom();
+                    }
+                }
+                if (isAlternativeDoor)
+                {
+                    if(!colliderVierge)
+                    {
+                        KeepMemoryDirectionAlternativePath();
+                        Debug.Log("HEHO MAIS C4EST UN PASSAGE FDERMER");
+                        InstatiateNewAlternativePath();
+                        SpawnPointLocation();
+                        TeleportPlayerToNextRoom();
+                    }
+                    else
+                    {
+                        if (direction == RoomManager.instance.roomMemoryDirectionAlternativePath[^1])
+                        {
+                            Debug.Log("On Revient en arrire alternativement bebe");
+                            ReturnAlternativePath();
+                            SpawnPointLocation();
+                            TeleportPlayerToNextRoom();
+                        }
+                        else
+                        {
+                            /*Debug.Log("Ok jsuis perdo dans l'alternativement passages secrets");
+                            ChangeDavisAlternativePath();
+                            SpawnPointLocation();
+                            TeleportPlayerToNextRoom();*/
+                        }
+                    }
+                }
+            }
         }
         AstarPath.active.Scan();
     }
