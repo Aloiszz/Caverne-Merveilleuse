@@ -21,7 +21,13 @@ public class VerifIntro : MonoBehaviour
         { 
             instance = this; 
         }
-        Introduction.instance.playIntro = true;
+        
+        
+    }
+
+    private void Start()
+    {
+        Introduction.instance._Introduction();
     }
 
     private bool isis;

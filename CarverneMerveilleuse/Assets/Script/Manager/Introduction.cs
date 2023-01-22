@@ -124,7 +124,7 @@ public class Introduction : MonoBehaviour
         }
     }
     
-    private void Start()
+    /*private void Start()
     {
         if (playIntro)
         {
@@ -141,7 +141,7 @@ public class Introduction : MonoBehaviour
             CHara2.SetActive(true);
         }
         
-    }
+    }*/
 
     private bool isCombat1began = false;
     private bool isCombat2began = false;
@@ -397,7 +397,7 @@ public class Introduction : MonoBehaviour
         _dialogueTrigger.TriggerDialogue();
     }
 
-    void _Introduction()
+    public void _Introduction()
     {
         CHara1.SetActive(true);
         CHara2.SetActive(false);
