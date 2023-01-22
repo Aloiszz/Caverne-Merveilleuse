@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7526435691172611688}
   - component: {fileID: 8750628408268757965}
+  - component: {fileID: 5274248738481540921}
+  - component: {fileID: 4023031083214646825}
   m_Layer: 9
   m_Name: Pots (1)
   m_TagString: Untagged
@@ -168,6 +170,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5274248738481540921
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307674660926727889}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06940645, y: -0.50319916}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.243094, y: 3}
+    newSize: {x: 4.243094, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4899584, y: 0.7442801}
+  m_EdgeRadius: 0
+--- !u!114 &4023031083214646825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307674660926727889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 4802562106166883233, guid: 3c14e28bbe8b5134aa8051354d141565, type: 3}
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
 --- !u!1 &4707624993356650752
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5645306729206697380}
   - component: {fileID: 981114859099613150}
+  - component: {fileID: 64864564726346730}
   m_Layer: 9
   m_Name: "Vase cass\xE9 (1)"
   m_TagString: Untagged
@@ -252,6 +295,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &64864564726346730
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707624993356650752}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4916314, y: 0.12724578}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.400301, y: 3.8181818}
+    newSize: {x: 5.400301, y: 3.8181818}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6690724, y: 1.2269957}
+  m_EdgeRadius: 0
 --- !u!1 &5932349784892767565
 GameObject:
   m_ObjectHideFlags: 0

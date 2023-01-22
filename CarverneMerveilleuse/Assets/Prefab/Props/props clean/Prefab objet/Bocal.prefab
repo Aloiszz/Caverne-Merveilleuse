@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 849600338775424}
   - component: {fileID: 355455127943989666}
+  - component: {fileID: -7936615879048401599}
+  - component: {fileID: 8738807412893262175}
   m_Layer: 0
   m_Name: Bocal
   m_TagString: Untagged
@@ -87,6 +89,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7936615879048401599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6002795085968367649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 4802562106166883233, guid: 3c14e28bbe8b5134aa8051354d141565, type: 3}
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
+--- !u!61 &8738807412893262175
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6002795085968367649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.58, y: 1.8844445}
+    newSize: {x: 1.58, y: 1.8844445}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.58, y: 1.8844445}
+  m_EdgeRadius: 0
 --- !u!1001 &2575035579325229571
 PrefabInstance:
   m_ObjectHideFlags: 0

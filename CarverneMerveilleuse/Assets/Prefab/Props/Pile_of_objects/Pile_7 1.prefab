@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7551199734531172478}
   - component: {fileID: 7490503414025841299}
+  - component: {fileID: 1662672180126757365}
+  - component: {fileID: 5879715146004756608}
   m_Layer: 9
   m_Name: Pots (1)
   m_TagString: Untagged
@@ -84,6 +86,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1662672180126757365
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844388341337741495}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.085146606, y: -0.46830618}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.243094, y: 3}
+    newSize: {x: 4.243094, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4843448, y: 0.8032179}
+  m_EdgeRadius: 0
+--- !u!114 &5879715146004756608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844388341337741495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 4802562106166883233, guid: 3c14e28bbe8b5134aa8051354d141565, type: 3}
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
 --- !u!1 &1448715186870872288
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448715186870872288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -382,6 +424,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2504360485955937774}
   - component: {fileID: 4472896035579737547}
+  - component: {fileID: 7127280176160759421}
+  - component: {fileID: 3390141822977866875}
   m_Layer: 9
   m_Name: "Vase cass\xE9 (1)"
   m_TagString: Untagged
@@ -456,3 +500,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &7127280176160759421
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164740535724907811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.48533553, y: 0.12771988}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.400301, y: 3.8181818}
+    newSize: {x: 5.400301, y: 3.8181818}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7172383, y: 1.2808135}
+  m_EdgeRadius: 0
+--- !u!114 &3390141822977866875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164740535724907811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d22a996b5db32468f76ef72616188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 4802562106166883233, guid: 3c14e28bbe8b5134aa8051354d141565, type: 3}
+  dent: {fileID: 1756168027805832055, guid: 9ad20bd1aa6fa9049b13ec5bbec7ab33, type: 3}
