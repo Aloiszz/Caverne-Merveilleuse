@@ -141,6 +141,7 @@ public class ItemManager : MonoBehaviour
                 //Debug.Log("Augmente la portée du coup");
                 valeurNouvelleRange = pourcentagePortéeEnPlus / 100 + 1;
                 HeavyAttackCollision.instance.transform.localScale *= valeurNouvelleRange;
+                PlayerHeavyAttack.instance.Slash.transform.localScale *= valeurNouvelleRange;
                 break;
             
             case 5: //"TourAB(Clone)":
