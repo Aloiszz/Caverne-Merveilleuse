@@ -57,7 +57,7 @@ public class BossAnim : MonoBehaviour
         vcamBoss.Priority = 10;
 
         TargetGroup.m_Targets[1].target = CameraPoint.transform;
-
+        
         CinemachineShake.instance.cinemachineVirtualCamera = vcamBoss;
     }
 
@@ -93,9 +93,10 @@ public class BossAnim : MonoBehaviour
 
     private bool _isVierge = false;
     private bool _isVierge2 = false;
+    private bool isThrow = false;
     void BossPhaseChange()
     {
-        if (BossScript.instance.mechantScript.life <= BossScript.instance.mechantScript.lifeDepart / 2)
+        if (BossScript.instance.is2Phase)
         {
             if (!_isVierge)
             {
@@ -113,6 +114,19 @@ public class BossAnim : MonoBehaviour
                 _isVierge2 = true;
                 DeathBoss();
             }
+        }
+
+        if (PlayerThrowAttack.instance.isThrow)
+        {
+            if (!isThrow)
+            {
+                isThrow = true;
+                BossAnimator[BossAnimatorIndex].SetTrigger("Protection");
+            }
+        }
+        else
+        {
+            isThrow = false;
         }
     }
 

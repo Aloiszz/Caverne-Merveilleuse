@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private float verif_float;
     
     [SerializeField]private bool GodMode;
+    [SerializeField] private CanvasGroup GodModePanel;
     
     public static GameManager instance;
     
@@ -39,10 +40,12 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
+        GodModePanel.DOFade(0, 0);
         StartCoroutine(AfficheHealthBar());
         Time.timeScale = 1;
     }
 
+    private bool onOff;
     private void Update()
     {
         if (verif_dashbar)
@@ -70,6 +73,22 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             verif_float = 0;
+        }
+
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            if (!onOff)
+            {
+                GodModePanel.DOFade(1, 1.25f);
+                GodMode = true;
+                onOff = true;
+            }
+            else
+            {
+                GodModePanel.DOFade(0, 1.25f);
+                GodMode = false;
+                onOff = false;
+            }
         }
 
         if (GodMode)

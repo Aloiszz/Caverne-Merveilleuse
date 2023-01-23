@@ -75,7 +75,7 @@ public class BossScript : MonoBehaviour
     private Mechant lifeScript;
     private Coroutine actualZoneCac;
 
-    private bool is2Phase;
+    public bool is2Phase;
     
     public static BossScript instance;
 
@@ -474,7 +474,7 @@ public class BossScript : MonoBehaviour
                     StartCoroutine(CacLeftAnimator());
                     attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
                     attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
-                    yield return new WaitForSeconds(tempsPrevention);
+                    yield return new WaitForSeconds(tempsPrevention+.4f);
                     attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
                     attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = true;
                     yield return new WaitForSeconds(0.5f);
@@ -509,12 +509,12 @@ public class BossScript : MonoBehaviour
             }
             zone.SetActive(true);
             zone.GameObject().GetComponent<Collider2D>().enabled = false;
-            zone.GetComponent<SpriteRenderer>().color = Color.green;
+            //zone.GetComponent<SpriteRenderer>().color = Color.green;
             StartCoroutine(ZoneCacAnimator());
             Instantiate(VFXZoneAOE, posVFXAOE.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(tempsPrevention + 0.5f);
-            zone.GetComponent<SpriteRenderer>().color = Color.red;
-            CinemachineShake.instance.ShakeCamera(3,3,0.2f);
+            //zone.GetComponent<SpriteRenderer>().color = Color.red;
+            CinemachineShake.instance.ShakeCamera(15,15,0.2f);
             zone.GameObject().GetComponent<Collider2D>().enabled = true;
             yield return new WaitForSeconds(0.2f);
             zone.SetActive(false);
@@ -581,6 +581,7 @@ public class BossScript : MonoBehaviour
         life = false;
         GetComponent<Mechant>().life = 1000;
         lifeBarre.DOFillAmount(1, 3);
+        CinemachineShake.instance.ShakeCamera(30,30,0.8f);
         yield return new WaitForSeconds(2);
         life = true;
     }
