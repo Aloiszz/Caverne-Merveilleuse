@@ -26,17 +26,17 @@ public class LightPath : MonoBehaviour
         
         if (col.GetComponentInChildren<Light2D>())
         {
-            
             colliders.Add(col.GetComponentInChildren<Light2D>());
         }
-        /*if (col.GetComponent<Light2D>())
+        if (col.GetComponent<Light2D>())
         {
             Debug.Log("LIght");
             //colliders.Add(col.GetComponent<Light2D>().GetComponentInChildren<Light2D>());
-            colliders.Add(col.transform.GetChild(0).transform.GetChild(0).GetComponent<Light2D>());
+           /* colliders.Add(col.transform.GetChild(0).transform.GetChild(0).GetComponent<Light2D>());
             colliders.Add(col.transform.GetChild(0).transform.GetChild(1).GetComponent<Light2D>());
-            colliders.Add(col.transform.GetChild(0).transform.GetChild(2).GetComponent<Light2D>());
-        }*/
+            colliders.Add(col.transform.GetChild(0).transform.GetChild(2).GetComponent<Light2D>());*/
+           colliders.Add(GameObject.FindObjectOfType<Light2D>());
+        }
     }
 
     private void OnTriggerExit2D (Collider2D col) 
