@@ -65,13 +65,9 @@ public class Mechant : MonoBehaviour
         if (!CompareTag("Boss"))
         {
             lifeBarre.transform.localScale = new Vector2(life / lifeDepart, 0.1f);
-            if (life > lifeDepart * 2 / 3)
+            if (life > lifeDepart / 2)
             {
-                lifeBarre.GetComponent<SpriteRenderer>().color = Color.green;
-            }
-            else if (life <= lifeDepart * 2 / 3 && life > lifeDepart / 3)
-            {
-                lifeBarre.GetComponent<SpriteRenderer>().color = Color.yellow;
+                lifeBarre.GetComponent<SpriteRenderer>().color = Color.white;
             }
             else
             {

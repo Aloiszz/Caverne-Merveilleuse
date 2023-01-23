@@ -14,6 +14,8 @@ public class BatSpawn : MonoBehaviour
     public GameObject sprite;
     public GameObject healthBar;
     public GameObject eye1;
+    public GameObject BGHealthBar;
+    public GameObject shadow;
 
     void Start()
     {
@@ -30,6 +32,8 @@ public class BatSpawn : MonoBehaviour
         mechant.enabled = false;
         ennemi.enabled = false;
         
+        BGHealthBar.SetActive(false);
+        shadow.SetActive(false);
         sprite.SetActive(false);
         healthBar.SetActive(false);
         eye1.SetActive(false);
@@ -45,6 +49,8 @@ public class BatSpawn : MonoBehaviour
         mechant.enabled = true;
         ennemi.enabled = true;
         
+        BGHealthBar.SetActive(true);
+        shadow.SetActive(true);
         sprite.SetActive(true);
         healthBar.SetActive(true);
         eye1.SetActive(true);

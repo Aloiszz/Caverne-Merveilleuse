@@ -15,7 +15,10 @@ public class SpwanCac : MonoBehaviour
     public GameObject healthBar;
     public GameObject eye1;
     public GameObject eye2;
+    public GameObject BGHealthBar;
+    public GameObject shadow;
     
+
     void Start()
     {
 
@@ -31,6 +34,8 @@ public class SpwanCac : MonoBehaviour
         mechant.enabled = false;
         ennemi.enabled = false;
         
+        BGHealthBar.SetActive(false);
+        shadow.SetActive(false);
         sprite.SetActive(false);
         healthBar.SetActive(false);
         eye1.SetActive(false);
@@ -41,6 +46,8 @@ public class SpwanCac : MonoBehaviour
 
     void Activate()
     {
+        BGHealthBar.SetActive(true);
+        shadow.SetActive(true);
         coll.enabled = true;
         rb.simulated = true;
         anim.enabled = true;
