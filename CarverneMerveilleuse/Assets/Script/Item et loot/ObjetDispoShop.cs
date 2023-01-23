@@ -12,6 +12,7 @@ public class ObjetDispoShop : MonoBehaviour
     public TMP_Text tmpNomItem;
     public TMP_Text tmpPrixItem;
     public Image dentAffichage;
+    public TMP_Text achat;
     public Sprite dent;
     public Sprite dentNoir;
     public Animator canvasAnim;
