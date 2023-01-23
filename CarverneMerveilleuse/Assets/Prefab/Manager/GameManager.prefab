@@ -57,6 +57,7 @@ MonoBehaviour:
   Chargetxt: {fileID: 0}
   verif_Chargebar: 0
   verif_float: 0
+  GodMode: 0
 --- !u!114 &8785446625310703101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +78,18 @@ MonoBehaviour:
   LevelPanel_: {fileID: 0}
   death_: {fileID: 0}
   pauseMenu_: {fileID: 0}
+  animator: {fileID: 0}
+  img: {fileID: 0}
+  OptionGO: {fileID: 0}
+  optionPanel: {fileID: 0}
+  creditGO: {fileID: 0}
+  creditPanel: {fileID: 0}
+  cg_CreditTitle: {fileID: 0}
+  cg_Advanced: {fileID: 0}
+  cg_Graphism: {fileID: 0}
+  cg_Sound: {fileID: 0}
+  cg_Touche: {fileID: 0}
+  cg_Score: {fileID: 0}
 --- !u!114 &7768128023171480798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +109,8 @@ MonoBehaviour:
   timeBeforeFighting: 2
   timeToAppearEnnemy: 2
   Door: {fileID: 6702262465706317253, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
-  timeBeforeClosingDoor: 0.7
+  DoorAutre: {fileID: 6702262465706317253, guid: f03b6b36b1b00634fac35ae030ab22ba, type: 3}
+  timeBeforeClosingDoor: 0.2
   timeToOpenDoor: 2
   timeToCloseDoor: 1
 --- !u!114 &511791981733705186
@@ -129,6 +143,7 @@ MonoBehaviour:
   rageTxt: {fileID: 0}
   listScoreRageIndex: 0
   RageWave: {fileID: 6429919153856389210, guid: be23864a881b5bb44a45372108868199, type: 3}
+  animator: {fileID: 0}
 --- !u!114 &178592613998863876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +160,14 @@ MonoBehaviour:
   scoreRage: 0
   listScore: 
   lastScore: 0
-  listScoreRage: 0a0000000c0000000f00000012000000120000001200000012000000
+  listScoreRage:
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
   addScore: 0
   resetPlayerPrefScore: 0
   activateScore: 0

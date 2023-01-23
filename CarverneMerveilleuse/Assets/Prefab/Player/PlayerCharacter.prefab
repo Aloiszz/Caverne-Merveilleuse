@@ -491,15 +491,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3645884626181625086}
-  - component: {fileID: 3910594011730425789}
   - component: {fileID: 219560555}
+  - component: {fileID: 1635195733972800843}
   m_Layer: 0
   m_Name: RageArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3645884626181625086
 Transform:
   m_ObjectHideFlags: 0
@@ -515,7 +515,19 @@ Transform:
   m_Father: {fileID: 79625110420020026}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3910594011730425789
+--- !u!114 &219560555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637572764210043984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4535c70df53ff56488d71dcb12bd0245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1635195733972800843
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -530,19 +542,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
---- !u!114 &219560555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637572764210043984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4535c70df53ff56488d71dcb12bd0245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 2
 --- !u!1 &1640579928550993000
 GameObject:
   m_ObjectHideFlags: 0

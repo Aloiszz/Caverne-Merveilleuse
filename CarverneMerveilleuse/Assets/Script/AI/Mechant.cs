@@ -237,7 +237,7 @@ public class Mechant : MonoBehaviour
 
     public void RageArea()
     {
-        rb.AddForce((transform.position - player.transform.position) * 200);
+        rb.AddForce((transform.position - player.transform.position) * 500);
     }
 
     public void DebutHitStop()

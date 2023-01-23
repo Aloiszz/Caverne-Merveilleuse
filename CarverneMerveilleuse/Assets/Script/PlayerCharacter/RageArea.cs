@@ -8,6 +8,7 @@ public class RageArea : MonoBehaviour
     {
         if (col.CompareTag("CAC") | col.CompareTag("Dist") | col.CompareTag("Gros"))
         {
+            col.GetComponent<Mechant>().ReceiveLightDamage();
             col.GetComponent<Mechant>().RageArea();
         }
     }

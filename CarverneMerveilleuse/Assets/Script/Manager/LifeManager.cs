@@ -38,7 +38,9 @@ public class LifeManager : MonoBehaviour
 
     [Space] [Header("VFX")] 
     public GameObject RageWave;
-    
+
+    [Header("Animator")] 
+    public Animator animator;
     
     public static LifeManager instance;
     
@@ -56,6 +58,7 @@ public class LifeManager : MonoBehaviour
     
     private void Start()
     {
+        _rageArea.SetActive(false);
         r_key_img.DOFade(0, 0);
         rageTxt.DOFade(0, 0);
         
@@ -100,6 +103,7 @@ public class LifeManager : MonoBehaviour
             if(rageBarLife)
             {
                 life_Bar_RageLife.DOFillAmount(timeInRage / timeInRageMax, 0);
+                StartCoroutine(WaitForRageLifeBar());
             }
 
             if (globalVolume.weight <= 1)
@@ -108,6 +112,7 @@ public class LifeManager : MonoBehaviour
             }
             if (timeInRage <= 0)
             {
+                
                 timeInRage = timeInRageMax;
                 isInRage = false;
                 //PlayerController.instance.Rage();
@@ -132,7 +137,7 @@ public class LifeManager : MonoBehaviour
         if (PlayerController.instance.life > PlayerController.instance.lifeDepard) // rage quand surplus de vie
         {
             life_Bar_RageLife.DOFillAmount((float)1, 1);
-            
+            animator.SetTrigger("RageLife");
             /*r_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);*/
 
@@ -158,14 +163,20 @@ public class LifeManager : MonoBehaviour
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
                 }
-                else
+                else if (PlayerController.instance.life >= 4)
                 {
                     PlayerController.instance.life++;
+                }
+                else
+                {
+                    PlayerController.instance.life += 2;
                 }
             }
         }
         else
         {
+            life_Bar_RageLife.DOFillAmount(0, 1);
+            animator.SetTrigger("EndLife");
             /*r_key_img.DOFade(0, .2f);
             rageTxt.DOFade(0, .2f);*/
         }
@@ -176,6 +187,7 @@ public class LifeManager : MonoBehaviour
     {
         if (Score.instance.scoreRage > Score.instance.listScoreRage[listScoreRageIndex]) // rage quand score de rage atteint
         {
+            animator.SetTrigger("Rage");
             /*_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);*/
             
@@ -200,14 +212,19 @@ public class LifeManager : MonoBehaviour
                 {
                     PlayerController.instance.life = PlayerController.instance.lifeDepard;
                 }
-                else
+                else if (PlayerController.instance.life >= 4)
                 {
                     PlayerController.instance.life++;
+                }
+                else 
+                {
+                    PlayerController.instance.life += 2;
                 }
             }
         }
         else
         {
+            animator.SetTrigger("EndRage");
             /*r_key_img.DOFade(0, .2f);*/
         }
     }
@@ -220,8 +237,11 @@ public class LifeManager : MonoBehaviour
 
     IEnumerator RageAreaTime()
     {
-        yield return new WaitForSeconds(0.1f);
-        _rageArea.SetActive(false);
+        //_rageArea.GetComponent<CircleCollider2D>().radius.DOFloat(10, 0.4f);
+        _rageArea.transform.DOScale(4, 0.4f);
+        yield return new WaitForSeconds(0.5f);  
+        _rageArea.transform.DOScale(1, 0);
+        _rageArea.SetActive(false); 
     }
 
     void CameraZoom()
@@ -254,8 +274,13 @@ public class LifeManager : MonoBehaviour
 
     IEnumerator WaitForRageScoreBar()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(timeInRage);
         rageBarScore = false;
+    }
+    
+    IEnumerator WaitForRageLifeBar()
+    {
+        yield return new WaitForSeconds(timeInRage);
         rageBarLife = false;
     }
 

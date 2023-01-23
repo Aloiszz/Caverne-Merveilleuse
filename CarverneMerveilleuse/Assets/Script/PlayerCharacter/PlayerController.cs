@@ -251,6 +251,7 @@ public class PlayerController : MonoBehaviour
 
             if (!isPlayed)
             {
+                StartCoroutine(InvinsibleTimeRage());
                 Source.PlayOneShot(audioRage, 1);
                 StartCoroutine(HeartBeat());
                 isPlayed = true;
@@ -301,6 +302,15 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,13, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
+    }
+    
+    IEnumerator InvinsibleTimeRage()
+    {
+        Physics2D.IgnoreLayerCollision(0,6, true);
+        Physics2D.IgnoreLayerCollision(0,13, true);
+        yield return new WaitForSeconds(LifeManager.instance.timeInRage);
+        Physics2D.IgnoreLayerCollision(0,6, false);
+        Physics2D.IgnoreLayerCollision(0,13, false);
     }
     IEnumerator PetrolDash()
     {

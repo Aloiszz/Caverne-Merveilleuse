@@ -169,10 +169,13 @@ public class ChatMarchand : MonoBehaviour
         camera.enabled = true;
         camera.SetTrigger("DutchEnter");
         Source.PlayOneShot(audioEnterTheCat);
+        SceneManager.instance.playModeCG_.DOFade(0, 0.75f);
+        Introduction.instance._MoneyPanel.DOFade(0, 0.75f);
         
         yield return new WaitForSeconds(2);
         Source.PlayOneShot(audioInTheMerchantRoom);
-        
+        SceneManager.instance.playModeCG_.DOFade(1, 1.25f);
+        Introduction.instance._MoneyPanel.DOFade(0, 1.25f);
         camera.SetTrigger("InShop");
         AudioManager.instance.PlayShop();
         GenerateShopRoom();
@@ -190,9 +193,14 @@ public class ChatMarchand : MonoBehaviour
         camera.SetTrigger("DutchExit");
         Source.PlayOneShot(audioExitTheCat);
         
+        SceneManager.instance.playModeCG_.DOFade(0, 0.25f);
+        Introduction.instance._MoneyPanel.DOFade(0, 0.25f);
+        
         yield return new WaitForSeconds(2);
         camera.enabled = false;
 
+        SceneManager.instance.playModeCG_.DOFade(1, .75f);
+        Introduction.instance._MoneyPanel.DOFade(1, .75f);
         PlayerController.instance.enabled = true;
         
         AudioManager.instance.PlayCave();

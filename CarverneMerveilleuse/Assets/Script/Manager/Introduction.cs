@@ -43,7 +43,8 @@ public class Introduction : MonoBehaviour
 
     [Space] 
     [SerializeField] private CanvasGroup _IntroBD;
-    [SerializeField] private CanvasGroup _MoneyPanel;
+    public CanvasGroup _MoneyPanel;
+    public CanvasGroup canvasAfficage;
 
     [Space] 
     [Header("Effet Camera")] [SerializeField]
@@ -104,6 +105,7 @@ public class Introduction : MonoBehaviour
         //archimage.GetComponent<Collider2D>().enabled = false;
         CHara1.SetActive(false);
         CHara2.SetActive(true);
+        canvasAfficage.DOFade(1, 1.25f);
     }
 
     public void Start1()
@@ -121,12 +123,13 @@ public class Introduction : MonoBehaviour
             //archimage.GetComponent<Collider2D>().enabled = false;
             CHara1.SetActive(false);
             CHara2.SetActive(true);
+            canvasAfficage.DOFade(1, 1.25f);
         }
     }
     
-    /*private void Start()
+    private void Start()
     {
-        if (playIntro)
+        /*if (playIntro)
         {
             _Introduction();
             //Tuto();
@@ -139,9 +142,9 @@ public class Introduction : MonoBehaviour
             //archimage.GetComponent<Collider2D>().enabled = false;
             CHara1.SetActive(false);
             CHara2.SetActive(true);
-        }
-        
-    }*/
+        }*/
+        canvasAfficage.DOFade(0, 0);
+    }
 
     private bool isCombat1began = false;
     private bool isCombat2began = false;
@@ -514,7 +517,7 @@ public class Introduction : MonoBehaviour
         _flecheDirection.SetActive(true);
         _ligneViser.SetActive(true);
         _ligneViser.GetComponent<SpriteRenderer>().DOFade(0, 0);
-
+        canvasAfficage.DOFade(1, 1.25f);
         Tuto();
         /*if (!yakari)
         {
