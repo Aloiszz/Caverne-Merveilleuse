@@ -33,13 +33,13 @@ public class VerifIntro : MonoBehaviour
     public bool isis;
     public void Update()
     {
-        if (compte == 0)
+       /* if (compte == 0)
         {
             Introduction.instance.playIntro = true;
             Introduction.instance.Start1();
             compte++;
-        }
-        if (compte > 1)
+        }*/
+        if (compte >= 1)
         {
             if (!isis)
             {
