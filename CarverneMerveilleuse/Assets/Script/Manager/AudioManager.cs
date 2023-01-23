@@ -104,7 +104,7 @@ public class AudioManager : MonoBehaviour
     public void PlayCombatMusic()
     {
         StopMusic();
-        Source.PlayOneShot(combatClip,volumeIntensity);
+        Source.PlayOneShot(combatClip,volumeIntensity-.4f);
     }
     
     public void PlayNoCombatMusic()
@@ -127,7 +127,7 @@ public class AudioManager : MonoBehaviour
     public void PlayShop()
     {
         StopMusic();
-        Source.PlayOneShot(shopClip,volumeIntensity);
+        Source.PlayOneShot(shopClip,volumeIntensity - .3f);
     }
     public void PlayCave()
     {

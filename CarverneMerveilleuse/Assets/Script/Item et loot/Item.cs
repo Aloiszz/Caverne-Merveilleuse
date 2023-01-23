@@ -61,7 +61,7 @@ public class Item : MonoBehaviour
                 canvasItem.tmpDescriptionItem.color = Color.black;
                 if (Input.GetKeyDown(KeyCode.E) && ui.goldenMoney >= goldenPrix)
                 {
-                    
+                    AudioManager.instance.Achatitem();
                     ui.goldenMoney -= goldenPrix;
                     canvasItem.itemCanvas.transform.parent = null;
                     canvasItem.itemCanvas.SetActive(false);
