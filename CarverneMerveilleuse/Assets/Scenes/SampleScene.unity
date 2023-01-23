@@ -382,15 +382,39 @@ PrefabInstance:
       objectReference: {fileID: 1329582022}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.size
-      value: 16
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.data[15].sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[16].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[17].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[18].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.data[15].sentences.Array.data[0]
       value: "Passe \xE0 pr\xE9sent la porte ELUE et rapporte les....Mes Gemmes perdue....."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[16].sentences.Array.data[0]
+      value: Oh tien te revoila ? ELUE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[17].sentences.Array.data[0]
+      value: Je vois que tu meurt ? ELUE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[18].sentences.Array.data[0]
+      value: Ou sont mes gemmes ? ELUE
       objectReference: {fileID: 0}
     - target: {fileID: 4588781653752077688, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_RootOrder
@@ -12825,6 +12849,11 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1363593166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5645343817766868712, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+  m_PrefabInstance: {fileID: 32426585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1366966280 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6341716005493826643, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
@@ -21638,6 +21667,7 @@ MonoBehaviour:
   - {fileID: 379194726}
   - {fileID: 1974855447}
   - {fileID: 1329484746}
+  TUTODash: {fileID: 1363593166}
 --- !u!4 &2140097726
 Transform:
   m_ObjectHideFlags: 0

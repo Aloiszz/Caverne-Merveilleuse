@@ -27,11 +27,11 @@ public class VerifIntro : MonoBehaviour
 
     private void Start()
     {
-        Introduction.instance._Introduction();
+        Introduction.instance.Tuto();
     }
 
-    private bool isis;
-    private void Update()
+    public bool isis;
+    public void Update()
     {
         if (compte == 0)
         {
@@ -41,15 +41,19 @@ public class VerifIntro : MonoBehaviour
         }
         if (compte > 1)
         {
-            Introduction.instance.playIntro = false;
-            Introduction.instance.Start2();
+            if (!isis)
+            {
+                StartCoroutine(ISISIS());
+                Introduction.instance.playIntro = false;
+                Introduction.instance.Start2();
+            }
         }
+    }
 
-        if (!isis)
-        {
-            isis = true;
-            
-        }
+    IEnumerator ISISIS()
+    {
+        yield return null;
+        isis = true;
     }
 
     public void STOP()

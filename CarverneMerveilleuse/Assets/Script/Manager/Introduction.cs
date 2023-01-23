@@ -5,6 +5,7 @@ using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public class Introduction : MonoBehaviour
 {
@@ -84,6 +85,8 @@ public class Introduction : MonoBehaviour
     public GameObject[] posEnnemy1;
     public GameObject[] posEnnemy2;
 
+    public GameObject TUTODash;
+
     private void Awake()
     {
         //DontDestroyOnLoad(gameObject);
@@ -97,8 +100,11 @@ public class Introduction : MonoBehaviour
         }
     }
 
+    private bool dialogueSecondaire;
+    private int random;
     public void Start2()
     {
+        VerifIntro.instance.isis = false;
         AudioManager.instance.PlayCave();
         _animatorPlayer.enabled = false;
         archimage.transform.position = _localisationOfArchimage.transform.position;
@@ -106,14 +112,20 @@ public class Introduction : MonoBehaviour
         CHara1.SetActive(false);
         CHara2.SetActive(true);
         canvasAfficage.DOFade(1, 1.25f);
+        Destroy(TUTODash);
+        dialogueSecondaire = true;
+        
+        random = Random.Range(16, 17);
+        _discussionTrigger.indexDialogue = random ;
+        StartCoroutine(Tutotime2(0.5f));
     }
 
     public void Start1()
     {
         if (playIntro)
         {
-            _Introduction();
-            //Tuto();
+            //_Introduction();
+            Tuto();
         }
         else
         {
@@ -181,6 +193,12 @@ public class Introduction : MonoBehaviour
                 Tourne = false;
                 StartCoroutine(Tutotime(2));
             }
+        }
+        
+        if (dialogueSecondaire)
+        {
+            //dialogueSecondaire = false;
+            
         }
     }
     private void LateUpdate()
@@ -463,6 +481,13 @@ public class Introduction : MonoBehaviour
         
         yield return new WaitForSeconds(time);
         _discussionTrigger.TriggerTuto();
+    }
+    
+    IEnumerator Tutotime2(float time)
+    {
+        
+        yield return new WaitForSeconds(time);
+        _discussionTrigger.TriggerTuto2();
     }
     
     void LookForEnnemyAlive()
