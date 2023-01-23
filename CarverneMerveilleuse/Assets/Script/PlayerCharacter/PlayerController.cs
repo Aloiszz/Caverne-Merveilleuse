@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int nbPossibleDash = 1;
     [HideInInspector] public bool isInHole;
     [HideInInspector] public Vector2 actualVelocity;
+    [HideInInspector] public bool isInTuto;
     
     [Header("Camera Zoom")] 
     public float zoomSize;
@@ -149,7 +150,11 @@ public class PlayerController : MonoBehaviour
     {
         if (life <= 0)
         {
-            if (ItemManager.instance.nbVieEnPlus >= 1)
+            if (isInTuto)
+            {
+                life = 1;
+            }
+            else if (ItemManager.instance.nbVieEnPlus >= 1)
             {
                 life = lifeDepard / 2;
                 ItemManager.instance.nbVieEnPlus -= 1;

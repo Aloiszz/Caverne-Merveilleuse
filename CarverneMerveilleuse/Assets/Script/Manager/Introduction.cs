@@ -179,13 +179,18 @@ public class Introduction : MonoBehaviour
             {
                 isCombat1began = false;
                 StartCoroutine(Tutotime(1.5f));
+                PlayerController.instance.isInTuto = false;
+                PlayerController.instance.life = PlayerController.instance.lifeDepard;
             }
 
             if (isCombat2began)
             {
                 isCombat2began = false;
                 StartCoroutine(Tutotime(2f));
+                PlayerController.instance.isInTuto = false;
+                PlayerController.instance.life = PlayerController.instance.lifeDepard;
             }
+            
         }
 
         if (lancerDeFaux)
@@ -524,8 +529,8 @@ public class Introduction : MonoBehaviour
         foreach (var i in posEnnemy1)
         {
             Instantiate(EnnemyManager.instance.SpawningVFX, i.transform.position, Quaternion.identity, transform);
-            GameObject mechant = Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
-            mechant.GetComponent<CaCEnnemiScript>().isInvokeByArch = true;
+            Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            PlayerController.instance.isInTuto = true;
             AudioManager.instance.PlaySpawn();
         }
         LookForEnnemyAlive();
@@ -537,8 +542,8 @@ public class Introduction : MonoBehaviour
         foreach (var i in posEnnemy2)
         {
             Instantiate(EnnemyManager.instance.SpawningVFX, i.transform.position, Quaternion.identity, transform);
-            GameObject mechant = Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
-            mechant.GetComponent<CaCEnnemiScript>().isInvokeByArch = true;
+            Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            PlayerController.instance.isInTuto = true;
             AudioManager.instance.PlaySpawn();
         }
         LookForEnnemyAlive();
