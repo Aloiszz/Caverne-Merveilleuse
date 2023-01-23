@@ -175,7 +175,7 @@ public class ChatMarchand : MonoBehaviour
         yield return new WaitForSeconds(2);
         Source.PlayOneShot(audioInTheMerchantRoom);
         SceneManager.instance.playModeCG_.DOFade(1, 1.25f);
-        Introduction.instance._MoneyPanel.DOFade(0, 1.25f);
+        Introduction.instance._MoneyPanel.DOFade(1, 1.25f);
         camera.SetTrigger("InShop");
         AudioManager.instance.PlayShop();
         GenerateShopRoom();
