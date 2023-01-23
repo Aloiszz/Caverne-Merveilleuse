@@ -146,6 +146,8 @@ public class BossAnim : MonoBehaviour
 
         animatorEnding.SetTrigger("Ending");
         StartCoroutine(Ending());
+        BossScript.instance.enabled = false;
+
     }
 
     IEnumerator Ending()

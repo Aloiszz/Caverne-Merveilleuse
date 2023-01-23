@@ -1842,6 +1842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113265361}
   - component: {fileID: 113265362}
+  - component: {fileID: 113265363}
   m_Layer: 5
   m_Name: Scores
   m_TagString: Untagged
@@ -1885,6 +1886,27 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &113265363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113265360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827e7d3e3e73c754192e1915292c4a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreBoard: {fileID: 113265360}
+  score1: {fileID: 961722689}
+  score2: {fileID: 1858723806}
+  score3: {fileID: 1636078911}
+  score4: {fileID: 713796336}
+  score5: {fileID: 590518575}
+  lastScore: {fileID: 531350136}
+  range: 0
+  useRange: 0
 --- !u!1 &143528766
 GameObject:
   m_ObjectHideFlags: 0
@@ -8398,7 +8420,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -20974,7 +20996,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975644379}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.17757058, w: 0.9841081}
   m_LocalPosition: {x: -2.62, y: -1.26, z: -34.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

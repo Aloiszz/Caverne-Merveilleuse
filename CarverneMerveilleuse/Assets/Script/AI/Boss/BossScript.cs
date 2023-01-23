@@ -74,6 +74,8 @@ public class BossScript : MonoBehaviour
     private float posYJoueur;
     private Mechant lifeScript;
     private Coroutine actualZoneCac;
+
+    private bool is2Phase;
     
     public static BossScript instance;
 
@@ -129,7 +131,7 @@ public class BossScript : MonoBehaviour
             lifeBarreBlanc.DOFillAmount(mechantScript.life / mechantScript.lifeDepart, 0.2f);
         }
         
-        if (mechantScript.life > mechantScript.lifeDepart / 2 && startVague)
+        if (!is2Phase && startVague)
         {
             StartCoroutine(Vague());
         }
@@ -183,24 +185,24 @@ public class BossScript : MonoBehaviour
             
         }
 
-        if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur < 0)
+        if (is2Phase && posYJoueur < 0)
         {
             rb.velocity = new Vector2(0, -bossSpeed);
         }
-        else if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur > 0)
+        else if (is2Phase && posYJoueur > 0)
         {
             rb.velocity = new Vector2(0, bossSpeed);
         }
-        else if (mechantScript.life <= mechantScript.lifeDepart / 2 && posYJoueur == 0)
+        else if (is2Phase && posYJoueur == 0)
         {
             rb.velocity = Vector2.zero;
         }
-        if (mechantScript.life <= mechantScript.lifeDepart / 2 && canAttack && !isCAC)
+        if (is2Phase && canAttack && !isCAC)
         {
             StartCoroutine(Dist());
         }
 
-        if ((player.transform.position - transform.position).magnitude <= rangeCac && mechantScript.life <= mechantScript.lifeDepart / 2)
+        if ((player.transform.position - transform.position).magnitude <= rangeCac && is2Phase)
         {
             isCAC = true;
             if (!startCAC)
@@ -209,7 +211,7 @@ public class BossScript : MonoBehaviour
             }
             
         }
-        else if ((player.transform.position - transform.position).magnitude <= rangeCac && mechantScript.life >= mechantScript.lifeDepart / 2)
+        else if ((player.transform.position - transform.position).magnitude <= rangeCac && !is2Phase)
         {
             isCAC = true;
             if (canZone)
@@ -221,7 +223,7 @@ public class BossScript : MonoBehaviour
         else 
         {
             isCAC = false;
-            if (mechantScript.life > mechantScript.lifeDepart / 2 && zone.activeInHierarchy == false && actualZoneCac != null)
+            if (!is2Phase && zone.activeInHierarchy == false && actualZoneCac != null)
             {
                 StopCoroutine(actualZoneCac);
                 zone.SetActive(false);
@@ -512,7 +514,7 @@ public class BossScript : MonoBehaviour
             Instantiate(VFXZoneAOE, posVFXAOE.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(tempsPrevention + 0.5f);
             zone.GetComponent<SpriteRenderer>().color = Color.red;
-            CinemachineShake.instance.ShakeCamera(1,1,.3f);
+            CinemachineShake.instance.ShakeCamera(3,3,0.2f);
             zone.GameObject().GetComponent<Collider2D>().enabled = true;
             yield return new WaitForSeconds(0.2f);
             zone.SetActive(false);
@@ -575,6 +577,7 @@ public class BossScript : MonoBehaviour
 
     IEnumerator AnotherLifeFucker()
     {
+        is2Phase = true;
         life = false;
         GetComponent<Mechant>().life = 1000;
         lifeBarre.DOFillAmount(1, 3);
