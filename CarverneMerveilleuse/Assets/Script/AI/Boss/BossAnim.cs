@@ -140,6 +140,9 @@ public class BossAnim : MonoBehaviour
     {
         vcamMain.Priority = 10;
         vcamBoss.Priority = 8;
+        
+        SceneManager.instance.playModeCG_.DOFade(0, 1.25f);
+        Introduction.instance._MoneyPanel.DOFade(0, 1.25f);
 
         animatorEnding.SetTrigger("Ending");
         StartCoroutine(Ending());
