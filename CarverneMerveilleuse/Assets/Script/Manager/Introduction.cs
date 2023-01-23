@@ -524,7 +524,8 @@ public class Introduction : MonoBehaviour
         foreach (var i in posEnnemy1)
         {
             Instantiate(EnnemyManager.instance.SpawningVFX, i.transform.position, Quaternion.identity, transform);
-            Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            GameObject mechant = Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            mechant.GetComponent<CaCEnnemiScript>().isInvokeByArch = true;
             AudioManager.instance.PlaySpawn();
         }
         LookForEnnemyAlive();
@@ -536,7 +537,8 @@ public class Introduction : MonoBehaviour
         foreach (var i in posEnnemy2)
         {
             Instantiate(EnnemyManager.instance.SpawningVFX, i.transform.position, Quaternion.identity, transform);
-            Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            GameObject mechant = Instantiate(EnnemyManager.instance.spider, i.transform.position, Quaternion.identity, transform);
+            mechant.GetComponent<CaCEnnemiScript>().isInvokeByArch = true;
             AudioManager.instance.PlaySpawn();
         }
         LookForEnnemyAlive();

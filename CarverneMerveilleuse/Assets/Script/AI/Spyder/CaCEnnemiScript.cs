@@ -36,6 +36,7 @@ public class CaCEnnemiScript : MonoBehaviour
     private Vector2 playerDir;
     private Vector2 playerPos; //Pour le dash
     private AudioSource audio;
+    [HideInInspector] public bool isInvokeByArch; 
 
     void Start()
     {
@@ -72,21 +73,24 @@ public class CaCEnnemiScript : MonoBehaviour
 
     private void OnSeePlayer()
     {
-        if (see)
+        if (!isInvokeByArch)
         {
-            StopCoroutine(RandomMove());
-            if (canJump)
+            if (see)
             {
-                _aiPath.enabled = true;
-                if (playerDir.magnitude <= distToJumpOnPlayer)
+                StopCoroutine(RandomMove());
+                if (canJump)
                 {
-                    StartCoroutine(JumpOnPlayer());
+                    _aiPath.enabled = true;
+                    if (playerDir.magnitude <= distToJumpOnPlayer)
+                    {
+                        StartCoroutine(JumpOnPlayer());
+                    }
                 }
             }
-        }
-        else if (canRandomMove)
-        {
-            //StartCoroutine(RandomMove());
+            else if (canRandomMove)
+            {
+                //StartCoroutine(RandomMove());
+            }
         }
     }
     
@@ -135,7 +139,7 @@ public class CaCEnnemiScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && !isInvokeByArch)
         {
             if (PlayerController.instance.isDashing)
             {
