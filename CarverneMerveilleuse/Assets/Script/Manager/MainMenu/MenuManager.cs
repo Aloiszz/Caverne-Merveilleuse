@@ -99,6 +99,7 @@ public class MenuManager : MonoBehaviour
     
     void Start()
     {
+        
         //Music
         AudioManager.instance.PlayIntroMusic();
         

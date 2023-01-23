@@ -34,6 +34,14 @@ public class AudioManager : MonoBehaviour
     [Header("Audio")] 
     public AudioClip FermetureDoorClip;
     public AudioClip OuvertureDoorClip;
+
+    [Header("Shop et chat")] 
+    public AudioClip AchatDitem;
+    public AudioClip monterObject;
+    public AudioClip descenteObject;
+    public AudioClip monterObjectMerveilleux;
+    public AudioClip descenteObjectMerveilleux;
+    public AudioClip chatAnnonce;
     
     [Header("Pots casser")]
     public List<AudioClip> potsClips;
@@ -181,6 +189,35 @@ public class AudioManager : MonoBehaviour
             //SFXSource.PlayOneShot(apparitionSound);
             Source.PlayOneShot(apparitionSound);
             onePlay = true;
+        }
+    }
+
+
+    public void Achatitem()
+    {
+        SFXSource.PlayOneShot(AchatDitem);
+    }
+
+    public void AffichageItemOuverture(bool Merveilleux)
+    {
+        if (!Merveilleux)
+        {
+            SFXSource.PlayOneShot(monterObject);
+        }
+        else
+        {
+            SFXSource.PlayOneShot(monterObjectMerveilleux);
+        }
+    }
+    public void AffichageItemFermeture(bool Merveilleux)
+    {
+        if (!Merveilleux)
+        {
+            SFXSource.PlayOneShot(descenteObject);
+        }
+        else
+        {
+            SFXSource.PlayOneShot(descenteObjectMerveilleux);
         }
     }
 }

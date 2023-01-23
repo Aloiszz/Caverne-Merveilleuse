@@ -46,6 +46,7 @@ public class Item : MonoBehaviour
             canvasItem.tmpDescriptionItem.SetText(descriptionItem);
             if (!canDoFadeOut)
             {
+                AudioManager.instance.AffichageItemOuverture(false);
                 canvasItem.canvasAnim.SetTrigger("FadeIn");
                 canDoFadeOut = true;
             }
@@ -78,6 +79,7 @@ public class Item : MonoBehaviour
                 canvasItem.tmpDescriptionItem.color = Color.white;
                 if (Input.GetKeyDown(KeyCode.E) && ui.money >= prix)
                 {
+                    AudioManager.instance.Achatitem();
                     ui.money -= prix;
                     canvasItem.itemCanvas.transform.parent = null;
                     canvasItem.itemCanvas.SetActive(false);
@@ -94,6 +96,7 @@ public class Item : MonoBehaviour
         }
         else if (canDoFadeOut)
         {
+            AudioManager.instance.AffichageItemFermeture(false);
             canvasItem.canvasAnim.SetTrigger("FadeOut");
             canDoFadeOut = false;
         }
