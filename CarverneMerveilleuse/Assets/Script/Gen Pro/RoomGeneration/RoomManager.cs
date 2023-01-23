@@ -134,10 +134,10 @@ public class RoomManager : MonoBehaviour
             }
         }
 
-        if (roomMemoryIndex >= 1)
+        /*if (roomMemoryIndex >= 1)
         {
             VerifIntro.instance.isis = false;
-        }
+        }*/
         /*if (roomMemoryIndex != ChatMarchand.instance.numberofroom) // faire disparaitre le chat si le joueur change de salle avant d'aller voir le chat
         {
             ChatMarchand.instance.enabled = true;

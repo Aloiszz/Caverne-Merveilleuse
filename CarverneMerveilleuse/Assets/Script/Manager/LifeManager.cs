@@ -137,7 +137,7 @@ public class LifeManager : MonoBehaviour
         if (PlayerController.instance.life > PlayerController.instance.lifeDepard) // rage quand surplus de vie
         {
             life_Bar_RageLife.DOFillAmount((float)1, 1);
-            animator.SetTrigger("RageLife");
+            //animator.SetTrigger("RageLife");
             /*r_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);*/
 
@@ -145,15 +145,12 @@ public class LifeManager : MonoBehaviour
             //r_key_img.transform.DOShakePosition(0.1f, 5);
             //rageTxt.transform.DOShakePosition(0.1f, 5);
             
-            if (Input.GetKeyDown(KeyCode.R))
+            /*if (Input.GetKeyDown(KeyCode.R))
             {
                 once = false;
                 PlayerController.instance.isPlayed = false;
                 CinemachineShake.instance.StopAllCoroutines();
-                
-                /*r_key_img.DOFade(0, .2f);
-                rageTxt.DOFade(0, 0.2f);*/
-                
+
                 isInRage = true;
                 rageBarLife = true;
                 PlayerController.instance.Rage();
@@ -171,12 +168,12 @@ public class LifeManager : MonoBehaviour
                 {
                     PlayerController.instance.life += 2;
                 }
-            }
+            }*/
         }
         else
         {
             life_Bar_RageLife.DOFillAmount(0, 1);
-            animator.SetTrigger("EndLife");
+            //animator.SetTrigger("EndLife");
             /*r_key_img.DOFade(0, .2f);
             rageTxt.DOFade(0, .2f);*/
         }

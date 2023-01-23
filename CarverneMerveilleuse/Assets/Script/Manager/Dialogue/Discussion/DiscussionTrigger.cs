@@ -16,9 +16,9 @@ public class DiscussionTrigger : MonoBehaviour
         Introduction.instance.Dialogue();
     }
     
-    public void TriggerTuto2()
+    public void TriggerTuto2(int index)
     {
-        FindObjectOfType<DiscussionManager>().StartDialogue(dialogue[indexDialogue]);
+        FindObjectOfType<DiscussionManager>().StartDialogue(dialogue[index]);
         Debug.Log(indexDialogue);
     }
 

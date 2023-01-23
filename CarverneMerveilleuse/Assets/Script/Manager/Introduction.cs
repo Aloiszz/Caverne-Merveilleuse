@@ -87,6 +87,8 @@ public class Introduction : MonoBehaviour
 
     public GameObject TUTODash;
 
+    
+    private int random;
     private void Awake()
     {
         //DontDestroyOnLoad(gameObject);
@@ -98,13 +100,15 @@ public class Introduction : MonoBehaviour
         { 
             instance = this; 
         }
+        VerifIntro.instance.isis = false;
+        random = Random.Range(16, 19);
+        _discussionTrigger.indexDialogue = random;
     }
 
     private bool dialogueSecondaire;
-    private int random;
+    
     public void Start2()
     {
-        VerifIntro.instance.isis = false;
         AudioManager.instance.PlayCave();
         _animatorPlayer.enabled = false;
         archimage.transform.position = _localisationOfArchimage.transform.position;
@@ -115,8 +119,7 @@ public class Introduction : MonoBehaviour
         Destroy(TUTODash);
         dialogueSecondaire = true;
         
-        random = Random.Range(16, 17);
-        _discussionTrigger.indexDialogue = random ;
+        
         StartCoroutine(Tutotime2(0.5f));
     }
 
@@ -487,7 +490,7 @@ public class Introduction : MonoBehaviour
     {
         
         yield return new WaitForSeconds(time);
-        _discussionTrigger.TriggerTuto2();
+        _discussionTrigger.TriggerTuto2(random);
     }
     
     void LookForEnnemyAlive()

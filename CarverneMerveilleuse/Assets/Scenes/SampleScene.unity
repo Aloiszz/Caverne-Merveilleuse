@@ -401,16 +401,57 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[0].sentences.Array.data[0]
+      value: "Tu peux traverser ce trou mal\xE9fique en appuyant sur ESPACE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[2].sentences.Array.data[0]
+      value: "A pr\xE9sent tu vas te battre"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[3].sentences.Array.data[0]
+      value: "J'implore les cr\xE9\xE9\xE9\xE9aaattttuuuurrreees de ce monde "
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[4].sentences.Array.data[0]
+      value: Ah oui, c'est vrai j'oubliais....
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[5].sentences.Array.data[0]
+      value: Bats-toi en appuyant sur CLIQUE GAUCHE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[9].sentences.Array.data[0]
+      value: Surement avec la touche CLIQUE DROIT ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[10].sentences.Array.data[0]
+      value: "G\xE9niale, elle rebondit !!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[11].sentences.Array.data[0]
+      value: "Tu peux aussi Tournoyer sur toi-m\xEAme en maintenant CLIQUE GAUCHE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[12].sentences.Array.data[0]
+      value: "Bon tu es pr\xEAte, ELUE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
+      propertyPath: dialogue.Array.data[13].sentences.Array.data[0]
+      value: "Allez ! Juste une derni\xE8re apparition de cr\xE9aaatuuure pour la
+        route !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.data[15].sentences.Array.data[0]
       value: "Passe \xE0 pr\xE9sent la porte ELUE et rapporte les....Mes Gemmes perdue....."
       objectReference: {fileID: 0}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.data[16].sentences.Array.data[0]
-      value: Oh tien te revoila ? ELUE
+      value: "Oh tien te revoil\xE0 ? ELUE"
       objectReference: {fileID: 0}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.data[17].sentences.Array.data[0]
-      value: Je vois que tu meurt ? ELUE
+      value: Je vois que tu meurs ? ELUE
       objectReference: {fileID: 0}
     - target: {fileID: 3913520893174075478, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: dialogue.Array.data[18].sentences.Array.data[0]
@@ -4448,11 +4489,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547261587866024882, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 58
+      value: 58.00006
       objectReference: {fileID: 0}
     - target: {fileID: 6547261587866024882, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -234
+      value: -233.99997
       objectReference: {fileID: 0}
     - target: {fileID: 8755270306944917735, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
       propertyPath: m_SizeDelta.x
@@ -21636,7 +21677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6247aee2ba66f47aadfa63656d6d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playIntro: 0
+  playIntro: 1
   _flecheDirection: {fileID: 1129696397}
   _ligneViser: {fileID: 544734278}
   _archimage: {fileID: 32426586}
