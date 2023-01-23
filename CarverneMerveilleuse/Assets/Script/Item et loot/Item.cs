@@ -70,6 +70,7 @@ public class Item : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
+                    AudioManager.instance.CantBuy();
                     CinemachineShake.instance.ShakeCamera(3,3,0.2f);
                 }
             }
@@ -92,6 +93,7 @@ public class Item : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
+                    AudioManager.instance.CantBuy();
                     CinemachineShake.instance.ShakeCamera(3,3,0.2f);
                 }
             }

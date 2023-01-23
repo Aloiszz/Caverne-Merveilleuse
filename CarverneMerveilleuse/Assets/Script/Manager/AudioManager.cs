@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip monterObjectMerveilleux;
     public AudioClip descenteObjectMerveilleux;
     public AudioClip chatAnnonce;
+    public AudioClip refutDachat;
     
     [Header("Pots casser")]
     public List<AudioClip> potsClips;
@@ -219,5 +220,10 @@ public class AudioManager : MonoBehaviour
         {
             SFXSource.PlayOneShot(descenteObjectMerveilleux);
         }
+    }
+
+    public void CantBuy()
+    {
+        SFXSource.PlayOneShot(refutDachat);
     }
 }
