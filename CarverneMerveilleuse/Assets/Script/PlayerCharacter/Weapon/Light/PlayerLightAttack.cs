@@ -53,7 +53,7 @@ public class PlayerLightAttack : MonoBehaviour
     public VisualEffect Slash;
     public VisualEffect Slash2;
     public VisualEffect Slash3;
-    
+
     [Header("Audio")]
     public List<AudioClip> audioSlashNoHit;
     public List<AudioClip> audioSlashHit;
@@ -255,11 +255,12 @@ public class PlayerLightAttack : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < ItemManager.instance.nbCoupFente; i++)
         {
+            
             fente.SetActive(false);
             yield return new WaitForSeconds(0.1f);
             fente.SetActive(true);
             yield return new WaitForSeconds(0.1f);
         }
-        Destroy(fente);
+        Destroy(fente,0.5f);
     }
 }
