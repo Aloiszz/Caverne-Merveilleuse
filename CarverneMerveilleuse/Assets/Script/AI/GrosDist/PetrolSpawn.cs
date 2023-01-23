@@ -13,6 +13,8 @@ public class PetrolSpawn : MonoBehaviour
     private GrosEnnemiScript ennemi;
     public GameObject sprite;
     public GameObject healthBar;
+    public GameObject BGHealthBar;
+    public GameObject shadow;
     public GameObject eye1;
     public GameObject eye2;
     
@@ -30,6 +32,8 @@ public class PetrolSpawn : MonoBehaviour
         anim.enabled = false;
         mechant.enabled = false;
         ennemi.enabled = false;
+        shadow.SetActive(false);
+        BGHealthBar.SetActive(false);
         
         sprite.SetActive(false);
         healthBar.SetActive(false);
@@ -47,6 +51,8 @@ public class PetrolSpawn : MonoBehaviour
         mechant.enabled = true;
         ennemi.enabled = true;
         
+        shadow.SetActive(true);
+        BGHealthBar.SetActive(true);
         sprite.SetActive(true);
         healthBar.SetActive(true);
         eye1.SetActive(true);

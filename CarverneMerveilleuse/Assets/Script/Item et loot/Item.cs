@@ -68,6 +68,11 @@ public class Item : MonoBehaviour
                     itemManager.OnBuy(ID);
                     Destroy(gameObject);
                 }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    AudioManager.instance.CantBuy();
+                    CinemachineShake.instance.ShakeCamera(3,3,0.2f);
+                }
             }
             else
             {
@@ -85,6 +90,11 @@ public class Item : MonoBehaviour
                     canvasItem.itemCanvas.SetActive(false);
                     itemManager.OnBuy(ID);
                     Destroy(gameObject);
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    AudioManager.instance.CantBuy();
+                    CinemachineShake.instance.ShakeCamera(3,3,0.2f);
                 }
             }
 
