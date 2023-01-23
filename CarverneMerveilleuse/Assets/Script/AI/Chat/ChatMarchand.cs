@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -34,6 +35,8 @@ public class ChatMarchand : MonoBehaviour
     public AudioClip audioEnterTheCat;
     public AudioClip audioExitTheCat;
     public AudioClip audioInTheMerchantRoom;
+    
+    public CinemachineVirtualCamera _virtualCamera;
     
     private void Awake()
     {
@@ -177,6 +180,7 @@ public class ChatMarchand : MonoBehaviour
         SceneManager.instance.playModeCG_.DOFade(1, 1.25f);
         Introduction.instance._MoneyPanel.DOFade(1, 1.25f);
         camera.SetTrigger("InShop");
+        _virtualCamera.m_Lens.OrthographicSize = 10;
         AudioManager.instance.PlayShop();
         GenerateShopRoom();
         TeleportPlayerToNextRoom();

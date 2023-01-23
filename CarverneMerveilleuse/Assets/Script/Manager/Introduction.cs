@@ -86,7 +86,7 @@ public class Introduction : MonoBehaviour
     public GameObject[] posEnnemy2;
 
     public GameObject TUTODash;
-
+    public GameObject DoorTuto;
     
     private int random;
     private void Awake()
@@ -100,15 +100,23 @@ public class Introduction : MonoBehaviour
         { 
             instance = this; 
         }
-        VerifIntro.instance.isis = false;
-        random = Random.Range(16, 19);
-        _discussionTrigger.indexDialogue = random;
+
+        if (VerifIntro.instance.compte != 0)
+        {
+            VerifIntro.instance.isis = false;
+            random = Random.Range(16, 23 + 1);
+            _discussionTrigger.indexDialogue = random;
+        }
+        
     }
 
     private bool dialogueSecondaire;
     
     public void Start2()
     {
+        DoorTuto.SetActive(false);
+        DoorTuto.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
+        DoorTuto.GetComponentInChildren<Collider2D>().enabled = false;
         AudioManager.instance.PlayCave();
         _animatorPlayer.enabled = false;
         archimage.transform.position = _localisationOfArchimage.transform.position;
@@ -423,6 +431,9 @@ public class Introduction : MonoBehaviour
 
     public void _Introduction()
     {
+        DoorTuto.SetActive(true);
+        DoorTuto.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
+        DoorTuto.GetComponentInChildren<Collider2D>().enabled = true;
         CHara1.SetActive(true);
         CHara2.SetActive(false);
         
@@ -561,5 +572,8 @@ public class Introduction : MonoBehaviour
     {
         //playIntro = false;
         VerifIntro.instance.compte++;
+        DoorTuto.SetActive(false);
+        DoorTuto.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
+        DoorTuto.GetComponentInChildren<Collider2D>().enabled = false;
     }
 }

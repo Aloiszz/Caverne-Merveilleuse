@@ -16599,6 +16599,7 @@ Transform:
   - {fileID: 379194727}
   - {fileID: 1974855448}
   - {fileID: 1329484747}
+  - {fileID: 8350145773359092934}
   m_Father: {fileID: 4588781653752077688}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37589,6 +37590,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6859353251932346053, guid: 3606461314c29b54285ce7aff332b7b1, type: 3}
   m_PrefabInstance: {fileID: 2449518191196125625}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9216879378835581120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6779748295033229689, guid: 3606461314c29b54285ce7aff332b7b1, type: 3}
+  m_PrefabInstance: {fileID: 2449518191196125625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1600572253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9216879378835581120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbbedce6d21ab543998ceaef110d6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
 --- !u!1001 &2504271494135194084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38167,6 +38186,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4298692941766416525, guid: 3c14e28bbe8b5134aa8051354d141565, type: 3}
   m_PrefabInstance: {fileID: 3334735660474430968}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3378426930701762822
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9175021450478252152}
+    m_Modifications:
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702262465706317253, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+      propertyPath: m_Name
+      value: Ruine normal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+--- !u!4 &8350145773359092934 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6702262465706317248, guid: 70845535a4879ec4198935af6192e5fb, type: 3}
+  m_PrefabInstance: {fileID: 3378426930701762822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3458343562244116703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38631,6 +38712,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6230686555900748407, guid: f665acb4f023cec4192445735842a2ba, type: 3}
+      propertyPath: dialogue.Array.data[4].sentences.Array.data[0]
+      value: "Qui \xEAtes-vous ? Et o\xF9 suis-je tomb\xE9e ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230686555900748407, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: dialogue.Array.data[8].sentences.Array.data[0]
       value: Euh... non ?
       objectReference: {fileID: 0}
@@ -38664,7 +38749,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6230686555900748407, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: dialogue.Array.data[16].sentences.Array.data[1]
-      value: "Voici le plus grand des Archimages ayant exist\xE9 sous tes yeux, \xE9lu!"
+      value: "Voici le plus grand des Archimages ayant exist\xE9 sous tes yeux, \xE9lue
+        !"
       objectReference: {fileID: 0}
     - target: {fileID: 6230686555900748407, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: dialogue.Array.data[17].sentences.Array.data[0]
@@ -38689,7 +38775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6230686555900748407, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: dialogue.Array.data[21].sentences.Array.data[0]
-      value: "Mais tu n\u2019es pas encore pr\xEAte, \xE9lue. Laisse moi t'entra\xEEner
+      value: "Mais tu n\u2019es pas encore pr\xEAte, \xE9lue. Laisse-moi t'entra\xEEner
         avant"
       objectReference: {fileID: 0}
     - target: {fileID: 6383466121369519786, guid: f665acb4f023cec4192445735842a2ba, type: 3}
@@ -38718,11 +38804,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7120533696685890429, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.82
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7120533696685890429, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: 22.07
       objectReference: {fileID: 0}
     - target: {fileID: 7120533696685890429, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38762,7 +38848,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293289825625302677, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398502893903261780, guid: f665acb4f023cec4192445735842a2ba, type: 3}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7679547484015709554, guid: f665acb4f023cec4192445735842a2ba, type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953249485317801051, guid: f665acb4f023cec4192445735842a2ba, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -38823,6 +38917,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 53451442, guid: f665acb4f023cec4192445735842a2ba, type: 3}
   m_PrefabInstance: {fileID: 3577498191871991110}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1267744745
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577498191820376052}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1622826648655080760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38879,6 +38985,26 @@ MonoBehaviour:
     - "Aller Juste une derni\xE8re apparition de cr\xE9aaatuuure pour la route !"
   - sentences:
     - 'HEHE ! '
+  - sentences:
+    - "Passe \xE0 pr\xE9sent la porte ELUE et rapporte les....Mes Gemmes perdue....."
+  - sentences:
+    - Oh tien te revoila ? ELUE
+  - sentences:
+    - Je vois que tu meurt ? ELUE
+  - sentences:
+    - Ou sont mes gemmes ? ELUE
+  - sentences:
+    - Et... Tu es encore mort ! ELUE
+  - sentences:
+    - "Tu es l'ELUE ! VOUS \xCATES TOUS DES ELUES !"
+  - sentences:
+    - 'N''oublie pas mes gemmes la prochaine fois, ELUE !
+
+'
+  - sentences:
+    - "J'aimerais bien t'accompagner ELUE, mais une sombre histoire de fl\xE8che..."
+  - sentences:
+    - Tu en a mis du temps cette fois, ELUE
   indexDialogue: 0
 --- !u!1 &4844648135187852372 stripped
 GameObject:
