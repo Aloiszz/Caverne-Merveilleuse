@@ -59,6 +59,7 @@ public class Item : MonoBehaviour
                 canvasItem.dentAffichage.gameObject.SetActive(false);
                 canvasItem.tmpNomItem.color = Color.black;
                 canvasItem.tmpDescriptionItem.color = Color.black;
+                canvasItem.achat.color = Color.black;
                 if (Input.GetKeyDown(KeyCode.E) && ui.goldenMoney >= goldenPrix)
                 {
                     AudioManager.instance.Achatitem();
@@ -82,6 +83,7 @@ public class Item : MonoBehaviour
                 canvasItem.dentAffichage.gameObject.SetActive(true);
                 canvasItem.tmpNomItem.color = Color.white;
                 canvasItem.tmpDescriptionItem.color = Color.white;
+                canvasItem.achat.color = Color.white;
                 if (Input.GetKeyDown(KeyCode.E) && ui.money >= prix)
                 {
                     AudioManager.instance.Achatitem();
