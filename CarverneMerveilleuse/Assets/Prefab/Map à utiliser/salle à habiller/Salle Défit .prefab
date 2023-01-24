@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 457560168808725331}
   - component: {fileID: 3694436482993789677}
   - component: {fileID: 2770914209681907343}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: "Salle d\xE9fit trou"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1310,6 +1310,7 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
+  PreRoomBoss: 0
   DoorEnnemyPositionLeft: {fileID: 0}
   DoorEnnemyPositionRight: {fileID: 0}
   DoorEnnemyPositionTop: {fileID: 0}
@@ -1331,6 +1332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
+  difficulty_Index: 0
   childSlot: {fileID: 0}
   spawnPointPosition: []
   ennemyAlive: []
