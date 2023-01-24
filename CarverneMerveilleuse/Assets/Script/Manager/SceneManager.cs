@@ -86,15 +86,20 @@ public class SceneManager : MonoBehaviour
         go_Touche.SetActive(false);
     }
 
+    public bool ProtectFromJacques; 
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
+        if (!ProtectFromJacques)
         {
-            Pause();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Unpause();
+            if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
+            {
+                Pause();
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Unpause();
+            }
         }
     }
 

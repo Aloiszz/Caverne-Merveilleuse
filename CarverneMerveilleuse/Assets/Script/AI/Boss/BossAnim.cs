@@ -194,10 +194,12 @@ public class BossAnim : MonoBehaviour
 
     IEnumerator Ending()
     {
+        SceneManager.instance.ProtectFromJacques = true;
         yield return new WaitForSeconds(5);
         PlayerController.instance.enabled = false;
         PlayerLightAttack.instance.enabled = false;
         PlayerHeavyAttack.instance.enabled = false;
         PlayerThrowAttack.instance.enabled = false;
+        SceneManager.instance.ProtectFromJacques = false;
     }
 }

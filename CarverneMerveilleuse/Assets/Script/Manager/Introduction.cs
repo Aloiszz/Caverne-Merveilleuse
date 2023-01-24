@@ -478,6 +478,7 @@ public class Introduction : MonoBehaviour
     
     IEnumerator StartDialogue()
     {
+        SceneManager.instance.ProtectFromJacques = true;
         yield return new WaitForSeconds(7);
         _dialogueTrigger.TriggerDialogue();
         _virtualCamera.Follow = _Player.transform;
@@ -565,6 +566,7 @@ public class Introduction : MonoBehaviour
         _ligneViser.SetActive(true);
         _ligneViser.GetComponent<SpriteRenderer>().DOFade(0, 0);
         canvasAfficage.DOFade(1, 1.25f);
+        SceneManager.instance.ProtectFromJacques = false;
         Tuto();
         /*if (!yakari)
         {
