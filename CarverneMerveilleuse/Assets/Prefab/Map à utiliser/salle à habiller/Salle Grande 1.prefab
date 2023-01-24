@@ -11388,8 +11388,8 @@ Tilemap:
   - first: {x: 34, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 67
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -21869,7 +21869,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 770
     m_Data: {fileID: 11400000, guid: 00a905ffbd31a8f438506a29e64b94c3, type: 2}
-  - m_RefCount: 31
+  - m_RefCount: 32
     m_Data: {fileID: 11400000, guid: 03bd9d2fdcb3cba42890a1502a15d15c, type: 2}
   - m_RefCount: 38
     m_Data: {fileID: 11400000, guid: fe8a5b8917002764f80f02ae4cc3745a, type: 2}
@@ -21881,7 +21881,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 0bab77879bb57834a99e331f2392ae1a, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a100f35618e697840a0192294a1c60ca, type: 2}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: ca4115efb800333448da5837f82868f8, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8a3680d8b59e814418db6f6dc50f7303, type: 2}
@@ -22014,7 +22014,7 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 770
     m_Data: {fileID: -2436441, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
-  - m_RefCount: 31
+  - m_RefCount: 32
     m_Data: {fileID: -446432081, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
   - m_RefCount: 38
     m_Data: {fileID: -1774855751, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
@@ -22146,7 +22146,7 @@ Tilemap:
     m_Data: {fileID: 642951669, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 604791234, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: 453488178, guid: eedb3e1263e11774ba99f168b48ddf43, type: 3}
   - m_RefCount: 127
     m_Data: {fileID: -1223838848, guid: 8efde92a229117648b4fa554db10bd75, type: 3}
@@ -42599,6 +42599,7 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
+  PreRoomBoss: 0
   DoorEnnemyPositionLeft: {fileID: 0}
   DoorEnnemyPositionRight: {fileID: 0}
   DoorEnnemyPositionTop: {fileID: 0}
@@ -42620,6 +42621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
+  difficulty_Index: 0
   childSlot: {fileID: 0}
   spawnPointPosition: []
   ennemyAlive: []
@@ -74952,7 +74954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7058477431402435130, guid: 6e9a1169c31c6034db846e8e876ded3a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 47.26
+      value: 46.45
       objectReference: {fileID: 0}
     - target: {fileID: 7058477431402435130, guid: 6e9a1169c31c6034db846e8e876ded3a, type: 3}
       propertyPath: m_LocalPosition.z
