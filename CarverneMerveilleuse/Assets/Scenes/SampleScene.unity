@@ -366,7 +366,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 36985182393989426, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Name
@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
@@ -3787,6 +3787,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 178672322}
+    - target: {fileID: 6547261587866024882, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 58.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547261587866024882, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -233.99997
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
 --- !u!225 &415511563 stripped
@@ -4426,7 +4434,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11261,7 +11269,7 @@ MonoBehaviour:
   m_Follow: {fileID: 987894817}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -18989,6 +18997,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1753139026988614785, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334571057281830728, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369075020111933499, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3632264128434910644, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -19040,6 +19060,14 @@ PrefabInstance:
     - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
       propertyPath: m_Name
       value: Salle Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869714568219254978, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
@@ -20878,11 +20906,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: roomLeftToBossRoom
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: roomLeftToshopRoom.Array.data[0]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3700859029623930162, guid: a2ded219b65ea4e44b3d1f80d33d3393, type: 3}
       propertyPath: roomLeftToshopRoom.Array.data[1]
