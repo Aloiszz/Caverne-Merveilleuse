@@ -191,7 +191,7 @@ public class LifeManager : MonoBehaviour
                 StartCoroutine(RageZoomPrep());
                 PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioRageHeart, 1);
                 playSoundHeat = true;
-                
+                //StartCoroutine(RageZoomWaiting());
             }
             
             animator.SetTrigger("Rage");
@@ -281,6 +281,17 @@ public class LifeManager : MonoBehaviour
     {
         yield return null;
 
+        for (int i = 0; i < 2; i++)
+        {
+            CinemachineCameraZoom.instance.CameraZoom(9.5f, 0.2f, .2f);
+            yield return new WaitForSeconds(.4f);
+        }
+    }
+    
+    IEnumerator RageZoomWaiting()
+    {
+        yield return new WaitForSeconds(7.5f);
+        PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioRageHeart, .6f);
         for (int i = 0; i < 2; i++)
         {
             CinemachineCameraZoom.instance.CameraZoom(9.5f, 0.2f, .2f);
