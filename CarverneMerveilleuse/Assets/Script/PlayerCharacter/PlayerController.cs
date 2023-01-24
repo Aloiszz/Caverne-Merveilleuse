@@ -231,11 +231,13 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0,6, true);
         Physics2D.IgnoreLayerCollision(0,13, true);
         Physics2D.IgnoreLayerCollision(0,7, true);
+        Physics2D.IgnoreLayerCollision(0,14, true);
         dashTrail.SetActive(true);
         yield return new WaitForSeconds(dashInvinsibleTime);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,13, false);
         Physics2D.IgnoreLayerCollision(0,7, false);
+        Physics2D.IgnoreLayerCollision(0,14, false);
         if (!isInHole)
         {
             isDashing = false;
@@ -315,7 +317,9 @@ public class PlayerController : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(0,6, true);
         Physics2D.IgnoreLayerCollision(0,13, true);
+        Physics2D.IgnoreLayerCollision(0,7, true);
         yield return new WaitForSeconds(LifeManager.instance.timeInRage);
+        Physics2D.IgnoreLayerCollision(0,7, false);
         Physics2D.IgnoreLayerCollision(0,6, false);
         Physics2D.IgnoreLayerCollision(0,13, false);
     }
