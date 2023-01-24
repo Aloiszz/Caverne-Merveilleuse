@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
@@ -9,6 +10,7 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Music")] 
     [SerializeField] private AudioSource Source;
+    [SerializeField] private AudioSource SourceCombat;
     [SerializeField] private AudioClip mainMenuClip;
     [SerializeField] private AudioClip combatClip;
     [SerializeField] private AudioClip noCombatClip;
@@ -103,6 +105,7 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         Source.Stop();
+        SourceCombat.DOFade(0, 3).OnComplete((() => SourceCombat.Stop()));
     }
 
     public void PlayIntroMusic()
@@ -113,8 +116,9 @@ public class AudioManager : MonoBehaviour
     
     public void PlayCombatMusic()
     {
-        StopMusic();
-        Source.PlayOneShot(combatClip,volumeIntensity-.4f);
+        //StopMusic();
+        SourceCombat.DOFade(1, 1.25f);
+        SourceCombat.PlayOneShot(combatClip,volumeIntensity-.4f);
     }
     
     public void PlayNoCombatMusic()

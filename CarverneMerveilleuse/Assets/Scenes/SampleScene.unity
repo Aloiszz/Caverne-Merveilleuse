@@ -364,17 +364,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 36985182393989426, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Name
       value: Salle hub V2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
@@ -13950,7 +13942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1582699794}
   - component: {fileID: 1582699795}
-  - component: {fileID: 1582699796}
   m_Layer: 5
   m_Name: Scores
   m_TagString: Untagged
@@ -13994,27 +13985,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1582699796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582699793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827e7d3e3e73c754192e1915292c4a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreBoard: {fileID: 1582699793}
-  score1: {fileID: 613207213}
-  score2: {fileID: 1346629271}
-  score3: {fileID: 1627708693}
-  score4: {fileID: 158718308}
-  score5: {fileID: 653243941}
-  lastScore: {fileID: 1451648298}
-  range: 0
-  useRange: 0
 --- !u!1 &1610408187
 GameObject:
   m_ObjectHideFlags: 0
@@ -18997,8 +18967,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3047218395661008876, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 1753139026988614785, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334571057281830728, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369075020111933499, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3632264128434910644, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
@@ -19052,6 +19030,14 @@ PrefabInstance:
     - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
       propertyPath: m_Name
       value: Salle Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869714568219254978, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}

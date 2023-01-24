@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
             if (!isPlayed)
             {
                 StartCoroutine(InvinsibleTimeRage());
-                Source.PlayOneShot(audioRage, 1);
+                Source.PlayOneShot(audioRage, .8f);
                 StartCoroutine(HeartBeat());
                 isPlayed = true;
             }
