@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003357909997880925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09000015, y: 1.42, z: 0.08}
+  m_LocalPosition: {x: 0.42, y: 1.42, z: 0.095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -285,8 +285,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.15
-      minScalar: 0.1
+      scalar: 0.25
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 4545421967251839768}
   - component: {fileID: 7598084978167767885}
   m_Layer: 0
-  m_Name: ARMS
+  m_Name: Arm left screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4838,7 +4838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6840944216538449911}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 42.39, y: -7.02, z: 0.5236986}
+  m_LocalPosition: {x: 42.39, y: -9.38, z: 0.5236986}
   m_LocalScale: {x: 2.8408113, y: 4.2615, z: 12.814372}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9712,7 +9712,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8095465252507527600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.84000015, y: 1.4213531, z: -0.059999824}
+  m_LocalPosition: {x: -1.19, y: 1.421, z: -0.032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9802,7 +9802,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9971,8 +9971,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.15
-      minScalar: 0.1
+      scalar: 0.25
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14511,7 +14511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.93
+      value: -1.41
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14519,7 +14519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14563,11 +14563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 786335593864024746, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Time
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 786335593864024746, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1726311093189830731, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Name
@@ -14575,11 +14575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160117663105934785, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Time
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6160117663105934785, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
@@ -14601,15 +14601,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05
+      value: 0.038
       objectReference: {fileID: 0}
     - target: {fileID: 173744972105016598, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14653,11 +14653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 786335593864024746, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Time
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 786335593864024746, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1726311093189830731, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Name
@@ -14669,7 +14669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160117663105934785, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e245958502c9eeb46909b5f261a8a8a0, type: 3}
