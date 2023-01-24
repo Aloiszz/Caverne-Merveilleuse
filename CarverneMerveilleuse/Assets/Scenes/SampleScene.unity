@@ -366,7 +366,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 36985182393989426, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Name
@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
@@ -5788,6 +5788,10 @@ PrefabInstance:
     - target: {fileID: 6840944216538449911, guid: 602ea5e5da28a7843bac188148dfe889, type: 3}
       propertyPath: m_Name
       value: ARMS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840944216538449911, guid: 602ea5e5da28a7843bac188148dfe889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7598084978167767885, guid: 602ea5e5da28a7843bac188148dfe889, type: 3}
       propertyPath: m_SortingOrder
@@ -19105,6 +19109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salle Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6556907960324044243, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f37731c3dbb6fa46a18d2fa64b39d63, type: 3}
 --- !u!114 &2009493024 stripped
@@ -20926,14 +20934,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1635195733972800843, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4825069532071953669, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
-      propertyPath: SlashFente
-      value: 
-      objectReference: {fileID: 1255844510395784791, guid: aeba6d5d2b40e1f48b2deb3045adb0f4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af5dda49f9ceb4a40a7f71d3904d61e8, type: 3}
 --- !u!4 &79625110100545834 stripped

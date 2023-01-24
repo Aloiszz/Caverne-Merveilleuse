@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip audioWalk;
     public AudioClip audioRage;
     public AudioClip audioRageHeart;
+    public AudioClip audioDash;
     [Header("Discussion")]
     public AudioClip audioSoupir;
     public AudioClip audioPasDaccord;
@@ -206,6 +207,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(DashInvinsibleTimer());
             StartCoroutine(PetrolDash());
             lastMovement.Clear();
+            Source.PlayOneShot(audioDash,.7f);
         }
     }
     IEnumerator DashReload()
