@@ -127,6 +127,7 @@ public class SceneManager : MonoBehaviour
 
     public void Death()
     {
+        
         LifeManager.instance.animator.SetTrigger("Death");
         playModePanel_.SetActive(false);
         death_.SetActive(true);
@@ -156,6 +157,7 @@ public class SceneManager : MonoBehaviour
     }
     public void Pause()
     {
+        AudioManager.instance.PlayCloche();
         LifeManager.instance.animator.SetTrigger("Pause");
         pauseMenu_.SetActive(true);
         OptionGO.SetActive(false);

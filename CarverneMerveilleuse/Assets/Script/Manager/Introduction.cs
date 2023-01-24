@@ -397,7 +397,7 @@ public class Introduction : MonoBehaviour
                     StartCoroutine(Tutotime(1.25f));
                     break;
                 case 5:
-                    StartCoroutine(Tutotime(2f));
+                    StartCoroutine(Tutotime(1.1f));
                     TutoCombat1();
                     break;
                 case 7 :
@@ -436,6 +436,7 @@ public class Introduction : MonoBehaviour
 
     public void _Introduction()
     {
+        AudioManager.instance.PlayCave();
         DoorTuto.SetActive(true);
         DoorTuto.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
         DoorTuto.GetComponentInChildren<Collider2D>().enabled = true;
@@ -583,6 +584,7 @@ public class Introduction : MonoBehaviour
         //playIntro = false;
         VerifIntro.instance.compte++;
         DoorTuto.SetActive(false);
+        DoorTuto.GetComponentInChildren<Collider2D>().enabled = false;
         DoorTuto.GetComponentInChildren<SpriteRenderer>().DOFade(0, EnnemyManager.instance.timeToCloseDoor);
         DoorTuto.GetComponentInChildren<Collider2D>().enabled = false;
     }

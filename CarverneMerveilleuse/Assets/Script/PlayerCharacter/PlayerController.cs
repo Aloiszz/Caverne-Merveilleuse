@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Score.instance.AddScore();
                 }
+                AudioManager.instance.PlayCloche();
                 SceneManager.instance.Death();
                 /*PlayerController.instance.enabled = false;
                 PlayerLightAttack.instance.enabled = false;
