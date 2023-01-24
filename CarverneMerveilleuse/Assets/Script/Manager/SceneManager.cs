@@ -127,6 +127,7 @@ public class SceneManager : MonoBehaviour
 
     public void Death()
     {
+        LifeManager.instance.animator.SetTrigger("Death");
         playModePanel_.SetActive(false);
         death_.SetActive(true);
         
@@ -136,6 +137,7 @@ public class SceneManager : MonoBehaviour
 
     public void GenProLevel()
     {
+        LifeManager.instance.animator.SetTrigger("Reborn");
         VerifIntro.instance.compte++;
         //VerifIntro.instance.Verif();
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
@@ -154,6 +156,7 @@ public class SceneManager : MonoBehaviour
     }
     public void Pause()
     {
+        LifeManager.instance.animator.SetTrigger("Pause");
         pauseMenu_.SetActive(true);
         OptionGO.SetActive(false);
         img.DOFade(0, 0);
@@ -167,6 +170,7 @@ public class SceneManager : MonoBehaviour
     }
     public void Unpause()
     {
+        LifeManager.instance.animator.SetTrigger("UnPause");
         StopCoroutine(PauseTime());
         playModeCG_.DOFade(1, 0.5f);
         pauseCG_.DOFade(0, 0.5f);

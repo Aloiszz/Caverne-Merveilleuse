@@ -71,6 +71,10 @@ public class LifeManager : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerController.instance.life > 11)
+        {
+            PlayerController.instance.life--;
+        }
         
         if (verif)
         {
