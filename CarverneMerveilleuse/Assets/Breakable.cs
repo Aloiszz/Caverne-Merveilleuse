@@ -17,7 +17,7 @@ public class Breakable : MonoBehaviour
         {
             int random = Random.Range(0, AudioManager.instance.potsClips.Count);
             Instantiate(eclat, transform.position, Quaternion.identity,
-                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                transform.parent);
             int drop = Random.Range(0, 6);
             if (!cantDrop)
             {
