@@ -56,8 +56,8 @@ public class GrosEnnemiScript : MonoBehaviour
     [SerializeField] private GameObject[] flaquePetrolList;
     private bool doOnce = true;
     private AudioSource audio;
-    
-    
+
+
     void Start()
     {
         if (gameObject.GetComponent<Mechant>().invokeByBoss)

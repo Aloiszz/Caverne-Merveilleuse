@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip noCombatClip;
     [SerializeField] private AudioClip preBossClip;
     [SerializeField] private AudioClip bossPhase2Clip;
+    [SerializeField] private AudioClip END;
 
     [Header("ambiance")] 
     [SerializeField] private AudioClip shopClip;
@@ -46,6 +47,13 @@ public class AudioManager : MonoBehaviour
     
     [Header("Pots casser")]
     public List<AudioClip> potsClips;
+
+    [Header("Boss")] 
+    public AudioClip BossPhase2Destruction;
+    public List<AudioClip> BossHit;
+    public AudioClip BossFrappeLeSol;
+    public AudioClip Bossfeu;
+    
     
     [Space]
     [SerializeField] private List<AudioClip> ClocheClip;
@@ -122,7 +130,7 @@ public class AudioManager : MonoBehaviour
     public void PlayBossPhase2()
     {
         StopMusic();
-        Source.PlayOneShot(bossPhase2Clip,volumeIntensity);
+        Source.PlayOneShot(bossPhase2Clip,volumeIntensity - .6f);
     }
     
     public void PlayShop()
@@ -135,6 +143,12 @@ public class AudioManager : MonoBehaviour
         StopMusic();
         Source.PlayOneShot(CaveClip,volumeIntensity);
     }
+    public void PlayTheEnd()
+    {
+        StopMusic();
+        Source.PlayOneShot(END,volumeIntensity);
+    }
+    
 
     public void PlayCloche()
     {
@@ -225,5 +239,22 @@ public class AudioManager : MonoBehaviour
     public void CantBuy()
     {
         SFXSource.PlayOneShot(refutDachat);
+    }
+    
+    
+    // Boss
+    public void BossPhase2Destroy()
+    {
+        SFXSource.PlayOneShot(BossPhase2Destruction, 0.8f);
+    }
+
+    public void AOE_Zone()
+    {
+        SFXSource.PlayOneShot(BossFrappeLeSol, 2);
+    }
+    
+    public void Feu_Zone()
+    {
+        SFXSource.PlayOneShot(Bossfeu, 1);
     }
 }

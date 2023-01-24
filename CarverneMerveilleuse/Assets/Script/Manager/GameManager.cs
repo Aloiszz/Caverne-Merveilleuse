@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private bool verif_Chargebar;
     [SerializeField]private float verif_float;
     
-    [SerializeField]private bool GodMode;
+    public bool GodMode;
     [SerializeField] private CanvasGroup GodModePanel;
     
     public static GameManager instance;

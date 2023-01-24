@@ -176,6 +176,12 @@ public class Mechant : MonoBehaviour
         {
             rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
         }
+
+        if (CompareTag("Boss"))
+        {
+            int rand = Random.Range(0, AudioManager.instance.BossHit.Count);
+            AudioManager.instance.SFXSource.PlayOneShot(AudioManager.instance.BossHit[rand]);
+        }
         
         forcelightDamage = initialforcelightDamage;
 
@@ -202,6 +208,12 @@ public class Mechant : MonoBehaviour
         rb.AddForce((transform.position - player.transform.position) * forcelightDamage);
         forcelightDamage = initialforcelightDamage;
         StartCoroutine(FinHitStop());
+        
+        if (CompareTag("Boss"))
+        {
+            int rand = Random.Range(0, AudioManager.instance.BossHit.Count);
+            AudioManager.instance.SFXSource.PlayOneShot(AudioManager.instance.BossHit[rand]);
+        }
     }
 
     public void ReceiveThrowDamage()
@@ -219,6 +231,12 @@ public class Mechant : MonoBehaviour
             life -= PlayerThrowAttack.instance.ThrowDamage[PlayerThrowAttack.instance.ThrowDamageIndex] + buffAtk +
                     buffCritique + buffByDash;
             StartCoroutine(FinHitStop());
+        }
+        
+        if (CompareTag("Boss"))
+        {
+            int rand = Random.Range(0, AudioManager.instance.BossHit.Count);
+            AudioManager.instance.SFXSource.PlayOneShot(AudioManager.instance.BossHit[rand]);
         }
     }
 

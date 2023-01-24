@@ -30,6 +30,8 @@ public class BossAnim : MonoBehaviour
 
     public Animator animatorEnding;
     public static BossAnim instance;
+
+    public GameObject QuitToMenu;
     
     private void Awake()
     {
@@ -43,7 +45,7 @@ public class BossAnim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        QuitToMenu.SetActive(false);
         vcamMain = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
         vcamBoss = GameObject.Find("CM vcam Boss").GetComponent<CinemachineVirtualCamera>();
         TargetGroup = GameObject.Find("CM TargetBoss").GetComponent<CinemachineTargetGroup>();
@@ -87,7 +89,15 @@ public class BossAnim : MonoBehaviour
     {
         BossPhaseChange();
         ZoneCac();
-        
+
+        if (canReturn)
+        {
+            if (Input.anyKeyDown)
+            {
+                QuitToMenu.SetActive(true);
+                QuitToMenu.GetComponent<CanvasGroup>().DOFade(1, 1.25f);
+            }
+        }
         //TargetGroup.m_Targets[0].radius.DOFloat(10, .5f);
     }
 
@@ -149,7 +159,7 @@ public class BossAnim : MonoBehaviour
         }
     }
 
-
+    private bool canReturn;
     void DeathBoss()
     {
         vcamMain.Priority = 10;
@@ -158,10 +168,25 @@ public class BossAnim : MonoBehaviour
         SceneManager.instance.playModeCG_.DOFade(0, 1.25f);
         Introduction.instance._MoneyPanel.DOFade(0, 1.25f);
 
+        GameManager.instance.GodMode = true;
         animatorEnding.SetTrigger("Ending");
         StartCoroutine(Ending());
         BossScript.instance.enabled = false;
+        AudioManager.instance.PlayTheEnd();
+        StartCoroutine(ReturnMenu());
+        StartCoroutine(ReturnMenu2());
+        
+    }
 
+    IEnumerator ReturnMenu()
+    {
+        yield return new WaitForSeconds(51);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+    IEnumerator ReturnMenu2()
+    {
+        yield return new WaitForSeconds(11);
+        canReturn = true;
     }
 
     IEnumerator Ending()

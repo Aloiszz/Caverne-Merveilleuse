@@ -86,6 +86,10 @@ public class BossScript : MonoBehaviour
     public GameObject posVFXAOE;
     public GameObject VFXZoneAOE;
 
+    public GameObject posVFXCoteDroit;
+    public GameObject posVFXCoteGauche;
+    public GameObject VFXCote;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -112,6 +116,8 @@ public class BossScript : MonoBehaviour
         {
             listEnnemis.Add(null);
         }
+        
+        AudioManager.instance.PlayBossPhase2();
     }
 
     IEnumerator Life()
@@ -432,6 +438,7 @@ public class BossScript : MonoBehaviour
             {
                 GameObject attackChute = Instantiate(chute, player.transform.position, Quaternion.identity);
                 Instantiate(VFXDist, player.transform.position, Quaternion.identity);
+                AudioManager.instance.Feu_Zone();
                 attackChute.GameObject().GetComponent<Collider2D>().enabled = false;
                 //attackChute.GetComponent<SpriteRenderer>().color = Color.green;
                 yield return new WaitForSeconds(tempsPrevention);
@@ -459,10 +466,13 @@ public class BossScript : MonoBehaviour
                 {
                     attaqueAvant1.SetActive(true);
                     StartCoroutine(CacRightAnimator());
+                    Instantiate(VFXCote, posVFXCoteDroit.transform.position, Quaternion.identity);
                     attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = false;
-                    attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
-                    yield return new WaitForSeconds(tempsPrevention);
-                    attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.red;
+                    //attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.green;
+                    yield return new WaitForSeconds(tempsPrevention+.5f);
+                    AudioManager.instance.AOE_Zone();
+                    CinemachineShake.instance.ShakeCamera(15,15,0.2f);
+                    //attaqueAvant1.GetComponent<SpriteRenderer>().color = Color.red;
                     attaqueAvant1.GameObject().GetComponent<Collider2D>().enabled = true;
                     yield return new WaitForSeconds(0.5f);
                     attaqueAvant1.SetActive(false);
@@ -472,10 +482,13 @@ public class BossScript : MonoBehaviour
                 {
                     attaqueAvant2.SetActive(true);
                     StartCoroutine(CacLeftAnimator());
+                    Instantiate(VFXCote, posVFXCoteGauche.transform.position, Quaternion.identity);
                     attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = false;
-                    attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
-                    yield return new WaitForSeconds(tempsPrevention+.4f);
-                    attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
+                    //attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.green;
+                    yield return new WaitForSeconds(tempsPrevention+.5f);
+                    AudioManager.instance.AOE_Zone();
+                    CinemachineShake.instance.ShakeCamera(15,15,0.2f);
+                    //attaqueAvant2.GetComponent<SpriteRenderer>().color = Color.red;
                     attaqueAvant2.GameObject().GetComponent<Collider2D>().enabled = true;
                     yield return new WaitForSeconds(0.5f);
                     attaqueAvant2.SetActive(false);
@@ -514,6 +527,7 @@ public class BossScript : MonoBehaviour
             Instantiate(VFXZoneAOE, posVFXAOE.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(tempsPrevention + 0.5f);
             //zone.GetComponent<SpriteRenderer>().color = Color.red;
+            AudioManager.instance.AOE_Zone();
             CinemachineShake.instance.ShakeCamera(15,15,0.2f);
             zone.GameObject().GetComponent<Collider2D>().enabled = true;
             yield return new WaitForSeconds(0.2f);
@@ -577,11 +591,12 @@ public class BossScript : MonoBehaviour
 
     IEnumerator AnotherLifeFucker()
     {
+        AudioManager.instance.BossPhase2Destroy();  
         is2Phase = true;
         life = false;
         GetComponent<Mechant>().life = 1000;
         lifeBarre.DOFillAmount(1, 3);
-        CinemachineShake.instance.ShakeCamera(30,30,0.8f);
+        CinemachineShake.instance.ShakeCamera(30,30,2);
         yield return new WaitForSeconds(2);
         life = true;
     }
