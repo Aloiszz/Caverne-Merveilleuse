@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     }
 
     private bool onOff;
+    private bool onOff2;
     private void Update()
     {
         if (verif_dashbar)
@@ -91,6 +92,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            if (!onOff2)
+            {
+                RoomManager.instance.GoToBoss();
+                onOff2 = false;
+            }
+        }
+        
         if (GodMode)
         {
             PlayerController.instance.life = PlayerController.instance.lifeDepard;

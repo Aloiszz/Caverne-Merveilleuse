@@ -618,6 +618,7 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
+  PreRoomBoss: 0
   DoorEnnemyPositionLeft: {fileID: 0}
   DoorEnnemyPositionRight: {fileID: 0}
   DoorEnnemyPositionTop: {fileID: 0}
@@ -639,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
+  difficulty_Index: 0
   childSlot: {fileID: 0}
   spawnPointPosition: []
   ennemyAlive: []
@@ -19893,7 +19895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 415343546176142778, guid: 92773be2a5e54f6429e8a46de105c126, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.64
+      value: 10.41
       objectReference: {fileID: 0}
     - target: {fileID: 415343546176142778, guid: 92773be2a5e54f6429e8a46de105c126, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26638,7 +26640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2956879896715980465, guid: 686956cf2bda01d4d89d6a7ae6e44426, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.87
+      value: 8.68
       objectReference: {fileID: 0}
     - target: {fileID: 2956879896715980465, guid: 686956cf2bda01d4d89d6a7ae6e44426, type: 3}
       propertyPath: m_LocalPosition.z
