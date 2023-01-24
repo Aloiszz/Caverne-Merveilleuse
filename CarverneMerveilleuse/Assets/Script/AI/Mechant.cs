@@ -164,6 +164,7 @@ public class Mechant : MonoBehaviour
             {
                 Score.instance.score += pointScore;
                 Score.instance.AddScore();
+                enabled = false;
             }
             
         }
