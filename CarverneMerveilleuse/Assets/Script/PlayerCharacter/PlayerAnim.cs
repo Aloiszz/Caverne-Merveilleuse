@@ -221,14 +221,24 @@ public class PlayerAnim : MonoBehaviour
     
     void ProfileHeavyAttack()
     {
-        /*if (PlayerHeavyAttack.instance.isCharge)
+        if (PlayerHeavyAttack.instance.isCharge)
         {
             animator[1].SetBool("isChargeAttack", true);
+            
+            animator[3].SetTrigger("isHeavyAttack");
+        }
+        
+        if (PlayerHeavyAttack.instance.isTourne)
+        {
+            graphProfile.SetActive(false);
+            animator[1].SetBool("isChargeAttack", false);
+            animator[3].GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
-            animator[1].SetBool("isChargeAttack", false);
-        }*/
+            graphProfile.SetActive(true);
+            animator[3].GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
     
     void ProfilThrowAttack()
@@ -299,16 +309,18 @@ public class PlayerAnim : MonoBehaviour
         if (PlayerHeavyAttack.instance.isCharge)
         {
             animator[0].SetBool("isChargeAttack", true);
-
-            graphFace.SetActive(false);
-            
-            animator[3].GetComponent<SpriteRenderer>().enabled = true;
             animator[3].SetTrigger("isHeavyAttack");
+        }
+        
+        if (PlayerHeavyAttack.instance.isTourne)
+        {
+            graphFace.SetActive(false);
+            animator[0].SetBool("isChargeAttack", false);
+            animator[3].GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
             graphFace.SetActive(true);
-            animator[0].SetBool("isChargeAttack", false);
             animator[3].GetComponent<SpriteRenderer>().enabled = false;
         }
     }
@@ -374,18 +386,35 @@ public class PlayerAnim : MonoBehaviour
             }
         }
     }
-    
+
+    private bool isTurning;
     void DosHeavyAttack()
     {
-        /*if (PlayerHeavyAttack.instance.isCharge)
+        if (PlayerHeavyAttack.instance.isCharge)
         {
             animator[2].SetBool("isChargeAttack", true);
+
+            //animator[3].GetComponent<SpriteRenderer>().enabled = true;
+            animator[3].SetTrigger("isHeavyAttack");
         }
         else
         {
+            
+        }
+
+        if (PlayerHeavyAttack.instance.isTourne)
+        {
+            graphDos.SetActive(false);
             animator[2].SetBool("isChargeAttack", false);
-        }*/
+            animator[3].GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            graphDos.SetActive(true);
+            animator[3].GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
+    
     
     void DosThrowAttack()
     {

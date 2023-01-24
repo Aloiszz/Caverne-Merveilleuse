@@ -48,7 +48,7 @@ public class PlayerHeavyAttack : MonoBehaviour
     private float timerLightCloseDamage;
 
     private bool isAlreadyScaled;
-    [HideInInspector]public bool isTourne;
+    public bool isTourne;
 
     [Header("Animator")] 
     public bool isCharge;
@@ -244,5 +244,6 @@ public class PlayerHeavyAttack : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0,7, false);
 
         PlayerController.instance.speedMovement = 90;
+        isTourne = false;
     }
 }
