@@ -143,4 +143,36 @@ public class RoomManager : MonoBehaviour
             ChatMarchand.instance.enabled = true;
         }*/
     }
+
+
+    private GameObject spawnpoint;
+
+    public void GoToBoss()
+    {
+        InstatiatePreBossRoom();
+        SpawnPointLocation();
+        TeleportPlayerToNextRoom();
+        AstarPath.active.Scan();
+    }
+    
+    
+    void InstatiatePreBossRoom()
+    {
+        roomMemory[roomMemoryIndex].SetActive(false);
+        RoomManager.instance.roomMemoryIndex++;
+        RoomManager.instance.roomMemoryDirectionIndex++;
+        Instantiate(RoomManager.instance.bossRoom[0], new Vector3(0,0,0),
+            Quaternion.identity).transform.GetChild(0).GetComponentInChildren<RoomSpawnerV2>().colliderVierge = true;
+    }
+    
+    void SpawnPointLocation()
+    {
+        spawnpoint = GameObject.FindGameObjectWithTag("SpawnPointDown");
+    }
+    
+    void TeleportPlayerToNextRoom()
+    {
+        PlayerController.instance.transform.position = spawnpoint.transform.position;
+        ItemManager.instance.LightShield();
+    }
 }
