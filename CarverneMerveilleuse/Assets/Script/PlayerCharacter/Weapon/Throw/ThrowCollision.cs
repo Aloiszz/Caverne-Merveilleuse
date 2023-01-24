@@ -94,6 +94,7 @@ public class ThrowCollision : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             if(PointCollission.instance.bounceInt > 1) PlayerThrowAttack.instance.ReturnWeapon();
+            PlayerThrowAttack.instance.multiplicateur = 1;
         }
     }
     

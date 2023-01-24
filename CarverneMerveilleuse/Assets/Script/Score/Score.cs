@@ -60,6 +60,10 @@ public class Score : MonoBehaviour
         }
 
         affichage.text = score.ToString();
+        if (score < 0)
+        {
+            score = 0;
+        }
     }
 
     public void AddScore()
