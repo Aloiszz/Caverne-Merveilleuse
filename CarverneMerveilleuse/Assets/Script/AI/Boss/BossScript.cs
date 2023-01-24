@@ -89,7 +89,8 @@ public class BossScript : MonoBehaviour
     public GameObject posVFXCoteDroit;
     public GameObject posVFXCoteGauche;
     public GameObject VFXCote;
-
+    public GameObject PosVFX_Debris;
+    public GameObject VFX_Debris;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -595,7 +596,8 @@ public class BossScript : MonoBehaviour
 
     IEnumerator AnotherLifeFucker()
     {
-        AudioManager.instance.BossPhase2Destroy();  
+        AudioManager.instance.BossPhase2Destroy();
+        Instantiate(VFX_Debris, PosVFX_Debris.transform.position, Quaternion.identity);
         is2Phase = true;
         life = false;
         GetComponent<Mechant>().life = 1000;
