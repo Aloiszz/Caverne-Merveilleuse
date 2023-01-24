@@ -20,6 +20,7 @@ public class Room : MonoBehaviour
     public bool isHub;
     public bool isBossRoom;
     public bool isShopRoom;
+    public bool PreRoomBoss;
     
     public GameObject DoorEnnemyPositionLeft; //Position des portes 
     public GameObject DoorEnnemyPositionRight; //Position des portes 
@@ -38,6 +39,10 @@ public class Room : MonoBehaviour
     
     private void Start()
     {
+        if (PreRoomBoss)
+        {
+            AudioManager.instance.PlayPreBossMusic();
+        }
         FadeInRoom();
         Invoke("SpawnPointDoorEnnemy", EnnemyManager.instance.timeBeforeClosingDoor);
         
