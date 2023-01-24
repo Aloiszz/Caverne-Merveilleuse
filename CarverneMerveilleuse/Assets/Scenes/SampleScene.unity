@@ -16530,22 +16530,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6380998683294661045, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: b065bcf56ec09f64b99ac9d9ae66eb7e, type: 2}
-    - target: {fileID: 6380998683294661045, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -8905390157195775601, guid: b065bcf56ec09f64b99ac9d9ae66eb7e, type: 2}
-    - target: {fileID: 6380998683420690154, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: b065bcf56ec09f64b99ac9d9ae66eb7e, type: 2}
-    - target: {fileID: 6380998683420690154, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -8905390157195775601, guid: b065bcf56ec09f64b99ac9d9ae66eb7e, type: 2}
     - target: {fileID: 6380998683799393114, guid: 27245e2b4c5f09f4cbc81fcd6a58c5b9, type: 3}
       propertyPath: m_Name
       value: ItemCanvas
@@ -18127,8 +18111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
   mNoiseOffsets: {x: -389.62402, y: 974.72925, z: 789.40076}
 --- !u!1 &1929016838
 GameObject:
@@ -20959,6 +20943,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 178592613998863876, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: listScoreRage.Array.data[0]
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 393067401662969414, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: m_Name
       value: GameManager
