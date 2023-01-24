@@ -95,13 +95,14 @@ public class Mechant : MonoBehaviour
                     {
                         if (zizou == 1)
                         {
-                            gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
-                            Instantiate(dent, gameObject.transform.position, Quaternion.identity,
-                                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
-                            if (zizou == 1)
+                            if (Random.Range(0,5) >= 2)
                             {
-                                zizou -= 1;
+                                gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
+                                Instantiate(dent, gameObject.transform.position, Quaternion.identity,
+                                    RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
                             }
+                            zizou -= 1;
+                            
                         }
                         else if (Random.Range(0, 5) == 1)
                         {
