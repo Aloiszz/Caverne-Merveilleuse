@@ -41,6 +41,7 @@ public class Mechant : MonoBehaviour
     private int checkIfSameHitBox;
     private bool killedWithLightAtk;
     [HideInInspector] public bool canTakeDamage = true;
+    private int zizou = 1;
 
 
     void Start()
@@ -90,11 +91,25 @@ public class Mechant : MonoBehaviour
             {
                 if (!invokeByBoss)
                 {
-                    for (int i = 0; i < Random.Range(1, maxDentDrop + itemManager.dropSupp + 1); i++)
+                    for (int i = 0; i < maxDentDrop + itemManager.dropSupp; i++)
                     {
-                        gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
-                        Instantiate(dent, gameObject.transform.position, Quaternion.identity,
-                            RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                        if (zizou == 1)
+                        {
+                            gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
+                            Instantiate(dent, gameObject.transform.position, Quaternion.identity,
+                                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                            if (zizou == 1)
+                            {
+                                zizou -= 1;
+                            }
+                        }
+                        else if (Random.Range(0, 3) == 1)
+                        {
+                            gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
+                            Instantiate(dent, gameObject.transform.position, Quaternion.identity,
+                                RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                            
+                        }
                     }
 
                     if (Random.Range(1, 101) >= 100 - (pourcentageDropOr + itemManager.dropOrSupp) &&
