@@ -38,6 +38,7 @@ public class LifeManager : MonoBehaviour
 
     [Space] [Header("VFX")] 
     public GameObject RageWave;
+    public ParticleSystem AnnonceRage;
 
     [Header("Animator")] 
     public Animator animator;
@@ -185,6 +186,7 @@ public class LifeManager : MonoBehaviour
         if (Score.instance.scoreRage > Score.instance.listScoreRage[listScoreRageIndex]) // rage quand score de rage atteint
         {
             animator.SetTrigger("Rage");
+            AnnonceRage.Play();
             /*_key_img.DOFade(1, .2f);
             rageTxt.DOFade(1, 0.2f);*/
             
@@ -221,6 +223,7 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
+            AnnonceRage.Stop();
             animator.SetTrigger("EndRage");
             /*r_key_img.DOFade(0, .2f);*/
         }
