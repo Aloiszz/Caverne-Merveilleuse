@@ -181,10 +181,19 @@ public class LifeManager : MonoBehaviour
 
     }
 
+    private bool playSoundHeat;
     void RageDueToScoreRage()
     {
         if (Score.instance.scoreRage > Score.instance.listScoreRage[listScoreRageIndex]) // rage quand score de rage atteint
         {
+            if (!playSoundHeat)
+            {
+                StartCoroutine(RageZoomPrep());
+                PlayerController.instance.Source.PlayOneShot(PlayerController.instance.audioRageHeart, 1);
+                playSoundHeat = true;
+                
+            }
+            
             animator.SetTrigger("Rage");
             AnnonceRage.Play();
             /*_key_img.DOFade(1, .2f);
@@ -223,6 +232,7 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
+            playSoundHeat = false;
             AnnonceRage.Stop();
             animator.SetTrigger("EndRage");
             /*r_key_img.DOFade(0, .2f);*/
@@ -260,6 +270,18 @@ public class LifeManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         for (int i = 0; i < 6; i++)
+        {
+            CinemachineCameraZoom.instance.CameraZoom(9.5f, 0.2f, .2f);
+            yield return new WaitForSeconds(.4f);
+        }
+        
+    }
+    
+    IEnumerator RageZoomPrep()
+    {
+        yield return null;
+
+        for (int i = 0; i < 2; i++)
         {
             CinemachineCameraZoom.instance.CameraZoom(9.5f, 0.2f, .2f);
             yield return new WaitForSeconds(.4f);

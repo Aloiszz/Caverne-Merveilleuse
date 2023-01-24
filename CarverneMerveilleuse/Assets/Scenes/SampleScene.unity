@@ -364,17 +364,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 36985182393989426, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: m_Name
       value: Salle hub V2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2269084292680453656, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577498193123720058, guid: 20a8fcd0745f4de46a5f7da2f00818ad, type: 3}
       propertyPath: cam
@@ -3775,14 +3767,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 178672322}
-    - target: {fileID: 6547261587866024882, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547261587866024882, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -234
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be74ed975c27fc4b81ecdd89137ca79, type: 3}
 --- !u!225 &415511563 stripped
@@ -21025,6 +21009,10 @@ PrefabInstance:
     - target: {fileID: 178592613998863876, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: activateScore
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 178592613998863876, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
+      propertyPath: listScoreRage.Array.data[0]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 393067401662969414, guid: d2e744b0b3743fb49b1f69034d5a1b5d, type: 3}
       propertyPath: m_Name

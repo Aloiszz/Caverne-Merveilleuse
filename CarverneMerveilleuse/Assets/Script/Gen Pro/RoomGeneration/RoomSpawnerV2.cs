@@ -82,6 +82,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 ChatMarchand.instance.PlayerCameBack = true;
                 ChatMarchand.instance.StartCoroutine(ChatMarchand.instance.PlayerCameback());
                 Debug.Log("Come Back From Shop");
+                AudioManager.instance.Door();
                 ReturnShopRoom();
                 TeleportPlayerBackToRoom();
             }
@@ -91,6 +92,7 @@ public class RoomSpawnerV2 : MonoBehaviour
 
                 if(RoomManager.instance.goldenPathCount >= RoomManager.instance.roomLeftToBossRoom && RoomManager.instance.roomMemoryDirection[^1] == Direction.Down)
                 {
+                    AudioManager.instance.Door();
                     KeepMemoryDirection();
                     InstatiatePreBossRoom();
                     SpawnPointLocation();
@@ -99,6 +101,7 @@ public class RoomSpawnerV2 : MonoBehaviour
                 }
                 else if (RoomManager.instance.goldenPathCount >= RoomManager.instance.roomLeftToBossRoom)
                 {
+                    AudioManager.instance.Door();
                     KeepMemoryDirection();
                     InstatiateNewRoom();
                     SpawnPointLocation();

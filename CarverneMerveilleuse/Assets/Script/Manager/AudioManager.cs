@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip OuvertureDoorClip;
 
     [Header("Shop et chat")] 
+    public AudioClip PassageDoor;
     public AudioClip AchatDitem;
     public AudioClip monterObject;
     public AudioClip descenteObject;
@@ -239,6 +240,11 @@ public class AudioManager : MonoBehaviour
     public void CantBuy()
     {
         SFXSource.PlayOneShot(refutDachat);
+    }
+
+    public void Door()
+    {
+        SFXSource.PlayOneShot(PassageDoor, 0.5f);
     }
     
     
