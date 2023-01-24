@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
     public List<AudioClip> BossHit;
     public AudioClip BossFrappeLeSol;
     public AudioClip Bossfeu;
-    
+    public AudioClip Bras;
     
     [Space]
     [SerializeField] private List<AudioClip> ClocheClip;
@@ -262,5 +262,10 @@ public class AudioManager : MonoBehaviour
     public void Feu_Zone()
     {
         SFXSource.PlayOneShot(Bossfeu, 1);
+    }
+    
+    public void Bras_Zone()
+    {
+        SFXSource.PlayOneShot(Bras, 1);
     }
 }

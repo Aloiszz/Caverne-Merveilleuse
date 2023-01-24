@@ -384,6 +384,7 @@ public class BossScript : MonoBehaviour
                     vague1.transform.position = vague1Point.position;
                     vague1.SetActive(true);
                     yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.Bras_Zone();
                     vague1RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                     yield return new WaitForSeconds(2f);
                     vague1RB.velocity = Vector2.zero;
@@ -394,6 +395,7 @@ public class BossScript : MonoBehaviour
                     vague1.transform.localPosition = new Vector2(vague1Point.localPosition.x, -vague1Point.localPosition.y);
                     vague1.SetActive(true);
                     yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.Bras_Zone();
                     vague1RB.AddForce(new Vector2(0, -1) * -vaguesSpeed);
                     yield return new WaitForSeconds(2f);
                     vague1RB.velocity = Vector2.zero;
@@ -407,6 +409,7 @@ public class BossScript : MonoBehaviour
                     vague2.transform.position = vague2Point.position;
                     vague2.SetActive(true);
                     yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.Bras_Zone();
                     vague2RB.AddForce(new Vector2(0, -1) * vaguesSpeed);
                     yield return new WaitForSeconds(2f);
                     vague2RB.velocity = Vector2.zero;
@@ -417,6 +420,7 @@ public class BossScript : MonoBehaviour
                     vague2.transform.localPosition = new Vector2(vague2Point.localPosition.x, -vague2Point.localPosition.y);
                     vague2.SetActive(true);
                     yield return new WaitForSeconds(0.5f);
+                    AudioManager.instance.Bras_Zone();
                     vague2RB.AddForce(new Vector2(0, -1) * -vaguesSpeed);
                     yield return new WaitForSeconds(2f);
                     vague2RB.velocity = Vector2.zero;

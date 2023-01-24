@@ -32,6 +32,8 @@ public class BossAnim : MonoBehaviour
     public static BossAnim instance;
 
     public GameObject QuitToMenu;
+
+    public CanvasGroup AngeText;
     
     private void Awake()
     {
@@ -167,6 +169,7 @@ public class BossAnim : MonoBehaviour
         
         SceneManager.instance.playModeCG_.DOFade(0, 1.25f);
         Introduction.instance._MoneyPanel.DOFade(0, 1.25f);
+        AngeText.DOFade(0, 1.25f);
 
         GameManager.instance.GodMode = true;
         animatorEnding.SetTrigger("Ending");
