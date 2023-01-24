@@ -493,7 +493,7 @@ public class Introduction : MonoBehaviour
 
     public void Tuto()
     {
-        DoorTuto.GetComponentInChildren<Collider2D>().enabled = false;
+        DoorTuto.GetComponentInChildren<Collider2D>().enabled = true;
         archimage.transform.DOMove(_localisationOfArchimageDash.transform.position, 3);
         //playIntro = false;
     }
