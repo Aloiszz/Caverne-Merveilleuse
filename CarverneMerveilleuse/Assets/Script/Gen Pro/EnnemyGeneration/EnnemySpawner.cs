@@ -10,6 +10,8 @@ public class EnnemySpawner : MonoBehaviour
 {
     [Header("ScriptableObject")] 
     public SO_EnnemyBigRoom SO_ennemySpawner;
+
+    [SerializeField] private int difficulty_Index;
     
     
     [SerializeField] private GameObject childSlot;
@@ -66,7 +68,23 @@ public class EnnemySpawner : MonoBehaviour
     void Secure_So()
     {
         numberOfWave = SO_ennemySpawner.numberOfWave;
+
+        if (RoomManager.instance.roomMemoryIndex <= 5)
+        {
+            difficulty_Index = SO_ennemySpawner.difficulty_Index;
+        }
+        if (RoomManager.instance.roomMemoryIndex > 5 &&  RoomManager.instance.roomMemoryIndex < 7)
+        {
+            difficulty_Index = SO_ennemySpawner.difficulty_Index;
+            difficulty_Index++;
+        }
+        if (RoomManager.instance.roomMemoryIndex >= 7)
+        {
+            difficulty_Index = SO_ennemySpawner.difficulty_Index;
+            difficulty_Index += 2;
+        }
     }
+    
     private void Update()
     {
         
@@ -115,10 +133,10 @@ public class EnnemySpawner : MonoBehaviour
     public void SpawnEnnemy()
     {
         actualNumberOfWave++;
-        for (int i = 0; i < SO_ennemySpawner.spawn_Spyder[SO_ennemySpawner.difficulty_Index]; i++)
+        for (int i = 0; i < SO_ennemySpawner.spawn_Spyder[difficulty_Index]; i++)
         {
             var apparitionChance = Random.Range(0, 100);
-            if (apparitionChance < SO_ennemySpawner.difficulty_Spyder[SO_ennemySpawner.difficulty_Index])
+            if (apparitionChance < SO_ennemySpawner.difficulty_Spyder[difficulty_Index])
             {
                 //rand = Random.Range(0, spawnPointPosition.Length);
                 ChooseRandomPosition(1);
@@ -128,10 +146,10 @@ public class EnnemySpawner : MonoBehaviour
             }
         }
         
-        for (int j = 0; j < SO_ennemySpawner.spawn_Bat[SO_ennemySpawner.difficulty_Index]; j++)
+        for (int j = 0; j < SO_ennemySpawner.spawn_Bat[difficulty_Index]; j++)
         {
             var apparitionChance = Random.Range(0, 100);
-            if (apparitionChance < SO_ennemySpawner.difficulty_Bat[SO_ennemySpawner.difficulty_Index])
+            if (apparitionChance < SO_ennemySpawner.difficulty_Bat[difficulty_Index])
             {
                 //rand = Random.Range(0, spawnPointPosition.Length);
                 ChooseRandomPosition(2);
@@ -141,10 +159,10 @@ public class EnnemySpawner : MonoBehaviour
             }
         }
         
-        for (int k = 0; k < SO_ennemySpawner.spawn_Petrol[SO_ennemySpawner.difficulty_Index]; k++)
+        for (int k = 0; k < SO_ennemySpawner.spawn_Petrol[difficulty_Index]; k++)
         {
             var apparitionChance = Random.Range(0, 100);
-            if (apparitionChance < SO_ennemySpawner.difficulty_Petrol[SO_ennemySpawner.difficulty_Index])
+            if (apparitionChance < SO_ennemySpawner.difficulty_Petrol[difficulty_Index])
             {
                 //rand = Random.Range(0, spawnPointPosition.Length);
                 ChooseRandomPosition(3);
