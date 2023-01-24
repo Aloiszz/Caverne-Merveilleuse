@@ -7,6 +7,7 @@ public class LightShieldScript : MonoBehaviour
 {
     private SpriteRenderer sr;
     public static LightShieldScript instance;
+    public GameObject light;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -53,12 +54,12 @@ public class LightShieldScript : MonoBehaviour
         {
             if (i%2 == 0)
             {
-                sr.color = new Color(1f, 1f, 1f, .25f);
+                light.SetActive(false);
                 yield return new WaitForSeconds(0.2f);
             }
             else
             {
-                sr.color = new Color(1f, 1f, 1f, .1f);
+                light.SetActive(true);
                 yield return new WaitForSeconds(0.2f);
             }
         }
