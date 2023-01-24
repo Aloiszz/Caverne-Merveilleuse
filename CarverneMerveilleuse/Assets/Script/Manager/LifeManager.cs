@@ -287,7 +287,7 @@ public class LifeManager : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            CinemachineCameraZoom.instance.CameraZoom(9.5f, 0.2f, .2f);
+            CinemachineCameraZoom.instance.CameraZoom(9, 0.2f, .2f);
             yield return new WaitForSeconds(.4f);
         }
     }
