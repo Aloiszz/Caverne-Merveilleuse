@@ -274,9 +274,9 @@ public class MenuManager : MonoBehaviour
         cg_btn_Score.DOFade(0, 2);
         cg_btn_Credit.DOFade(0, 2);
         cg_btn_Advanced.DOFade(0, 2);
-        cg_btn_MainMenu.DOFade(0, 2).OnComplete(() =>
-            go_btn_MainMenu.SetActive(false));
-        
+        cg_btn_MainMenu.DOFade(0, 2);//.OnComplete(() =>
+            //go_btn_MainMenu.SetActive(false));
+        go_btn_MainMenu.SetActive(false);
         cg_btn_Score.GetComponent<Button>().interactable = false;
         cg_btn_Credit.GetComponent<Button>().interactable = false;
         cg_btn_Advanced.GetComponent<Button>().interactable = false;
@@ -304,11 +304,12 @@ public class MenuManager : MonoBehaviour
         animator_Canvas.SetTrigger("CreditToOption");
         
         go_btn_MainMenu.SetActive(true);
+        
         cg_CreditMenu.DOFade(0, 2);
         cg_Credit.DOFade(0, 2);
-        cg_btn_BackToOption.DOFade(0, 2).OnComplete(() =>
-            go_btn_BackToOption.SetActive(false));
-        
+        cg_btn_BackToOption.DOFade(0, 2);//.OnComplete(() =>
+            //go_btn_BackToOption.SetActive(false));
+        go_btn_BackToOption.SetActive(false);
         cg_btn_BackToOption.GetComponent<Button>().interactable = false;
         
         cg_OptionMenu.DOFade(1, 2);
