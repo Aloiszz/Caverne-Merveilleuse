@@ -92,6 +92,14 @@ public class EnnemySpawner : MonoBehaviour
                 RoomManager.instance.canThePotitChatSpawn = true;
             }
         }
+
+        if (PlayerController.instance.life <= 0)
+        {
+            foreach (var i in ennemyAlive)
+            {
+                Destroy(i);
+            }
+        }
     }
 
     private void LateUpdate()
