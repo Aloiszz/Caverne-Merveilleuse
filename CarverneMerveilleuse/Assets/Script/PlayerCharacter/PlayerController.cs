@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
     }
     public void LoseLife(int damage)
     {
-        
+        Score.instance.score -= 2;
         life -= damage;
         StartCoroutine(InvinsibleTime());
         Instantiate(bloodPS, gameObject.transform.position, quaternion.identity,

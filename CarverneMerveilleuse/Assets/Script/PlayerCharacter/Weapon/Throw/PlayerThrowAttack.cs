@@ -39,6 +39,7 @@ public class PlayerThrowAttack : MonoBehaviour
     [SerializeField] private float fauxScaleBase = 1;
     [SerializeField] private float fauxScaleMax = 1.5f;
     [HideInInspector] public bool isAiming;
+    public int multiplicateur = 1;
     
     
     [Header("Cinemachine Schake")] 

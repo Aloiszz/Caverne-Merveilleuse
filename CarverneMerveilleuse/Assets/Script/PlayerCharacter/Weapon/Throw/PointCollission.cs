@@ -57,6 +57,7 @@ public class PointCollission : MonoBehaviour
             verif = true;
             verifPremierTouch = true;
             bounceInt++;
+            PlayerThrowAttack.instance.multiplicateur++;
 
             Instantiate(PlayerThrowAttack.instance.PS_eclatDeFaux, transform.position, quaternion.identity,
                 RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);

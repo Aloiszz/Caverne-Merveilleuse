@@ -136,7 +136,8 @@ public class Mechant : MonoBehaviour
                     {
                         AudioManager.instance.PlayBatDeath(GetComponent<AudioSource>());
                     }
-                    Score.instance.score += pointScore;
+                    
+                    Score.instance.score += pointScore * PlayerThrowAttack.instance.multiplicateur;
                 }
 
                 Destroy(gameObject);
@@ -161,6 +162,7 @@ public class Mechant : MonoBehaviour
             //Score.instance.scoreRage += pointScore;
             if (CompareTag("Boss") && Score.instance.activateScore)
             {
+                Score.instance.score += pointScore;
                 Score.instance.AddScore();
             }
             
