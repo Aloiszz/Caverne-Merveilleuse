@@ -99,7 +99,7 @@ public class Room : MonoBehaviour
             k.DOFade(0.9f, 0.7f);
         }
         gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.7f);
-        //gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
+        gameObject.GetComponentInChildren<SpriteRenderer>().DOFade(1, 0.7f);
         
         tiles = gameObject.GetComponentsInChildren<Tilemap>();
         foreach (var k in tiles)
@@ -128,7 +128,7 @@ public class Room : MonoBehaviour
             result = Random.Range(0, AlternativeDoor.Count);
             goldenDoor = AlternativeDoor[result];
             AlternativeDoor.Remove(AlternativeDoor[result]);
-            goldenDoor.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.96f,0.016f, 0.8f),0.2f);
+            //goldenDoor.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.96f,0.016f, 0.8f),0.2f);
         }
         else
         {
@@ -149,7 +149,7 @@ public class Room : MonoBehaviour
 
             goldenDoor = AlternativeDoor[result];
             AlternativeDoor.Remove(AlternativeDoor[result]);
-            goldenDoor.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.96f,0.016f, 0.8f),0.2f);
+            //goldenDoor.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.96f,0.016f, 0.8f),0.2f);
             
         }
         
@@ -161,7 +161,7 @@ public class Room : MonoBehaviour
         {
             if (x.CompareTag("Door"))
             {
-                x.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.2f,0.8f, 0.8f),0.2f);
+                //x.gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(1,0.2f,0.8f, 0.8f),0.2f);
                 x.GetComponent<RoomSpawnerV2>().isAlternativeDoor = true;
             }
         }

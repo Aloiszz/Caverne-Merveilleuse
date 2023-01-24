@@ -7890,7 +7890,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517901774263645079}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -7925,7 +7925,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0.3137255}
+  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8020,7 +8020,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746444680793813708}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -8055,7 +8055,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0.3137255}
+  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -29242,7 +29242,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7333790046418214741}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -29277,7 +29277,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0.3137255}
+  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -29417,7 +29417,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7581477234000099717}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -29452,7 +29452,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0.3137255}
+  m_Color: {r: 1, g: 0.16470589, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -30024,6 +30024,7 @@ MonoBehaviour:
   isHub: 0
   isBossRoom: 0
   isShopRoom: 0
+  PreRoomBoss: 0
   DoorEnnemyPositionLeft: {fileID: 0}
   DoorEnnemyPositionRight: {fileID: 0}
   DoorEnnemyPositionTop: {fileID: 0}
@@ -30045,6 +30046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_ennemySpawner: {fileID: 11400000, guid: db82ebef030a47d49b65ba085161aa50, type: 2}
+  difficulty_Index: 0
   childSlot: {fileID: 0}
   spawnPointPosition: []
   ennemyAlive: []
