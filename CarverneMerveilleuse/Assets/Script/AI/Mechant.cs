@@ -308,6 +308,7 @@ public class Mechant : MonoBehaviour
         switch (gameObject.tag)
         {
             case "CAC":
+                yield return new WaitForSeconds(0.2f);
                 CaCEnnemiScript cacScript = GetComponent<CaCEnnemiScript>();
                 cacScript.canJump = true;
                 cacScript.see = true;
