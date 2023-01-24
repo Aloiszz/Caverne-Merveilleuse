@@ -27,7 +27,7 @@ public class VerifIntro : MonoBehaviour
 
     private void Start()
     {
-        Introduction.instance._Introduction();
+        Introduction.instance.Tuto();
     }
 
     public bool isis;
