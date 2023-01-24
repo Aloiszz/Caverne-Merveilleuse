@@ -103,7 +103,7 @@ public class Mechant : MonoBehaviour
                                 zizou -= 1;
                             }
                         }
-                        else if (Random.Range(0, 3) == 1)
+                        else if (Random.Range(0, 5) == 1)
                         {
                             gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
                             Instantiate(dent, gameObject.transform.position, Quaternion.identity,

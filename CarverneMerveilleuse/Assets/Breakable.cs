@@ -18,23 +18,16 @@ public class Breakable : MonoBehaviour
             int random = Random.Range(0, AudioManager.instance.potsClips.Count);
             Instantiate(eclat, transform.position, Quaternion.identity,
                 RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
-            int drop = Random.Range(0, 10);
+            int drop = Random.Range(0, 6);
             if (!cantDrop)
             {
-                if (drop > 4 && drop <= 8)
+                if (drop == 0)
                 {
                 
                     gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
                     Instantiate(dent, gameObject.transform.position, Quaternion.identity, transform.parent);
                 }
-                else if (drop > 8)
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
-                        Instantiate(dent, gameObject.transform.position, Quaternion.identity, transform.parent);
-                    }
-                }
+                
             }
             AudioManager.instance.SFXSource.PlayOneShot(AudioManager.instance.potsClips[random]);
             Destroy(gameObject);
