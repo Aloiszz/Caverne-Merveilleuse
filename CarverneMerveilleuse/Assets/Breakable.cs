@@ -21,14 +21,14 @@ public class Breakable : MonoBehaviour
             {
                 
                 gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
-                Instantiate(dent, gameObject.transform.position, Quaternion.identity, RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                Instantiate(dent, gameObject.transform.position, Quaternion.identity, transform.parent);
             }
             else if (drop == 5)
             {
                 for (int i = 0; i < 2; i++)
                 {
                     gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
-                    Instantiate(dent, gameObject.transform.position, Quaternion.identity, RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
+                    Instantiate(dent, gameObject.transform.position, Quaternion.identity, transform.parent);
                 }
             }
             AudioManager.instance.SFXSource.PlayOneShot(AudioManager.instance.potsClips[random]);
