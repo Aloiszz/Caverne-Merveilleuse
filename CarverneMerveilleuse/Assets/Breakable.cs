@@ -17,13 +17,13 @@ public class Breakable : MonoBehaviour
             Instantiate(eclat, transform.position, Quaternion.identity,
                 RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             int drop = Random.Range(0, 6);
-            if (drop > 0 && drop <= 2)
+            if (drop > 2 && drop <= 4)
             {
                 
                 gameObject.transform.DOMove(new Vector3(Random.Range(-3, 4), Random.Range(-3, 4)), 0.1f);
                 Instantiate(dent, gameObject.transform.position, Quaternion.identity, RoomManager.instance.roomMemory[RoomManager.instance.roomMemoryIndex].transform);
             }
-            else if (drop > 2)
+            else if (drop == 5)
             {
                 for (int i = 0; i < 2; i++)
                 {
