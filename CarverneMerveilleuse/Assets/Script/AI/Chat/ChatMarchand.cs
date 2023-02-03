@@ -186,6 +186,8 @@ public class ChatMarchand : MonoBehaviour
         TeleportPlayerToNextRoom();
         AstarPath.active.Scan();
         ChatCircleMerchantWay.instance.gameObject.GetComponent<Collider2D>().enabled = true;
+        yield return new WaitForSeconds(.46f);
+        _virtualCamera.m_Lens.OrthographicSize = 10;
     }
     
     public IEnumerator PlayerCameback()
